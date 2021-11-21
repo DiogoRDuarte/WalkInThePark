@@ -10,7 +10,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WalkInThePark">
         <activity
+            android:name=".AboutActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CalibrationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ReminderActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MoodActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ExerciseActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AnnotationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".StartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

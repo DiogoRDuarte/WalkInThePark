@@ -7,12 +7,176 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/textView"
+        android:layout_width="76dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="36dp"
+        android:text="Main"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="97dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="96dp"
+        android:onClick="goToExercise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/e"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="99dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="52dp"
+        android:onClick="goToAnnotation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/a"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="110dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="244dp"
+        android:layout_marginEnd="52dp"
+        android:onClick="goToReminder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/r"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="117dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="244dp"
+        android:onClick="goToMood"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/m"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="105dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="228dp"
+        android:onClick="goToCalibration"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/c"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="109dp"
+        android:layout_height="105dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="228dp"
+        android:onClick="goToSettings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/s"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="111dp"
+        android:layout_height="105dp"
+        android:layout_marginBottom="64dp"
+        android:onClick="goToHelp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/h"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="97dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="200dp"
+        android:text="Exercicios"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="98dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="52dp"
+        android:text="Anotações"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="356dp"
+        android:text="Rastreio de Humor"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="113dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="356dp"
+        android:layout_marginEnd="52dp"
+        android:text="Lembretes"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="105dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="188dp"
+        android:text="Calibração"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="106dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="188dp"
+        android:text="Definições"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="112dp"
+        android:layout_height="22dp"
+        android:layout_marginBottom="28dp"
+        android:text="Ajuda"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
