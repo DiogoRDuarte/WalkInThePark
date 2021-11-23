@@ -11,9 +11,13 @@
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_exercise.xml" value="0.264" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_mood.xml" value="0.264" />
+        <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_notes.xml" value="0.2" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_reminder.xml" value="0.264" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_settings.xml" value="0.264" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_start.xml" value="0.2" />
+        <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/fragment_new_reminder.xml" value="0.18366549433372412" />
+        <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/fragment_notes.xml" value="0.152" />
+        <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/fragment_reminder.xml" value="0.18366549433372412" />
       </map>
     </option>
   </component>
