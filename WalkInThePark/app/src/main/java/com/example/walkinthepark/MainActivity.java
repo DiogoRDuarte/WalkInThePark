@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
      * Metodo que permite ir para a atividade de anotacoes
      * @param view vista da atividade de anotacoes
      */
-    public void goToAnnotation (View view){
-        Intent i = new Intent(this, AnnotationActivity.class);
+    public void goToNotes(View view){
+        Intent i = new Intent(this, NotesActivity.class);
         startActivity(i);
     }
 
