@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".NotesActivity">
 
-    <TextView
+    <!--<TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,5 +14,27 @@
         android:text="Notas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <FrameLayout
+        android:id="@+id/fragment_container_notes"
+        android:layout_width="411dp"
+        android:layout_height="582dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_notes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_notes"
+        android:layout_width="193dp"
+        android:layout_height="73dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_container_notes" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
