@@ -10,10 +10,13 @@ import android.view.ViewGroup;
 
 public class NewNoteFragment extends Fragment {
 
+    static View newNoteView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_note, container, false);
+        newNoteView = inflater.inflate(R.layout.fragment_new_note, container, false);
+        return newNoteView;
     }
 }

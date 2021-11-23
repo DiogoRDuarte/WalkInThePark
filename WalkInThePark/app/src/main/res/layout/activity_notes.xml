@@ -30,7 +30,7 @@
         android:id="@+id/button_notes"
         android:layout_width="193dp"
         android:layout_height="73dp"
-        android:text="Button"
+        android:text="@string/button_ac_notes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

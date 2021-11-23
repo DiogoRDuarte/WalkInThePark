@@ -6,16 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
-class NotesFragment extends Fragment {
+public class NotesFragment extends Fragment {
 
-    @Nullable
+    static View notesView;
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_notes, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        notesView = inflater.inflate(R.layout.fragment_notes, container, false);
+        return notesView;
     }
 }
