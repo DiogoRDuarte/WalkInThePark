@@ -5,4 +5,6 @@
     <string name="button_ac_notes">Adicionar Nota</string>
     <string name="string_notes">Notas Existentes</string>
     <string name="string_new_note">Adicionar uma nova Nota</string>
+    <string name="button_add">Adicionar</string>
+    <string name="button_cancel">Cancelar</string>
 </resources>
