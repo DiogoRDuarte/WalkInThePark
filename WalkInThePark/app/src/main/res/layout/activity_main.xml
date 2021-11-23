@@ -27,7 +27,7 @@
         android:onClick="goToExercise"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/e"
+        app:srcCompat="@drawable/video"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
@@ -39,7 +39,7 @@
         android:onClick="goToAnnotation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/a"
+        app:srcCompat="@drawable/pencil"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
@@ -51,7 +51,7 @@
         android:onClick="goToReminder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/r"
+        app:srcCompat="@drawable/bell"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
@@ -63,7 +63,7 @@
         android:onClick="goToMood"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/m"
+        app:srcCompat="@drawable/smile"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
@@ -75,7 +75,7 @@
         android:onClick="goToCalibration"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/c"
+        app:srcCompat="@drawable/calibration"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
@@ -87,7 +87,7 @@
         android:onClick="goToSettings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/s"
+        app:srcCompat="@drawable/settings"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
@@ -100,7 +100,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/h"
+        app:srcCompat="@drawable/help"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
