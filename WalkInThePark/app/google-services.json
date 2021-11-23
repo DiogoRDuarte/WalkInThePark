@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "362879973268",
+    "project_id": "walk-in-the-park---cm",
+    "storage_bucket": "walk-in-the-park---cm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:362879973268:android:ca9627e55ae324574b0181",
+        "android_client_info": {
+          "package_name": "com.example.walkinthepark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "362879973268-q5cli3t4df96dauopp4b1gkdcsgbutto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzaXY3BjzseybwF4Wln0zkj5tavl0q4DE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "362879973268-q5cli3t4df96dauopp4b1gkdcsgbutto.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

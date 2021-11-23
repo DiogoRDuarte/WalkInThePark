@@ -31,7 +31,7 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".AnnotationActivity"
+            android:name=".NotesActivity"
             android:exported="true" />
         <activity
             android:name=".StartActivity"
