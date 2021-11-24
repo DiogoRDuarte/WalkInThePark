@@ -29,12 +29,12 @@ public class NotesActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(button.getText().equals("Adicionar Notas")) {
+                if(button.getText().equals("Adicionar Nota")) {
                     button.setText("Ver Notas");
                     newNoteFragment = new NewNoteFragment();
                     replaceFragment(newNoteFragment);
                 } else if (button.getText().equals("Ver Notas")) {
-                    button.setText("Adicionar Notas");
+                    button.setText("Adicionar Nota");
                     replaceFragment(notesFragment);
                 }
             }
