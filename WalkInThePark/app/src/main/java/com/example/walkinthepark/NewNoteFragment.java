@@ -25,9 +25,10 @@ public class NewNoteFragment extends Fragment {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*getParentFragmentManager().beginTransaction().remove(NewNoteFragment.this).commit();*/
-                getParentFragmentManager().popBackStack();
+                getParentFragmentManager().beginTransaction().remove(NewNoteFragment.this).commit();
+                /*getParentFragmentManager().popBackStack();*/
                 ((NotesActivity)getActivity()).button.setText("Adicionar Nota");
+                ((NotesActivity)getActivity()).replaceFragment(((NotesActivity)getActivity()).notesFragment);
             }
         });
 

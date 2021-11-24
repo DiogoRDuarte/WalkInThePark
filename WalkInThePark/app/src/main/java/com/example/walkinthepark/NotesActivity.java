@@ -22,8 +22,9 @@ public class NotesActivity extends AppCompatActivity {
 
         if(notesFragment == null) {
             notesFragment = new NotesFragment();
-            replaceFragment(notesFragment);
         }
+
+        replaceFragment(notesFragment);
 
         button = findViewById(R.id.button_notes);
         button.setOnClickListener(new View.OnClickListener() {
@@ -42,11 +43,11 @@ public class NotesActivity extends AppCompatActivity {
 
     }
 
-    private void replaceFragment(Fragment fragment) {
+    public void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container_notes, fragment);
-        fragmentTransaction.addToBackStack(null);
+        /*fragmentTransaction.addToBackStack(null);*/
         fragmentTransaction.commit();
     }
 

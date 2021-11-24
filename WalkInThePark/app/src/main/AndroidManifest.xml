@@ -11,28 +11,35 @@
         android:theme="@style/Theme.WalkInThePark">
         <activity
             android:name=".AboutActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Sobre"/>
         <activity
             android:name=".SettingsActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Definições"/>
         <activity
             android:name=".CalibrationActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Calibração"/>
         <activity
             android:name=".ReminderActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Lembretes"/>
         <activity
             android:name=".MoodActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Rastreio de Humor"/>
         <activity
             android:name=".ExerciseActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Exercícios"/>
         <activity
             android:name=".MainActivity"
             android:exported="true" />
         <activity
             android:name=".NotesActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Notas" />
         <activity
             android:name=".StartActivity"
             android:exported="true">

@@ -16,11 +16,11 @@ public class ReminderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
 
-        if(newReminderFragment.equals(null)){
+        if(newReminderFragment == null){
             newReminderFragment = new NewReminderFragment();
         }
 
-        if(reminderFragment.equals(null)){
+        if(reminderFragment == null){
             reminderFragment = new ReminderFragment();
         }
         replaceFragment(reminderFragment);
