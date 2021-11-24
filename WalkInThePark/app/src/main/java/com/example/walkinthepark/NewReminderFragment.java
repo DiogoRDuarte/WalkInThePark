@@ -1,5 +1,7 @@
 package com.example.walkinthepark;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TimePicker;
+
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,7 +23,14 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class NewReminderFragment extends Fragment {
-
+    Button bDate;
+    Button bTime;
+    Button bAdd;
+    TextView teste;
+    EditText te;
+    String time;
+    String message;
+    String date;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +77,62 @@ public class NewReminderFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_new_reminder, container, false);
+        bDate = (Button) view.findViewById(R.id.buttonDate);
+        bTime = (Button) view.findViewById(R.id.buttonTime);
+        bAdd = (Button) view.findViewById(R.id.buttonAdd);
+        bDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectDate();
+            }
+        });
+
+        bTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectTime();
+            }
+        });
+        te = (EditText) view.findViewById(R.id.message);
+        message = te.getText().toString();
+    //TODO: solve EditText problem
+        teste = view.findViewById(R.id.define);
+
+        bAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                teste.setText(message + " " +time + " "+ date);
+            }
+        });
         return view;
+    }
+
+
+    private void selectTime() {
+        Calendar cal = Calendar.getInstance();
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int minute = cal.get(Calendar.MINUTE);
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this.getContext(), new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                time = hour + ":" + minute;
+                //bTime.setText(time);
+            }
+        },hour,minute,true);
+        timePickerDialog.show();
+    }
+
+    private void selectDate() {
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this.getContext(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                date = day+"-"+(month+1)+"-"+year;
+            }
+        },year,month,day);
+        datePickerDialog.show();
     }
 }

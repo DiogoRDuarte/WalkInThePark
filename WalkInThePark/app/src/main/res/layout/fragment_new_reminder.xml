@@ -11,7 +11,7 @@
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="36dp"
         android:text="Adição de Lembrete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,41 +21,61 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="96dp"
         android:text="Data e Hora"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="161dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="56dp"
-        android:text="Selecionar"
+        android:id="@+id/buttonTime"
+        android:layout_width="126dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="60dp"
+        android:text="Hora"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/Message"
+        android:id="@+id/message"
         android:layout_width="248dp"
         android:layout_height="63dp"
-        android:layout_marginBottom="388dp"
+        android:layout_marginBottom="188dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Mensagem"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonAdd"
         android:layout_width="239dp"
         android:layout_height="95dp"
-        android:layout_marginBottom="188dp"
+        android:layout_marginBottom="60dp"
         android:text="Adicionar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="96dp"
+        android:text="Data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/define"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
