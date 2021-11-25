@@ -112,7 +112,8 @@ public class NewReminderFragment extends Fragment {
             public void onClick(View view) {
                 message = te.getText().toString();
                 teste.setText(""+message + " " +time + " "+ date);
-                //chamar funcao no reminder fragment para guardar novo lembrete criado
+                Reminder rem = new Reminder(hora.getText().toString(), data.getText().toString() , message);
+                ((ReminderActivity) getActivity()).adicionarLembrete(rem);
             }
         });
         return view;

@@ -62,4 +62,8 @@ public class ReminderActivity extends AppCompatActivity {
     public ArrayList<Reminder> getListaReminders(){
         return listaLembretes;
     }
+
+    public void adicionarLembrete(Reminder lem){
+        this.listaLembretes.add(lem);
+    }
 }

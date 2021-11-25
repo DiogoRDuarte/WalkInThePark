@@ -82,7 +82,4 @@ public class ReminderFragment extends Fragment {
         return  view;
     }
 
-    public void adicionarLembrete(Reminder lem){
-        this.listaLembretes.add(lem);
-    }
 }
