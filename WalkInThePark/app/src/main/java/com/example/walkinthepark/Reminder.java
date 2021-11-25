@@ -11,6 +11,11 @@ public class Reminder {
         this.mensagem = mensagem;
     }
 
+    public String toString(){
+        return this.mensagem + " " + this.data + " " + this.hora;
+    }
+
+
     public String getHora(){
         return this.hora;
     }
