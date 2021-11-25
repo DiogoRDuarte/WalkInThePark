@@ -10,7 +10,7 @@ public class Reminder {
         this.hora = hora;
         this.mensagem = mensagem;
     }
-
+    //Descricao Textual
     public String toString(){
         return this.mensagem + " " + this.data + " " + this.hora;
     }
