@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import org.w3c.dom.Text;
+
 import java.util.Calendar;
 
 /**
@@ -28,9 +30,9 @@ public class NewReminderFragment extends Fragment {
     Button bAdd;
     TextView teste;
     EditText te;
-    String time;
+    String time ="";
     String message;
-    String date;
+    String date ="";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -40,6 +42,8 @@ public class NewReminderFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private View view;
+    private TextView hora;
+    private TextView data;
 
     public NewReminderFragment() {
         // Required empty public constructor
@@ -80,13 +84,15 @@ public class NewReminderFragment extends Fragment {
         bDate = (Button) view.findViewById(R.id.buttonDate);
         bTime = (Button) view.findViewById(R.id.buttonTime);
         bAdd = (Button) view.findViewById(R.id.buttonAdd);
+        data = (TextView) view.findViewById(R.id.textData);
         bDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 selectDate();
+
             }
         });
-
+        hora = (TextView) view.findViewById(R.id.textHora);
         bTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,14 +100,14 @@ public class NewReminderFragment extends Fragment {
             }
         });
         te = (EditText) view.findViewById(R.id.message);
-        message = te.getText().toString();
     //TODO: solve EditText problem
         teste = view.findViewById(R.id.define);
 
         bAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                teste.setText(message + " " +time + " "+ date);
+                message = te.getText().toString();
+                teste.setText(""+message + " " +time + " "+ date);
             }
         });
         return view;
@@ -116,7 +122,7 @@ public class NewReminderFragment extends Fragment {
             @Override
             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                 time = hour + ":" + minute;
-                //bTime.setText(time);
+                hora.setText(time+"h");
             }
         },hour,minute,true);
         timePickerDialog.show();
@@ -131,6 +137,7 @@ public class NewReminderFragment extends Fragment {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 date = day+"-"+(month+1)+"-"+year;
+                data.setText(date);
             }
         },year,month,day);
         datePickerDialog.show();
