@@ -9,16 +9,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class NotesActivity extends AppCompatActivity {
 
     Button button;
     static NotesFragment notesFragment;
     static NewNoteFragment newNoteFragment;
+    private ArrayList<Note> listaNotas;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
+
+
+        listaNotas = new ArrayList<Note>();
 
         if(notesFragment == null) {
             notesFragment = new NotesFragment();
@@ -51,5 +58,12 @@ public class NotesActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    public ArrayList<Note> getListaNotas(){
+        return listaNotas;
+    }
+
+    public void adicionarNota(Note nota){
+        this.listaNotas.add(nota);
+    }
 
 }

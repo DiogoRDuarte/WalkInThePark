@@ -72,13 +72,17 @@ public class ReminderFragment extends Fragment {
         listaLembretes = ((ReminderActivity) getActivity()).getListaReminders();
         mensagens = view.findViewById(R.id.lembretes);
 
-        StringBuilder m = new StringBuilder();
+        StringBuilder m = new StringBuilder("");
 
         for(Reminder r: listaLembretes){
-          m.append(r.getMensagem()+"\n");
+          m.append("Data: "+r.getData()+"\nHora: "+r.getHora()+"\nLembrete "+r.getMensagem()+"\n\n");
         }
 
-        mensagens.setText(m.toString());
+        if(m.toString().equals("")){
+            mensagens.setText("Não Existem Lembretes!");
+        }else
+            mensagens.setText(m.toString());
+
         return  view;
     }
 

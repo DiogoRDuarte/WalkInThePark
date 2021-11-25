@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -31,7 +33,7 @@ public class NewReminderFragment extends Fragment {
     TextView teste;
     EditText te;
     String time ="";
-    String message;
+    String message="";
     String date ="";
 
 
@@ -97,23 +99,35 @@ public class NewReminderFragment extends Fragment {
         });
 
         hora = (TextView) view.findViewById(R.id.textHora);
+
         bTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 selectTime();
             }
         });
+
         te = (EditText) view.findViewById(R.id.message);
-        //TODO: solve EditText problem
-        teste = view.findViewById(R.id.define);
 
         bAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = te.getText().toString();
-                teste.setText(""+message + " " +time + " "+ date);
-                Reminder rem = new Reminder(hora.getText().toString(), data.getText().toString() , message);
-                ((ReminderActivity) getActivity()).adicionarLembrete(rem);
+                String dataS = data.getText().toString();
+                String horaS = hora.getText().toString();
+                String text = te.getText().toString();
+
+                if(dataS.equals("Data") || horaS.equals("Hora") || text.equals("")){
+                    Toast toast = Toast.makeText(getContext(), "Escolhe uma Data Hora e Lembrete!", Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }else {
+                    Reminder rem = new Reminder(horaS, dataS, text);
+                    ((ReminderActivity) getActivity()).adicionarLembrete(rem);
+
+                    Toast toast = Toast.makeText(getContext(), "Lembrete Adicionado!", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
             }
         });
         return view;
