@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +26,11 @@ public class ReminderFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private TextView mensagens;
+
+    private ArrayList<Reminder> listaLembretes;
+    private View view;
 
     public ReminderFragment() {
         // Required empty public constructor
@@ -59,6 +67,22 @@ public class ReminderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reminder, container, false);
+        view = inflater.inflate(R.layout.fragment_reminder, container, false);
+
+        listaLembretes = ((ReminderActivity) getActivity()).getListaReminders();
+        mensagens = view.findViewById(R.id.lembretes);
+
+        StringBuilder m = new StringBuilder();
+
+        for(Reminder r: listaLembretes){
+          m.append(r.getMensagem()+"\n");
+        }
+
+        mensagens.setText(m.toString());
+        return  view;
+    }
+
+    public void adicionarLembrete(Reminder lem){
+        this.listaLembretes.add(lem);
     }
 }

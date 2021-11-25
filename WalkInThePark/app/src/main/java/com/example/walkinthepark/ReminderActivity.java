@@ -9,14 +9,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class ReminderActivity extends AppCompatActivity {
     private static ReminderFragment reminderFragment;
     private static NewReminderFragment newReminderFragment;
+    private ArrayList<Reminder> listaLembretes;
+
     Button bAdd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
+
+
+        listaLembretes = new ArrayList<Reminder>();
 
         if(newReminderFragment == null){
             newReminderFragment = new NewReminderFragment();
@@ -50,5 +57,9 @@ public class ReminderActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.all_reminders,reminderFragment);
         fragmentTransaction.commit();
+    }
+
+    public ArrayList<Reminder> getListaReminders(){
+        return listaLembretes;
     }
 }

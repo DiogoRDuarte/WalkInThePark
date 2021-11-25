@@ -33,6 +33,8 @@ public class NewReminderFragment extends Fragment {
     String time ="";
     String message;
     String date ="";
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -85,13 +87,15 @@ public class NewReminderFragment extends Fragment {
         bTime = (Button) view.findViewById(R.id.buttonTime);
         bAdd = (Button) view.findViewById(R.id.buttonAdd);
         data = (TextView) view.findViewById(R.id.textData);
+
+
         bDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 selectDate();
-
             }
         });
+
         hora = (TextView) view.findViewById(R.id.textHora);
         bTime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +104,7 @@ public class NewReminderFragment extends Fragment {
             }
         });
         te = (EditText) view.findViewById(R.id.message);
-    //TODO: solve EditText problem
+        //TODO: solve EditText problem
         teste = view.findViewById(R.id.define);
 
         bAdd.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +112,7 @@ public class NewReminderFragment extends Fragment {
             public void onClick(View view) {
                 message = te.getText().toString();
                 teste.setText(""+message + " " +time + " "+ date);
+                //chamar funcao no reminder fragment para guardar novo lembrete criado
             }
         });
         return view;
