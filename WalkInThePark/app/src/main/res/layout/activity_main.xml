@@ -10,12 +10,12 @@
         android:id="@+id/imageView2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="26dp"
         android:onClick="goToExercise"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
         app:srcCompat="@drawable/video"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -23,8 +23,8 @@
         android:id="@+id/imageView3"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="26dp"
         android:onClick="goToNotes"
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
@@ -36,12 +36,12 @@
         android:id="@+id/imageView4"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="28dp"
         android:onClick="goToReminder"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:srcCompat="@drawable/bell"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -49,12 +49,12 @@
         android:id="@+id/imageView5"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="28dp"
         android:onClick="goToMood"
+        app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintEnd_toStartOf="@+id/imageView4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
         app:srcCompat="@drawable/smile"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -62,12 +62,12 @@
         android:id="@+id/imageView6"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="28dp"
         android:onClick="goToCalibration"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
         app:layout_constraintEnd_toStartOf="@+id/imageView7"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/imageView7"
         app:srcCompat="@drawable/calibration"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -75,12 +75,12 @@
         android:id="@+id/imageView7"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="28dp"
         android:onClick="goToSettings"
+        app:layout_constraintBottom_toTopOf="@+id/imageView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
         app:srcCompat="@drawable/settings"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -88,12 +88,12 @@
         android:id="@+id/imageView8"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="20dp"
         android:onClick="goToHelp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
         app:srcCompat="@drawable/help"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -163,9 +163,7 @@
         android:layout_height="wrap_content"
         android:text="Sobre"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView8"
         app:layout_constraintStart_toStartOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 </androidx.constraintlayout.widget.ConstraintLayout>

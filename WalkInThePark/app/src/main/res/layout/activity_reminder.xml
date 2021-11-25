@@ -19,7 +19,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/all_reminders"
         android:name="com.example.walkinthepark.ReminderFragment"
-        android:layout_width="425dp"
+        android:layout_width="match_parent"
         android:layout_height="450dp"
         app:layout_constraintBottom_toTopOf="@+id/button_add"
         app:layout_constraintEnd_toEndOf="parent"
