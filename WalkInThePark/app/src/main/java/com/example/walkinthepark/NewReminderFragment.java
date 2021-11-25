@@ -1,7 +1,11 @@
 package com.example.walkinthepark;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -130,6 +134,7 @@ public class NewReminderFragment extends Fragment {
 
             }
         });
+
         return view;
     }
 
@@ -162,4 +167,25 @@ public class NewReminderFragment extends Fragment {
         },year,month,day);
         datePickerDialog.show();
     }
+    /*
+    private void setAlarm(String text, String date, String time) {
+        AlarmManager am = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);                   //assigning alarm manager object to set alarm
+        Intent intent = new Intent(getActivity().getApplicationContext(), AlarmBroadcast.class);
+        intent.putExtra("event", text);                                                       //sending data to alarm class to create channel and notification
+        intent.putExtra("time", date);
+        intent.putExtra("date", time);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        String dateandtime = date + " " + timeTonotify;
+        DateFormat formatter = new SimpleDateFormat("d-M-yyyy hh:mm");
+        try {
+            Date date1 = formatter.parse(dateandtime);
+            am.set(AlarmManager.RTC_WAKEUP, date1.getTime(), pendingIntent);
+            Toast.makeText(getApplicationContext(), "Alarm", Toast.LENGTH_SHORT).show();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Intent intentBack = new Intent(getApplicationContext(), MainActivity.class);                //this intent will be called once the setting alarm is complete
+        intentBack.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intentBack);                                                                  //navigates from adding reminder activity to mainactivity
+    }*/
 }
