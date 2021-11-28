@@ -3,6 +3,8 @@ package com.example.walkinthepark;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -82,6 +84,10 @@ public class ReminderFragment extends Fragment {
             mensagens.setText("Não Existem Lembretes!");
         }else
             mensagens.setText(m.toString());
+        /*RecyclerView rvReminders = (RecyclerView) view.findViewById(R.id.rvReminders);
+        RemindersAdapter remindersAdapter = new RemindersAdapter(listaLembretes);
+        rvReminders.setAdapter(remindersAdapter);
+        rvReminders.setLayoutManager(new LinearLayoutManager(this.getContext()));*/
 
         return  view;
     }
