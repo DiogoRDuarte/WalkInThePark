@@ -4,17 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E8E8E8"
     tools:context=".UserHomeActivity">
 
     <!-- Lembretes -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="409dp"
+        android:id="@+id/constraintLayout3"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="#8A8A8A"
+        app:layout_constraintBottom_toTopOf="@+id/video"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="1dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- Lembrete 1 -->
         <com.google.android.material.card.MaterialCardView
@@ -27,7 +32,8 @@
             android:clickable="true"
             android:focusable="true"
             app:cardCornerRadius="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:contentPadding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/verLembretes"
             app:layout_constraintEnd_toStartOf="@+id/lembrete2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +76,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="Editar" />
+                        android:text="Editar"
+                        android:textColor="#000000"
+                        app:backgroundTint="#C4C4C4" />
 
                 </RelativeLayout>
 
@@ -90,7 +98,8 @@
             android:clickable="true"
             android:focusable="true"
             app:cardCornerRadius="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:contentPadding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/adicionarLembrete"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/lembrete1"
@@ -133,7 +142,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="Editar" />
+                        android:text="Editar"
+                        android:textColor="#000000"
+                        app:backgroundTint="#C4C4C4" />
 
                 </RelativeLayout>
 
@@ -142,8 +153,29 @@
         </com.google.android.material.card.MaterialCardView>
 
         <Button
+            android:id="@+id/verLembretes"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E8E8E8"
+            android:text="Ver todos"
+            android:textColor="#2B2C2C"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/lembrete1"
+            app:layout_constraintStart_toStartOf="@+id/lembrete1"
+            app:layout_constraintTop_toBottomOf="@+id/lembrete1" />
+
+        <!-- android:drawable="@drawable/ic_action_add" -->
+        <Button
+            android:id="@+id/adicionarLembrete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E8E8E8"
+            android:text="Add text"
+            android:textColor="#2B2C2C"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/lembrete2"
+            app:layout_constraintStart_toStartOf="@+id/lembrete2"
+            app:layout_constraintTop_toBottomOf="@+id/lembrete2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -155,9 +187,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:cardCornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/calibrar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -183,7 +215,144 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+    <!-- Notas -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout7"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="#8A8A8A"
+        app:layout_constraintBottom_toBottomOf="@+id/calibrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/video">
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/nota1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="15dp"
+            app:contentPadding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/nota2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nota1"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/nota2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="15dp"
+            app:contentPadding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/nota3"
+            app:layout_constraintTop_toBottomOf="@+id/nota1"
+            tools:layout_editor_absoluteX="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nota2"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/nota3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="15dp"
+            app:contentPadding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/adicionarNota"
+            app:layout_constraintTop_toBottomOf="@+id/nota2"
+            tools:layout_editor_absoluteX="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nota3"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/adicionarNota"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:backgroundTint="#E8E8E8"
+            android:text="Add text"
+            android:textColor="#2B2C2C"
+            android:textSize="20sp"
+            app:cornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nota3"
+            tools:layout_editor_absoluteX="8dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Calibração -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/calibrar"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="#8A8A8A"
+        android:text="Calibração"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
+        app:layout_constraintEnd_toEndOf="@+id/video"
+        app:layout_constraintStart_toStartOf="@+id/video"
+        app:layout_constraintTop_toBottomOf="@+id/video" />
+
+    <!-- Humor -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout5"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="#8A8A8A"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calibrar">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
