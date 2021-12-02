@@ -6,6 +6,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.View;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MoodActivity extends AppCompatActivity {
 
@@ -24,7 +27,14 @@ public class MoodActivity extends AppCompatActivity {
         if (moodsFragment== null){
             moodsFragment = new MoodsFragment();
         }
-        replaceFragment(moodsFragment);
+        FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton2);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                replaceFragment(moodsFragment);
+            }
+        });
+
     }
 
     public void replaceFragment(Fragment fragment) {
