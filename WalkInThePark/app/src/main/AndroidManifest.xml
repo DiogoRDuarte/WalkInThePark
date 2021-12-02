@@ -12,6 +12,10 @@
         <activity
             android:name=".UserHomeActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" />
         <activity
             android:name=".AboutActivity"
             android:exported="true"
