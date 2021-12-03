@@ -8,176 +8,190 @@
     tools:context=".UserHomeActivity">
 
     <!-- Lembretes -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/lembretesLista"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="4dp"
-        android:background="#8A8A8A"
+        android:backgroundTint="#8A8A8A"
+        app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toTopOf="@+id/video"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Lembrete 1 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/lembrete1"
-            android:layout_width="190dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_margin="8dp"
-            android:checkable="true"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardCornerRadius="15dp"
-            app:contentPadding="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/verLembretes"
-            app:layout_constraintEnd_toStartOf="@+id/lembrete2"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
-                <TextView
+                <!-- Lembrete 1 -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/lembrete1"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_margin="8dp"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="15dp"
+                    app:contentPadding="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Título"
+                            android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Descrição"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="?android:attr/textColorSecondary" />
+
+                        <RelativeLayout
+                            android:id="@+id/lemb1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:text="Hora"
+                                android:textAppearance="?attr/textAppearanceBody2"
+                                android:textColor="?android:attr/textColorSecondary" />
+
+                            <com.google.android.material.button.MaterialButton
+                                style="?attr/borderlessButtonStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:text="Editar"
+                                android:textColor="#000000"
+                                app:backgroundTint="#C4C4C4" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/verLembretes"
+                    style="?attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Título"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
+                    android:layout_below="@+id/lembrete1"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="#E8E8E8"
+                    android:text="Ver todos"
+                    android:textColor="#2B2C2C"
+                    app:contentPadding="8dp"
+                    app:cornerRadius="15dp" />
 
-                <TextView
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <!-- Lembrete 2 -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/lembrete2"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="15dp"
+                    app:contentPadding="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Título"
+                            android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Descrição"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="?android:attr/textColorSecondary" />
+
+                        <RelativeLayout
+                            android:id="@+id/lemb2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:text="Hora"
+                                android:textAppearance="?attr/textAppearanceBody2"
+                                android:textColor="?android:attr/textColorSecondary" />
+
+                            <com.google.android.material.button.MaterialButton
+                                style="?attr/borderlessButtonStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:text="Editar"
+                                android:textColor="#000000"
+                                app:backgroundTint="#C4C4C4" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- android:drawable="@drawable/ic_action_add" -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/adicionarLembrete"
+                    style="?attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Descrição"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary" />
+                    android:layout_below="@+id/lembrete2"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="#E8E8E8"
+                    android:text="Add text"
+                    android:textColor="#2B2C2C"
+                    app:contentPadding="8dp"
+                    app:cornerRadius="15dp" />
 
-                <RelativeLayout
-                    android:id="@+id/lemb1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+            </RelativeLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="Hora"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
+        </LinearLayout>
 
-                    <com.google.android.material.button.MaterialButton
-                        style="?attr/borderlessButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="Editar"
-                        android:textColor="#000000"
-                        app:backgroundTint="#C4C4C4" />
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Lembrete 2 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/lembrete2"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_margin="8dp"
-            android:layout_marginBottom="8dp"
-            android:checkable="true"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardCornerRadius="15dp"
-            app:contentPadding="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/adicionarLembrete"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/lembrete1"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Título"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Descrição"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary" />
-
-                <RelativeLayout
-                    android:id="@+id/lemb2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="Hora"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
-
-                    <com.google.android.material.button.MaterialButton
-                        style="?attr/borderlessButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="Editar"
-                        android:textColor="#000000"
-                        app:backgroundTint="#C4C4C4" />
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <Button
-            android:id="@+id/verLembretes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#E8E8E8"
-            android:text="Ver todos"
-            android:textColor="#2B2C2C"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/lembrete1"
-            app:layout_constraintStart_toStartOf="@+id/lembrete1"
-            app:layout_constraintTop_toBottomOf="@+id/lembrete1" />
-
-        <!-- android:drawable="@drawable/ic_action_add" -->
-        <Button
-            android:id="@+id/adicionarLembrete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#E8E8E8"
-            android:text="Add text"
-            android:textColor="#2B2C2C"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/lembrete2"
-            app:layout_constraintStart_toStartOf="@+id/lembrete2"
-            app:layout_constraintTop_toBottomOf="@+id/lembrete2" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 
     <!-- Vídeo -->
@@ -187,9 +201,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:cardCornerRadius="15dp"
+        app:contentPadding="8dp"
         app:layout_constraintBottom_toTopOf="@+id/calibrar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/lembretesLista">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -216,110 +231,85 @@
     </com.google.android.material.card.MaterialCardView>
 
     <!-- Notas -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout7"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/notas"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:background="#8A8A8A"
+        android:backgroundTint="#8A8A8A"
+        app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/calibrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/video">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/nota1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="15dp"
-            app:contentPadding="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/nota2"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="8dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <com.google.android.material.button.MaterialButton
+                style="?attr/borderlessButtonStyle"
+                android:id="@+id/nota1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="8dp"
+                app:cornerRadius="15dp"
+                app:contentPadding="8dp"
+                android:text="Nota 1"
+                android:textSize="20sp"
+                android:textColor="#2B2C2C"
+                android:backgroundTint="#E8E8E8"
+                tools:layout_editor_absoluteX="8dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nota1"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/nota2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="15dp"
-            app:contentPadding="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/nota3"
-            app:layout_constraintTop_toBottomOf="@+id/nota1"
-            tools:layout_editor_absoluteX="8dp">
-
-            <LinearLayout
+            <com.google.android.material.button.MaterialButton
+                style="?attr/borderlessButtonStyle"
+                android:id="@+id/nota2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="8dp"
+                app:cornerRadius="15dp"
+                app:contentPadding="8dp"
+                android:text="Nota 2"
+                android:textSize="20sp"
+                android:textColor="#2B2C2C"
+                android:backgroundTint="#E8E8E8"
+                tools:layout_editor_absoluteX="8dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nota2"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/nota3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="15dp"
-            app:contentPadding="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/adicionarNota"
-            app:layout_constraintTop_toBottomOf="@+id/nota2"
-            tools:layout_editor_absoluteX="8dp">
-
-            <LinearLayout
+            <com.google.android.material.button.MaterialButton
+                style="?attr/borderlessButtonStyle"
+                android:id="@+id/nota3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="8dp"
+                app:cornerRadius="15dp"
+                app:contentPadding="8dp"
+                android:text="Nota 3"
+                android:textSize="20sp"
+                android:textColor="#2B2C2C"
+                android:backgroundTint="#E8E8E8"
+                tools:layout_editor_absoluteX="8dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nota3"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/adicionarNota"
+                style="?attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:backgroundTint="#E8E8E8"
+                android:text="Add text"
+                android:textColor="#2B2C2C"
+                android:textSize="20sp"
+                app:cornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/notas"
+                tools:layout_editor_absoluteX="8dp" />
 
-            </LinearLayout>
+        </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/adicionarNota"
-            style="?attr/borderlessButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:backgroundTint="#E8E8E8"
-            android:text="Add text"
-            android:textColor="#2B2C2C"
-            android:textSize="20sp"
-            app:cornerRadius="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nota3"
-            tools:layout_editor_absoluteX="8dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <!-- Calibração -->
     <com.google.android.material.button.MaterialButton
@@ -334,25 +324,25 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:cornerRadius="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
         app:layout_constraintEnd_toEndOf="@+id/video"
         app:layout_constraintStart_toStartOf="@+id/video"
         app:layout_constraintTop_toBottomOf="@+id/video" />
 
     <!-- Humor -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout5"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/humor"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        android:background="#8A8A8A"
+        android:backgroundTint="#8A8A8A"
+        app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calibrar">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
