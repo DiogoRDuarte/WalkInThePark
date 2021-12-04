@@ -216,7 +216,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="194dp"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/media" />
+                app:srcCompat="@drawable/help" />
 
             <TextView
                 android:layout_width="match_parent"
