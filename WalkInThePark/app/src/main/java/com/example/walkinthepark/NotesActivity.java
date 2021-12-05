@@ -24,7 +24,6 @@ public class NotesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
 
-
         listaNotas = new ArrayList<Note>();
 
         if(notesFragment == null) {
@@ -32,6 +31,15 @@ public class NotesActivity extends AppCompatActivity {
         }
 
         replaceFragment(notesFragment);
+
+        int intentFragment = getIntent().getExtras().getInt("fragment");
+        switch (String.valueOf(intentFragment)) {
+            case "fragN":
+                replaceFragment(newNoteFragment);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + intentFragment);
+        }
 
         button = findViewById(R.id.button_notes);
         button.setOnClickListener(new View.OnClickListener() {

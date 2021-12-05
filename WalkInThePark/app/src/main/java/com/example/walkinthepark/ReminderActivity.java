@@ -22,7 +22,6 @@ public class ReminderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
 
-
         listaLembretes = new ArrayList<Reminder>();
 
         if(newReminderFragment == null){
@@ -32,7 +31,20 @@ public class ReminderActivity extends AppCompatActivity {
         if(reminderFragment == null){
             reminderFragment = new ReminderFragment();
         }
+
         replaceFragment(reminderFragment);
+
+        int intentFragment = getIntent().getExtras().getInt("fragment");
+        switch (String.valueOf(intentFragment)) {
+            case "frag1":
+                replaceFragment(reminderFragment);
+                break;
+            case "frag2":
+                replaceFragment(newReminderFragment);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + intentFragment);
+        }
 
         bAdd = findViewById(R.id.button_add);
         bAdd.setOnClickListener(new View.OnClickListener() {

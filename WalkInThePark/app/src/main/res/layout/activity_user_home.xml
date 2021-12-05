@@ -80,6 +80,7 @@
 
                             <com.google.android.material.button.MaterialButton
                                 style="?attr/borderlessButtonStyle"
+                                android:id="@+id/editar1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
@@ -160,6 +161,7 @@
 
                             <com.google.android.material.button.MaterialButton
                                 style="?attr/borderlessButtonStyle"
+                                android:id="@+id/editar2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
