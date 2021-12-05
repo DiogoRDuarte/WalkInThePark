@@ -3,16 +3,19 @@ package com.example.walkinthepark;
 public class User {
     private String nome;
     private String password;
-    private int idade;
     private boolean fisioterapeuta;
-
+    private String fisioID;
     private String email;
 
-    public User(String nome, String password, int idade, boolean fisioterapeuta){
+
+    public User(String nome, String email, String password, String fisioID, boolean fisioSN) {
         this.nome = nome;
         this.password = password;
-        this.idade = idade;
-        this.fisioterapeuta = fisioterapeuta;
+        this.email = email;
+        this.fisioterapeuta = fisioSN;
+        if(!fisioID.equals("")){
+            this.fisioID = fisioID;
+        }
     }
 
     public String getNome() {
@@ -21,10 +24,6 @@ public class User {
 
     public String getPassword(){
         return this.password;
-    }
-
-    public int getIdade(){
-        return this.idade;
     }
 
     public boolean isFisioterapeuta() {
@@ -37,10 +36,6 @@ public class User {
 
     public void setFisioterapeuta(boolean fisioterapeuta) {
         this.fisioterapeuta = fisioterapeuta;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
     }
 
     public void setNome(String nome) {

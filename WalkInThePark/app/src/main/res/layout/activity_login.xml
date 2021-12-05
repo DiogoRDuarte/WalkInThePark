@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1CB4BF"
-    tools:context=".StartActivity"
+    tools:context=".LoginActivity"
     android:layout_gravity="center">
 
 
@@ -38,7 +38,7 @@
                     android:layout_centerVertical="true"
                     android:text="Tornamos \na sua vida \nmelhor!"
                     android:textColor="@color/white"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>/>
 
                 <ImageView
                     android:layout_width="240dp"
@@ -65,19 +65,7 @@
                     android:layout_margin="10dp"
                     android:orientation="vertical">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputName"
-                        style="@style/parent"
-                        android:layout_marginTop="@dimen/loginViewsMargin">
 
-                        <EditText
-                            app:boxBackgroundColor="@color/white"
-                            android:id="@+id/editTextName"
-                            style="@style/modifiedEditText"
-                            android:hint="Nome*"
-                            android:inputType="textPersonName"
-                            android:maxLines="1" />
-                    </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputEmail"
@@ -90,63 +78,29 @@
                             android:hint="Email:*"
                             android:inputType="textEmailAddress"
                             android:maxLines="1" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/textInputPassword"
-                            style="@style/parent"
-                            android:layout_marginTop="@dimen/loginViewsMargin">
-
-                            <EditText
-                                android:id="@+id/editTextPassword"
-                                style="@style/modifiedEditText"
-                                android:hint="Password:*"
-                                android:inputType="textPassword"
-                                android:maxLines="1" />
-                        </com.google.android.material.textfield.TextInputLayout>
                     </com.google.android.material.textfield.TextInputLayout>
 
+
+
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputTokenFisio"
+                        android:id="@+id/textInputPassword"
                         style="@style/parent"
                         android:layout_marginTop="@dimen/loginViewsMargin">
 
                         <EditText
-                            android:id="@+id/editTextTokenFisio"
+                            android:id="@+id/editTextPassword"
                             style="@style/modifiedEditText"
-                            android:hint="Codigo do Fisioterapeuta:"
-                            android:inputType="phone"
+                            android:hint="Password:*"
+                            android:inputType="textPassword"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
-
-                    <RadioGroup
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:layout_marginTop="15dp">
-                        <RadioButton android:id="@+id/radio_paciente"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="5dp"
-                            android:checked="true"
-                            android:text="Sou Paciente" />
-
-                        <RadioButton
-                            android:id="@+id/radio_fisio"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:text="Sou Profissional" />
-                    </RadioGroup>
-
 
                     <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                         android:id="@+id/cirRegisterButton"
                         style="@style/loginButton"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/loginViewsMargin"
-                        android:text="Registar"
+                        android:text="Login"
                         app:initialCornerAngle="27dp"
                         app:spinning_bar_color="#FFF"
                         app:spinning_bar_padding="6dp"
@@ -155,12 +109,12 @@
                     <TextView
                         style="@style/parent"
                         android:layout_marginTop="@dimen/loginViewsMargin"
-                        android:text="Já tem uma conta?"
+                        android:text="Ainda não tem conta?"
                         android:textAlignment="center"
                         android:textColor="@color/themeColor"
                         android:textSize="17sp"
                         android:textStyle="bold"
-                        android:onClick="goToLogin"/>
+                        android:onClick="goToRegister"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
