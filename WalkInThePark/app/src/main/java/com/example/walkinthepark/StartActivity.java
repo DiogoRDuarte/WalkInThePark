@@ -31,4 +31,10 @@ public class StartActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     }
+
+    /*public void goToMainPage(View view){
+        Intent i = new Intent(this, UserHomeActivity.class);
+        startActivity(i);
+        finish();
+    }*/
 }
