@@ -7,10 +7,17 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
@@ -24,6 +31,7 @@ public class StartActivity extends AppCompatActivity {
     private String email;
     private String password;
     private String fisioID;
+    private List<User> listUser = new ArrayList<User>();
     boolean fisio;
 
     @Override
@@ -38,6 +46,8 @@ public class StartActivity extends AppCompatActivity {
         RadioButton rb = findViewById(R.id.radio_paciente);
         CircularProgressButton button = findViewById(R.id.cirRegisterButton);
 
+        db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
+        myRef = db.getReference("User");
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,7 +63,19 @@ public class StartActivity extends AppCompatActivity {
 
                 }else {
                     user = new User(nome, email, password, fisioID, fisio);
+                    listUser.add(user);
+                    myRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            myRef.setValue(listUser);
+                            Toast.makeText(StartActivity.this, "Adicionado à bd", Toast.LENGTH_SHORT).show();
+                        }
 
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(StartActivity.this, "Nao Adicionado à bd", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     //GUARDAR NO FIREBASE!!
                     //VERIFICAR SE NÃO EXISTE UM EMAIL IGUAL
 
