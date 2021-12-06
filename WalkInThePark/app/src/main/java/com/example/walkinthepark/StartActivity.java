@@ -32,6 +32,7 @@ public class StartActivity extends AppCompatActivity {
     private String password;
     private String fisioID;
     private List<User> listUser = new ArrayList<User>();
+    private List<User> listUserDB = new ArrayList<User>();
     boolean fisio;
 
     @Override
@@ -67,6 +68,11 @@ public class StartActivity extends AppCompatActivity {
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            /*listUserDB.clear();
+                            for(DataSnapshot postSnapshot: snapshot.getChildren()){
+                                User user = postSnapshot.getValue(User.class);
+                                listUserDB.add(user);
+                            }*/
                             myRef.setValue(listUser);
                             Toast.makeText(StartActivity.this, "Adicionado à bd", Toast.LENGTH_SHORT).show();
                         }

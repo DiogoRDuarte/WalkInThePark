@@ -26,6 +26,10 @@ public class User {
         return this.password;
     }
 
+    public String getEmail() {
+        return this.email;
+    }
+
     public boolean isFisioterapeuta() {
         return fisioterapeuta;
     }
