@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                     });
 
                     for (User u : listUsers){
-                        if((email.equals(u.getEmail()) && !password.equals(u.getPassword())) || !email.equals(u.getEmail()) && password.equals(u.getPassword()) ){
+                        if((email.equals(u.getEmail()) && !password.equals(u.getPassword())) || (!email.equals(u.getEmail()) && password.equals(u.getPassword())) ){
                             Toast.makeText(LoginActivity.this, "Email ou password incorretos", Toast.LENGTH_SHORT).show();
                         }
                     }*/
