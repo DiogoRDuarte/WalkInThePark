@@ -39,6 +39,7 @@ public class StartActivity extends AppCompatActivity {
     private String fisioID;
     private Map mapUsers = new HashMap<String, User>();
     boolean fisio;
+    boolean a = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +82,7 @@ public class StartActivity extends AppCompatActivity {
                             }
 
 
-                            if(listEmails.contains(email)){
+                            if(listEmails.contains(email) && a){
                                 Toast.makeText(getApplicationContext(), "Ja existe um utilizador com este email!", Toast.LENGTH_SHORT).show();
                                 eNome.setText("");
                                 ePass.setText("");
@@ -89,13 +90,15 @@ public class StartActivity extends AppCompatActivity {
 
                             }else {
 
+                                if(a) {
+                                    //myRef.child("User").child(email);
+                                    mapUsers.put(email, userValues);
+                                    Toast.makeText(getApplicationContext(), "Registo bem-sucedido!", Toast.LENGTH_SHORT).show();
+                                    myRef.updateChildren(mapUsers);
+                                    goToMain(view);
+                                    a = false;
 
-                                //myRef.child("User").child(email);
-                                mapUsers.put(email, userValues);
-                                Toast.makeText(getApplicationContext(), "Registo bem-sucedido!", Toast.LENGTH_SHORT).show();
-                                myRef.updateChildren(mapUsers);
-                                goToMain(view);
-
+                                }
                             }
                         }
 

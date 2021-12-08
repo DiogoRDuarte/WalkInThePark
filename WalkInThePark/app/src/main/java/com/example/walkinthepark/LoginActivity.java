@@ -23,11 +23,13 @@ import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 public class LoginActivity extends AppCompatActivity {
     private FirebaseDatabase db;
     private DatabaseReference myRef;
+    private List<String> listEmails = new ArrayList<String>();
+
 
     private User user;
+    private String n;
     private String email;
     private String password;
-    List<User> listUsers = new ArrayList<User>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,30 +47,27 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 email = String.valueOf(eMail.getText());
                 password = String.valueOf(ePass.getText());
-
                 if(email.equals("") || password.equals("")){
                     Toast toast = Toast.makeText(getApplicationContext(), "Preenche os campos obrigatorios!", Toast.LENGTH_SHORT);
                     toast.show();
 
                 }else {
-                    user = getUser();
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for(DataSnapshot postSnapshot: snapshot.getChildren()){
-                                User user = postSnapshot.getValue(User.class);
-                                listUsers.add(user);
-                            }
-
-                            for (User u : listUsers){
-                                if((email.equals(u.getEmail()) && password.equals(u.getPassword()))){
-                                    Toast.makeText(LoginActivity.this, "Correto (debug)", Toast.LENGTH_SHORT).show();
+                            for (DataSnapshot ds: snapshot.getChildren()){
+                                String s = ds.child("email").getValue().toString();
+                                String p = ds.child("password").getValue().toString();
+                                String n = ds.child("nome").getValue().toString();
+                                if(s.equals(email) && p.equals(password)){
+                                    Toast.makeText(getApplicationContext(), "Bem vindo "+n+"!", Toast.LENGTH_SHORT).show();
                                     goToMain(view);
                                 }
                             }
 
-                            Toast.makeText(LoginActivity.this, "Email ou password incorretos", Toast.LENGTH_SHORT).show();
-
+                            Toast.makeText(getApplicationContext(), "Email ou password errados!", Toast.LENGTH_SHORT).show();
+                            ePass.setText("");
+                            eMail.setText("");
                         }
 
                         @Override
@@ -78,13 +77,9 @@ public class LoginActivity extends AppCompatActivity {
                     });
                 }
             }
-
         });
     }
 
-    private User getUser() {
-        return null;
-    }
 
     public void goToRegister (View view){
         Intent i = new Intent(this, StartActivity.class);
@@ -94,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void goToMain(View view) {
         Intent i = new Intent(this, UserHomeActivity.class);
+        i.putExtra("user", n);
         startActivity(i);
         finish();
     }
