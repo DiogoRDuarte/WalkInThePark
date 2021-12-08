@@ -16,12 +16,13 @@
         android:roundIcon="@drawable/walk_in_the_park_final"
         android:supportsRtl="true"
         android:theme="@style/Theme.WalkInThePark">
-
-
         <activity
-            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".ProfHomeActivity"
+            android:exported="true" />
+        <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UserHomeActivity"
             android:exported="true" />
@@ -57,9 +58,9 @@
             android:exported="true"
             android:label="Notas" />
         <activity
-            android:theme="@style/AppTheme.NoActionBar"
             android:name=".StartActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

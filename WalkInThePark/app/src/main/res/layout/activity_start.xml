@@ -41,12 +41,14 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
+                    android:id="@+id/witp"
                     android:layout_width="240dp"
                     android:layout_height="150dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="4dp"
                     android:layout_marginRight="-12dp"
+                    android:clickable="true"
                     app:srcCompat="@drawable/walk_in_the_park_final" />
 
             </RelativeLayout>
