@@ -31,7 +31,7 @@ import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 public class StartActivity extends AppCompatActivity {
     private FirebaseDatabase db;
     private DatabaseReference myRef;
-
+    private List<String> listEmails;
     private User user;
     private String nome;
     private String email;
@@ -71,18 +71,34 @@ public class StartActivity extends AppCompatActivity {
                 } else {
                     user = new User(nome, email, password, fisioID, fisio);
                     Map userValues = user.toMap();
-                    //mapUsers.put(email, userValues);
 
 
-                    
+                    myRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot ds: snapshot.getChildren()){
+                                String s = ds.child("email").getValue().toString();
+                                listEmails.add(s);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                    if(listEmails.contains(email)){
+                        Toast.makeText(getApplicationContext(), "Ja existe um utilizador com este email!", Toast.LENGTH_SHORT).show();
+                        eNome.setText("");
+                        ePass.setText("");
+                        eMail.setText("");
+                    }
 
 
-
-                    CollectionReference usr = FirebaseDatabase.getInstance().getReference("User");
-
-
-                    myRef.child("User").child(email);
-
+                    //myRef.child("User").child(email);
+                    mapUsers.put(email, userValues);
+                    Toast.makeText(getApplicationContext(), "Registo bem-sucedido!", Toast.LENGTH_SHORT).show();
                     myRef.updateChildren(mapUsers);
                     goToMain(view);
 
