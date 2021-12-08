@@ -270,7 +270,7 @@
                     android:layout_weight="1">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/butoesPaciente1"
+                        android:id="@+id/butoesPaciente2"
                         style="?attr/borderlessButtonStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -294,7 +294,7 @@
                                 android:layout_height="wrap_content">
 
                                 <ImageView
-                                    android:id="@+id/butao1"
+                                    android:id="@+id/butao21"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_alignParentLeft="true"
@@ -302,7 +302,7 @@
                                     app:srcCompat="@drawable/help" />
 
                                 <ImageView
-                                    android:id="@+id/butao2"
+                                    android:id="@+id/butao22"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_centerInParent="true"
@@ -310,7 +310,7 @@
                                     app:srcCompat="@drawable/help" />
 
                                 <ImageView
-                                    android:id="@+id/butao3"
+                                    android:id="@+id/butao23"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_alignParentRight="true"
@@ -365,7 +365,7 @@
                     android:layout_weight="1">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/butoesPaciente1"
+                        android:id="@+id/butoesPaciente3"
                         style="?attr/borderlessButtonStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -389,7 +389,7 @@
                                 android:layout_height="wrap_content">
 
                                 <ImageView
-                                    android:id="@+id/butao1"
+                                    android:id="@+id/butao31"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_alignParentLeft="true"
@@ -397,7 +397,7 @@
                                     app:srcCompat="@drawable/help" />
 
                                 <ImageView
-                                    android:id="@+id/butao2"
+                                    android:id="@+id/butao32"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_centerInParent="true"
@@ -405,7 +405,7 @@
                                     app:srcCompat="@drawable/help" />
 
                                 <ImageView
-                                    android:id="@+id/butao3"
+                                    android:id="@+id/butao33"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_alignParentRight="true"
@@ -460,7 +460,7 @@
                     android:layout_weight="1">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/butoesPaciente1"
+                        android:id="@+id/butoesPaciente4"
                         style="?attr/borderlessButtonStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -484,7 +484,7 @@
                                 android:layout_height="wrap_content">
 
                                 <ImageView
-                                    android:id="@+id/butao1"
+                                    android:id="@+id/butao41"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_alignParentLeft="true"
@@ -492,7 +492,7 @@
                                     app:srcCompat="@drawable/help" />
 
                                 <ImageView
-                                    android:id="@+id/butao2"
+                                    android:id="@+id/butao42"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_centerInParent="true"
@@ -500,7 +500,7 @@
                                     app:srcCompat="@drawable/help" />
 
                                 <ImageView
-                                    android:id="@+id/butao3"
+                                    android:id="@+id/butao43"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_alignParentRight="true"
