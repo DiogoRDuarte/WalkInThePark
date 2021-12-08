@@ -1,5 +1,8 @@
 package com.example.walkinthepark;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class User {
     private String nome;
     private String password;
@@ -50,4 +53,14 @@ public class User {
         this.password = password;
     }
 
+    public Map toMap() {
+        HashMap result = new HashMap<>();
+        result.put("nome", nome);
+        result.put("email", email);
+        result.put("password", password);
+        result.put("fisioterapeuta", fisioterapeuta);
+        result.put("fisioID", fisioID);
+
+        return result;
+    }
 }

@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         CircularProgressButton button = findViewById(R.id.cirRegisterButton);
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,15 +52,22 @@ public class LoginActivity extends AppCompatActivity {
 
                 }else {
                     user = getUser();
-                    /* DEIXO EM COMENTARIO P DEPOIS TESTAR
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            listUsers.clear();
                             for(DataSnapshot postSnapshot: snapshot.getChildren()){
                                 User user = postSnapshot.getValue(User.class);
                                 listUsers.add(user);
                             }
+
+                            for (User u : listUsers){
+                                if((email.equals(u.getEmail()) && password.equals(u.getPassword()))){
+                                    Toast.makeText(LoginActivity.this, "Correto (debug)", Toast.LENGTH_SHORT).show();
+                                    goToMain(view);
+                                }
+                            }
+
+                            Toast.makeText(LoginActivity.this, "Email ou password incorretos", Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -68,18 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Erro", Toast.LENGTH_SHORT).show();
                         }
                     });
-
-                    for (User u : listUsers){
-                        if((email.equals(u.getEmail()) && !password.equals(u.getPassword())) || (!email.equals(u.getEmail()) && password.equals(u.getPassword())) ){
-                            Toast.makeText(LoginActivity.this, "Email ou password incorretos", Toast.LENGTH_SHORT).show();
-                        }
-                    }*/
-
-                    //VERIFICAR SE EXISTE
-
-                    goToMain(view);
                 }
-
             }
 
         });

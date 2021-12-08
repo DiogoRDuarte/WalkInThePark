@@ -8,16 +8,22 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
@@ -31,8 +37,7 @@ public class StartActivity extends AppCompatActivity {
     private String email;
     private String password;
     private String fisioID;
-    private List<User> listUser = new ArrayList<User>();
-    private List<User> listUserDB = new ArrayList<User>();
+    private Map mapUsers = new HashMap<String, User>();
     boolean fisio;
 
     @Override
@@ -58,34 +63,30 @@ public class StartActivity extends AppCompatActivity {
                 fisioID = String.valueOf(eToken.getText());
                 fisio = rb.isSelected();
 
-                if(nome.equals("") || email.equals("") || password.equals("")){
+                if (nome.equals("") || email.equals("") || password.equals("")) {
                     Toast toast = Toast.makeText(getApplicationContext(), "Preenche os campos obrigatorios!", Toast.LENGTH_SHORT);
                     toast.show();
 
-                }else {
+
+                } else {
                     user = new User(nome, email, password, fisioID, fisio);
-                    listUser.add(user);
-                    myRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            /*listUserDB.clear();
-                            for(DataSnapshot postSnapshot: snapshot.getChildren()){
-                                User user = postSnapshot.getValue(User.class);
-                                listUserDB.add(user);
-                            }*/
-                            myRef.setValue(listUser);
-                            Toast.makeText(StartActivity.this, "Adicionado à bd", Toast.LENGTH_SHORT).show();
-                        }
+                    Map userValues = user.toMap();
+                    //mapUsers.put(email, userValues);
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(StartActivity.this, "Nao Adicionado à bd", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                    //GUARDAR NO FIREBASE!!
-                    //VERIFICAR SE NÃO EXISTE UM EMAIL IGUAL
 
+                    
+
+
+
+                    CollectionReference usr = FirebaseDatabase.getInstance().getReference("User");
+
+
+                    myRef.child("User").child(email);
+
+                    myRef.updateChildren(mapUsers);
                     goToMain(view);
+
+
                 }
             }
         });
@@ -105,5 +106,6 @@ public class StartActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     }
+
 
 }
