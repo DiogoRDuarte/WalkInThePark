@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private String n;
     private String email;
     private String password;
+    boolean log = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,14 +61,17 @@ public class LoginActivity extends AppCompatActivity {
                                 String p = ds.child("password").getValue().toString();
                                 String n = ds.child("nome").getValue().toString();
                                 if(s.equals(email) && p.equals(password)){
+                                    log = true;
                                     Toast.makeText(getApplicationContext(), "Bem vindo "+n+"!", Toast.LENGTH_SHORT).show();
                                     goToMain(view);
                                 }
                             }
 
-                            Toast.makeText(getApplicationContext(), "Email ou password errados!", Toast.LENGTH_SHORT).show();
-                            ePass.setText("");
-                            eMail.setText("");
+                            if(!log) {
+                                Toast.makeText(getApplicationContext(), "Email ou password errados!", Toast.LENGTH_SHORT).show();
+                                ePass.setText("");
+                                eMail.setText("");
+                            }
                         }
 
                         @Override
