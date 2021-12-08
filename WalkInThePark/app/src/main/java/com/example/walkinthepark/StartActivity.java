@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -46,6 +47,14 @@ public class StartActivity extends AppCompatActivity {
         EditText eToken = findViewById(R.id.editTextTokenFisio);
         RadioButton rb = findViewById(R.id.radio_paciente);
         CircularProgressButton button = findViewById(R.id.cirRegisterButton);
+
+        ImageView iv = findViewById(R.id.witp);
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToMain(view);
+            }
+        });
 
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
