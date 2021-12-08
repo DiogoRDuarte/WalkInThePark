@@ -31,7 +31,7 @@ import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 public class StartActivity extends AppCompatActivity {
     private FirebaseDatabase db;
     private DatabaseReference myRef;
-    private List<String> listEmails;
+    private List<String> listEmails = new ArrayList<String>();
     private User user;
     private String nome;
     private String email;
@@ -72,13 +72,30 @@ public class StartActivity extends AppCompatActivity {
                     user = new User(nome, email, password, fisioID, fisio);
                     Map userValues = user.toMap();
 
-
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot ds: snapshot.getChildren()){
                                 String s = ds.child("email").getValue().toString();
                                 listEmails.add(s);
+                            }
+
+
+                            if(listEmails.contains(email)){
+                                Toast.makeText(getApplicationContext(), "Ja existe um utilizador com este email!", Toast.LENGTH_SHORT).show();
+                                eNome.setText("");
+                                ePass.setText("");
+                                eMail.setText("");
+
+                            }else {
+
+
+                                //myRef.child("User").child(email);
+                                mapUsers.put(email, userValues);
+                                Toast.makeText(getApplicationContext(), "Registo bem-sucedido!", Toast.LENGTH_SHORT).show();
+                                myRef.updateChildren(mapUsers);
+                                goToMain(view);
+
                             }
                         }
 
@@ -87,22 +104,6 @@ public class StartActivity extends AppCompatActivity {
 
                         }
                     });
-
-                    if(listEmails.contains(email)){
-                        Toast.makeText(getApplicationContext(), "Ja existe um utilizador com este email!", Toast.LENGTH_SHORT).show();
-                        eNome.setText("");
-                        ePass.setText("");
-                        eMail.setText("");
-                    }
-
-
-                    //myRef.child("User").child(email);
-                    mapUsers.put(email, userValues);
-                    Toast.makeText(getApplicationContext(), "Registo bem-sucedido!", Toast.LENGTH_SHORT).show();
-                    myRef.updateChildren(mapUsers);
-                    goToMain(view);
-
-
                 }
             }
         });
