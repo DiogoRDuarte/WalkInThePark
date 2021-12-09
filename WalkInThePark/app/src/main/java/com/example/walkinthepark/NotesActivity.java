@@ -30,10 +30,14 @@ public class NotesActivity extends AppCompatActivity {
             notesFragment = new NotesFragment();
         }
 
+        if(newNoteFragment == null) {
+            newNoteFragment = new NewNoteFragment();
+        }
+
         replaceFragment(notesFragment);
 
-        int intentFragment = getIntent().getExtras().getInt("fragment");
-        switch (String.valueOf(intentFragment)) {
+        String intentFragment = getIntent().getExtras().getString("fragment");
+        switch (intentFragment) {
             case "fragN":
                 replaceFragment(newNoteFragment);
                 break;
@@ -62,7 +66,6 @@ public class NotesActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container_notes, fragment);
-        /*fragmentTransaction.addToBackStack(null);*/
         fragmentTransaction.commit();
     }
 
