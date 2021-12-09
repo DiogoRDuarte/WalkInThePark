@@ -8,9 +8,13 @@ import android.view.View;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class UserHomeActivity extends AppCompatActivity {
-
+    private DatabaseReference refNotas;
+    private DatabaseReference refReminders;
+    private FirebaseDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +28,9 @@ public class UserHomeActivity extends AppCompatActivity {
         MaterialButton editar2Button = findViewById(R.id.editar2);
 
         MaterialCardView videoCard = findViewById(R.id.video);
-
+        db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
+        refNotas = db.getReference("Note");
+        refReminders = db.getReference("Reminder");
         // BUTTONS
         verLembsButton.setOnClickListener(new View.OnClickListener() {
             @Override

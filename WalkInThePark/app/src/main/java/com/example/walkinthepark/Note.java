@@ -1,5 +1,8 @@
 package com.example.walkinthepark;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Note {
     private String titulo;
     private String mensagem;
@@ -19,5 +22,12 @@ public class Note {
 
     public String getMensagem(){
         return  this.mensagem;
+    }
+
+    public Map toMap(){
+        HashMap h = new HashMap<>();
+        h.put("titulo",titulo);
+        h.put("mensagem",mensagem);
+        return h;
     }
 }
