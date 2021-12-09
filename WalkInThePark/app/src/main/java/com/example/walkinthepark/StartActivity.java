@@ -128,6 +128,7 @@ public class StartActivity extends AppCompatActivity {
 
     public void goToMain(View view) {
         Intent i = new Intent(this, UserHomeActivity.class);
+        i.putExtra("nome",nome);
         startActivity(i);
         /*finish();*/
     }
