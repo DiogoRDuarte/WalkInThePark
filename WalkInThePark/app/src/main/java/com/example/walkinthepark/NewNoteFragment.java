@@ -2,6 +2,7 @@ package com.example.walkinthepark;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,12 +13,24 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class NewNoteFragment extends Fragment {
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class NewNoteFragment extends Fragment {
+    private Map mapNotes = new HashMap<String, User>();
     static View newNoteView;
     private TextView titulo;
     private TextView nota;
-
+    private Note note;
+    private FirebaseDatabase db;
+    private DatabaseReference myRef;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,11 +53,26 @@ public class NewNoteFragment extends Fragment {
                     toast.show();
 
                 }else {
-                    Note note = new Note(tituloS, notaS);
-                    ((NotesActivity) getActivity()).adicionarNota(note);
+                    note = new Note(tituloS, notaS);
+                    //((NotesActivity) getActivity()).adicionarNota(note);
+                    Map noteValues = note.toMap();
 
-                    Toast toast = Toast.makeText(getContext(), "Nota Adicionada!", Toast.LENGTH_SHORT);
-                    toast.show();
+                    myRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            mapNotes.put(tituloS,noteValues);
+                            Toast toast = Toast.makeText(getContext(), "Nota Adicionada!", Toast.LENGTH_SHORT);
+                            toast.show();
+                            myRef.updateChildren(mapNotes);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
                 }
 
             }

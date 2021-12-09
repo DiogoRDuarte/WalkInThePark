@@ -34,8 +34,8 @@ public class ReminderActivity extends AppCompatActivity {
 
         replaceFragment(reminderFragment);
 
-        int intentFragment = getIntent().getExtras().getInt("fragment");
-        switch (String.valueOf(intentFragment)) {
+        String intentFragment = getIntent().getExtras().getString("fragment");
+        switch (intentFragment) {
             case "frag1":
                 replaceFragment(reminderFragment);
                 break;
