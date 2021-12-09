@@ -150,7 +150,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
-                    <com.google.android.material.button.MaterialButton
+                    <com.google.android.material.card.MaterialCardView
                         android:id="@+id/paciente1"
                         style="?attr/borderlessButtonStyle"
                         android:layout_width="match_parent"
@@ -161,10 +161,17 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
                         android:backgroundTint="#E8E8E8"
-                        android:text="Paciente 1"
-                        android:textColor="#2B2C2C"
                         app:contentPadding="8dp"
-                        app:cornerRadius="15dp" />
+                        app:cornerRadius="15dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Paciente 1"
+                            android:textColor="#2B2C2C" />
+                    </com.google.android.material.card.MaterialCardView>
+
+
 
 
                 </RelativeLayout>
@@ -246,7 +253,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
-                    <com.google.android.material.button.MaterialButton
+                    <com.google.android.material.card.MaterialCardView
                         android:id="@+id/paciente2"
                         style="?attr/borderlessButtonStyle"
                         android:layout_width="match_parent"
@@ -257,10 +264,15 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
                         android:backgroundTint="#E8E8E8"
-                        android:text="Paciente 2"
-                        android:textColor="#2B2C2C"
                         app:contentPadding="8dp"
-                        app:cornerRadius="15dp" />
+                        app:cornerRadius="15dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Paciente 2"
+                            android:textColor="#2B2C2C" />
+                    </com.google.android.material.card.MaterialCardView>
 
 
                 </RelativeLayout>
@@ -341,7 +353,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
-                    <com.google.android.material.button.MaterialButton
+                    <com.google.android.material.card.MaterialCardView
                         android:id="@+id/paciente3"
                         style="?attr/borderlessButtonStyle"
                         android:layout_width="match_parent"
@@ -352,10 +364,15 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
                         android:backgroundTint="#E8E8E8"
-                        android:text="Paciente 3"
-                        android:textColor="#2B2C2C"
                         app:contentPadding="8dp"
-                        app:cornerRadius="15dp" />
+                        app:cornerRadius="15dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Paciente 3"
+                            android:textColor="#2B2C2C" />
+                    </com.google.android.material.card.MaterialCardView>
 
 
                 </RelativeLayout>
@@ -436,7 +453,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
-                    <com.google.android.material.button.MaterialButton
+                    <com.google.android.material.card.MaterialCardView
                         android:id="@+id/paciente4"
                         style="?attr/borderlessButtonStyle"
                         android:layout_width="match_parent"
@@ -447,10 +464,15 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
                         android:backgroundTint="#E8E8E8"
-                        android:text="Paciente 4"
-                        android:textColor="#2B2C2C"
                         app:contentPadding="8dp"
-                        app:cornerRadius="15dp" />
+                        app:cornerRadius="15dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Paciente 4"
+                            android:textColor="#2B2C2C" />
+                    </com.google.android.material.card.MaterialCardView>
 
 
                 </RelativeLayout>
