@@ -118,13 +118,13 @@ public class StartActivity extends AppCompatActivity {
     public void goToLogin(View view) {
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
-        finish();
+        /*finish();*/
     }
 
     public void goToMain(View view) {
         Intent i = new Intent(this, UserHomeActivity.class);
         startActivity(i);
-        finish();
+        /*finish();*/
     }
 
 

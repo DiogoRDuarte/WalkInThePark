@@ -32,7 +32,6 @@ public class UserHomeActivity extends AppCompatActivity {
                 Intent i = new Intent(UserHomeActivity.this, ReminderActivity.class);
                 i.putExtra("fragment", "frag1");
                 startActivity(i);
-                finish();
             }
         });
 
@@ -42,7 +41,6 @@ public class UserHomeActivity extends AppCompatActivity {
                 Intent i = new Intent(UserHomeActivity.this, ReminderActivity.class);
                 i.putExtra("fragment", "frag2");
                 startActivity(i);
-                finish();
             }
         });
 
@@ -52,7 +50,6 @@ public class UserHomeActivity extends AppCompatActivity {
                 Intent i = new Intent(UserHomeActivity.this, NotesActivity.class);
                 i.putExtra("fragment", "fragN");
                 startActivity(i);
-                finish();
             }
         });
 
@@ -61,7 +58,6 @@ public class UserHomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(UserHomeActivity.this, CalibrationActivity.class);
                 startActivity(i);
-                finish();
             }
         });
 
@@ -70,8 +66,7 @@ public class UserHomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // ALTERAR
                 /*Intent i = new Intent(UserHomeActivity.this, CalibrationActivity.class);
-                startActivity(i);
-                finish();*/
+                startActivity(i);*/
             }
         });
 
@@ -80,8 +75,7 @@ public class UserHomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // ALTERAR
                 /*Intent i = new Intent(UserHomeActivity.this, CalibrationActivity.class);
-                startActivity(i);
-                finish();*/
+                startActivity(i);*/
             }
         });
 
