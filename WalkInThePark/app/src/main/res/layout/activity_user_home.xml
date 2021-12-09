@@ -35,10 +35,13 @@
                 <!-- Lembrete 1 -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/lembrete1"
-                    android:layout_width="190dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:layout_margin="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
                     android:checkable="true"
                     android:clickable="true"
                     android:focusable="true"
@@ -119,7 +122,7 @@
                 <!-- Lembrete 2 -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/lembrete2"
-                    android:layout_width="190dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_marginBottom="8dp"

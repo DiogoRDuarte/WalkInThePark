@@ -1,5 +1,8 @@
 package com.example.walkinthepark;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Reminder {
     private String hora;
     private String data;
@@ -26,5 +29,13 @@ public class Reminder {
 
     public String getMensagem(){
         return  this.mensagem;
+    }
+
+    public Map toMap(){
+        HashMap h = new HashMap<>();
+        h.put("hora",hora);
+        h.put("data",data);
+        h.put("mensagem",mensagem);
+        return h;
     }
 }

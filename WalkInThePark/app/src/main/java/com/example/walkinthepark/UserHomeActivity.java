@@ -8,9 +8,13 @@ import android.view.View;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class UserHomeActivity extends AppCompatActivity {
-
+    private DatabaseReference refNotas;
+    private DatabaseReference refReminders;
+    private FirebaseDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +28,9 @@ public class UserHomeActivity extends AppCompatActivity {
         MaterialButton editar2Button = findViewById(R.id.editar2);
 
         MaterialCardView videoCard = findViewById(R.id.video);
-
+        db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
+        refNotas = db.getReference("Note");
+        refReminders = db.getReference("Reminder");
         // BUTTONS
         verLembsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,7 +38,6 @@ public class UserHomeActivity extends AppCompatActivity {
                 Intent i = new Intent(UserHomeActivity.this, ReminderActivity.class);
                 i.putExtra("fragment", "frag1");
                 startActivity(i);
-                finish();
             }
         });
 
@@ -42,7 +47,6 @@ public class UserHomeActivity extends AppCompatActivity {
                 Intent i = new Intent(UserHomeActivity.this, ReminderActivity.class);
                 i.putExtra("fragment", "frag2");
                 startActivity(i);
-                finish();
             }
         });
 
@@ -52,7 +56,6 @@ public class UserHomeActivity extends AppCompatActivity {
                 Intent i = new Intent(UserHomeActivity.this, NotesActivity.class);
                 i.putExtra("fragment", "fragN");
                 startActivity(i);
-                finish();
             }
         });
 
@@ -61,7 +64,6 @@ public class UserHomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(UserHomeActivity.this, CalibrationActivity.class);
                 startActivity(i);
-                finish();
             }
         });
 
@@ -70,8 +72,7 @@ public class UserHomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // ALTERAR
                 /*Intent i = new Intent(UserHomeActivity.this, CalibrationActivity.class);
-                startActivity(i);
-                finish();*/
+                startActivity(i);*/
             }
         });
 
@@ -80,8 +81,7 @@ public class UserHomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // ALTERAR
                 /*Intent i = new Intent(UserHomeActivity.this, CalibrationActivity.class);
-                startActivity(i);
-                finish();*/
+                startActivity(i);*/
             }
         });
 
