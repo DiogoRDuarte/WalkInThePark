@@ -43,7 +43,8 @@
                         android:layout_height="60dp"
                         android:layout_alignParentLeft="true"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/help" />
+                        app:srcCompat="@drawable/help"
+                        android:clickable="true"/>
 
                     <ImageView
                         android:id="@+id/imagemVideo2"
@@ -51,15 +52,17 @@
                         android:layout_height="60dp"
                         android:layout_centerInParent="true"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/help" />
+                        app:srcCompat="@drawable/help"
+                        android:clickable="true"/>
 
                     <ImageView
                         android:id="@+id/imagemVideo3"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
+                        android:layout_alignParentRight="true"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/help"
-                        android:layout_alignParentRight="true"/>
+                        android:clickable="true"/>
 
                 </RelativeLayout>
 
@@ -209,6 +212,7 @@
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_alignParentLeft="true"
+                                    android:clickable="true"
                                     android:scaleType="centerCrop"
                                     app:srcCompat="@drawable/help" />
 
@@ -218,7 +222,8 @@
                                     android:layout_height="50dp"
                                     android:layout_centerInParent="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help" />
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
 
                                 <ImageView
                                     android:id="@+id/butao3"
@@ -226,7 +231,8 @@
                                     android:layout_height="50dp"
                                     android:layout_alignParentRight="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help" />
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
 
                             </RelativeLayout>
 
@@ -311,7 +317,8 @@
                                     android:layout_height="50dp"
                                     android:layout_alignParentLeft="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help" />
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
 
                                 <ImageView
                                     android:id="@+id/butao22"
@@ -319,7 +326,8 @@
                                     android:layout_height="50dp"
                                     android:layout_centerInParent="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help" />
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
 
                                 <ImageView
                                     android:id="@+id/butao23"
@@ -327,7 +335,8 @@
                                     android:layout_height="50dp"
                                     android:layout_alignParentRight="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help" />
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
 
                             </RelativeLayout>
 
@@ -411,7 +420,8 @@
                                     android:layout_height="50dp"
                                     android:layout_alignParentLeft="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help" />
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
 
                                 <ImageView
                                     android:id="@+id/butao32"
@@ -419,7 +429,8 @@
                                     android:layout_height="50dp"
                                     android:layout_centerInParent="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help" />
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
 
                                 <ImageView
                                     android:id="@+id/butao33"
@@ -427,7 +438,8 @@
                                     android:layout_height="50dp"
                                     android:layout_alignParentRight="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help" />
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
 
                             </RelativeLayout>
 
@@ -511,7 +523,8 @@
                                     android:layout_height="50dp"
                                     android:layout_alignParentLeft="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help" />
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
 
                                 <ImageView
                                     android:id="@+id/butao42"
@@ -519,7 +532,8 @@
                                     android:layout_height="50dp"
                                     android:layout_centerInParent="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help" />
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
 
                                 <ImageView
                                     android:id="@+id/butao43"
@@ -527,7 +541,8 @@
                                     android:layout_height="50dp"
                                     android:layout_alignParentRight="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help" />
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
 
                             </RelativeLayout>
 
