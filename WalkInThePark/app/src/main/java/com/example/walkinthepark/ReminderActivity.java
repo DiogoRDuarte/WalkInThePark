@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class ReminderActivity extends AppCompatActivity {
@@ -16,11 +19,17 @@ public class ReminderActivity extends AppCompatActivity {
     private static NewReminderFragment newReminderFragment;
     private ArrayList<Reminder> listaLembretes;
 
+    private DatabaseReference refReminder;
+    private FirebaseDatabase db;
+
     Button bAdd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
+
+        db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
+        refReminder = db.getReference("Reminder");
 
         listaLembretes = new ArrayList<Reminder>();
 

@@ -106,9 +106,9 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
-                    app:backgroundTint="#E8E8E8"
                     android:text="Ver todos"
                     android:textColor="#2B2C2C"
+                    app:backgroundTint="#E8E8E8"
                     app:contentPadding="8dp"
                     app:cornerRadius="15dp" />
 
@@ -192,7 +192,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
                     app:backgroundTint="#E8E8E8"
-                    android:text="Add text"
+                    android:text="Adir texto"
                     android:textColor="#2B2C2C"
                     app:contentPadding="8dp"
                     app:cornerRadius="15dp" />
@@ -267,10 +267,10 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="28dp"
                 android:layout_marginEnd="8dp"
-                app:backgroundTint="#8A8A8A"
                 android:text="Calibração"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
+                app:backgroundTint="#8A8A8A"
                 app:contentPadding="8dp"
                 app:cornerRadius="15dp" />
 
@@ -286,7 +286,7 @@
                 android:id="@+id/notas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#8A8A8A"
+                app:cardBackgroundColor="#bddba4"
                 app:cardCornerRadius="15dp">
 
                 <LinearLayout
@@ -346,7 +346,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         app:backgroundTint="#E8E8E8"
-                        android:text="Add text"
+                        android:text="Adir texto"
                         android:textColor="#2B2C2C"
                         android:textSize="20sp"
                         app:cornerRadius="15dp"
@@ -366,6 +366,8 @@
     <!-- Humor -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/humor"
+        android:text="Rastreio de humor"
+        android:textColor="#FFFFFF"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="4dp"
@@ -377,6 +379,35 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/verMood"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:text="Ver mood"
+            android:textColor="#000000"
+            app:backgroundTint="#C4C4C4" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/submeterMoods"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="295dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:text="Submeter"
+            android:textColor="#000000"
+            app:backgroundTint="#C4C4C4" />
+
 
     </com.google.android.material.card.MaterialCardView>
 

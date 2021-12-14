@@ -49,7 +49,7 @@ public class NotesFragment extends Fragment {
             }
         });
 
-        //listaNotas = ((NotesActivity) getActivity()).getListaNotas();
+        listaNotas = ((NotesActivity) getActivity()).getListaNotas();
         notas = notesView.findViewById(R.id.listaNotas);
 
         StringBuilder m = new StringBuilder("");
