@@ -19,7 +19,7 @@ public class SwipeListener implements View.OnTouchListener {
         private static final int SWIPE_LIMIT = 100;
         private static final int SWIPE_LIMIT_SPEED = 100;
 
-        @Override
+        //@Override
         public boolean OnDown(MotionEvent e){
             return true;
         }

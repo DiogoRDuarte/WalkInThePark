@@ -1,5 +1,6 @@
 package com.example.walkinthepark;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,7 +21,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class NewNoteFragment extends Fragment {
@@ -31,6 +34,11 @@ public class NewNoteFragment extends Fragment {
     private Note note;
     private FirebaseDatabase db;
     private DatabaseReference myRef;
+    private List<String> listTitulo = new ArrayList<String>();
+    private String tituloS;
+    private String notaS;
+    private boolean a = true;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,12 +49,13 @@ public class NewNoteFragment extends Fragment {
 
         titulo = (EditText) newNoteView.findViewById(R.id.tituloNota);
         nota = (EditText) newNoteView.findViewById(R.id.descricaoNota);
-
+        db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
+        myRef = db.getReference("Note");
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String tituloS = titulo.getText().toString();
-                String notaS = nota.getText().toString();
+                tituloS = titulo.getText().toString();
+                notaS = nota.getText().toString();
 
                 if(tituloS.equals("") || notaS.equals("")){
                     Toast toast = Toast.makeText(getContext(), "Escolhe um Titulo e uma Nota!", Toast.LENGTH_SHORT);
@@ -60,10 +69,32 @@ public class NewNoteFragment extends Fragment {
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            mapNotes.put(tituloS,noteValues);
-                            Toast toast = Toast.makeText(getContext(), "Nota Adicionada!", Toast.LENGTH_SHORT);
-                            toast.show();
-                            myRef.updateChildren(mapNotes);
+                            for (DataSnapshot ds: snapshot.getChildren()){
+                                String s = ds.child("titulo").getValue().toString();
+                                listTitulo.add(s);
+                            }
+                            //mapNotes.put(titulo, noteValues);
+                            //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
+                            //myRef.updateChildren(mapNotes);
+                            if(listTitulo.contains(titulo) && a){
+                                Toast.makeText(getContext(), "Ja existe uma nota com este titulo!", Toast.LENGTH_SHORT).show();
+                                titulo.setText("");
+                                nota.setText("");
+
+
+                            }else {
+
+                                if(a) {
+                                    //myRef.child("User").child(email);
+                                    mapNotes.put(tituloS, noteValues);
+                                    Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
+                                    myRef.updateChildren(mapNotes);
+                                    goToMain(view);
+                                    a = false;
+
+                                }
+                            }
+
                         }
 
                         @Override
@@ -89,4 +120,11 @@ public class NewNoteFragment extends Fragment {
 
         return newNoteView;
     }
+
+    private void goToMain(View view) {
+        Intent i = new Intent(getActivity(), UserHomeActivity.class);
+        startActivity(i);
+    }
+
+
 }
