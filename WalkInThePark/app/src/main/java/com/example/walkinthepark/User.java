@@ -1,6 +1,7 @@
 package com.example.walkinthepark;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class User {
@@ -9,6 +10,8 @@ public class User {
     private boolean fisioterapeuta;
     private String fisioID;
     private String email;
+    private List<Note> notas;
+    private List<Reminder> lembretes;
 
 
     public User(String nome, String email, String password, String fisioID, boolean fisioSN) {

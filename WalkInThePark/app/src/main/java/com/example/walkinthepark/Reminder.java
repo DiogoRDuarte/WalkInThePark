@@ -7,6 +7,7 @@ public class Reminder {
     private String hora;
     private String data;
     private String mensagem;
+    private User user;
 
     public Reminder(String hora, String data, String mensagem){
         this.data = data;

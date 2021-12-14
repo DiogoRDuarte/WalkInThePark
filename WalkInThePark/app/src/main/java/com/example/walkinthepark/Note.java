@@ -6,6 +6,7 @@ import java.util.Map;
 public class Note {
     private String titulo;
     private String mensagem;
+    private User user;
 
     public Note(String titulo, String mensagem){
         this.titulo = titulo;
