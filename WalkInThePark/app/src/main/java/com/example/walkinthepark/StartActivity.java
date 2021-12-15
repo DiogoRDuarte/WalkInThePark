@@ -35,7 +35,8 @@ public class StartActivity extends AppCompatActivity {
     private String password;
     private String fisioID;
     private Map mapUsers = new HashMap<String, User>();
-    boolean fisio;
+    //boolean fisio;
+    boolean pat;
     boolean a = true;
 
     @Override
@@ -48,13 +49,14 @@ public class StartActivity extends AppCompatActivity {
         EditText ePass = findViewById(R.id.editTextPassword);
         EditText eToken = findViewById(R.id.editTextTokenFisio);
         RadioButton rb = findViewById(R.id.radio_paciente);
+        RadioButton rb1 = findViewById(R.id.radio_fisio);
         CircularProgressButton button = findViewById(R.id.cirRegisterButton);
 
         ImageView iv = findViewById(R.id.witp);
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToMain(view);
+                goToPatMain(view);
             }
         });
 
@@ -67,7 +69,8 @@ public class StartActivity extends AppCompatActivity {
                 email = String.valueOf(eMail.getText());
                 password = String.valueOf(ePass.getText());
                 fisioID = String.valueOf(eToken.getText());
-                fisio = rb.isSelected();
+                pat = rb.isChecked();
+                //fisio = rb1.isChecked();
 
                 if (nome.equals("") || email.equals("") || password.equals("")) {
                     Toast toast = Toast.makeText(getApplicationContext(), "Preenche os campos obrigatorios!", Toast.LENGTH_SHORT);
@@ -75,7 +78,7 @@ public class StartActivity extends AppCompatActivity {
 
 
                 } else {
-                    user = new User(nome, email, password, fisioID, fisio);
+                    user = new User(nome, email, password, fisioID, pat);
                     Map userValues = user.toMap();
 
                     myRef.addValueEventListener(new ValueEventListener() {
@@ -100,7 +103,12 @@ public class StartActivity extends AppCompatActivity {
                                     mapUsers.put(email, userValues);
                                     Toast.makeText(getApplicationContext(), "Registo bem-sucedido!", Toast.LENGTH_SHORT).show();
                                     myRef.updateChildren(mapUsers);
-                                    goToMain(view);
+                                    if(!pat){
+                                        goToPhyMain(view);
+                                    }else{
+                                        goToPatMain(view);
+                                    }
+
                                     a = false;
 
                                 }
@@ -126,8 +134,15 @@ public class StartActivity extends AppCompatActivity {
         /*finish();*/
     }
 
-    public void goToMain(View view) {
+    public void goToPatMain(View view) {
         Intent i = new Intent(this, UserHomeActivity.class);
+        i.putExtra("nome",nome);
+        startActivity(i);
+        /*finish();*/
+    }
+
+    public void goToPhyMain(View view) {
+        Intent i = new Intent(this, ProfHomeActivity.class);
         i.putExtra("nome",nome);
         startActivity(i);
         /*finish();*/

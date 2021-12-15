@@ -7,7 +7,7 @@ import java.util.Map;
 public class User {
     private String nome;
     private String password;
-    private boolean fisioterapeuta;
+    private boolean paciente;
     private String fisioID;
     private String email;
     private List<Note> notas;
@@ -18,7 +18,7 @@ public class User {
         this.nome = nome;
         this.password = password;
         this.email = email;
-        this.fisioterapeuta = fisioSN;
+        this.paciente = fisioSN;
         if(!fisioID.equals("")){
             this.fisioID = fisioID;
         }
@@ -37,7 +37,7 @@ public class User {
     }
 
     public boolean isFisioterapeuta() {
-        return fisioterapeuta;
+        return paciente;
     }
 
     public void setEmail(String email) {
@@ -45,7 +45,7 @@ public class User {
     }
 
     public void setFisioterapeuta(boolean fisioterapeuta) {
-        this.fisioterapeuta = fisioterapeuta;
+        this.paciente = fisioterapeuta;
     }
 
     public void setNome(String nome) {
@@ -61,7 +61,7 @@ public class User {
         result.put("nome", nome);
         result.put("email", email);
         result.put("password", password);
-        result.put("fisioterapeuta", fisioterapeuta);
+        result.put("paciente", paciente);
         result.put("fisioID", fisioID);
 
         return result;
