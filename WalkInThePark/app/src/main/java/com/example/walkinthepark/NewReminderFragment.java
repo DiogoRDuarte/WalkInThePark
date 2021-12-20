@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -21,9 +22,16 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import org.w3c.dom.Text;
 
 import java.util.Calendar;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,6 +60,8 @@ public class NewReminderFragment extends Fragment {
     private View view;
     private TextView hora;
     private TextView data;
+    private FirebaseDatabase db;
+    private DatabaseReference myRef;
 
     public NewReminderFragment() {
         // Required empty public constructor
@@ -93,7 +103,8 @@ public class NewReminderFragment extends Fragment {
         bTime = (Button) view.findViewById(R.id.buttonTime);
         bAdd = (Button) view.findViewById(R.id.buttonAdd);
         data = (TextView) view.findViewById(R.id.textData);
-
+        db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
+        myRef = db.getReference("Reminder");
 
         bDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +138,47 @@ public class NewReminderFragment extends Fragment {
                 }else {
                     Reminder rem = new Reminder(horaS, dataS, text);
                     ((ReminderActivity) getActivity()).adicionarLembrete(rem);
+
+                    /*note = new Note(tituloS, notaS);
+                    //((NotesActivity) getActivity()).adicionarNota(note);
+                    Map noteValues = note.toMap();
+
+                    myRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot ds: snapshot.getChildren()){
+                                String s = ds.child("titulo").getValue().toString();
+                                listTitulo.add(s);
+                            }
+                            //mapNotes.put(titulo, noteValues);
+                            //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
+                            //myRef.updateChildren(mapNotes);
+                            if(listTitulo.contains(titulo) && a){
+                                Toast.makeText(getContext(), "Ja existe uma nota com este titulo!", Toast.LENGTH_SHORT).show();
+                                titulo.setText("");
+                                nota.setText("");
+
+
+                            }else {
+
+                                if(a) {
+                                    //myRef.child("User").child(email);
+                                    mapNotes.put(tituloS, noteValues);
+                                    Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
+                                    myRef.updateChildren(mapNotes);
+                                    goToMain(view);
+                                    a = false;
+
+                                }
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });*/
 
                     Toast toast = Toast.makeText(getContext(), "Lembrete Adicionado!", Toast.LENGTH_SHORT);
                     toast.show();
