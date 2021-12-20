@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Goncalo/Documents/GitHub/WalkInThePark/WalkInThePark/app/src/main/res/layout/activity_prof_home.xml" value="1.050986842105263" />
+        <entry key="..\:/Users/Goncalo/Documents/GitHub/WalkInThePark/WalkInThePark/app/src/main/res/layout/activity_start.xml" value="0.10204081632653061" />
         <entry key="..\:/Users/Lenovo/Desktop/WalkInThePark/WalkInThePark/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/Lenovo/Desktop/WalkInThePark/WalkInThePark/app/src/main/res/layout/activity_mood.xml" value="0.22" />
         <entry key="..\:/Users/Lenovo/Desktop/WalkInThePark/WalkInThePark/app/src/main/res/layout/activity_notes.xml" value="0.2" />
@@ -34,7 +36,6 @@
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/fragment_new_mood.xml" value="0.2" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/fragment_new_reminder.xml" value="0.2" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/fragment_reminder.xml" value="0.1891891891891892" />
-        <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/single_note.xml" value="0.203125" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/single_reminder.xml" value="0.2" />
         <entry key="app/src/main/res/drawable/button_background_blue.xml" value="0.21770833333333334" />
         <entry key="app/src/main/res/drawable/ic_add_img.xml" value="0.2635416666666667" />

@@ -15,6 +15,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -29,12 +30,14 @@ public class StartActivity extends AppCompatActivity {
     private FirebaseDatabase db;
     private DatabaseReference myRef;
     private List<String> listEmails = new ArrayList<String>();
+    private List<User> listUsers = new ArrayList<User>();
     private User user;
     private String nome;
     private String email;
     private String password;
     private String fisioID;
     private Map mapUsers = new HashMap<String, User>();
+    private Map u;
     //boolean fisio;
     boolean pat;
     boolean a = true;
@@ -82,6 +85,7 @@ public class StartActivity extends AppCompatActivity {
                     Map userValues = user.toMap();
 
                     myRef.addValueEventListener(new ValueEventListener() {
+
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot ds: snapshot.getChildren()){
@@ -95,14 +99,32 @@ public class StartActivity extends AppCompatActivity {
                                 eNome.setText("");
                                 ePass.setText("");
                                 eMail.setText("");
+                                eToken.setText("");
 
-                            }else {
+                            }else if(!fisioID.equals("") && !listEmails.contains(fisioID)) {
+                                Toast.makeText(getApplicationContext(), "Não Existe um Fisioterapeuta com esse email!", Toast.LENGTH_SHORT).show();
+                                eToken.setText("");
+
+                            }else{
 
                                 if(a) {
+                                    User f;
                                     //myRef.child("User").child(email);
                                     mapUsers.put(email, userValues);
+                                   // User fiso = (User) mapUsers.get(fisioID);
+                                   // fiso.addPaciente(user);
                                     Toast.makeText(getApplicationContext(), "Registo bem-sucedido!", Toast.LENGTH_SHORT).show();
+
+                                 //   if(!fisioID.equals("")){
+                                 //       for(User u: listUsers){
+                                  //          if(u.getEmail().equals(fisioID)){
+                                 //               u.addPaciente(user);
+                                 //           }
+                                 //       }
+                                 //   }
+
                                     myRef.updateChildren(mapUsers);
+
                                     if(!pat){
                                         goToPhyMain(view);
                                     }else{

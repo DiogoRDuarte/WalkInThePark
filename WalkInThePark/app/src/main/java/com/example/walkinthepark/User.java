@@ -1,5 +1,6 @@
 package com.example.walkinthepark;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ public class User {
     private String email;
     private List<Note> notas;
     private List<Reminder> lembretes;
+    private List<User> listaPacientes;
 
 
     public User(String nome, String email, String password, String fisioID, boolean fisioSN) {
@@ -19,6 +21,7 @@ public class User {
         this.password = password;
         this.email = email;
         this.paciente = fisioSN;
+        this.listaPacientes = new ArrayList<User>();
         if(!fisioID.equals("")){
             this.fisioID = fisioID;
         }
@@ -56,6 +59,8 @@ public class User {
         this.password = password;
     }
 
+    public void addPaciente(User user){listaPacientes.add(user);}
+
     public Map toMap() {
         HashMap result = new HashMap<>();
         result.put("nome", nome);
@@ -63,6 +68,7 @@ public class User {
         result.put("password", password);
         result.put("paciente", paciente);
         result.put("fisioID", fisioID);
+        result.put("listaPacientes", listaPacientes);
 
         return result;
     }

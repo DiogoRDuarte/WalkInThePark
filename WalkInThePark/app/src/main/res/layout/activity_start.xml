@@ -115,8 +115,8 @@
                         <EditText
                             android:id="@+id/editTextTokenFisio"
                             style="@style/modifiedEditText"
-                            android:hint="Codigo do Fisioterapeuta:"
-                            android:inputType="phone"
+                            android:hint="Email do Fisioterapeuta:"
+                            android:inputType="text"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
