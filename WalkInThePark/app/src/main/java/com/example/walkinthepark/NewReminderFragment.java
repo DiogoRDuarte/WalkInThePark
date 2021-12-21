@@ -113,7 +113,7 @@ public class NewReminderFragment extends Fragment {
 
                 }else {
                     Reminder rem = new Reminder(horaS, dataS, text);
-                    ((ReminderActivity) getActivity()).adicionarLembrete(rem);
+                    //((ReminderActivity) getActivity()).adicionarLembrete(rem);
 
 
                     Map reminderValues = rem.toMap();
@@ -200,5 +200,5 @@ public class NewReminderFragment extends Fragment {
         },year,month,day);
         datePickerDialog.show();
     }
-    
+
 }
