@@ -14,7 +14,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicMarkableReference;
 
@@ -35,6 +37,7 @@ public class ProfHomeActivity extends AppCompatActivity {
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
         Map m = new HashMap<String,Map>();
+        List<HashMap<String, User>> list = new ArrayList<>();
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -51,6 +54,8 @@ public class ProfHomeActivity extends AppCompatActivity {
                     }
 
                 }
+
+
             }
 
             @Override
