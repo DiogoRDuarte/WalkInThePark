@@ -31,13 +31,11 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.Text;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NewReminderFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class NewReminderFragment extends Fragment {
     Button bDate;
     Button bTime;
@@ -62,37 +60,15 @@ public class NewReminderFragment extends Fragment {
     private TextView data;
     private FirebaseDatabase db;
     private DatabaseReference myRef;
+    private List<String> listTitulo;
+    private boolean a;
+    private Map mapReminders = new HashMap<String,Reminder>();
 
     public NewReminderFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NewReminderFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NewReminderFragment newInstance(String param1, String param2) {
-        NewReminderFragment fragment = new NewReminderFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -139,9 +115,8 @@ public class NewReminderFragment extends Fragment {
                     Reminder rem = new Reminder(horaS, dataS, text);
                     ((ReminderActivity) getActivity()).adicionarLembrete(rem);
 
-                    /*note = new Note(tituloS, notaS);
-                    //((NotesActivity) getActivity()).adicionarNota(note);
-                    Map noteValues = note.toMap();
+
+                    Map reminderValues = rem.toMap();
 
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
@@ -153,19 +128,20 @@ public class NewReminderFragment extends Fragment {
                             //mapNotes.put(titulo, noteValues);
                             //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
                             //myRef.updateChildren(mapNotes);
-                            if(listTitulo.contains(titulo) && a){
-                                Toast.makeText(getContext(), "Ja existe uma nota com este titulo!", Toast.LENGTH_SHORT).show();
-                                titulo.setText("");
-                                nota.setText("");
+                            if(listTitulo.contains(te) && a){
+                                Toast.makeText(getContext(), "Ja existe um reminder com este titulo!", Toast.LENGTH_SHORT).show();
+                                te.setText("");
+                                data.setText("");
+                                hora.setText("");
 
 
                             }else {
 
                                 if(a) {
                                     //myRef.child("User").child(email);
-                                    mapNotes.put(tituloS, noteValues);
+                                    mapReminders.put(text, reminderValues);
                                     Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
-                                    myRef.updateChildren(mapNotes);
+                                    myRef.updateChildren(mapReminders);
                                     goToMain(view);
                                     a = false;
 
@@ -178,7 +154,7 @@ public class NewReminderFragment extends Fragment {
                         public void onCancelled(@NonNull DatabaseError error) {
 
                         }
-                    });*/
+                    });
 
                     Toast toast = Toast.makeText(getContext(), "Lembrete Adicionado!", Toast.LENGTH_SHORT);
                     toast.show();
@@ -188,6 +164,11 @@ public class NewReminderFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void goToMain(View view) {
+        Intent i = new Intent(getActivity(), UserHomeActivity.class);
+        startActivity(i);
     }
 
 
@@ -219,25 +200,5 @@ public class NewReminderFragment extends Fragment {
         },year,month,day);
         datePickerDialog.show();
     }
-    /*
-    private void setAlarm(String text, String date, String time) {
-        AlarmManager am = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);                   //assigning alarm manager object to set alarm
-        Intent intent = new Intent(getActivity().getApplicationContext(), AlarmBroadcast.class);
-        intent.putExtra("event", text);                                                       //sending data to alarm class to create channel and notification
-        intent.putExtra("time", date);
-        intent.putExtra("date", time);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_ONE_SHOT);
-        String dateandtime = date + " " + timeTonotify;
-        DateFormat formatter = new SimpleDateFormat("d-M-yyyy hh:mm");
-        try {
-            Date date1 = formatter.parse(dateandtime);
-            am.set(AlarmManager.RTC_WAKEUP, date1.getTime(), pendingIntent);
-            Toast.makeText(getApplicationContext(), "Alarm", Toast.LENGTH_SHORT).show();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Intent intentBack = new Intent(getApplicationContext(), MainActivity.class);                //this intent will be called once the setting alarm is complete
-        intentBack.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intentBack);                                                                  //navigates from adding reminder activity to mainactivity
-    }*/
+    
 }
