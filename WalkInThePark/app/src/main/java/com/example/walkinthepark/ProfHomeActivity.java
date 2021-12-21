@@ -38,31 +38,7 @@ public class ProfHomeActivity extends AppCompatActivity {
         myRef = db.getReference("User");
         Map m = new HashMap<String,Map>();
         List<HashMap<String, User>> list = new ArrayList<>();
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                for(DataSnapshot ds : snapshot.getChildren()){
-                    String sEmail = ds.child("email").getValue().toString();
-                    String sPassword = ds.child("password").getValue().toString();
-                    String sNome = ds.child("nome").getValue().toString();
-                    String sFisio = ds.child("fisioID").getValue().toString();
-                    boolean pac = ds.child("paciente").getValue(Boolean.class);
-                    User u = new User(sNome, sEmail,sPassword,sFisio,pac);
-                    if(pac){
-                        m.put(sEmail,u.toMap());
-                    }
-
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
         // BUTTONS
         /*verVideos.setOnClickListener(new View.OnClickListener() {
             @Override
