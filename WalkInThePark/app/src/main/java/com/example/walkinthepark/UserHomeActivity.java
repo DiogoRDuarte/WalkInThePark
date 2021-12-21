@@ -42,7 +42,7 @@ public class UserHomeActivity extends AppCompatActivity {
         refReminders = db.getReference("Reminder");
         myRef = db.getReference("User");
         Map m = new HashMap<String,Map>();
-       
+        
         // BUTTONS
         verLembsButton.setOnClickListener(new View.OnClickListener() {
             @Override
