@@ -42,7 +42,23 @@ public class UserHomeActivity extends AppCompatActivity {
         refReminders = db.getReference("Reminder");
         myRef = db.getReference("User");
         Map m = new HashMap<String,Map>();
+        String s = "email";
+        /*myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()){
+                    if(ds.child("email").getValue().toString().equals(s)){
+                        Map<String, User> m = (Map<String, User>) ds.getValue();
+                        User u = m.get(s);
+                    }
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
         // BUTTONS
         verLembsButton.setOnClickListener(new View.OnClickListener() {
             @Override
