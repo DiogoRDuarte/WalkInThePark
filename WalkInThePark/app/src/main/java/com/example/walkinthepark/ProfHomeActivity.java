@@ -1,5 +1,6 @@
 package com.example.walkinthepark;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,8 +8,22 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicMarkableReference;
 
 public class ProfHomeActivity extends AppCompatActivity {
+
+    private DatabaseReference myRef;
+    private FirebaseDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +33,11 @@ public class ProfHomeActivity extends AppCompatActivity {
         MaterialButton verVideos = findViewById(R.id.verVideos);
         MaterialButton criarVideo = findViewById(R.id.adicionarVideo);
         MaterialButton verPacientes = findViewById(R.id.verPacientes);
+
+        db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
+        myRef = db.getReference("User");
+        Map m = new HashMap<String,Map>();
+        List<HashMap<String, User>> list = new ArrayList<>();
 
         // BUTTONS
         /*verVideos.setOnClickListener(new View.OnClickListener() {

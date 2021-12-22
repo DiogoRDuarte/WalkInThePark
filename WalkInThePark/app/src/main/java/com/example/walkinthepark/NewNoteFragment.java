@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 public class NewNoteFragment extends Fragment {
-    private Map mapNotes = new HashMap<String, User>();
+    private Map mapNotes = new HashMap<String, Note>();
     static View newNoteView;
     private TextView titulo;
     private TextView nota;

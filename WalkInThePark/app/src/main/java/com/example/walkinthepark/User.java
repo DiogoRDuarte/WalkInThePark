@@ -22,6 +22,8 @@ public class User {
         this.email = email;
         this.paciente = fisioSN;
         this.listaPacientes = new ArrayList<User>();
+        if(!paciente)
+            listaPacientes.add(new User("", "", "", "", true));
         if(!fisioID.equals("")){
             this.fisioID = fisioID;
         }
@@ -71,6 +73,10 @@ public class User {
         result.put("listaPacientes", listaPacientes);
 
         return result;
+    }
+
+    public User fromMap(){
+        return null;
     }
 
 }

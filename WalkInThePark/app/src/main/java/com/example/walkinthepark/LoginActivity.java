@@ -60,14 +60,13 @@ public class LoginActivity extends AppCompatActivity {
                                 String s = ds.child("email").getValue().toString();
                                 String p = ds.child("password").getValue().toString();
                                 String n = ds.child("nome").getValue().toString();
-                                String s3 = ds.child("paciente").getValue().toString();
-                                boolean b = Boolean.parseBoolean(s3);
-                                if(s.equals(email) && p.equals(password)){
+                                boolean b = ds.child("paciente").getValue(Boolean.class);
+                                if(email.equals(s) && password.equals(p)){
                                     log = true;
                                     Toast.makeText(getApplicationContext(), "Bem vindo "+n+"!", Toast.LENGTH_SHORT).show();
-                                    if(b){
-                                        goToMain(view);
-                                    }
+                                    if(b == true){
+                                       goToPatMain(view);
+                                    }else
                                     goToPhyMain(view);
                                 }
                             }
@@ -96,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
-    public void goToMain(View view) {
+    public void goToPatMain(View view) {
         Intent i = new Intent(this, UserHomeActivity.class);
         i.putExtra("user", n);
         startActivity(i);
