@@ -30,17 +30,18 @@ public class StartActivity extends AppCompatActivity {
     private FirebaseDatabase db;
     private DatabaseReference myRef;
     private List<String> listEmails = new ArrayList<String>();
-    private List<User> listUsers = new ArrayList<User>();
     private User user;
     private String nome;
     private String email;
     private String password;
     private String fisioID;
     private Map mapUsers = new HashMap<String, User>();
-    private Map u;
-    //boolean fisio;
     boolean pat;
     boolean a = true;
+
+    private String nomeF;
+    private String emailF;
+    private String passwordF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,6 @@ public class StartActivity extends AppCompatActivity {
                 password = String.valueOf(ePass.getText());
                 fisioID = String.valueOf(eToken.getText());
                 pat = rb.isChecked();
-                //fisio = rb1.isChecked();
 
                 if (nome.equals("") || email.equals("") || password.equals("")) {
                     Toast toast = Toast.makeText(getApplicationContext(), "Preenche os campos obrigatorios!", Toast.LENGTH_SHORT);
@@ -108,20 +108,33 @@ public class StartActivity extends AppCompatActivity {
                             }else{
 
                                 if(a) {
-                                    User f;
-                                    //myRef.child("User").child(email);
-                                    mapUsers.put(email, userValues);
-                                   // User fiso = (User) mapUsers.get(fisioID);
-                                   // fiso.addPaciente(user);
-                                    Toast.makeText(getApplicationContext(), "Registo bem-sucedido!", Toast.LENGTH_SHORT).show();
+                                    if(!fisioID.equals("")) {
+                                        for (DataSnapshot ds : snapshot.getChildren()) {
+                                            
+                                            if (ds.child("email").getValue().toString().equals(fisioID)) {
+                                                nomeF = ds.child("nome").getValue().toString();
+                                                emailF = ds.child("email").getValue().toString();
+                                                passwordF = ds.child("password").getValue().toString();
+                                                ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaPacientes");
+                                                a.add(user.toMap());
 
-                                 //   if(!fisioID.equals("")){
-                                 //       for(User u: listUsers){
-                                  //          if(u.getEmail().equals(fisioID)){
-                                 //               u.addPaciente(user);
-                                 //           }
-                                 //       }
-                                 //   }
+                                                HashMap result = new HashMap<>();
+                                                result.put("nome", nomeF);
+                                                result.put("email", emailF);
+                                                result.put("password", passwordF);
+                                                result.put("paciente", false);
+                                                result.put("fisioID", "");
+                                                result.put("listaPacientes", a);
+
+                                                mapUsers.put(fisioID, result);
+                                            }
+                                        }
+                                    }
+
+
+                                    mapUsers.put(email, userValues);
+                                    Toast.makeText(getApplicationContext(), "Registo bem-sucedido!", Toast.LENGTH_SHORT).show();
+                                    }
 
                                     myRef.updateChildren(mapUsers);
 
@@ -135,7 +148,7 @@ public class StartActivity extends AppCompatActivity {
 
                                 }
                             }
-                        }
+
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {

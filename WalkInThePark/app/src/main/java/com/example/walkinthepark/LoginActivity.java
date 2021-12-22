@@ -64,11 +64,11 @@ public class LoginActivity extends AppCompatActivity {
                                 boolean b = Boolean.parseBoolean(s3);
                                 if(s.equals(email) && p.equals(password)){
                                     log = true;
-                                    Toast.makeText(getApplicationContext(), "Bem vindo "+n+"!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Bem vindo "+n+"!"+"   "+s3+"   "+b, Toast.LENGTH_SHORT).show();
                                     if(b){
                                         goToMain(view);
-                                    }
-                                    goToPhyMain(view);
+                                    }else
+                                        goToPhyMain(view);
                                 }
                             }
 
