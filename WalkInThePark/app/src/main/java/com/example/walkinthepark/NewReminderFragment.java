@@ -30,6 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -46,22 +47,14 @@ public class NewReminderFragment extends Fragment {
     String message="";
     String date ="";
 
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     private View view;
     private TextView hora;
     private TextView data;
     private FirebaseDatabase db;
+    private Reminder rem;
     private DatabaseReference myRef;
-    private List<String> listTitulo;
-    private boolean a;
+    private List<String> listTitulo = new ArrayList<String>();
+    private boolean a = true;
     private Map mapReminders = new HashMap<String,Reminder>();
 
     public NewReminderFragment() {
@@ -105,14 +98,14 @@ public class NewReminderFragment extends Fragment {
             public void onClick(View view) {
                 String dataS = data.getText().toString();
                 String horaS = hora.getText().toString();
-                String text = te.getText().toString();
+                String textS = te.getText().toString();
 
-                if(dataS.equals("Data") || horaS.equals("Hora") || text.equals("")){
+                if(dataS.equals("Data") || horaS.equals("Hora") || textS.equals("")){
                     Toast toast = Toast.makeText(getContext(), "Escolhe uma Data Hora e Lembrete!", Toast.LENGTH_SHORT);
                     toast.show();
 
                 }else {
-                    Reminder rem = new Reminder(horaS, dataS, text);
+                    rem = new Reminder(horaS, dataS, textS);
                     //((ReminderActivity) getActivity()).adicionarLembrete(rem);
 
 
@@ -122,13 +115,13 @@ public class NewReminderFragment extends Fragment {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot ds: snapshot.getChildren()){
-                                String s = ds.child("titulo").getValue().toString();
+                                String s = ds.child("mensagem").getValue().toString();
                                 listTitulo.add(s);
                             }
                             //mapNotes.put(titulo, noteValues);
                             //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
                             //myRef.updateChildren(mapNotes);
-                            if(listTitulo.contains(te) && a){
+                            if(listTitulo.contains(textS) && a){
                                 Toast.makeText(getContext(), "Ja existe um reminder com este titulo!", Toast.LENGTH_SHORT).show();
                                 te.setText("");
                                 data.setText("");
@@ -139,8 +132,8 @@ public class NewReminderFragment extends Fragment {
 
                                 if(a) {
                                     //myRef.child("User").child(email);
-                                    mapReminders.put(text, reminderValues);
-                                    Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
+                                    mapReminders.put(textS, reminderValues);
+                                    Toast.makeText(getContext(), "Lembrete adicionado!", Toast.LENGTH_SHORT).show();
                                     myRef.updateChildren(mapReminders);
                                     goToMain(view);
                                     a = false;
@@ -156,8 +149,8 @@ public class NewReminderFragment extends Fragment {
                         }
                     });
 
-                    Toast toast = Toast.makeText(getContext(), "Lembrete Adicionado!", Toast.LENGTH_SHORT);
-                    toast.show();
+                    //Toast toast = Toast.makeText(getContext(), "Lembrete Adicionado!", Toast.LENGTH_SHORT);
+                    //toast.show();
                 }
 
             }
