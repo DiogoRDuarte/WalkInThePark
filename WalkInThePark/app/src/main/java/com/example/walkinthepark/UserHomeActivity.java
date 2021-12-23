@@ -96,18 +96,21 @@ public class UserHomeActivity extends AppCompatActivity {
         myRef = db.getReference("User");
         Map m = new HashMap<String,Map>();
         //Bundle extras = getArguments();
-        /*Bundle extras = getIntent().getExtras();
-        String s = (String) extras.get("nome");
-        Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();*/
+        Bundle extras = getIntent().getExtras();
+        String s = (String) extras.get("email");
+        Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
         /*myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds : snapshot.getChildren()){
+                /*for(DataSnapshot ds : snapshot.getChildren()){
                     if(ds.child("email").getValue().toString().equals(s)){
                         Map<String, User> m = (Map<String, User>) ds.getValue();
-                        User u = m.get(s);
+                        User u = new User(m.get("nome").toString(),m.get("email").toString(),m.get("password").toString(),m.get("fisioID").toString(),Boolean.parseBoolean(m.get("paciente").toString()));
                     }
                 }
+                HashMap<String,User> sL = (HashMap<String,User>) snapshot.child("/"+s).getValue();
+                //Toast.makeText(getApplicationContext(), (CharSequence) sL.get("password"), Toast.LENGTH_SHORT).show();
+                currentUser = new User((String)(CharSequence) sL.get("nome"),(String) (CharSequence) sL.get("email"),(String) (CharSequence) sL.get("password"),(String)(CharSequence) sL.get("fisioID"), Boolean.parseBoolean((String)((CharSequence) sL.get("paciente")))) ;
             }
 
             @Override
@@ -176,6 +179,7 @@ public class UserHomeActivity extends AppCompatActivity {
                 // ALTERAR
             }
         });
+        //Toast.makeText(getApplicationContext(), currentUser.getEmail(), Toast.LENGTH_SHORT).show();
     }
 
     public User getCurrentUser(){

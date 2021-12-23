@@ -11,8 +11,8 @@ public class User {
     private boolean paciente;
     private String fisioID;
     private String email;
-    private List<Note> notas;
-    private List<Reminder> lembretes;
+    private List<Note> notas = new ArrayList<Note>();;
+    private List<Reminder> lembretes = new ArrayList<Reminder>();;
     private List<User> listaPacientes;
 
 
@@ -27,9 +27,14 @@ public class User {
         if(!fisioID.equals("")){
             this.fisioID = fisioID;
         }
-        this.notas = new ArrayList<Note>();
+        if(this.notas.isEmpty()){
+            this.notas = new ArrayList<Note>();
+        }
         this.notas.add(new Note("",""));
-        this.lembretes = new ArrayList<Reminder>();
+
+        if(this.lembretes.isEmpty()){
+            this.lembretes = new ArrayList<Reminder>();
+        }
         this.lembretes.add(new Reminder("","",""));
     }
 
@@ -47,6 +52,10 @@ public class User {
 
     public boolean isFisioterapeuta() {
         return paciente;
+    }
+
+    public String getFisioID(){
+        return this.fisioID;
     }
 
     public void setEmail(String email) {

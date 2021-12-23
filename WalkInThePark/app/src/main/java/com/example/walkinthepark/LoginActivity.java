@@ -97,14 +97,14 @@ public class LoginActivity extends AppCompatActivity {
 
     public void goToPatMain(View view) {
         Intent i = new Intent(this, UserHomeActivity.class);
-        i.putExtra("user", n);
+        i.putExtra("email", email);
         startActivity(i);
         finish();
     }
 
     public void goToPhyMain(View view) {
         Intent i = new Intent(this, ProfHomeActivity.class);
-        i.putExtra("user", n);
+        i.putExtra("email", email);
         startActivity(i);
         finish();
     }
