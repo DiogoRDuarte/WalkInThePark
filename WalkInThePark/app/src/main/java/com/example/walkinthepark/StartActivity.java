@@ -174,6 +174,7 @@ public class StartActivity extends AppCompatActivity {
     public void goToPatMain(View view) {
         Intent i = new Intent(this, UserHomeActivity.class);
         i.putExtra("nome",nome);
+        //i.putExtra("user",);
         startActivity(i);
         /*finish();*/
     }

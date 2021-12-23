@@ -27,6 +27,7 @@ public class UserHomeActivity extends AppCompatActivity {
     private DatabaseReference refReminders;
     private FirebaseDatabase db;
     private DatabaseReference myRef;
+    private User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,5 +172,9 @@ public class UserHomeActivity extends AppCompatActivity {
                 // ALTERAR
             }
         });
+    }
+
+    public User getCurrentUser(){
+        return this.currentUser;
     }
 }
