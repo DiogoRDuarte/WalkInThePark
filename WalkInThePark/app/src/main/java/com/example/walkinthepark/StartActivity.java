@@ -125,6 +125,8 @@ public class StartActivity extends AppCompatActivity {
                                                 result.put("paciente", false);
                                                 result.put("fisioID", "");
                                                 result.put("listaPacientes", a);
+                                                /*result.put("listaNotas", new ArrayList<Note>());
+                                                result.put("listaLembretes", new ArrayList<Reminder>());*/
 
                                                 mapUsers.put(fisioID, result);
                                             }

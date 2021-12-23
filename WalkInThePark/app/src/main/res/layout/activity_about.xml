@@ -63,7 +63,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="440dp"
         android:inputType="textMultiLine"
-        android:text="Somos um grupo de alunos preocupado com o próximo e temos como objetivo melhorar as condições de vida dos doentes com Parkinson, sendo esse um dos motivos pela qual construímos esta aplicação"
+        android:text="Somos um grupo de alunos preocupado com o próximo e temos como objetivo melhorar as condições de vida dos doentes com Parkinson, através da promoção do exercício físico e de algumas tarefas."
         android:textSize="8sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
