@@ -2,13 +2,17 @@ package com.example.walkinthepark;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +32,53 @@ public class UserHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home);
+
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+        findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+        NavigationView navigationView = findViewById(R.id.navigationMenuUser);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent i;
+                switch (item.getItemId()) {
+                    case R.id.notasAc:
+                        i = new Intent(UserHomeActivity.this, NotesActivity.class);
+                        i.putExtra("fragment", "fragNT");
+                        startActivity(i);
+                        break;
+                    case R.id.lembretesAc:
+                        i = new Intent(UserHomeActivity.this, ReminderActivity.class);
+                        i.putExtra("fragment", "frag1");
+                        startActivity(i);
+                        break;
+                    case R.id.videosAc:
+                        startActivity(new Intent(UserHomeActivity.this, ExerciseActivity.class));
+                        break;
+                    case R.id.humorAc:
+                        startActivity(new Intent(UserHomeActivity.this, MoodActivity.class));
+                        break;
+                    case R.id.calibracaoAc:
+                        startActivity(new Intent(UserHomeActivity.this, CalibrationActivity.class));
+                        break;
+                    case R.id.definicoesAc:
+                        startActivity(new Intent(UserHomeActivity.this, SettingsActivity.class));
+                        break;
+                    case R.id.ajudaAc:
+                        startActivity(new Intent(UserHomeActivity.this, AboutActivity.class));
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + item.getItemId());
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
 
         MaterialButton verLembsButton = findViewById(R.id.verLembretes);
         MaterialButton criarLembButton = findViewById(R.id.adicionarLembrete);

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/notasAc"
+            android:icon="@drawable/pencil"
+            android:title="Notas" />
+
+        <item
+            android:id="@+id/lembretesAc"
+            android:icon="@drawable/bell"
+            android:title="Lembretes" />
+
+        <item
+            android:id="@+id/videosAc"
+            android:icon="@drawable/video"
+            android:title="Vídeos" />
+
+        <item
+            android:id="@+id/humorAc"
+            android:icon="@drawable/smile"
+            android:title="Humor" />
+
+        <item android:title="Outros">
+            <menu>
+                <item
+                    android:id="@+id/calibracaoAc"
+                    android:icon="@drawable/calibration"
+                    android:title="Calibração" />
+
+                <item
+                    android:id="@+id/definicoesAc"
+                    android:icon="@drawable/settings"
+                    android:title="Definições" />
+
+                <item
+                    android:id="@+id/ajudaAc"
+                    android:icon="@drawable/help"
+                    android:title="Ajuda" />
+            </menu>
+        </item>
+
+    </group>
+
+</menu>

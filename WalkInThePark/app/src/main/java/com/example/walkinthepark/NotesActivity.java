@@ -53,6 +53,9 @@ public class NotesActivity extends AppCompatActivity {
             case "fragN":
                 replaceFragment(newNoteFragment);
                 break;
+            case "fragNT":
+                replaceFragment(notesFragment);
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + intentFragment);
         }
