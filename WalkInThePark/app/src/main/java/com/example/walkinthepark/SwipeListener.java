@@ -1,9 +1,13 @@
+package com.example.walkinthepark;
+
 import android.content.Context;
 import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class SwipeListener implements View.OnTouchListener {
+public class SwipeListener implements OnTouchListener {
     private final GestureDetector gestureDetector;
 
     public SwipeListener (Context context){
@@ -15,7 +19,7 @@ public class SwipeListener implements View.OnTouchListener {
         return gestureDetector.onTouchEvent(motionEvent);
     }
 
-    private final class GestureListener extends GestureDetector.SimpleOnGestureListener {
+    private final class GestureListener extends SimpleOnGestureListener {
         private static final int SWIPE_LIMIT = 100;
         private static final int SWIPE_LIMIT_SPEED = 100;
 
@@ -55,7 +59,6 @@ public class SwipeListener implements View.OnTouchListener {
         }
 
     }
-
     private void onSwipeBottom() {
     }
 
@@ -67,4 +70,6 @@ public class SwipeListener implements View.OnTouchListener {
 
     private void onSwipeTop() {
     }
+
+
 }

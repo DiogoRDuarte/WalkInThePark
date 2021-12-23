@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
@@ -27,6 +28,7 @@ public class UserHomeActivity extends AppCompatActivity {
     private DatabaseReference refReminders;
     private FirebaseDatabase db;
     private DatabaseReference myRef;
+    private User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +95,10 @@ public class UserHomeActivity extends AppCompatActivity {
         refReminders = db.getReference("Reminder");
         myRef = db.getReference("User");
         Map m = new HashMap<String,Map>();
-        String s = "email";
+        //Bundle extras = getArguments();
+        /*Bundle extras = getIntent().getExtras();
+        String s = (String) extras.get("nome");
+        Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();*/
         /*myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -171,5 +176,9 @@ public class UserHomeActivity extends AppCompatActivity {
                 // ALTERAR
             }
         });
+    }
+
+    public User getCurrentUser(){
+        return this.currentUser;
     }
 }

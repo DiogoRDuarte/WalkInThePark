@@ -27,6 +27,10 @@ public class User {
         if(!fisioID.equals("")){
             this.fisioID = fisioID;
         }
+        this.notas = new ArrayList<Note>();
+        this.notas.add(new Note("",""));
+        this.lembretes = new ArrayList<Reminder>();
+        this.lembretes.add(new Reminder("","",""));
     }
 
     public String getNome() {
@@ -71,7 +75,8 @@ public class User {
         result.put("paciente", paciente);
         result.put("fisioID", fisioID);
         result.put("listaPacientes", listaPacientes);
-
+        result.put("listaNotas", this.notas);
+        result.put("listaLembretes", this.lembretes);
         return result;
     }
 

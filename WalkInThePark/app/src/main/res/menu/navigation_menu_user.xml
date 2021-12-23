@@ -38,7 +38,7 @@
                 <item
                     android:id="@+id/ajudaAc"
                     android:icon="@drawable/help"
-                    android:title="Ajuda" />
+                    android:title="Sobre" />
             </menu>
         </item>
 

@@ -73,6 +73,7 @@ public class NewReminderFragment extends Fragment {
         bAdd = (Button) view.findViewById(R.id.buttonAdd);
         data = (TextView) view.findViewById(R.id.textData);
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
+        //User u = ((UserHomeActivity)getActivity()).getCurrentUser();
         myRef = db.getReference("Reminder");
 
         bDate.setOnClickListener(new View.OnClickListener() {

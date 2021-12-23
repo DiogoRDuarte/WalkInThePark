@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
+import android.widget.ImageView;
 
 public class CalibrationActivity extends AppCompatActivity {
 
@@ -65,5 +66,22 @@ public class CalibrationActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        ImageView i = findViewById(R.id.imageViewC);
+        /*i.setOnTouchListener(new SwipeListener(CalibrationActivity.this){
+            public void onSwipeTop() {
+                Toast.makeText(CalibrationActivity.this, "top", Toast.LENGTH_SHORT).show();
+            }
+            public void onSwipeRight() {
+                Toast.makeText(CalibrationActivity.this, "right", Toast.LENGTH_SHORT).show();
+            }
+            public void onSwipeLeft() {
+                Toast.makeText(CalibrationActivity.this, "left", Toast.LENGTH_SHORT).show();
+            }
+            public void onSwipeBottom() {
+                Toast.makeText(CalibrationActivity.this, "bottom", Toast.LENGTH_SHORT).show();
+            }
+        });*/
+
     }
 }

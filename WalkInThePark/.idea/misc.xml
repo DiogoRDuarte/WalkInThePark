@@ -20,14 +20,16 @@
         <entry key="..\:/Users/Lenovo/Desktop/WalkInThePark/WalkInThePark/app/src/main/res/layout/fragment_new_reminder.xml" value="0.2" />
         <entry key="..\:/Users/Lenovo/Desktop/WalkInThePark/WalkInThePark/app/src/main/res/layout/fragment_notes.xml" value="0.2" />
         <entry key="..\:/Users/Lenovo/Desktop/WalkInThePark/WalkInThePark/app/src/main/res/layout/fragment_second.xml" value="0.2" />
+        <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/drawable/ic_menu.xml" value="0.14765625" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/drawable/walk_in_the_park_final.xml" value="0.215234375" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_about.xml" value="0.264" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_annotation.xml" value="0.264" />
-        <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_calibration.xml" value="0.264" />
+        <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_calibration.xml" value="0.2" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_exercise.xml" value="0.264" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_mood.xml" value="0.264" />
+        <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_prof_home.xml" value="0.135546875" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_reminder.xml" value="0.2" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_settings.xml" value="0.264" />
@@ -37,6 +39,7 @@
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/fragment_new_reminder.xml" value="0.2" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/fragment_reminder.xml" value="0.1891891891891892" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/single_reminder.xml" value="0.2" />
+        <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/menu/navigation_menu_user.xml" value="0.135546875" />
         <entry key="app/src/main/res/drawable/button_background_blue.xml" value="0.21770833333333334" />
         <entry key="app/src/main/res/drawable/ic_add_img.xml" value="0.2635416666666667" />
         <entry key="app/src/main/res/drawable/ic_back_img.xml" value="0.3776041666666667" />
