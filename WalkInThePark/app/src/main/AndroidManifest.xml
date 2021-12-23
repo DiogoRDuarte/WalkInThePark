@@ -32,34 +32,34 @@
         <activity
             android:name=".AboutActivity"
             android:exported="true"
-            android:label="Sobre" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SettingsActivity"
             android:exported="true"
-            android:label="Definições" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CalibrationActivity"
             android:exported="true"
-            android:label="Calibração" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ReminderActivity"
             android:exported="true"
-            android:label="Lembretes" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MoodActivity"
             android:exported="true"
-            android:label="Rastreio de Humor" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ExerciseActivity"
             android:exported="true"
-            android:label="Exercícios" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
         <activity
             android:name=".NotesActivity"
             android:exported="true"
-            android:label="Notas" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".StartActivity"
             android:exported="true"
