@@ -26,7 +26,6 @@ public class LoginActivity extends AppCompatActivity {
     private List<String> listEmails = new ArrayList<String>();
 
 
-    private User user;
     private String n;
     private String email;
     private String password;
@@ -66,8 +65,10 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "Bem vindo "+n+"!", Toast.LENGTH_SHORT).show();
                                     if(b == true){
                                        goToPatMain(view);
-                                    }else
+                                       break;
+                                    }else{
                                     goToPhyMain(view);
+                                    break;}
                                 }
                             }
 
@@ -97,14 +98,14 @@ public class LoginActivity extends AppCompatActivity {
 
     public void goToPatMain(View view) {
         Intent i = new Intent(this, UserHomeActivity.class);
-        i.putExtra("user", n);
+        i.putExtra("user_email", email);
         startActivity(i);
         finish();
     }
 
     public void goToPhyMain(View view) {
         Intent i = new Intent(this, ProfHomeActivity.class);
-        i.putExtra("user", n);
+        i.putExtra("user_email", email+"");
         startActivity(i);
         finish();
     }

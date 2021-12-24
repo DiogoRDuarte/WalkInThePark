@@ -168,9 +168,10 @@
                         app:cornerRadius="15dp">
 
                         <TextView
+                            android:id="@+id/paciente1Name"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Paciente 1"
+                            android:text="Sem Paciente"
                             android:textColor="#2B2C2C" />
                     </com.google.android.material.card.MaterialCardView>
 
@@ -274,9 +275,10 @@
                         app:cornerRadius="15dp">
 
                         <TextView
+                            android:id="@+id/paciente2Name"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Paciente 2"
+                            android:text="Sem Paciente"
                             android:textColor="#2B2C2C" />
                     </com.google.android.material.card.MaterialCardView>
 
@@ -377,9 +379,10 @@
                         app:cornerRadius="15dp">
 
                         <TextView
+                            android:id="@+id/paciente3Name"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Paciente 3"
+                            android:text="Sem Paciente"
                             android:textColor="#2B2C2C" />
                     </com.google.android.material.card.MaterialCardView>
 
@@ -480,9 +483,10 @@
                         app:cornerRadius="15dp">
 
                         <TextView
+                            android:id="@+id/paciente4Name"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Paciente 4"
+                            android:text="Sem Paciente"
                             android:textColor="#2B2C2C" />
                     </com.google.android.material.card.MaterialCardView>
 
