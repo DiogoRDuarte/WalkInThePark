@@ -8,31 +8,28 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
-    private List<Note> mNotes;
+
+    private ArrayList<HashMap<String, String>> mNotes;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
+
         public TextView tituloTextView;
         public TextView mensagemTextView;
 
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
         public ViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
             super(itemView);
 
             tituloTextView = (TextView) itemView.findViewById(R.id.txtTitulo);
             mensagemTextView = (TextView) itemView.findViewById(R.id.txtMensagem);
-
         }
     }
 
-    public NotesAdapter(List<Note> notes){
+    public NotesAdapter(ArrayList<HashMap<String, String>> notes){
         mNotes = notes;
     }
 
@@ -48,11 +45,11 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(NotesAdapter.ViewHolder holder, int position) {
-        Note note = mNotes.get(position);
+        HashMap<String, String> note = mNotes.get(position);
         TextView textViewTitulo = holder.tituloTextView;
-        textViewTitulo.setText(note.getTitulo());
+        textViewTitulo.setText(note.get("titulo"));
         TextView textViewMensagem = holder.mensagemTextView;
-        textViewMensagem.setText(note.getMensagem());
+        textViewMensagem.setText(note.get("mensagem"));
     }
 
     @Override
