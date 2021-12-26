@@ -297,7 +297,16 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <com.google.android.material.button.MaterialButton
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvNotesUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="4dp" />
+
+                    <!--<com.google.android.material.button.MaterialButton
                         android:id="@+id/nota1"
                         style="?attr/borderlessButtonStyle"
                         android:layout_width="match_parent"
@@ -340,7 +349,7 @@
                         app:backgroundTint="#E8E8E8"
                         app:contentPadding="8dp"
                         app:cornerRadius="15dp"
-                        tools:layout_editor_absoluteX="8dp" />
+                        tools:layout_editor_absoluteX="8dp" />-->
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/adicionarNota"
