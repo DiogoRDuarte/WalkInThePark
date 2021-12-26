@@ -78,7 +78,7 @@ public class MoodActivity extends AppCompatActivity {
         }
 
         if (moodsFragment== null){
-            moodsFragment = new MoodsFragment();
+            moodsFragment = new AllMoodsFragment();
         }
         FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton2);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {

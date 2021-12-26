@@ -13,21 +13,17 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class NotesActivity extends AppCompatActivity {
 
     Button button;
-    static NotesFragment notesFragment;
+    static AllNotesFragment allNotesFragment;
     static NewNoteFragment newNoteFragment;
     private ArrayList<Note> listaNotas;
 
@@ -91,15 +87,15 @@ public class NotesActivity extends AppCompatActivity {
 
         listaNotas = new ArrayList<Note>();
 
-        if(notesFragment == null) {
-            notesFragment = new NotesFragment();
+        if(allNotesFragment == null) {
+            allNotesFragment = new AllNotesFragment();
         }
 
         if(newNoteFragment == null) {
             newNoteFragment = new NewNoteFragment();
         }
 
-        replaceFragment(notesFragment);
+        replaceFragment(allNotesFragment);
 
         String intentFragment = getIntent().getExtras().getString("fragment");
         switch (intentFragment) {
@@ -107,7 +103,7 @@ public class NotesActivity extends AppCompatActivity {
                 replaceFragment(newNoteFragment);
                 break;
             case "fragNT":
-                replaceFragment(notesFragment);
+                replaceFragment(allNotesFragment);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + intentFragment);
@@ -123,7 +119,7 @@ public class NotesActivity extends AppCompatActivity {
                     replaceFragment(newNoteFragment);
                 } else if (button.getText().equals("Ver Notas")) {
                     button.setText("Adicionar Nota");
-                    replaceFragment(notesFragment);
+                    replaceFragment(allNotesFragment);
                 }
             }
         });

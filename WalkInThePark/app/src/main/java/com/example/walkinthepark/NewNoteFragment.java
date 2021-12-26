@@ -114,7 +114,7 @@ public class NewNoteFragment extends Fragment {
             public void onClick(View view) {
                 getParentFragmentManager().beginTransaction().remove(NewNoteFragment.this).commit();
                 ((NotesActivity)getActivity()).button.setText("Adicionar Nota");
-                ((NotesActivity)getActivity()).replaceFragment(((NotesActivity)getActivity()).notesFragment);
+                ((NotesActivity)getActivity()).replaceFragment(((NotesActivity)getActivity()).allNotesFragment);
             }
         });
 

@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class ReminderActivity extends AppCompatActivity {
-    private static ReminderFragment reminderFragment;
+    private static AllRemindersFragment allRemindersFragment;
     private static NewReminderFragment newReminderFragment;
     private ArrayList<Reminder> listaLembretes = new ArrayList<Reminder>();;
 
@@ -93,16 +93,16 @@ public class ReminderActivity extends AppCompatActivity {
             newReminderFragment = new NewReminderFragment();
         }
 
-        if(reminderFragment == null){
-            reminderFragment = new ReminderFragment();
+        if(allRemindersFragment == null){
+            allRemindersFragment = new AllRemindersFragment();
         }
 
-        replaceFragment(reminderFragment);
+        replaceFragment(allRemindersFragment);
 
         String intentFragment = getIntent().getExtras().getString("fragment");
         switch (intentFragment) {
             case "frag1":
-                replaceFragment(reminderFragment);
+                replaceFragment(allRemindersFragment);
                 break;
             case "frag2":
                 replaceFragment(newReminderFragment);
@@ -137,7 +137,7 @@ public class ReminderActivity extends AppCompatActivity {
                     replaceFragment(newReminderFragment);
                 } else if (bAdd.getText().equals("Ver Lembretes")) {
                     bAdd.setText("Adicionar");
-                    replaceFragment(reminderFragment);
+                    replaceFragment(allRemindersFragment);
                 }
             }
         });

@@ -4,36 +4,70 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class UserHomeActivity extends AppCompatActivity {
+
     private DatabaseReference refNotas;
     private DatabaseReference refReminders;
     private FirebaseDatabase db;
     private DatabaseReference myRef;
     private User currentUser;
 
+    // Fragmentos
+    static UserHomeFragment userHomeFragment;
+    static NotesFragment notesFragment;
+    static RemindersFragment remindersFragment;
+    static ExerciseFragment exerciseFragment;
+    static MoodsFragment moodsFragment;
+    static CalibrationFragment calibrationFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home);
+
+        db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
+        refNotas = db.getReference("Note");
+        refReminders = db.getReference("Reminder");
+        myRef = db.getReference("User");
+        Map m = new HashMap<String,Map>();
+
+        // Inicializar fragmentos
+        if(userHomeFragment == null) {
+            userHomeFragment = new UserHomeFragment();
+        }
+        if(notesFragment == null) {
+            notesFragment = new NotesFragment();
+        }
+        if(remindersFragment == null) {
+            remindersFragment = new RemindersFragment();
+        }
+        if(exerciseFragment == null) {
+            exerciseFragment = new ExerciseFragment();
+        }
+        if(moodsFragment == null) {
+            moodsFragment = new MoodsFragment();
+        }
+        if(calibrationFragment == null) {
+            calibrationFragment = new CalibrationFragment();
+        }
+
+        replaceFragment(userHomeFragment);
 
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
         findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
@@ -47,32 +81,39 @@ public class UserHomeActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Intent i;
+                Bundle bundle;
                 switch (item.getItemId()) {
+                    case R.id.menuAc:
+                        replaceFragment(userHomeFragment);
                     case R.id.notasAc:
-                        i = new Intent(UserHomeActivity.this, NotesActivity.class);
-                        i.putExtra("fragment", "fragNT");
-                        startActivity(i);
+                        bundle = new Bundle();
+                        bundle.putString("fragment", "fragNT");
+                        notesFragment.setArguments(bundle);
+                        replaceFragment(notesFragment);
                         break;
                     case R.id.lembretesAc:
-                        i = new Intent(UserHomeActivity.this, ReminderActivity.class);
-                        i.putExtra("fragment", "frag1");
-                        startActivity(i);
+                        bundle = new Bundle();
+                        bundle.putString("fragment", "frag1");
+                        remindersFragment.setArguments(bundle);
+                        replaceFragment(remindersFragment);
                         break;
                     case R.id.videosAc:
-                        startActivity(new Intent(UserHomeActivity.this, ExerciseActivity.class));
+                        replaceFragment(exerciseFragment);
                         break;
                     case R.id.humorAc:
-                        startActivity(new Intent(UserHomeActivity.this, MoodActivity.class));
+                        bundle = new Bundle();
+                        bundle.putString("fragment", "fragM");
+                        moodsFragment.setArguments(bundle);
+                        replaceFragment(moodsFragment);
                         break;
                     case R.id.calibracaoAc:
-                        startActivity(new Intent(UserHomeActivity.this, CalibrationActivity.class));
+                        replaceFragment(calibrationFragment);
                         break;
                     case R.id.definicoesAc:
-                        startActivity(new Intent(UserHomeActivity.this, SettingsActivity.class));
+                        /*replaceFragment(SettingsFragment);*/
                         break;
                     case R.id.ajudaAc:
-                        startActivity(new Intent(UserHomeActivity.this, AboutActivity.class));
+                        /*replaceFragment(AboutFragment);*/
                         break;
                     default:
                         throw new IllegalStateException("Unexpected value: " + item.getItemId());
@@ -82,7 +123,8 @@ public class UserHomeActivity extends AppCompatActivity {
             }
         });
 
-        MaterialButton verLembsButton = findViewById(R.id.verLembretes);
+        // REMOVER!!!
+        /*MaterialButton verLembsButton = findViewById(R.id.verLembretes);
         MaterialButton criarLembButton = findViewById(R.id.adicionarLembrete);
         MaterialButton criarNotaButton = findViewById(R.id.adicionarNota);
         MaterialButton calibrarButton = findViewById(R.id.calibrar);
@@ -114,7 +156,7 @@ public class UserHomeActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });*/
+        });*//*
         // BUTTONS
         verLembsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,8 +197,8 @@ public class UserHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // ALTERAR
-                /*Intent i = new Intent(UserHomeActivity.this, CalibrationActivity.class);
-                startActivity(i);*/
+                Intent i = new Intent(UserHomeActivity.this, CalibrationActivity.class);
+                startActivity(i);
             }
         });
 
@@ -164,8 +206,8 @@ public class UserHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // ALTERAR
-                /*Intent i = new Intent(UserHomeActivity.this, CalibrationActivity.class);
-                startActivity(i);*/
+                Intent i = new Intent(UserHomeActivity.this, CalibrationActivity.class);
+                startActivity(i);
             }
         });
 
@@ -175,10 +217,19 @@ public class UserHomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // ALTERAR
             }
-        });
+        });*/
+    }
+
+    public void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container_user, fragment);
+        fragmentTransaction.commit();
     }
 
     public User getCurrentUser(){
         return this.currentUser;
     }
+
+
 }

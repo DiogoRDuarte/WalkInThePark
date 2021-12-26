@@ -4,6 +4,11 @@
     <group android:checkableBehavior="single">
 
         <item
+            android:id="@+id/menuAc"
+            android:icon="@drawable/pencil"
+            android:title="Página Inicial" />
+
+        <item
             android:id="@+id/notasAc"
             android:icon="@drawable/pencil"
             android:title="Notas" />
@@ -16,7 +21,7 @@
         <item
             android:id="@+id/videosAc"
             android:icon="@drawable/video"
-            android:title="Vídeos" />
+            android:title="Vídeos Exercícios" />
 
         <item
             android:id="@+id/humorAc"

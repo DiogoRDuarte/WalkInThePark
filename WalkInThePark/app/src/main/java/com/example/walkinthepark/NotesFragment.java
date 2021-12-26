@@ -1,68 +1,97 @@
 package com.example.walkinthepark;
 
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class NotesFragment extends Fragment {
 
     static View notesView;
-    private TextView notas;
+
+    static AllNotesFragment allNotesFragment;
+    static NewNoteFragment newNoteFragment;
     private ArrayList<Note> listaNotas;
+
     private DatabaseReference refNotes;
     private FirebaseDatabase db;
+
+    Button button;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         notesView = inflater.inflate(R.layout.fragment_notes, container, false);
+
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         refNotes = db.getReference("Note");
 
-        refNotes.addValueEventListener(new ValueEventListener() {
+        listaNotas = new ArrayList<Note>();
+
+        if(allNotesFragment == null) {
+            allNotesFragment = new AllNotesFragment();
+        }
+
+        if(newNoteFragment == null) {
+            newNoteFragment = new NewNoteFragment();
+        }
+
+        replaceFragment(allNotesFragment);
+
+        String str = getArguments().getString("fragment");
+        switch (str) {
+            case "fragN":
+                replaceFragment(newNoteFragment);
+                break;
+            case "fragNT":
+                replaceFragment(allNotesFragment);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + str);
+        }
+
+        button = notesView.findViewById(R.id.button_notes);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds : snapshot.getChildren()){
-                    String s = ds.child("titulo").getValue().toString();
-                    String s1 = ds.child("mensagem").getValue().toString();
-                    listaNotas.add(new Note(s,s1));
+            public void onClick(View view) {
+                if(button.getText().equals("Adicionar Nota")) {
+                    button.setText("Ver Notas");
+                    newNoteFragment = new NewNoteFragment();
+                    replaceFragment(newNoteFragment);
+                } else if (button.getText().equals("Ver Notas")) {
+                    button.setText("Adicionar Nota");
+                    replaceFragment(allNotesFragment);
                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
-        listaNotas = ((NotesActivity) getActivity()).getListaNotas();
-        notas = notesView.findViewById(R.id.listaNotas);
-
-        StringBuilder m = new StringBuilder("");
-
-        for(Note r: listaNotas){
-            m.append("Titulo: "+r.getTitulo()+"\n\nDescrição: "+r.getMensagem()+"\n\n\n");
-        }
-
-        if(m.toString().equals("")){
-            notas.setText("Não Existem Notas!");
-        }else
-            notas.setText(m.toString());
-
         return notesView;
     }
+
+    public void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container_notes, fragment);
+        fragmentTransaction.commit();
+    }
+
+    public ArrayList<Note> getListaNotas(){
+        return listaNotas;
+    }
+
+    public void adicionarNota(Note nota){
+        this.listaNotas.add(nota);
+    }
+
 }

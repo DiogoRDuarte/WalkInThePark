@@ -34,7 +34,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/all_reminders"
-            android:name="com.example.walkinthepark.ReminderFragment"
+            android:name="com.example.walkinthepark.AllRemindersFragment"
             android:layout_width="match_parent"
             android:layout_height="450dp"
             app:layout_constraintBottom_toTopOf="@+id/button_add"
@@ -43,7 +43,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/menuBar"
             app:layout_constraintVertical_bias="0.38"
-            tools:layout="@layout/fragment_reminder" />
+            tools:layout="@layout/fragment_all_reminders" />
 
         <Button
             android:id="@+id/button_add"
