@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,14 +18,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AllNotesFragment extends Fragment {
 
     static View allNotesView;
-    private TextView notas;
-    private ArrayList<Note> listaNotas;
-    private DatabaseReference refNotes;
+    /*private TextView notas;*/
+
+    ArrayList<HashMap<String, String>> listaNotas;
+
+    private DatabaseReference myRef;
     private FirebaseDatabase db;
+    String user_email;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,16 +38,35 @@ public class AllNotesFragment extends Fragment {
 
         allNotesView = inflater.inflate(R.layout.fragment_all_notes, container, false);
 
-        db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
-        refNotes = db.getReference("Note");
+        /*notas = allNotesView.findViewById(R.id.listaNotas);*/
+        listaNotas =  ((NotesFragment)getParentFragment()).listaNotas;
+        user_email =((UserHomeActivity)getActivity()).user_email;
 
-        refNotes.addValueEventListener(new ValueEventListener() {
+        RecyclerView rvNotes = (RecyclerView) allNotesView.findViewById(R.id.rvNotes);
+
+        db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
+        myRef = db.getReference("User");
+
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds : snapshot.getChildren()){
-                    String s = ds.child("titulo").getValue().toString();
-                    String s1 = ds.child("mensagem").getValue().toString();
-                    listaNotas.add(new Note(s,s1));
+                    if (ds.child("email").getValue().toString().equals(user_email)) {
+                        listaNotas = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
+
+                        /*StringBuilder m = new StringBuilder("");
+
+                        for(int i = 1; i < listaNotas.size(); i++){
+                            HashMap<String, String> a = listaNotas.get(i);
+
+                            m.append("Titulo: "+ a.get("titulo")+"\nNota: "+a.get("mensagem")+"\n\n");
+                        }
+
+                        if(m.toString().equals("")){
+                            notas.setText("Não Existem Lembretes!");
+                        }else
+                            notas.setText(m.toString());*/
+                    }
                 }
             }
 
@@ -50,22 +76,14 @@ public class AllNotesFragment extends Fragment {
             }
         });
 
-        // REVER!!!
-        /*listaNotas = ((NotesFragment) getParentFragment()).getListaNotas();*/
-        listaNotas = new ArrayList<>();
-        listaNotas.add(new Note("teste", "teste"));
-        /*notas = allNotesView.findViewById(R.id.listaNotas);*/
+        /*listaNotas.remove(0);*/
+        NotesAdapter notesAdapter = new NotesAdapter(listaNotas);
 
-        StringBuilder m = new StringBuilder("");
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        rvNotes.setLayoutManager(layoutManager);
 
-        for(Note r: listaNotas){
-            m.append("Titulo: "+r.getTitulo()+"\n\nDescrição: "+r.getMensagem()+"\n\n\n");
-        }
-
-        if(m.toString().equals("")){
-            notas.setText("Não Existem Notas!");
-        }else
-            notas.setText(m.toString());
+        rvNotes.setAdapter(notesAdapter);
 
         return allNotesView;
     }

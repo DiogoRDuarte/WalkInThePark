@@ -112,8 +112,6 @@ public class NewReminderFragment extends Fragment {
                 }else {
                     rem = new Reminder(horaS, dataS, textS);
 
-
-
                     Map reminderValues = rem.toMap();
 
                     myRef.addValueEventListener(new ValueEventListener() {
