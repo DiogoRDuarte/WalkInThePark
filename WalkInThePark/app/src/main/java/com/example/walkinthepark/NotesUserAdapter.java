@@ -36,7 +36,7 @@ public class NotesUserAdapter extends RecyclerView.Adapter<NotesUserAdapter.View
     public NotesUserAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View notesView = inflater.inflate(R.layout.single_note,parent,false);
+        View notesView = inflater.inflate(R.layout.single_note_user,parent,false);
         NotesUserAdapter.ViewHolder viewHolder = new NotesUserAdapter.ViewHolder(notesView);
         return viewHolder;
     }
