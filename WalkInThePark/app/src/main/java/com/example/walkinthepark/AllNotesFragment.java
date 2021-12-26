@@ -24,13 +24,13 @@ import java.util.Map;
 public class AllNotesFragment extends Fragment {
 
     static View allNotesView;
-    /*private TextView notas;*/
 
     ArrayList<HashMap<String, String>> listaNotas;
 
     private DatabaseReference myRef;
     private FirebaseDatabase db;
     String user_email;
+    private ArrayList<HashMap<String, String>> notasCurrent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,8 +38,9 @@ public class AllNotesFragment extends Fragment {
 
         allNotesView = inflater.inflate(R.layout.fragment_all_notes, container, false);
 
-        /*notas = allNotesView.findViewById(R.id.listaNotas);*/
+
         listaNotas =  ((NotesFragment)getParentFragment()).listaNotas;
+        notasCurrent = new ArrayList<>();
         user_email =((UserHomeActivity)getActivity()).user_email;
 
         RecyclerView rvNotes = (RecyclerView) allNotesView.findViewById(R.id.rvNotes);
@@ -54,18 +55,6 @@ public class AllNotesFragment extends Fragment {
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaNotas = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
 
-                        /*StringBuilder m = new StringBuilder("");
-
-                        for(int i = 1; i < listaNotas.size(); i++){
-                            HashMap<String, String> a = listaNotas.get(i);
-
-                            m.append("Titulo: "+ a.get("titulo")+"\nNota: "+a.get("mensagem")+"\n\n");
-                        }
-
-                        if(m.toString().equals("")){
-                            notas.setText("Não Existem Lembretes!");
-                        }else
-                            notas.setText(m.toString());*/
                     }
                 }
             }
@@ -76,8 +65,11 @@ public class AllNotesFragment extends Fragment {
             }
         });
 
-        /*listaNotas.remove(0);*/
-        NotesAdapter notesAdapter = new NotesAdapter(listaNotas);
+        for (int i = 1; i < listaNotas.size(); i++) {
+            notasCurrent.add(listaNotas.get(i));
+        }
+
+        NotesAdapter notesAdapter = new NotesAdapter(notasCurrent);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
         layoutManager.setOrientation(RecyclerView.VERTICAL);

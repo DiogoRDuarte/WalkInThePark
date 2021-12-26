@@ -36,6 +36,8 @@ public class UserHomeActivity extends AppCompatActivity {
     static ExerciseFragment exerciseFragment;
     static MoodsFragment moodsFragment;
     static CalibrationFragment calibrationFragment;
+    static SettingsFragment settingsFragment;
+    static AboutFragment aboutFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,12 @@ public class UserHomeActivity extends AppCompatActivity {
         }
         if(calibrationFragment == null) {
             calibrationFragment = new CalibrationFragment();
+        }
+        if(settingsFragment == null) {
+            settingsFragment = new SettingsFragment();
+        }
+        if(aboutFragment == null) {
+            aboutFragment = new AboutFragment();
         }
 
         replaceFragment(userHomeFragment);
@@ -111,10 +119,10 @@ public class UserHomeActivity extends AppCompatActivity {
                         replaceFragment(calibrationFragment);
                         break;
                     case R.id.definicoesAc:
-                        /*replaceFragment(SettingsFragment);*/
+                        replaceFragment(settingsFragment);
                         break;
                     case R.id.ajudaAc:
-                        /*replaceFragment(AboutFragment);*/
+                        replaceFragment(aboutFragment);
                         break;
                     default:
                         throw new IllegalStateException("Unexpected value: " + item.getItemId());
@@ -124,101 +132,6 @@ public class UserHomeActivity extends AppCompatActivity {
             }
         });
 
-        // REMOVER!!!
-        /*MaterialButton verLembsButton = findViewById(R.id.verLembretes);
-        MaterialButton criarLembButton = findViewById(R.id.adicionarLembrete);
-        MaterialButton criarNotaButton = findViewById(R.id.adicionarNota);
-        MaterialButton calibrarButton = findViewById(R.id.calibrar);
-        MaterialButton editar1Button = findViewById(R.id.editar1);
-        MaterialButton editar2Button = findViewById(R.id.editar2);
-
-        MaterialCardView videoCard = findViewById(R.id.video);
-        db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
-        refNotas = db.getReference("Note");
-        refReminders = db.getReference("Reminder");
-        myRef = db.getReference("User");
-        Map m = new HashMap<String,Map>();
-        //Bundle extras = getArguments();
-        /*Bundle extras = getIntent().getExtras();
-        String s = (String) extras.get("nome");
-        Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();*/
-        /*myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds : snapshot.getChildren()){
-                    if(ds.child("email").getValue().toString().equals(s)){
-                        Map<String, User> m = (Map<String, User>) ds.getValue();
-                        User u = m.get(s);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*//*
-        // BUTTONS
-        verLembsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(UserHomeActivity.this, ReminderActivity.class);
-                i.putExtra("fragment", "frag1");
-                startActivity(i);
-            }
-        });
-
-        criarLembButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(UserHomeActivity.this, ReminderActivity.class);
-                i.putExtra("fragment", "frag2");
-                startActivity(i);
-            }
-        });
-
-        criarNotaButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(UserHomeActivity.this, NotesActivity.class);
-                i.putExtra("fragment", "fragN");
-                startActivity(i);
-            }
-        });
-
-        calibrarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(UserHomeActivity.this, CalibrationActivity.class);
-                startActivity(i);
-            }
-        });
-
-        editar1Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // ALTERAR
-                Intent i = new Intent(UserHomeActivity.this, CalibrationActivity.class);
-                startActivity(i);
-            }
-        });
-
-        editar2Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // ALTERAR
-                Intent i = new Intent(UserHomeActivity.this, CalibrationActivity.class);
-                startActivity(i);
-            }
-        });
-
-        // CARDS
-        videoCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // ALTERAR
-            }
-        });*/
     }
 
     public void replaceFragment(Fragment fragment) {
