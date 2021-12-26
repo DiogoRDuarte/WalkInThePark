@@ -2,6 +2,7 @@ package com.example.walkinthepark;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -9,13 +10,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AllRemindersFragment extends Fragment {
 
+    ArrayList<HashMap<String, String>> listaLembretes;
+
+    private DatabaseReference myRef;
+    private FirebaseDatabase db;
+    String user_email;
     private TextView mensagens;
 
-    private ArrayList<Reminder> listaLembretes;
     private View view;
 
     @Override
@@ -23,23 +36,39 @@ public class AllRemindersFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_all_reminders, container, false);
-
-        // REVER!!!
-        /*listaLembretes = ((ReminderActivity) getActivity()).getListaReminders();*/
-        listaLembretes = new ArrayList<>();
-        listaLembretes.add(new Reminder("teste", "teste", "teste"));
+        listaLembretes =  ((RemindersFragment)getParentFragment()).listaLembretes;
         mensagens = view.findViewById(R.id.lembretes);
+        user_email =((UserHomeActivity)getActivity()).user_email;
+        db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
+        myRef = db.getReference("User");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    if (ds.child("email").getValue().toString().equals(user_email)) {
+                        listaLembretes = (ArrayList) ((Map) ds.getValue()).get("listaLembretes");
 
-        StringBuilder m = new StringBuilder("");
+                        StringBuilder m = new StringBuilder("");
 
-        for(Reminder r: listaLembretes){
-          m.append("Data: "+r.getData()+"\nHora: "+r.getHora()+"\nLembrete "+r.getMensagem()+"\n\n");
-        }
+                        for(int i = 1; i < listaLembretes.size(); i++){
+                            HashMap<String, String> a = listaLembretes.get(i);
 
-        if(m.toString().equals("")){
-            mensagens.setText("Não Existem Lembretes!");
-        }else
-            mensagens.setText(m.toString());
+                            m.append("Data: "+ a.get("data")+"\nHora: "+a.get("hora")+"\nLembrete "+a.get("mensagem")+"\n\n");
+                        }
+
+                        if(m.toString().equals("")){
+                            mensagens.setText("Não Existem Lembretes!");
+                        }else
+                            mensagens.setText(m.toString());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         /*RecyclerView rvReminders = (RecyclerView) view.findViewById(R.id.rvReminders);
         RemindersAdapter remindersAdapter = new RemindersAdapter(listaLembretes);
         rvReminders.setAdapter(remindersAdapter);
