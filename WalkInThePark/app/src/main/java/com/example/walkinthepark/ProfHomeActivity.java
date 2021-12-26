@@ -52,20 +52,24 @@ public class ProfHomeActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    if(ds.child("email").getValue().toString().equals(user_email)){
+                    if (ds.child("email").getValue().toString().equals(user_email)) {
                         pacientes = (ArrayList<Map>) ds.child("listaPacientes").getValue();
                     }
                 }
 
-                if(pacientes.get(0) != null)
-                    pc1.setText(pacientes.get(0).get("nome")+"");
-                if(pacientes.get(1) != null)
-                    pc2.setText(pacientes.get(1).get("nome")+"");
-                if(pacientes.get(2) != null)
-                    pc3.setText(pacientes.get(2).get("nome")+"");
-                if(pacientes.get(3) != null)
-                    pc4.setText(pacientes.get(3).get("nome")+"");
 
+                if (pacientes != null && pacientes.size() > 1) {
+
+                    if (pacientes.get(1) != null)
+                        pc1.setText(pacientes.get(0).get("nome") + "");
+                    if (pacientes.get(2) != null)
+                        pc2.setText(pacientes.get(1).get("nome") + "");
+                    if (pacientes.get(3) != null)
+                        pc3.setText(pacientes.get(2).get("nome") + "");
+                    if (pacientes.get(4) != null)
+                        pc4.setText(pacientes.get(3).get("nome") + "");
+
+                }
 
 
             }
