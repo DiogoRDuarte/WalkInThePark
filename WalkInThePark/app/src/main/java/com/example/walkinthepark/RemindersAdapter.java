@@ -9,11 +9,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.ViewHolder> {
 
-    private List<Reminder> mReminders;
+    private ArrayList<HashMap<String, String>> mReminders;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -30,7 +32,7 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
         }
     }
 
-    public RemindersAdapter(List<Reminder> reminders){
+    public RemindersAdapter(ArrayList<HashMap<String, String>> reminders){
         mReminders = reminders;
     }
 
@@ -46,13 +48,13 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
 
     @Override
     public void onBindViewHolder(RemindersAdapter.ViewHolder holder, int position) {
-        Reminder reminder = mReminders.get(position);
+        HashMap<String, String> reminder = mReminders.get(position);
         TextView textViewData = holder.dataTextView;
-        textViewData.setText(reminder.getData());
+        textViewData.setText(reminder.get("data"));
         TextView textViewHora = holder.horaTextView;
-        textViewHora.setText(reminder.getHora());
+        textViewHora.setText(reminder.get("hora"));
         TextView textViewMensagem = holder.mensagemTextView;
-        textViewMensagem.setText(reminder.getMensagem());
+        textViewMensagem.setText(reminder.get("mensagem"));
     }
 
     @Override

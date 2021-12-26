@@ -28,7 +28,9 @@ public class AllNotesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         allNotesView = inflater.inflate(R.layout.fragment_all_notes, container, false);
+
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         refNotes = db.getReference("Note");
 
@@ -52,7 +54,7 @@ public class AllNotesFragment extends Fragment {
         /*listaNotas = ((NotesFragment) getParentFragment()).getListaNotas();*/
         listaNotas = new ArrayList<>();
         listaNotas.add(new Note("teste", "teste"));
-        notas = allNotesView.findViewById(R.id.listaNotas);
+        /*notas = allNotesView.findViewById(R.id.listaNotas);*/
 
         StringBuilder m = new StringBuilder("");
 

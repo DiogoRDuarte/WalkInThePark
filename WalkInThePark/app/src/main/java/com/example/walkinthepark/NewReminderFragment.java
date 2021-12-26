@@ -148,7 +148,7 @@ public class NewReminderFragment extends Fragment {
                                     myRef.updateChildren(mapUsers);
                                     a = false;
 
-                                    //MUDAR ISTO PORQUE DA MERDA
+                                    //MUDAR ISTO
                                     goToMain(view);
 
 

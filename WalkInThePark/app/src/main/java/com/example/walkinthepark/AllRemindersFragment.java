@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,18 +29,23 @@ public class AllRemindersFragment extends Fragment {
     private DatabaseReference myRef;
     private FirebaseDatabase db;
     String user_email;
-    private TextView mensagens;
+    /*private TextView mensagens;*/
 
     private View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         view = inflater.inflate(R.layout.fragment_all_reminders, container, false);
+
         listaLembretes =  ((RemindersFragment)getParentFragment()).listaLembretes;
-        mensagens = view.findViewById(R.id.lembretes);
+
+        RecyclerView rvReminders = (RecyclerView) view.findViewById(R.id.rvReminders);
+
+        /*mensagens = view.findViewById(R.id.lembretes);*/
         user_email =((UserHomeActivity)getActivity()).user_email;
+
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
         myRef.addValueEventListener(new ValueEventListener() {
@@ -48,7 +55,7 @@ public class AllRemindersFragment extends Fragment {
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaLembretes = (ArrayList) ((Map) ds.getValue()).get("listaLembretes");
 
-                        StringBuilder m = new StringBuilder("");
+                        /*StringBuilder m = new StringBuilder("");
 
                         for(int i = 1; i < listaLembretes.size(); i++){
                             HashMap<String, String> a = listaLembretes.get(i);
@@ -59,7 +66,7 @@ public class AllRemindersFragment extends Fragment {
                         if(m.toString().equals("")){
                             mensagens.setText("Não Existem Lembretes!");
                         }else
-                            mensagens.setText(m.toString());
+                            mensagens.setText(m.toString());*/
                     }
                 }
             }
@@ -69,10 +76,15 @@ public class AllRemindersFragment extends Fragment {
 
             }
         });
-        /*RecyclerView rvReminders = (RecyclerView) view.findViewById(R.id.rvReminders);
+
+        listaLembretes.remove(0);
         RemindersAdapter remindersAdapter = new RemindersAdapter(listaLembretes);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        rvReminders.setLayoutManager(layoutManager);
+
         rvReminders.setAdapter(remindersAdapter);
-        rvReminders.setLayoutManager(new LinearLayoutManager(this.getContext()));*/
 
         return  view;
     }
