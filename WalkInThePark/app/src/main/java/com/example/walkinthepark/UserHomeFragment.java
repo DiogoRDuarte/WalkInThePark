@@ -1,5 +1,6 @@
 package com.example.walkinthepark;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -32,6 +33,7 @@ public class UserHomeFragment extends Fragment {
     private DatabaseReference refNotas;
     private DatabaseReference refReminders;
     private DatabaseReference myRef;
+    Context context = getContext();
     String user_email;
     // Notas
     ArrayList<HashMap<String, String>> listaNotas;
@@ -67,6 +69,19 @@ public class UserHomeFragment extends Fragment {
                 for(DataSnapshot ds : snapshot.getChildren()){
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaNotas = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
+                        notasCurrent = new ArrayList<>();
+                        for (int i = 1; i < listaNotas.size(); i++) {
+                            notasCurrent.add(listaNotas.get(i));
+                        }
+
+                        // NOTAS
+                        NotesUserAdapter notesUserAdapter = new NotesUserAdapter(notasCurrent);
+
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+                        layoutManager.setOrientation(RecyclerView.VERTICAL);
+                        rvNotesUser.setLayoutManager(layoutManager);
+
+                        rvNotesUser.setAdapter(notesUserAdapter);
 
                     }
                 }
@@ -77,19 +92,6 @@ public class UserHomeFragment extends Fragment {
 
             }
         });
-
-        for (int i = 1; i < listaNotas.size(); i++) {
-            notasCurrent.add(listaNotas.get(i));
-        }
-
-        // NOTAS
-        NotesUserAdapter notesUserAdapter = new NotesUserAdapter(notasCurrent);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
-        layoutManager.setOrientation(RecyclerView.VERTICAL);
-        rvNotesUser.setLayoutManager(layoutManager);
-
-        rvNotesUser.setAdapter(notesUserAdapter);
 
         // BUTTONS
         verLembsButton.setOnClickListener(new View.OnClickListener() {
