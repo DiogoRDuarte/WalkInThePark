@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfHomeFragment">
+
+    <!-- Videos -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/videos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:backgroundTint="#8A8A8A"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imagemVideo1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_alignParentLeft="true"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/help"
+                        android:clickable="true"/>
+
+                    <ImageView
+                        android:id="@+id/imagemVideo2"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerInParent="true"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/help"
+                        android:clickable="true"/>
+
+                    <ImageView
+                        android:id="@+id/imagemVideo3"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_alignParentRight="true"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/help"
+                        android:clickable="true"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/verVideos"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:backgroundTint="#E8E8E8"
+                        android:text="Ver todos"
+                        android:textColor="#2B2C2C"
+                        app:contentPadding="8dp"
+                        app:cornerRadius="15dp" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/adicionarVideo"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:backgroundTint="#E8E8E8"
+                        android:text="+"
+                        android:textColor="#2B2C2C"
+                        app:contentPadding="8dp"
+                        app:cornerRadius="15dp" />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Pacientes -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/pacientes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#8A8A8A"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/paciente1"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:backgroundTint="#E8E8E8"
+                        app:contentPadding="8dp"
+                        app:cornerRadius="15dp">
+
+                        <TextView
+                            android:id="@+id/paciente1Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Sem Paciente"
+                            android:textColor="#2B2C2C" />
+                    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/butoesPaciente1"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:backgroundTint="#E8E8E8"
+                        android:textColor="#2B2C2C"
+                        app:contentPadding="8dp"
+                        app:cornerRadius="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:id="@+id/butao1"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentLeft="true"
+                                    android:clickable="true"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/help" />
+
+                                <ImageView
+                                    android:id="@+id/butao2"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_centerInParent="true"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
+
+                                <ImageView
+                                    android:id="@+id/butao3"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentRight="true"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/paciente2"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:backgroundTint="#E8E8E8"
+                        app:contentPadding="8dp"
+                        app:cornerRadius="15dp">
+
+                        <TextView
+                            android:id="@+id/paciente2Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Sem Paciente"
+                            android:textColor="#2B2C2C" />
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/butoesPaciente2"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:backgroundTint="#E8E8E8"
+                        android:textColor="#2B2C2C"
+                        app:contentPadding="8dp"
+                        app:cornerRadius="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:id="@+id/butao21"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentLeft="true"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
+
+                                <ImageView
+                                    android:id="@+id/butao22"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_centerInParent="true"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
+
+                                <ImageView
+                                    android:id="@+id/butao23"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentRight="true"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/paciente3"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:backgroundTint="#E8E8E8"
+                        app:contentPadding="8dp"
+                        app:cornerRadius="15dp">
+
+                        <TextView
+                            android:id="@+id/paciente3Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Sem Paciente"
+                            android:textColor="#2B2C2C" />
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/butoesPaciente3"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:backgroundTint="#E8E8E8"
+                        android:textColor="#2B2C2C"
+                        app:contentPadding="8dp"
+                        app:cornerRadius="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:id="@+id/butao31"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentLeft="true"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
+
+                                <ImageView
+                                    android:id="@+id/butao32"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_centerInParent="true"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
+
+                                <ImageView
+                                    android:id="@+id/butao33"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentRight="true"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/paciente4"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:backgroundTint="#E8E8E8"
+                        app:contentPadding="8dp"
+                        app:cornerRadius="15dp">
+
+                        <TextView
+                            android:id="@+id/paciente4Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Sem Paciente"
+                            android:textColor="#2B2C2C" />
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/butoesPaciente4"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:backgroundTint="#E8E8E8"
+                        android:textColor="#2B2C2C"
+                        app:contentPadding="8dp"
+                        app:cornerRadius="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:id="@+id/butao41"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentLeft="true"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
+
+                                <ImageView
+                                    android:id="@+id/butao42"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_centerInParent="true"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
+
+                                <ImageView
+                                    android:id="@+id/butao43"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentRight="true"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/help"
+                                    android:clickable="true"/>
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/verPacientes"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:backgroundTint="#E8E8E8"
+                        android:text="Ver Todos"
+                        android:textColor="#2B2C2C"
+                        app:contentPadding="8dp"
+                        app:cornerRadius="15dp" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

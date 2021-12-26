@@ -39,6 +39,7 @@ public class UserHomeFragment extends Fragment {
         MaterialButton editar2Button = userView.findViewById(R.id.editar2);
 
         MaterialCardView videoCard = userView.findViewById(R.id.video);
+
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         refNotas = db.getReference("Note");
         refReminders = db.getReference("Reminder");

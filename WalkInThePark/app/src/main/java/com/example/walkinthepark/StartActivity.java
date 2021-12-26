@@ -59,7 +59,7 @@ public class StartActivity extends AppCompatActivity {
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToPatMain(view);
+                goToPhyMain(view);
             }
         });
 
