@@ -12,20 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.ViewHolder> {
+
     private List<Reminder> mReminders;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
+
         public TextView dataTextView;
         public TextView horaTextView;
         public TextView mensagemTextView;
 
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
         public ViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
             super(itemView);
 
             dataTextView = (TextView) itemView.findViewById(R.id.txtDate);
@@ -54,9 +50,9 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
         TextView textViewData = holder.dataTextView;
         textViewData.setText(reminder.getData());
         TextView textViewHora = holder.horaTextView;
-        textViewData.setText(reminder.getHora());
+        textViewHora.setText(reminder.getHora());
         TextView textViewMensagem = holder.mensagemTextView;
-        textViewData.setText(reminder.getMensagem());
+        textViewMensagem.setText(reminder.getMensagem());
     }
 
     @Override
