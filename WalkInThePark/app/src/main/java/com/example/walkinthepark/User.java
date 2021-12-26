@@ -11,8 +11,8 @@ public class User {
     private boolean paciente;
     private String fisioID;
     private String email;
-    private List<Note> listaNotas;
-    private List<Reminder> listaLembretes;
+    private List<Note> notas;
+    private List<Reminder> lembretes;
     private List<User> listaPacientes;
 
 
@@ -22,19 +22,15 @@ public class User {
         this.email = email;
         this.paciente = fisioSN;
         this.listaPacientes = new ArrayList<User>();
-        this.listaLembretes = new ArrayList<Reminder>();
-        this.listaNotas = new ArrayList<Note>();
-
-        this.listaNotas.add(new Note("",""));
-        this.listaLembretes.add(new Reminder("", "", ""));
-
         if(!paciente)
             listaPacientes.add(new User("", "", "", "", true));
-
         if(!fisioID.equals("")){
             this.fisioID = fisioID;
         }
-
+        this.notas = new ArrayList<Note>();
+        this.notas.add(new Note("",""));
+        this.lembretes = new ArrayList<Reminder>();
+        this.lembretes.add(new Reminder("","",""));
     }
 
     public String getNome() {
@@ -71,8 +67,6 @@ public class User {
 
     public void addPaciente(User user){listaPacientes.add(user);}
 
-
-
     public Map toMap() {
         HashMap result = new HashMap<>();
         result.put("nome", nome);
@@ -81,10 +75,13 @@ public class User {
         result.put("paciente", paciente);
         result.put("fisioID", fisioID);
         result.put("listaPacientes", listaPacientes);
-        result.put("listaNotas", this.listaNotas);
-        result.put("listaLembretes", this.listaLembretes);
+        result.put("listaNotas", this.notas);
+        result.put("listaLembretes", this.lembretes);
         return result;
     }
 
+    public User fromMap(){
+        return null;
+    }
 
 }

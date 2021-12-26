@@ -1,13 +1,17 @@
 package com.example.walkinthepark;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +27,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -43,20 +49,15 @@ public class NewReminderFragment extends Fragment {
     String message="";
     String date ="";
 
-    String user_email;
     private View view;
     private TextView hora;
     private TextView data;
     private FirebaseDatabase db;
     private Reminder rem;
     private DatabaseReference myRef;
-    private List<String> listReminder = new ArrayList<String>();
+    private List<String> listTitulo = new ArrayList<String>();
     private boolean a = true;
-    private Map mapUsers = new HashMap<String, User>();
-
-    private String nomeF;
-    private String emailF;
-    private String passwordF;
+    private Map mapReminders = new HashMap<String,Reminder>();
 
     public NewReminderFragment() {
         // Required empty public constructor
@@ -67,9 +68,6 @@ public class NewReminderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        user_email =((UserHomeActivity)getActivity()).user_email;
-
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_new_reminder, container, false);
         bDate = (Button) view.findViewById(R.id.buttonDate);
@@ -78,7 +76,8 @@ public class NewReminderFragment extends Fragment {
         bCancel = (Button) view.findViewById(R.id.buttonCancelar);
         data = (TextView) view.findViewById(R.id.textData);
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
-        myRef = db.getReference("User");
+        //User u = ((UserHomeActivity)getActivity()).getCurrentUser();
+        myRef = db.getReference("Reminder");
 
         bDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +110,7 @@ public class NewReminderFragment extends Fragment {
 
                 }else {
                     rem = new Reminder(horaS, dataS, textS);
-
+                    //((ReminderActivity) getActivity()).adicionarLembrete(rem);
 
 
                     Map reminderValues = rem.toMap();
@@ -120,37 +119,31 @@ public class NewReminderFragment extends Fragment {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot ds: snapshot.getChildren()){
-
-                                if(ds.child("email").getValue().toString().equals(user_email)){
-                                    nomeF = ds.child("nome").getValue().toString();
-                                    emailF = ds.child("email").getValue().toString();
-                                    passwordF = ds.child("password").getValue().toString();
-                                    ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaLembretes");
-                                    a.add(rem.toMap());
-
-                                    HashMap result = new HashMap<>();
-                                    result.put("nome", nomeF);
-                                    result.put("email", emailF);
-                                    result.put("password", passwordF);
-                                    result.put("paciente", true);
-                                    result.put("fisioID", "");
-                                    result.put("listaNotas", ds.child("listaNotas").getValue());
-                                    result.put("listaLembretes", a);
-
-                                    mapUsers.put(user_email, result);
-                                }
-
-
+                                String s = ds.child("mensagem").getValue().toString();
+                                listTitulo.add(s);
                             }
+                            //mapNotes.put(titulo, noteValues);
+                            //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
+                            //myRef.updateChildren(mapNotes);
+                            if(listTitulo.contains(textS) && a){
+                                Toast.makeText(getContext(), "Ja existe um reminder com este titulo!", Toast.LENGTH_SHORT).show();
+                                te.setText("");
+                                data.setText("");
+                                hora.setText("");
+
+
+                            }else {
+
                                 if(a) {
                                     //myRef.child("User").child(email);
+                                    mapReminders.put(textS, reminderValues);
                                     Toast.makeText(getContext(), "Lembrete adicionado!", Toast.LENGTH_SHORT).show();
-                                    myRef.updateChildren(mapUsers);
+                                    myRef.updateChildren(mapReminders);
                                     goToMain(view);
                                     a = false;
 
                                 }
-
+                            }
 
                         }
 
@@ -181,7 +174,6 @@ public class NewReminderFragment extends Fragment {
 
     private void goToMain(View view) {
         Intent i = new Intent(getActivity(), UserHomeActivity.class);
-        i.putExtra("user_email", user_email+"");
         startActivity(i);
     }
 

@@ -26,8 +26,7 @@ public class UserHomeActivity extends AppCompatActivity {
     private DatabaseReference refReminders;
     private FirebaseDatabase db;
     private DatabaseReference myRef;
-    String user_email;
-
+    private User currentUser;
 
     // Fragmentos
     static UserHomeFragment userHomeFragment;
@@ -41,7 +40,7 @@ public class UserHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home);
-        user_email = getIntent().getStringExtra("user_email");
+
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         refNotas = db.getReference("Note");
         refReminders = db.getReference("Reminder");
@@ -228,8 +227,8 @@ public class UserHomeActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public String getCurrentUserEmail(){
-        return this.user_email;
+    public User getCurrentUser(){
+        return this.currentUser;
     }
 
 

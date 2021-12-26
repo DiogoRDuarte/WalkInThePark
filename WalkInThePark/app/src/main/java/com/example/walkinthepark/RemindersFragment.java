@@ -27,7 +27,6 @@ public class RemindersFragment extends Fragment {
     static AllRemindersFragment allRemindersFragment;
     static NewReminderFragment newReminderFragment;
     private ArrayList<Reminder> listaLembretes = new ArrayList<Reminder>();;
-    String user_email;
 
     private DatabaseReference refReminder;
     private FirebaseDatabase db;
@@ -38,7 +37,7 @@ public class RemindersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         remindersView = inflater.inflate(R.layout.fragment_reminders, container, false);
-        user_email =((UserHomeActivity)getActivity()).user_email;
+
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         refReminder = db.getReference("Reminder");
 
@@ -103,5 +102,13 @@ public class RemindersFragment extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.all_reminders, fragment);
         fragmentTransaction.commit();
+    }
+
+    public ArrayList<Reminder> getListaReminders(){
+        return listaLembretes;
+    }
+
+    public void adicionarLembrete(Reminder lem){
+        this.listaLembretes.add(lem);
     }
 }

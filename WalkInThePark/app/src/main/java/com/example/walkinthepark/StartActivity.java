@@ -55,6 +55,7 @@ public class StartActivity extends AppCompatActivity {
         RadioButton rb = findViewById(R.id.radio_paciente);
         RadioButton rb1 = findViewById(R.id.radio_fisio);
         CircularProgressButton button = findViewById(R.id.cirRegisterButton);
+
         ImageView iv = findViewById(R.id.witp);
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,8 +125,8 @@ public class StartActivity extends AppCompatActivity {
                                                 result.put("paciente", false);
                                                 result.put("fisioID", "");
                                                 result.put("listaPacientes", a);
-                                                result.put("listaNotas", ds.child("listaNotas").getValue());
-                                                result.put("listaLembretes", ds.child("listaLembretes").getValue());
+                                                /*result.put("listaNotas", new ArrayList<Note>());
+                                                result.put("listaLembretes", new ArrayList<Reminder>());*/
 
                                                 mapUsers.put(fisioID, result);
                                             }
@@ -167,21 +168,22 @@ public class StartActivity extends AppCompatActivity {
     public void goToLogin(View view) {
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
-        finish();
+        /*finish();*/
     }
 
     public void goToPatMain(View view) {
         Intent i = new Intent(this, UserHomeActivity.class);
-        i.putExtra("user_email", email+"");
+        i.putExtra("nome",nome);
+        //i.putExtra("user",);
         startActivity(i);
-        finish();
+        /*finish();*/
     }
 
     public void goToPhyMain(View view) {
         Intent i = new Intent(this, ProfHomeActivity.class);
-        i.putExtra("user_email",email+"");
+        i.putExtra("nome",nome);
         startActivity(i);
-        finish();
+        /*finish();*/
     }
 
 
