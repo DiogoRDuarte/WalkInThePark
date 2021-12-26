@@ -13,10 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NotesFragment extends Fragment {
 
@@ -24,9 +29,10 @@ public class NotesFragment extends Fragment {
 
     static AllNotesFragment allNotesFragment;
     static NewNoteFragment newNoteFragment;
-    private ArrayList<Note> listaNotas;
+    ArrayList<HashMap<String, String>> listaNotas = new ArrayList<>();;
+    String user_email;
 
-    private DatabaseReference refNotes;
+    private DatabaseReference myRef;
     private FirebaseDatabase db;
 
     Button button;
@@ -35,11 +41,9 @@ public class NotesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         notesView = inflater.inflate(R.layout.fragment_notes, container, false);
-
+        user_email =((UserHomeActivity)getActivity()).user_email;
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
-        refNotes = db.getReference("Note");
-
-        listaNotas = new ArrayList<Note>();
+        myRef = db.getReference("User");
 
         if(allNotesFragment == null) {
             allNotesFragment = new AllNotesFragment();
@@ -62,6 +66,22 @@ public class NotesFragment extends Fragment {
             default:
                 throw new IllegalStateException("Unexpected value: " + str);
         }
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()){
+                    if (ds.child("email").getValue().toString().equals(user_email)) {
+                        listaNotas = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         button = notesView.findViewById(R.id.button_notes);
         button.setOnClickListener(new View.OnClickListener() {
@@ -94,12 +114,5 @@ public class NotesFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
-    public ArrayList<Note> getListaNotas(){
-        return listaNotas;
-    }
-
-    public void adicionarNota(Note nota){
-        this.listaNotas.add(nota);
-    }
 
 }
