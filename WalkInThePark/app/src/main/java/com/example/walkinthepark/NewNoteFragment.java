@@ -28,7 +28,6 @@ import java.util.Map;
 
 public class NewNoteFragment extends Fragment {
 
-    private Map mapNotes = new HashMap<String, Note>();
     static View newNoteView;
     private TextView titulo;
     private TextView nota;
@@ -38,7 +37,12 @@ public class NewNoteFragment extends Fragment {
     private List<String> listTitulo = new ArrayList<String>();
     private String tituloS;
     private String notaS;
+    private Map mapUsers = new HashMap<String, User>();
     private boolean a = true;
+    String user_email;
+    private String nomeF;
+    private String emailF;
+    private String passwordF;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,11 +51,11 @@ public class NewNoteFragment extends Fragment {
         newNoteView = inflater.inflate(R.layout.fragment_new_note, container, false);
         Button cancelButton = newNoteView.findViewById(R.id.buttonCancelar);
         Button addButton = newNoteView.findViewById(R.id.buttonAdicionar);
-
+        user_email =((UserHomeActivity)getActivity()).user_email;
         titulo = (EditText) newNoteView.findViewById(R.id.tituloNota);
         nota = (EditText) newNoteView.findViewById(R.id.descricaoNota);
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
-        myRef = db.getReference("Note");
+        myRef = db.getReference("User");
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,37 +68,41 @@ public class NewNoteFragment extends Fragment {
 
                 }else {
                     note = new Note(tituloS, notaS);
-                    //((NotesActivity) getActivity()).adicionarNota(note);
+
                     Map noteValues = note.toMap();
 
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot ds: snapshot.getChildren()){
-                                String s = ds.child("titulo").getValue().toString();
-                                listTitulo.add(s);
-                            }
-                            //mapNotes.put(titulo, noteValues);
-                            //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
-                            //myRef.updateChildren(mapNotes);
-                            if(listTitulo.contains(titulo) && a){
-                                Toast.makeText(getContext(), "Ja existe uma nota com este titulo!", Toast.LENGTH_SHORT).show();
-                                titulo.setText("");
-                                nota.setText("");
+                                if(ds.child("email").getValue().toString().equals(user_email)){
+                                    nomeF = ds.child("nome").getValue().toString();
+                                    emailF = ds.child("email").getValue().toString();
+                                    passwordF = ds.child("password").getValue().toString();
+                                    ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
+                                    a.add(note.toMap());
 
+                                    HashMap result = new HashMap<>();
+                                    result.put("nome", nomeF);
+                                    result.put("email", emailF);
+                                    result.put("password", passwordF);
+                                    result.put("paciente", true);
+                                    result.put("fisioID", "");
+                                    result.put("listaNotas", a);
+                                    result.put("listaLembretes", ds.child("listaLembretes").getValue());
 
-                            }else {
-
-                                if(a) {
-                                    //myRef.child("User").child(email);
-                                    mapNotes.put(tituloS, noteValues);
-                                    Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
-                                    myRef.updateChildren(mapNotes);
-                                    goToMain(view);
-                                    a = false;
-
+                                    mapUsers.put(user_email, result);
                                 }
                             }
+
+                                if(a) {
+                                    Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
+                                    myRef.updateChildren(mapUsers);
+                                    a = false;
+
+                                    goToMain(view);
+                                }
+
 
                         }
 
