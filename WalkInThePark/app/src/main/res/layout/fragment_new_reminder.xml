@@ -73,22 +73,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonTime"
+        style="?attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hora"
+        android:textColor="#000000"
+        app:backgroundTint="#bddba4"
+        app:cornerRadius="15dp"
         app:layout_constraintBottom_toTopOf="@+id/textView23"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textHora"
         app:layout_constraintTop_toBottomOf="@+id/buttonDate" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonDate"
+        style="?attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Data"
+        android:textColor="#000000"
+        app:backgroundTint="#bddba4"
+        app:cornerRadius="15dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -107,15 +115,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonCancelar"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="@string/button_cancel"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:backgroundTint="#bddba4"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonAdd"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAdd"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buttonAdd" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonAdd"
-        android:layout_width="192dp"
-        android:layout_height="72dp"
-        android:text="Adicionar"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:text="@string/button_add"
+        android:textColor="#000000"
+        app:backgroundTint="#bddba4"
+        app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonCancelar"
         app:layout_constraintTop_toBottomOf="@+id/message" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

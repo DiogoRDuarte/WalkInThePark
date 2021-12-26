@@ -76,25 +76,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descricao" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonCancelar"
+        style="?attr/borderlessButtonStyle"
         android:layout_width="130dp"
         android:layout_height="60dp"
         android:gravity="center"
         android:text="@string/button_cancel"
         android:textAlignment="center"
+        android:textColor="#000000"
+        app:backgroundTint="#bddba4"
+        app:cornerRadius="15dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonAdicionar"
         app:layout_constraintEnd_toStartOf="@+id/buttonAdicionar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonAdicionar"
+        style="?attr/borderlessButtonStyle"
         android:layout_width="130dp"
         android:layout_height="60dp"
         android:gravity="center"
         android:text="@string/button_add"
         android:textAlignment="center"
+        android:textColor="#000000"
+        app:backgroundTint="#bddba4"
+        app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

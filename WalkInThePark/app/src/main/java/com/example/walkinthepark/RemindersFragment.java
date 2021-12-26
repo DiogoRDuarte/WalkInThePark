@@ -24,8 +24,8 @@ public class RemindersFragment extends Fragment {
 
     static View remindersView;
 
-    private static AllRemindersFragment allRemindersFragment;
-    private static NewReminderFragment newReminderFragment;
+    static AllRemindersFragment allRemindersFragment;
+    static NewReminderFragment newReminderFragment;
     private ArrayList<Reminder> listaLembretes = new ArrayList<Reminder>();;
 
     private DatabaseReference refReminder;
@@ -98,7 +98,7 @@ public class RemindersFragment extends Fragment {
     }
 
     public void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.all_reminders, fragment);
         fragmentTransaction.commit();

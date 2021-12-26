@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 public class NewNoteFragment extends Fragment {
+
     private Map mapNotes = new HashMap<String, Note>();
     static View newNoteView;
     private TextView titulo;
@@ -113,8 +114,8 @@ public class NewNoteFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getParentFragmentManager().beginTransaction().remove(NewNoteFragment.this).commit();
-                ((NotesActivity)getActivity()).button.setText("Adicionar Nota");
-                ((NotesActivity)getActivity()).replaceFragment(((NotesActivity)getActivity()).allNotesFragment);
+                ((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
+                ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);
             }
         });
 

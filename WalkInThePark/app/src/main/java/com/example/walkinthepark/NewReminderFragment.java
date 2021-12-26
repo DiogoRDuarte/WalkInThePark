@@ -38,9 +38,11 @@ import java.util.Map;
 
 
 public class NewReminderFragment extends Fragment {
+
     Button bDate;
     Button bTime;
     Button bAdd;
+    Button bCancel;
     TextView teste;
     EditText te;
     String time ="";
@@ -71,6 +73,7 @@ public class NewReminderFragment extends Fragment {
         bDate = (Button) view.findViewById(R.id.buttonDate);
         bTime = (Button) view.findViewById(R.id.buttonTime);
         bAdd = (Button) view.findViewById(R.id.buttonAdd);
+        bCancel = (Button) view.findViewById(R.id.buttonCancelar);
         data = (TextView) view.findViewById(R.id.textData);
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         //User u = ((UserHomeActivity)getActivity()).getCurrentUser();
@@ -154,6 +157,15 @@ public class NewReminderFragment extends Fragment {
                     //toast.show();
                 }
 
+            }
+        });
+
+        bCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager().beginTransaction().remove(NewReminderFragment.this).commit();
+                ((RemindersFragment)getParentFragment()).bAdd.setText("Adicionar");
+                ((RemindersFragment)getParentFragment()).replaceFragment(((RemindersFragment)getParentFragment()).allRemindersFragment);
             }
         });
 
