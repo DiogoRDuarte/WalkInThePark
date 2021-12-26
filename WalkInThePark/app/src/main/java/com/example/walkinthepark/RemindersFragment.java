@@ -19,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RemindersFragment extends Fragment {
 
@@ -26,10 +28,10 @@ public class RemindersFragment extends Fragment {
 
     static AllRemindersFragment allRemindersFragment;
     static NewReminderFragment newReminderFragment;
-    private ArrayList<Reminder> listaLembretes = new ArrayList<Reminder>();;
+    ArrayList<HashMap<String, String>> listaLembretes = new ArrayList<>();;
     String user_email;
 
-    private DatabaseReference refReminder;
+    private DatabaseReference myRef;
     private FirebaseDatabase db;
 
     Button bAdd;
@@ -40,7 +42,7 @@ public class RemindersFragment extends Fragment {
         remindersView = inflater.inflate(R.layout.fragment_reminders, container, false);
         user_email =((UserHomeActivity)getActivity()).user_email;
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
-        refReminder = db.getReference("Reminder");
+        myRef = db.getReference("User");
 
         if(newReminderFragment == null){
             newReminderFragment = new NewReminderFragment();
@@ -62,15 +64,13 @@ public class RemindersFragment extends Fragment {
             default:
                 throw new IllegalStateException("Unexpected value: " + str);
         }
-        refReminder.addValueEventListener(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds : snapshot.getChildren()){
-                    String s = ds.child("mensagem").getValue().toString();
-                    String hora = ds.child("hora").getValue().toString();
-                    String data = ds.child("data").getValue().toString();
-                    Reminder r = new Reminder(hora,data,s);
-                    listaLembretes.add(r);
+                    if (ds.child("email").getValue().toString().equals(user_email)) {
+                        listaLembretes = (ArrayList) ((Map) ds.getValue()).get("listaLembretes");
+                    }
                 }
             }
 
