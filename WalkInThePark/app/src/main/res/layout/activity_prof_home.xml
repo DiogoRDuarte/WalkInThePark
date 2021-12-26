@@ -51,7 +51,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_menu_header"
-        app:menu="@menu/navigation_menu_user"/>
+        app:menu="@menu/navigation_menu_fisio"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
 
