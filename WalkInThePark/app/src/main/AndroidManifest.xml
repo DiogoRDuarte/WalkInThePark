@@ -30,14 +30,6 @@
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AboutActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".SettingsActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".CalibrationActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
