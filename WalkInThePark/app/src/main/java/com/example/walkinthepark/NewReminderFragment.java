@@ -146,8 +146,11 @@ public class NewReminderFragment extends Fragment {
                                     //myRef.child("User").child(email);
                                     Toast.makeText(getContext(), "Lembrete adicionado!", Toast.LENGTH_SHORT).show();
                                     myRef.updateChildren(mapUsers);
-                                    goToMain(view);
                                     a = false;
+
+                                    //MUDAR ISTO PORQUE DA MERDA
+                                    goToMain(view);
+
 
                                 }
 
