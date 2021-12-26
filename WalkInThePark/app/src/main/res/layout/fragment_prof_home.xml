@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,13 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="4dp"
         android:backgroundTint="#8A8A8A"
         app:cardCornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/pacientes"
+        app:layout_constraintEnd_toEndOf="@+id/pacientes"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/pacientes"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
@@ -41,27 +40,27 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_alignParentLeft="true"
+                        android:clickable="true"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/help"
-                        android:clickable="true"/>
+                        app:srcCompat="@drawable/help" />
 
                     <ImageView
                         android:id="@+id/imagemVideo2"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_centerInParent="true"
+                        android:clickable="true"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/help"
-                        android:clickable="true"/>
+                        app:srcCompat="@drawable/help" />
 
                     <ImageView
                         android:id="@+id/imagemVideo3"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_alignParentRight="true"
+                        android:clickable="true"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/help"
-                        android:clickable="true"/>
+                        app:srcCompat="@drawable/help" />
 
                 </RelativeLayout>
 
@@ -133,9 +132,14 @@
         android:id="@+id/pacientes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
         android:backgroundTint="#8A8A8A"
         app:cardCornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/videos">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -175,9 +179,8 @@
                     </com.google.android.material.card.MaterialCardView>
 
 
-
-
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -221,18 +224,18 @@
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_centerInParent="true"
+                                    android:clickable="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help"
-                                    android:clickable="true"/>
+                                    app:srcCompat="@drawable/help" />
 
                                 <ImageView
                                     android:id="@+id/butao3"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_alignParentRight="true"
+                                    android:clickable="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help"
-                                    android:clickable="true"/>
+                                    app:srcCompat="@drawable/help" />
 
                             </RelativeLayout>
 
@@ -244,7 +247,6 @@
 
 
                 </RelativeLayout>
-
 
 
             </LinearLayout>
@@ -283,6 +285,7 @@
 
 
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -317,27 +320,27 @@
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_alignParentLeft="true"
+                                    android:clickable="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help"
-                                    android:clickable="true"/>
+                                    app:srcCompat="@drawable/help" />
 
                                 <ImageView
                                     android:id="@+id/butao22"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_centerInParent="true"
+                                    android:clickable="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help"
-                                    android:clickable="true"/>
+                                    app:srcCompat="@drawable/help" />
 
                                 <ImageView
                                     android:id="@+id/butao23"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_alignParentRight="true"
+                                    android:clickable="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help"
-                                    android:clickable="true"/>
+                                    app:srcCompat="@drawable/help" />
 
                             </RelativeLayout>
 
@@ -387,6 +390,7 @@
 
 
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -421,27 +425,27 @@
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_alignParentLeft="true"
+                                    android:clickable="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help"
-                                    android:clickable="true"/>
+                                    app:srcCompat="@drawable/help" />
 
                                 <ImageView
                                     android:id="@+id/butao32"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_centerInParent="true"
+                                    android:clickable="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help"
-                                    android:clickable="true"/>
+                                    app:srcCompat="@drawable/help" />
 
                                 <ImageView
                                     android:id="@+id/butao33"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_alignParentRight="true"
+                                    android:clickable="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help"
-                                    android:clickable="true"/>
+                                    app:srcCompat="@drawable/help" />
 
                             </RelativeLayout>
 
@@ -491,6 +495,7 @@
 
 
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -525,27 +530,27 @@
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_alignParentLeft="true"
+                                    android:clickable="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help"
-                                    android:clickable="true"/>
+                                    app:srcCompat="@drawable/help" />
 
                                 <ImageView
                                     android:id="@+id/butao42"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_centerInParent="true"
+                                    android:clickable="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help"
-                                    android:clickable="true"/>
+                                    app:srcCompat="@drawable/help" />
 
                                 <ImageView
                                     android:id="@+id/butao43"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_alignParentRight="true"
+                                    android:clickable="true"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/help"
-                                    android:clickable="true"/>
+                                    app:srcCompat="@drawable/help" />
 
                             </RelativeLayout>
 

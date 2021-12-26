@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
@@ -64,14 +65,18 @@ public class ProfHomeFragment extends Fragment {
 
                 if (pacientes != null && pacientes.size() > 1) {
 
-                    if (pacientes.get(1) != null)
-                        pc1.setText(pacientes.get(0).get("nome") + "");
-                    if (pacientes.get(2) != null)
-                        pc2.setText(pacientes.get(1).get("nome") + "");
+                    if (pacientes.get(1) != null){
+                        String pn = pacientes.get(1).get("nome") + "";
+                        /*Toast.makeText(getActivity().getApplicationContext(), pn, Toast.LENGTH_SHORT).show();*/
+                        pc1.setText(pn);
+                    }
+
+                    /*if (pacientes.get(2) != null)
+                        pc2.setText(pacientes.get(2).get("nome") + "");
                     if (pacientes.get(3) != null)
-                        pc3.setText(pacientes.get(2).get("nome") + "");
+                        pc3.setText(pacientes.get(3).get("nome") + "");
                     if (pacientes.get(4) != null)
-                        pc4.setText(pacientes.get(3).get("nome") + "");
+                        pc4.setText(pacientes.get(4).get("nome") + "");*/
 
                 }
 
