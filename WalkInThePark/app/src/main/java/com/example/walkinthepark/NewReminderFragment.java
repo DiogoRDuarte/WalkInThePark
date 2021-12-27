@@ -146,9 +146,9 @@ public class NewReminderFragment extends Fragment {
                                     myRef.updateChildren(mapUsers);
                                     a = false;
 
-                                    //MUDAR ISTO
-                                    goToMain(view);
-
+                                    /*//MUDAR ISTO
+                                    goToMain(view);*/
+                                    ((RemindersFragment)getParentFragment()).replaceFragment(((RemindersFragment)getParentFragment()).allRemindersFragment);
 
                                 }
 

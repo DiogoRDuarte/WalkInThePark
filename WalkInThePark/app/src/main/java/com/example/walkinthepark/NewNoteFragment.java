@@ -100,7 +100,8 @@ public class NewNoteFragment extends Fragment {
                                     myRef.updateChildren(mapUsers);
                                     a = false;
 
-                                    goToMain(view);
+                                    /*goToMain(view);*/
+                                    ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);
                                 }
 
 
