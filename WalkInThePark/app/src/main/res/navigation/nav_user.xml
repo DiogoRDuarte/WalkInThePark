@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_user"
+    app:startDestination="@id/menuAc">
+
+    <fragment
+        android:id="@+id/menuAc"
+        android:name="com.example.walkinthepark.UserHomeFragment"
+        android:label="Página Inicial"
+        tools:layout="@layout/fragment_user_home" >
+        <action
+            android:id="@+id/action_menuAc_to_notasAc"
+            app:destination="@id/notasAc"/>
+        <action
+            android:id="@+id/action_menuAc_to_lembretesAc"
+            app:destination="@id/lembretesAc"/>
+        <action
+            android:id="@+id/action_menuAc_to_humorAc"
+            app:destination="@id/humorAc"/>
+        <action
+            android:id="@+id/action_menuAc_to_videosAc"
+            app:destination="@id/videosAc" />
+        <action
+            android:id="@+id/action_menuAc_to_calibracaoAc"
+            app:destination="@id/calibracaoAc" />
+        <argument
+            android:name="fragment"
+            app:argType="string"/>
+    </fragment>
+    <fragment
+        android:id="@+id/ajudaAc"
+        android:name="com.example.walkinthepark.AboutFragment"
+        android:label="Sobre"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/calibracaoAc"
+        android:name="com.example.walkinthepark.CalibrationFragment"
+        android:label="Calibração"
+        tools:layout="@layout/fragment_calibration" />
+    <fragment
+        android:id="@+id/videosAc"
+        android:name="com.example.walkinthepark.ExerciseFragment"
+        android:label="Vídeos Exercícios"
+        tools:layout="@layout/fragment_exercise" />
+    <fragment
+        android:id="@+id/humorAc"
+        android:name="com.example.walkinthepark.MoodsFragment"
+        android:label="Humor"
+        tools:layout="@layout/fragment_moods">
+        <argument
+            android:name="fragment"
+            app:argType="string"
+            android:defaultValue="fragM"/>
+    </fragment>
+    <fragment
+        android:id="@+id/notasAc"
+        android:name="com.example.walkinthepark.NotesFragment"
+        android:label="Notas"
+        tools:layout="@layout/fragment_notes">
+        <argument
+            android:name="fragment"
+            app:argType="string"
+            android:defaultValue="fragNT"/>
+    </fragment>
+    <fragment
+        android:id="@+id/lembretesAc"
+        android:name="com.example.walkinthepark.RemindersFragment"
+        android:label="Lembretes"
+        tools:layout="@layout/fragment_reminders">
+        <argument
+            android:name="fragment"
+            app:argType="string"
+            android:defaultValue="frag1"/>
+    </fragment>
+    <fragment
+        android:id="@+id/definicoesAc"
+        android:name="com.example.walkinthepark.SettingsFragment"
+        android:label="Definições"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

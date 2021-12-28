@@ -53,18 +53,23 @@ public class NotesFragment extends Fragment {
             newNoteFragment = new NewNoteFragment();
         }
 
+        button = notesView.findViewById(R.id.button_notes);
         replaceFragment(allNotesFragment);
 
-        String str = getArguments().getString("fragment");
-        switch (str) {
-            case "fragN":
-                replaceFragment(newNoteFragment);
-                break;
-            case "fragNT":
-                replaceFragment(allNotesFragment);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + str);
+        if(getArguments().getString("fragment") != null) {
+            String str = getArguments().getString("fragment");
+            switch (str) {
+                case "fragN":
+                    button.setText("Ver Notas");
+                    replaceFragment(newNoteFragment);
+                    break;
+                case "fragNT":
+                    button.setText("Adicionar Nota");
+                    replaceFragment(allNotesFragment);
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + str);
+            }
         }
 
         myRef.addValueEventListener(new ValueEventListener() {
@@ -83,7 +88,6 @@ public class NotesFragment extends Fragment {
             }
         });
 
-        button = notesView.findViewById(R.id.button_notes);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,6 +115,7 @@ public class NotesFragment extends Fragment {
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container_notes, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 

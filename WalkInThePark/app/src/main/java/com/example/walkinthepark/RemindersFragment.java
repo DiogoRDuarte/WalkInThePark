@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -51,19 +52,25 @@ public class RemindersFragment extends Fragment {
             allRemindersFragment = new AllRemindersFragment();
         }
 
+        bAdd = remindersView.findViewById(R.id.button_add);
         replaceFragment(allRemindersFragment);
 
-        String str = getArguments().getString("fragment");
-        switch (str) {
-            case "frag1":
-                replaceFragment(allRemindersFragment);
-                break;
-            case "frag2":
-                replaceFragment(newReminderFragment);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + str);
+        if (getArguments().getString("fragment") != null) {
+            String str = getArguments().getString("fragment");
+            switch (str) {
+                case "frag1":
+                    bAdd.setText("Adicionar");
+                    replaceFragment(allRemindersFragment);
+                    break;
+                case "frag2":
+                    bAdd.setText("Ver Lembretes");
+                    replaceFragment(newReminderFragment);
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + str);
+            }
         }
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -79,7 +86,7 @@ public class RemindersFragment extends Fragment {
 
             }
         });
-        bAdd = remindersView.findViewById(R.id.button_add);
+
         bAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,6 +109,7 @@ public class RemindersFragment extends Fragment {
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.all_reminders, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 }

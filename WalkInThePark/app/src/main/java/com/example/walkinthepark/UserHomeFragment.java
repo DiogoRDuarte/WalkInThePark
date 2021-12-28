@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -99,8 +100,9 @@ public class UserHomeFragment extends Fragment {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("fragment", "frag1");
-                ((UserHomeActivity) getActivity()).remindersFragment.setArguments(bundle);
-                ((UserHomeActivity) getActivity()).replaceFragment(((UserHomeActivity) getActivity()).remindersFragment);
+                /*((UserHomeActivity) getActivity()).remindersFragment.setArguments(bundle);*/
+                Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_lembretesAc, bundle);
+                /*((UserHomeActivity) getActivity()).replaceFragment(((UserHomeActivity) getActivity()).remindersFragment);*/
             }
         });
 
@@ -109,8 +111,9 @@ public class UserHomeFragment extends Fragment {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("fragment", "frag2");
-                ((UserHomeActivity) getActivity()).remindersFragment.setArguments(bundle);
-                ((UserHomeActivity) getActivity()).replaceFragment(((UserHomeActivity) getActivity()).remindersFragment);
+                /*((UserHomeActivity) getActivity()).remindersFragment.setArguments(bundle);*/
+                Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_lembretesAc, bundle);
+                /*((UserHomeActivity) getActivity()).replaceFragment(((UserHomeActivity) getActivity()).remindersFragment);*/
             }
         });
 
@@ -119,15 +122,16 @@ public class UserHomeFragment extends Fragment {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("fragment", "fragN");
-                ((UserHomeActivity) getActivity()).notesFragment.setArguments(bundle);
-                ((UserHomeActivity) getActivity()).replaceFragment(((UserHomeActivity) getActivity()).notesFragment);
+                /*((UserHomeActivity) getActivity()).notesFragment.setArguments(bundle);*/
+                Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
+                /*((UserHomeActivity) getActivity()).replaceFragment(((UserHomeActivity) getActivity()).notesFragment);*/
             }
         });
 
         calibrarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_calibracaoAc);
             }
         });
 
@@ -149,7 +153,7 @@ public class UserHomeFragment extends Fragment {
         videoCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_videosAc);
             }
         });
 

@@ -7,6 +7,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,6 +41,7 @@ public class UserHomeActivity extends AppCompatActivity {
     static CalibrationFragment calibrationFragment;
     static SettingsFragment settingsFragment;
     static AboutFragment aboutFragment;
+    NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +80,7 @@ public class UserHomeActivity extends AppCompatActivity {
             aboutFragment = new AboutFragment();
         }
 
-        replaceFragment(userHomeFragment);
+        /*replaceFragment(userHomeFragment);*/
 
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
         findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
@@ -87,7 +91,7 @@ public class UserHomeActivity extends AppCompatActivity {
         });
 
         NavigationView navigationView = findViewById(R.id.navigationMenuUser);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Bundle bundle;
@@ -130,16 +134,20 @@ public class UserHomeActivity extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
-        });
+        });*/
+
+        navController = Navigation.findNavController(this, R.id.navHostFragmet);
+        NavigationUI.setupWithNavController(navigationView, navController);
 
     }
 
-    public void replaceFragment(Fragment fragment) {
+    /*public void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container_user, fragment);
+        *//*fragmentTransaction.addToBackStack(null);*//*
         fragmentTransaction.commit();
-    }
+    }*/
 
     public String getCurrentUserEmail(){
         return this.user_email;
