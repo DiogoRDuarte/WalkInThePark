@@ -388,30 +388,80 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/neutro"
+                android:layout_width="35"
+                android:layout_height="45"
+                android:src="@drawable/neutro"
+                app:layout_constraintEnd_toStartOf="@+id/feliz"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/chateado" />
+
+            <ImageView
+                android:id="@+id/chateado"
+                android:layout_width="35"
+                android:layout_height="45"
+                android:src="@drawable/chateado"
+                app:layout_constraintEnd_toStartOf="@+id/neutro"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/magoado" />
+
+            <ImageView
+                android:id="@+id/feliz"
+                android:layout_width="35"
+                android:layout_height="45"
+                android:src="@drawable/feliz"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageView
+                android:id="@+id/triste"
+                android:layout_width="35dp"
+                android:layout_height="45dp"
+                android:src="@drawable/triste"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/magoado"
+                android:layout_width="35"
+                android:layout_height="45"
+                android:src="@drawable/magoado"
+                app:layout_constraintEnd_toStartOf="@+id/chateado"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/triste" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
         <com.warkiz.widget.IndicatorSeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isb_max="5"
-            app:isb_min="1"
-            app:isb_progress="25"
-            app:isb_ticks_count="5"
-            app:isb_show_tick_marks_type="oval"
-            app:isb_tick_marks_color="#FFFFFF"
-            app:isb_tick_marks_size="13dp"
-            app:isb_track_progress_color="#FFFFFF"
-            app:isb_show_tick_texts="true"
-            app:isb_tick_texts_size="15sp"
-            app:isb_tick_texts_color="#000000"
-            app:isb_thumb_color="#000000"
-            app:isb_thumb_size="20dp"
-            app:isb_show_indicator="rounded_rectangle"
             app:isb_indicator_color="#000000"
             app:isb_indicator_text_color="#000000"
             app:isb_indicator_text_size="18sp"
-            app:isb_track_background_color="#000000"
+            app:isb_max="5"
+            app:isb_min="1"
+            app:isb_only_thumb_draggable="false"
+            app:isb_progress="25"
+            app:isb_show_indicator="rounded_rectangle"
+            app:isb_show_tick_marks_type="oval"
+            app:isb_show_tick_texts="true"
+            app:isb_thumb_color="#000000"
+            app:isb_thumb_size="20dp"
+            app:isb_tick_marks_color="#FFFFFF"
+            app:isb_tick_marks_size="13dp"
+            app:isb_tick_texts_color="#FFFFFF"
+            app:isb_tick_texts_size="15sp"
+            app:isb_ticks_count="5"
+            app:isb_track_background_color="#FFFFFF"
             app:isb_track_background_size="2dp"
-            app:isb_track_progress_size="4dp"
-            app:isb_only_thumb_draggable="false"/>
+            app:isb_track_progress_color="#FFFFFF"
+            app:isb_track_progress_size="4dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/verMood"
