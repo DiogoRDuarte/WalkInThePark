@@ -463,31 +463,44 @@
             app:isb_track_progress_color="#80FFFFFF"
             app:isb_track_progress_size="4dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/verMood"
-            style="?attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="45dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="4dp"
-            android:text="Ver mood"
-            android:textColor="#000000"
-            app:backgroundTint="#C4C4C4" />
+            android:orientation="horizontal"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:weightSum="2"
+            android:layout_gravity="bottom">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/submeterMoods"
-            style="?attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
-            android:layout_marginTop="45dp"
-            android:layout_marginEnd="13dp"
-            android:layout_marginBottom="4dp"
-            android:text="Submeter"
-            android:textColor="#000000"
-            app:backgroundTint="#C4C4C4" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/verMood"
+                style="?attr/borderlessButtonStyle"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="Ver mood"
+                android:textColor="#2B2C2C"
+                app:backgroundTint="#E8E8E8"
+                app:contentPadding="8dp"
+                app:cornerRadius="15dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submeterMoods"
+                style="?attr/borderlessButtonStyle"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="Submeter"
+                android:textColor="#2B2C2C"
+                app:backgroundTint="#E8E8E8"
+                app:contentPadding="8dp"
+                app:cornerRadius="15dp"/>
+
+        </LinearLayout>
 
 
     </com.google.android.material.card.MaterialCardView>
