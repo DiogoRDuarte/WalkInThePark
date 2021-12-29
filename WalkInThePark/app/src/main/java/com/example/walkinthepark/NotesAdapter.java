@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,12 +21,14 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
         public TextView tituloTextView;
         public TextView mensagemTextView;
+        public ImageButton deleteButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             tituloTextView = (TextView) itemView.findViewById(R.id.txtTitulo);
             mensagemTextView = (TextView) itemView.findViewById(R.id.txtMensagem);
+            deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
         }
     }
 

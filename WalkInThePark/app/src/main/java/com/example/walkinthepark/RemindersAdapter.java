@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
         public TextView dataTextView;
         public TextView horaTextView;
         public TextView mensagemTextView;
+        public ImageButton deleteButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -29,6 +31,7 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
             dataTextView = (TextView) itemView.findViewById(R.id.txtDate);
             horaTextView = (TextView) itemView.findViewById(R.id.txtTime);
             mensagemTextView = (TextView) itemView.findViewById(R.id.txtTitle);
+            deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
         }
     }
 
