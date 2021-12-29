@@ -55,9 +55,7 @@ public class UserHomeActivity extends AppCompatActivity {
         Map m = new HashMap<String,Map>();
 
         // Inicializar fragmentos
-        if(userHomeFragment == null) {
-            userHomeFragment = new UserHomeFragment();
-        }
+
         if(notesFragment == null) {
             notesFragment = new NotesFragment();
         }
@@ -78,6 +76,12 @@ public class UserHomeActivity extends AppCompatActivity {
         }
         if(aboutFragment == null) {
             aboutFragment = new AboutFragment();
+        }
+        if(userHomeFragment == null) {
+            Bundle bundle = new Bundle();
+            bundle.putString("email", user_email);
+            userHomeFragment = new UserHomeFragment();
+            userHomeFragment.setArguments(bundle);
         }
 
         /*replaceFragment(userHomeFragment);*/

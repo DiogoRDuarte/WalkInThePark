@@ -46,6 +46,7 @@ public class UserHomeFragment extends Fragment {
 
         userView = inflater.inflate(R.layout.fragment_user_home, container, false);
 
+
         MaterialButton verLembsButton = userView.findViewById(R.id.verLembretes);
         MaterialButton criarLembButton = userView.findViewById(R.id.adicionarLembrete);
         MaterialButton criarNotaButton = userView.findViewById(R.id.adicionarNota);
@@ -62,22 +63,21 @@ public class UserHomeFragment extends Fragment {
         refReminders = db.getReference("Reminder");
         myRef = db.getReference("User");
         Map m = new HashMap<String,Map>();
-        user_email =((UserHomeActivity)getActivity()).user_email;
+
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds : snapshot.getChildren()){
+                    user_email =((UserHomeActivity)getActivity()).user_email;
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaNotas = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
                         notasCurrent = new ArrayList<>();
                         for (int i = 1; i < listaNotas.size(); i++) {
                             notasCurrent.add(listaNotas.get(i));
                         }
-
                         // NOTAS
                         NotesUserAdapter notesUserAdapter = new NotesUserAdapter(notasCurrent);
-
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                         layoutManager.setOrientation(RecyclerView.VERTICAL);
                         rvNotesUser.setLayoutManager(layoutManager);
