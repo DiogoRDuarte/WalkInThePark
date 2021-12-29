@@ -173,6 +173,7 @@ public class StartActivity extends AppCompatActivity {
     public void goToPatMain(View view) {
         Intent i = new Intent(this, UserHomeActivity.class);
         i.putExtra("user_email", email+"");
+        i.putExtra("user_email", nome+"");
         startActivity(i);
         finish();
     }
@@ -180,6 +181,7 @@ public class StartActivity extends AppCompatActivity {
     public void goToPhyMain(View view) {
         Intent i = new Intent(this, ProfHomeActivity.class);
         i.putExtra("user_email",email+"");
+        i.putExtra("user_name", nome+"");
         startActivity(i);
         finish();
     }

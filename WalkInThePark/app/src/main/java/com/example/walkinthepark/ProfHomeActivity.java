@@ -36,8 +36,9 @@ public class ProfHomeActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private FirebaseDatabase db;
     private  ArrayList<Map> pacientes;
-    String prof_email;
 
+    String prof_email;
+    String prof_name;
     // Fragmentos
     static ProfHomeFragment profHomeFragment;
     static CalibrationFragment calibrationFragment;
@@ -50,11 +51,13 @@ public class ProfHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof_home);
 
-        prof_email = getIntent().getStringExtra("user_email");
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
         Map m = new HashMap<String,Map>();
         List<HashMap<String, User>> list = new ArrayList<>();
+
+        prof_email = getIntent().getStringExtra("user_email");
+        prof_name = getIntent().getStringExtra("user_name");
 
         // Inicializar fragmentos
         if(profHomeFragment == null) {

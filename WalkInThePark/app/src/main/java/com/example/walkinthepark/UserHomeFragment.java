@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
@@ -34,8 +35,9 @@ public class UserHomeFragment extends Fragment {
     private DatabaseReference refNotas;
     private DatabaseReference refReminders;
     private DatabaseReference myRef;
-    Context context = getContext();
-    String user_email;
+    private String user_name;
+    private Context context = getContext();
+    private String user_email;
     // Notas
     ArrayList<HashMap<String, String>> listaNotas;
     private ArrayList<HashMap<String, String>> notasCurrent;
@@ -70,6 +72,8 @@ public class UserHomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds : snapshot.getChildren()){
                     user_email =((UserHomeActivity)getActivity()).user_email;
+                    user_name =((UserHomeActivity)getActivity()).user_name;
+
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaNotas = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
                         notasCurrent = new ArrayList<>();

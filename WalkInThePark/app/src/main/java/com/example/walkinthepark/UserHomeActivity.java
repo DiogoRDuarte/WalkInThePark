@@ -15,10 +15,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,7 +34,8 @@ public class UserHomeActivity extends AppCompatActivity {
     private FirebaseDatabase db;
     private DatabaseReference myRef;
     String user_email;
-
+    String user_name;
+    boolean paciente = true;
 
     // Fragmentos
     static UserHomeFragment userHomeFragment;
@@ -48,6 +53,8 @@ public class UserHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home);
         user_email = getIntent().getStringExtra("user_email");
+        user_name = getIntent().getStringExtra("user_name");
+
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         refNotas = db.getReference("Note");
         refReminders = db.getReference("Reminder");
@@ -78,10 +85,7 @@ public class UserHomeActivity extends AppCompatActivity {
             aboutFragment = new AboutFragment();
         }
         if(userHomeFragment == null) {
-            Bundle bundle = new Bundle();
-            bundle.putString("email", user_email);
             userHomeFragment = new UserHomeFragment();
-            userHomeFragment.setArguments(bundle);
         }
 
         /*replaceFragment(userHomeFragment);*/
@@ -95,6 +99,20 @@ public class UserHomeActivity extends AppCompatActivity {
         });
 
         NavigationView navigationView = findViewById(R.id.navigationMenuUser);
+
+        //da Null
+        TextView nomeText = navigationView.findViewById(R.id.textView30);
+        TextView pacineteText = navigationView.findViewById(R.id.textView30);
+        
+        //Da erro
+        //nomeText.setText(user_name);
+        //pacineteText.setText("Paciente");
+
+
+
+
+
+
         /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
