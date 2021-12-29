@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_user"
-    app:startDestination="@id/menuAc">
+    app:startDestination="@id/menuPAc">
 
     <fragment
-        android:id="@+id/menuAc"
+        android:id="@+id/menuPAc"
         android:name="com.example.walkinthepark.UserHomeFragment"
         android:label="Página Inicial"
         tools:layout="@layout/fragment_user_home" >
@@ -21,7 +21,7 @@
             app:destination="@id/humorAc"/>
         <action
             android:id="@+id/action_menuAc_to_videosAc"
-            app:destination="@id/videosAc" />
+            app:destination="@id/videosPAc" />
         <action
             android:id="@+id/action_menuAc_to_calibracaoAc"
             app:destination="@id/calibracaoAc" />
@@ -40,7 +40,7 @@
         android:label="Calibração"
         tools:layout="@layout/fragment_calibration" />
     <fragment
-        android:id="@+id/videosAc"
+        android:id="@+id/videosPAc"
         android:name="com.example.walkinthepark.ExerciseFragment"
         android:label="Vídeos Exercícios"
         tools:layout="@layout/fragment_exercise" />

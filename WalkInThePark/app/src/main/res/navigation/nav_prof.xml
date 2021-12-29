@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_prof"
+    app:startDestination="@id/menuPAc">
+
+    <fragment
+        android:id="@+id/menuPAc"
+        android:name="com.example.walkinthepark.ProfHomeFragment"
+        android:label="Página Inicial"
+        tools:layout="@layout/fragment_prof_home" />
+    <fragment
+        android:id="@+id/ajudaAc"
+        android:name="com.example.walkinthepark.AboutFragment"
+        android:label="Sobre"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/calibracaoAc"
+        android:name="com.example.walkinthepark.CalibrationFragment"
+        android:label="Calibração"
+        tools:layout="@layout/fragment_calibration" />
+    <fragment
+        android:id="@+id/definicoesAc"
+        android:name="com.example.walkinthepark.SettingsFragment"
+        android:label="Definições"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/pacientesAc"
+        android:name="com.example.walkinthepark.PatientsFragment"
+        android:label="fragment_patients"
+        tools:layout="@layout/fragment_patients" />
+    <fragment
+        android:id="@+id/videosPAc"
+        android:name="com.example.walkinthepark.ExerciseProfFragment"
+        android:label="fragment_exercise_prof"
+        tools:layout="@layout/fragment_exercise_prof" />
+</navigation>
