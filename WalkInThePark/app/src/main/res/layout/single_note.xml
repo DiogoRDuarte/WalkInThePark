@@ -49,9 +49,9 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#8A8A8A"
+            android:backgroundTint="#E8E8E8"
             android:scaleType="fitCenter"
-            android:src="@drawable/pencil" />
+            android:src="@drawable/ic_delete" />
 
     </LinearLayout>
 
