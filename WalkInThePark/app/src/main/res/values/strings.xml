@@ -18,5 +18,5 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="string_new_reminder">Adicione um Lembrete!</string>
-    <string name="button_ac_exercises">Adicionar Vídeo</string>
+    <string name="button_ac_exercises">Gravar Vídeo</string>
 </resources>
