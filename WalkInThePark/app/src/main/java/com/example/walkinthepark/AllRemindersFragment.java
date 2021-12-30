@@ -1,5 +1,6 @@
 package com.example.walkinthepark;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -31,7 +32,7 @@ public class AllRemindersFragment extends Fragment {
     String user_email;
 
     private ArrayList<HashMap<String, String>> lembretesCurrent;
-
+    private Context context = this.getContext();
     private View view;
 
     @Override
@@ -40,25 +41,42 @@ public class AllRemindersFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_all_reminders, container, false);
 
-        listaLembretes =  ((RemindersFragment)getParentFragment()).listaLembretes;
-        lembretesCurrent = new ArrayList<>();
-
-        RecyclerView rvReminders = (RecyclerView) view.findViewById(R.id.rvReminders);
-
-        user_email =((UserHomeActivity)getActivity()).user_email;
 
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                listaLembretes =  ((RemindersFragment)getParentFragment()).listaLembretes;
+                lembretesCurrent = new ArrayList<>();
+
+                RecyclerView rvReminders = (RecyclerView) view.findViewById(R.id.rvReminders);
+
+                user_email =((UserHomeActivity)getActivity()).user_email;
+
+
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaLembretes = (ArrayList) ((Map) ds.getValue()).get("listaLembretes");
 
                     }
                 }
+
+                for (int i = 1; i < listaLembretes.size(); i++) {
+                    lembretesCurrent.add(listaLembretes.get(i));
+                }
+
+                RemindersAdapter remindersAdapter = new RemindersAdapter(lembretesCurrent);
+
+                LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+                layoutManager.setOrientation(RecyclerView.VERTICAL);
+                rvReminders.setLayoutManager(layoutManager);
+
+                rvReminders.setAdapter(remindersAdapter);
             }
+
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -66,17 +84,6 @@ public class AllRemindersFragment extends Fragment {
             }
         });
 
-        for (int i = 1; i < listaLembretes.size(); i++) {
-            lembretesCurrent.add(listaLembretes.get(i));
-        }
-
-        RemindersAdapter remindersAdapter = new RemindersAdapter(lembretesCurrent);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
-        layoutManager.setOrientation(RecyclerView.VERTICAL);
-        rvReminders.setLayoutManager(layoutManager);
-
-        rvReminders.setAdapter(remindersAdapter);
 
         return  view;
     }
