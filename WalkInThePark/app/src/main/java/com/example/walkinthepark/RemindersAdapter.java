@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +33,7 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
             horaTextView = (TextView) itemView.findViewById(R.id.txtTime);
             mensagemTextView = (TextView) itemView.findViewById(R.id.txtTitle);
             deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
+
         }
     }
 
@@ -58,7 +60,18 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
         textViewHora.setText(reminder.get("hora"));
         TextView textViewMensagem = holder.mensagemTextView;
         textViewMensagem.setText(reminder.get("mensagem"));
+        ImageButton imageButton = holder.deleteButton;
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mReminders.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, mReminders.size());
+                holder.itemView.setVisibility(View.GONE);
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -53,6 +54,17 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
         textViewTitulo.setText(note.get("titulo"));
         TextView textViewMensagem = holder.mensagemTextView;
         textViewMensagem.setText(note.get("mensagem"));
+        ImageButton delButton = holder.deleteButton;
+        delButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //HashMap<String, String> rem = mNotes.get(holder.getAdapterPosition());
+                mNotes.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, mNotes.size());
+                holder.itemView.setVisibility(View.GONE);
+            }
+        });
     }
 
     @Override
