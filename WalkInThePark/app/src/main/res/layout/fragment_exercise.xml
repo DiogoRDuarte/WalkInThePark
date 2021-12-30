@@ -7,12 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".ExerciseFragment">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_container_exercises"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvExercises"
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
+        android:padding="8dp"
         app:layout_constraintBottom_toTopOf="@+id/button_exercises"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +31,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_container_exercises" />
+        app:layout_constraintTop_toBottomOf="@+id/rvExercises" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
