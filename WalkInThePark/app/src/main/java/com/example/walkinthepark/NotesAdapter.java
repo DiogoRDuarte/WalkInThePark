@@ -98,7 +98,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
                                 ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
                                 //a.add(put("",""));
-                                a.remove(position);
+                                a.remove(position2);
 
                                 HashMap result = new HashMap<>();
                                 result.put("nome", nomeF);
