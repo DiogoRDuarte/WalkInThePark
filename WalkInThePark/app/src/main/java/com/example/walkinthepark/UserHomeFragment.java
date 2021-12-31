@@ -69,7 +69,7 @@ public class UserHomeFragment extends Fragment {
         MaterialButton editar2Button = userView.findViewById(R.id.editar2);
         MaterialButton submeterMood = userView.findViewById(R.id.submeterMoods);
         MaterialCardView videoCard = userView.findViewById(R.id.video);
-
+        MaterialButton verMood = userView.findViewById(R.id.verMood);
         IndicatorSeekBar barraMood = userView.findViewById(R.id.barraMood);
         RecyclerView rvNotesUser = (RecyclerView) userView.findViewById(R.id.rvNotesUser);
 
@@ -220,6 +220,13 @@ public class UserHomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_videosAc);
+            }
+        });
+
+        verMood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_humorAc);
             }
         });
 

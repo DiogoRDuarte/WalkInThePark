@@ -75,7 +75,7 @@ public class NewNoteFragment extends Fragment {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot ds: snapshot.getChildren()){
-                                if(ds.child("email").getValue().toString().equals(user_email)){
+                                if(ds.child("email").getValue().equals(user_email)){
                                     nomeF = ds.child("nome").getValue().toString();
                                     emailF = ds.child("email").getValue().toString();
                                     passwordF = ds.child("password").getValue().toString();
