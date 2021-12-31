@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,10 +27,18 @@ import java.util.Map;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
 
+    private final Context cont;
+    private String s;
     private ArrayList<HashMap<String, String>> mNotes;
     private int position;
     private FirebaseDatabase db;
     private DatabaseReference myRef;
+    private String nomeF;
+    private String emailF;
+    private String passwordF;
+    private boolean a = true;
+    private Map mapUsers = new HashMap<String, User>();
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView tituloTextView;
@@ -44,8 +54,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
         }
     }
 
-    public NotesAdapter(ArrayList<HashMap<String, String>> notes){
+    public NotesAdapter(ArrayList<HashMap<String, String>> notes, Context c){
         mNotes = notes;
+        cont = c;
+        if(c instanceof UserHomeActivity){
+            s = ((UserHomeActivity) c).getCurrentUserEmail();
+        }
     }
 
 
@@ -77,10 +91,39 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot ds : snapshot.getChildren()){
-                            ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
-                            //a.remove(position);
-                            a.size();
+                            if(s.equals(ds.child("email").getValue().toString())){
+                                nomeF = ds.child("nome").getValue().toString();
+                                emailF = ds.child("email").getValue().toString();
+                                passwordF = ds.child("password").getValue().toString();
+
+                                ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
+                                //a.add(put("",""));
+                                a.remove(position);
+
+                                HashMap result = new HashMap<>();
+                                result.put("nome", nomeF);
+                                result.put("email", emailF);
+                                result.put("password", passwordF);
+                                result.put("paciente", true);
+                                result.put("fisioID", ds.child("fisioID").getValue());
+                                result.put("listaNotas", a);
+                                result.put("listaLembretes", ds.child("listaLembretes").getValue());
+                                result.put("listaMoods", ds.child("listaMoods").getValue());
+
+                                mapUsers.put(s, result);
+                            }
                         }
+                        if(a) {
+                            //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
+                            myRef.updateChildren(mapUsers);
+                            a = false;
+
+                            /*goToMain(view);*/
+                            /*((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
+                            ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);*/
+                        }
+
+
                     }
 
                     @Override

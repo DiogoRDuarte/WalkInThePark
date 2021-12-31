@@ -60,7 +60,7 @@ public class AllNotesFragment extends Fragment {
                     notasCurrent.add(listaNotas.get(i));
                 }
 
-                NotesAdapter notesAdapter = new NotesAdapter(notasCurrent);
+                NotesAdapter notesAdapter = new NotesAdapter(notasCurrent,getContext());
 
                 LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                 layoutManager.setOrientation(RecyclerView.VERTICAL);
