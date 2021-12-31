@@ -47,10 +47,8 @@ public class AllNotesFragment extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listaNotas =  ((NotesFragment)getParentFragment()).listaNotas;
                 notasCurrent = new ArrayList<>();
                 user_email =((UserHomeActivity)getActivity()).user_email;
-
                 for(DataSnapshot ds : snapshot.getChildren()){
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaNotas = (ArrayList) ((Map) ds.getValue()).get("listaNotas");

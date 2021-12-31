@@ -18,6 +18,7 @@ import java.util.List;
 public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.ViewHolder> {
 
     private ArrayList<HashMap<String, String>> mReminders;
+    private int position;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -53,7 +54,8 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
 
     @Override
     public void onBindViewHolder(RemindersAdapter.ViewHolder holder, int position) {
-        HashMap<String, String> reminder = mReminders.get(position);
+        int position2 = position;
+        HashMap<String, String> reminder = mReminders.get(position2);
         TextView textViewData = holder.dataTextView;
         textViewData.setText(reminder.get("data"));
         TextView textViewHora = holder.horaTextView;
@@ -64,9 +66,9 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mReminders.remove(position);
-                notifyItemRemoved(position);
-                notifyItemRangeChanged(position, mReminders.size());
+                mReminders.remove(position2);
+                notifyItemRemoved(position2);
+                notifyItemRangeChanged(position2, mReminders.size());
                 holder.itemView.setVisibility(View.GONE);
             }
         });

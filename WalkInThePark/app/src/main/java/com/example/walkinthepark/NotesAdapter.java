@@ -17,6 +17,7 @@ import java.util.List;
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
 
     private ArrayList<HashMap<String, String>> mNotes;
+    private int position;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -49,7 +50,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(NotesAdapter.ViewHolder holder, int position) {
-        HashMap<String, String> note = mNotes.get(position);
+        int position2 = position;
+        HashMap<String, String> note = mNotes.get(position2);
         TextView textViewTitulo = holder.tituloTextView;
         textViewTitulo.setText(note.get("titulo"));
         TextView textViewMensagem = holder.mensagemTextView;
@@ -59,9 +61,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
             @Override
             public void onClick(View view) {
                 //HashMap<String, String> rem = mNotes.get(holder.getAdapterPosition());
-                mNotes.remove(position);
-                notifyItemRemoved(position);
-                notifyItemRangeChanged(position, mNotes.size());
+                mNotes.remove(position2);
+                notifyItemRemoved(position2);
+                notifyItemRangeChanged(position2, mNotes.size());
                 holder.itemView.setVisibility(View.GONE);
             }
         });

@@ -87,9 +87,10 @@ public class NewNoteFragment extends Fragment {
                                     result.put("email", emailF);
                                     result.put("password", passwordF);
                                     result.put("paciente", true);
-                                    result.put("fisioID", "");
+                                    result.put("fisioID", ds.child("fisioID").getValue());
                                     result.put("listaNotas", a);
                                     result.put("listaLembretes", ds.child("listaLembretes").getValue());
+                                    result.put("listaMoods", ds.child("listaMoods").getValue());
 
                                     mapUsers.put(user_email, result);
                                 }

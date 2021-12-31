@@ -126,6 +126,7 @@ public class StartActivity extends AppCompatActivity {
                                                 result.put("listaPacientes", a);
                                                 result.put("listaNotas", ds.child("listaNotas").getValue());
                                                 result.put("listaLembretes", ds.child("listaLembretes").getValue());
+                                                result.put("listaMoods", ds.child("listaMoods").getValue());
 
                                                 mapUsers.put(fisioID, result);
                                             }

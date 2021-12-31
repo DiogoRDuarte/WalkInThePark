@@ -47,15 +47,10 @@ public class AllRemindersFragment extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                listaLembretes =  ((RemindersFragment)getParentFragment()).listaLembretes;
                 lembretesCurrent = new ArrayList<>();
-
                 RecyclerView rvReminders = (RecyclerView) view.findViewById(R.id.rvReminders);
-
                 user_email =((UserHomeActivity)getActivity()).user_email;
-
-
+                
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaLembretes = (ArrayList) ((Map) ds.getValue()).get("listaLembretes");

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
@@ -22,8 +23,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.warkiz.widget.IndicatorSeekBar;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,7 +43,13 @@ public class UserHomeFragment extends Fragment {
     private DatabaseReference myRef;
     private String user_name;
     private Context context = getContext();
+    private Map mapUsers = new HashMap<String, User>();
     private String user_email;
+    private String nomeF;
+    private String emailF;
+    private String passwordF;
+    private boolean flag = true;
+    private int nMoods;
     // Notas
     ArrayList<HashMap<String, String>> listaNotas;
     private ArrayList<HashMap<String, String>> notasCurrent;
@@ -55,9 +67,10 @@ public class UserHomeFragment extends Fragment {
         MaterialButton calibrarButton = userView.findViewById(R.id.calibrar);
         MaterialButton editar1Button = userView.findViewById(R.id.editar1);
         MaterialButton editar2Button = userView.findViewById(R.id.editar2);
-
+        MaterialButton submeterMood = userView.findViewById(R.id.submeterMoods);
         MaterialCardView videoCard = userView.findViewById(R.id.video);
 
+        IndicatorSeekBar barraMood = userView.findViewById(R.id.barraMood);
         RecyclerView rvNotesUser = (RecyclerView) userView.findViewById(R.id.rvNotesUser);
 
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
@@ -98,7 +111,56 @@ public class UserHomeFragment extends Fragment {
             }
         });
 
+        ValueEventListener  listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int mood = barraMood.getProgress();
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                Date date = new Date();
+                String hora = formatter.format(date);
+                Mood newMood = new Mood(hora, mood);
+
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    if (ds.child("email").getValue().toString().equals(user_email) ) {
+                        ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaMoods");
+                            nomeF = ds.child("nome").getValue().toString();
+                            emailF = ds.child("email").getValue().toString();
+                            passwordF = ds.child("password").getValue().toString();
+                            a.add(newMood.toMap());
+
+                            HashMap result = new HashMap<>();
+                            result.put("nome", nomeF);
+                            result.put("email", emailF);
+                            result.put("password", passwordF);
+                            result.put("paciente", true);
+                            result.put("fisioID", ds.child("fisioID").getValue());
+                            result.put("listaMoods", a);
+                            result.put("listaLembretes", ds.child("listaLembretes").getValue());
+                            result.put("listaNotas", ds.child("listaNotas").getValue());
+
+                            mapUsers.put(user_email, result);
+                            Toast.makeText(getContext(), "Moods adicionado!", Toast.LENGTH_SHORT).show();
+                            myRef.updateChildren(mapUsers);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), "CANCELO!", Toast.LENGTH_LONG).show();
+            }
+        };
+
+
         // BUTTONS
+        submeterMood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myRef.addListenerForSingleValueEvent(listener);
+            }
+        });
+
+
         verLembsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -162,5 +224,11 @@ public class UserHomeFragment extends Fragment {
         });
 
         return userView;
+    }
+
+    private void adicionaMood(Mood newMood) {
+
+
+
     }
 }
