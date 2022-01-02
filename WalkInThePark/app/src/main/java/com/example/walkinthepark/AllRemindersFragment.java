@@ -54,21 +54,21 @@ public class AllRemindersFragment extends Fragment {
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaLembretes = (ArrayList) ((Map) ds.getValue()).get("listaLembretes");
+                        for (int i = 1; i < listaLembretes.size(); i++) {
+                            lembretesCurrent.add(listaLembretes.get(i));
+                        }
+
+                        RemindersAdapter remindersAdapter = new RemindersAdapter(lembretesCurrent);
+
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+                        layoutManager.setOrientation(RecyclerView.VERTICAL);
+                        rvReminders.setLayoutManager(layoutManager);
+
+                        rvReminders.setAdapter(remindersAdapter);
 
                     }
                 }
 
-                for (int i = 1; i < listaLembretes.size(); i++) {
-                    lembretesCurrent.add(listaLembretes.get(i));
-                }
-
-                RemindersAdapter remindersAdapter = new RemindersAdapter(lembretesCurrent);
-
-                LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-                layoutManager.setOrientation(RecyclerView.VERTICAL);
-                rvReminders.setLayoutManager(layoutManager);
-
-                rvReminders.setAdapter(remindersAdapter);
             }
 
 

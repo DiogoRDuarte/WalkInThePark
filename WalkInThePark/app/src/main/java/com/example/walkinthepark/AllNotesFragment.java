@@ -48,25 +48,27 @@ public class AllNotesFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 notasCurrent = new ArrayList<>();
-                user_email =((UserHomeActivity)getActivity()).user_email;
                 for(DataSnapshot ds : snapshot.getChildren()){
+                    user_email =((UserHomeActivity)getActivity()).user_email;
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaNotas = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
+
+                        for (int i = 1; i < listaNotas.size(); i++) {
+                            notasCurrent.add(listaNotas.get(i));
+                        }
+
+                        NotesAdapter notesAdapter = new NotesAdapter(notasCurrent,getContext());
+
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+                        layoutManager.setOrientation(RecyclerView.VERTICAL);
+                        rvNotes.setLayoutManager(layoutManager);
+
+                        rvNotes.setAdapter(notesAdapter);
 
                     }
                 }
 
-                for (int i = 1; i < listaNotas.size(); i++) {
-                    notasCurrent.add(listaNotas.get(i));
-                }
 
-                NotesAdapter notesAdapter = new NotesAdapter(notasCurrent,getContext());
-
-                LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-                layoutManager.setOrientation(RecyclerView.VERTICAL);
-                rvNotes.setLayoutManager(layoutManager);
-
-                rvNotes.setAdapter(notesAdapter);
 
             }
 
