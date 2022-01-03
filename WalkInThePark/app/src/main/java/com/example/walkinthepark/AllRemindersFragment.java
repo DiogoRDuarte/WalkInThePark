@@ -58,7 +58,7 @@ public class AllRemindersFragment extends Fragment {
                             lembretesCurrent.add(listaLembretes.get(i));
                         }
 
-                        RemindersAdapter remindersAdapter = new RemindersAdapter(lembretesCurrent);
+                        RemindersAdapter remindersAdapter = new RemindersAdapter(lembretesCurrent,getContext());
 
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                         layoutManager.setOrientation(RecyclerView.VERTICAL);

@@ -57,11 +57,11 @@ public class AllMoodsFragment extends Fragment {
 
 
                         ///MUDAR PARA MOOD ADAPTER
-                        NotesAdapter notesAdapter = new NotesAdapter(moodsCurrent,getContext());
+                        MoodAdapter moodAdapter = new MoodAdapter(moodsCurrent,getContext());
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                         layoutManager.setOrientation(RecyclerView.VERTICAL);
                         rvMoods.setLayoutManager(layoutManager);
-                        rvMoods.setAdapter(notesAdapter);
+                        rvMoods.setAdapter(moodAdapter);
                         ////////////////////////////////////
 
                     }

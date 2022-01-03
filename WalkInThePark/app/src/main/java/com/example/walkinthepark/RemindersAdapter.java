@@ -11,14 +11,29 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.ViewHolder> {
-
+    private final Context cont;
     private ArrayList<HashMap<String, String>> mReminders;
+    private Map mapUsers = new HashMap<String, User>();
+    private boolean a = true;
     private int position;
+    private String s;
+    private String nomeF;
+    private String emailF;
+    private String passwordF;
+    private FirebaseDatabase db;
+    private DatabaseReference myRef;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -38,7 +53,11 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
         }
     }
 
-    public RemindersAdapter(ArrayList<HashMap<String, String>> reminders){
+    public RemindersAdapter(ArrayList<HashMap<String, String>> reminders, Context c){
+        cont = c;
+        if(c instanceof UserHomeActivity){
+            s = ((UserHomeActivity) c).getCurrentUserEmail();
+        }
         mReminders = reminders;
     }
 
@@ -62,14 +81,62 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
         textViewHora.setText(reminder.get("hora"));
         TextView textViewMensagem = holder.mensagemTextView;
         textViewMensagem.setText(reminder.get("mensagem"));
-        ImageButton imageButton = holder.deleteButton;
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        ImageButton delButton = holder.deleteButton;
+        db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
+        myRef = db.getReference("User");
+        delButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //HashMap<String, String> rem = mNotes.get(holder.getAdapterPosition());
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot ds : snapshot.getChildren()){
+                            if(s.equals(ds.child("email").getValue().toString())){
+                                nomeF = ds.child("nome").getValue().toString();
+                                emailF = ds.child("email").getValue().toString();
+                                passwordF = ds.child("password").getValue().toString();
+
+                                ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaLembretes");
+                                //a.add(put("",""));
+                                a.remove(position2);
+
+                                HashMap result = new HashMap<>();
+                                result.put("nome", nomeF);
+                                result.put("email", emailF);
+                                result.put("password", passwordF);
+                                result.put("paciente", true);
+                                result.put("fisioID", ds.child("fisioID").getValue());
+                                result.put("listaNotas", ds.child("listaNotas").getValue());
+                                result.put("listaLembretes", a);
+                                result.put("listaMoods", ds.child("listaMoods").getValue());
+
+                                mapUsers.put(s, result);
+                            }
+                        }
+                        if(a) {
+                            //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
+                            myRef.updateChildren(mapUsers);
+                            a = false;
+
+                            /*goToMain(view);*/
+                            /*((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
+                            ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);*/
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 mReminders.remove(position2);
                 notifyItemRemoved(position2);
                 notifyItemRangeChanged(position2, mReminders.size());
                 holder.itemView.setVisibility(View.GONE);
+
             }
         });
     }
