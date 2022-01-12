@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,68 +18,63 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.ViewHolder> {
+public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
+
     private final Context cont;
-    private ArrayList<HashMap<String, String>> mReminders;
-    private Map mapUsers = new HashMap<String, User>();
-    private boolean a = true;
-    private int position;
     private String s;
+    private ArrayList<HashMap<String, String>> mMoods;
+    private int position;
+    private FirebaseDatabase db;
+    private DatabaseReference myRef;
     private String nomeF;
     private String emailF;
     private String passwordF;
-    private FirebaseDatabase db;
-    private DatabaseReference myRef;
+    private boolean a = true;
+    private Map mapUsers = new HashMap<String, User>();
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView dataTextView;
+        public TextView moodTextView;
         public TextView horaTextView;
-        public TextView mensagemTextView;
         public ImageButton deleteButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            dataTextView = (TextView) itemView.findViewById(R.id.txtDate);
-            horaTextView = (TextView) itemView.findViewById(R.id.txtTime);
-            mensagemTextView = (TextView) itemView.findViewById(R.id.txtTitle);
+            moodTextView = (TextView) itemView.findViewById(R.id.txtMood);
+            horaTextView = (TextView) itemView.findViewById(R.id.txtHora);
             deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
-
         }
     }
 
-    public RemindersAdapter(ArrayList<HashMap<String, String>> reminders, Context c){
+    public MoodAdapter(ArrayList<HashMap<String, String>> moods, Context c){
+        mMoods = moods;
         cont = c;
         if(c instanceof UserHomeActivity){
             s = ((UserHomeActivity) c).getCurrentUserEmail();
         }
-        mReminders = reminders;
     }
 
 
     @Override
-    public RemindersAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MoodAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View reminderView = inflater.inflate(R.layout.single_reminder,parent,false);
-        ViewHolder viewHolder = new ViewHolder(reminderView);
+        View notesView = inflater.inflate(R.layout.single_mood,parent,false);
+        MoodAdapter.ViewHolder viewHolder = new MoodAdapter.ViewHolder(notesView);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(RemindersAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(MoodAdapter.ViewHolder holder, int position) {
         int position2 = position;
-        HashMap<String, String> reminder = mReminders.get(position2);
-        TextView textViewData = holder.dataTextView;
-        textViewData.setText(reminder.get("data"));
+        HashMap<String, String> mood = mMoods.get(position2);
+        TextView textViewMood = holder.moodTextView;
+        textViewMood.setText(mood.get("mood"));
         TextView textViewHora = holder.horaTextView;
-        textViewHora.setText(reminder.get("hora"));
-        TextView textViewMensagem = holder.mensagemTextView;
-        textViewMensagem.setText(reminder.get("mensagem"));
+        textViewHora.setText(mood.get("hora"));
         ImageButton delButton = holder.deleteButton;
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
@@ -97,13 +91,9 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
                                 emailF = ds.child("email").getValue().toString();
                                 passwordF = ds.child("password").getValue().toString();
 
-                                ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaLembretes");
+                                ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaMoods");
                                 //a.add(put("",""));
-                                try{
-                                    a.remove(holder.getAdapterPosition());
-                                }catch(IndexOutOfBoundsException e){
-                                    System.out.println("a");
-                                }
+                                a.remove(position2);
 
                                 HashMap result = new HashMap<>();
                                 result.put("nome", nomeF);
@@ -112,8 +102,8 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
                                 result.put("paciente", true);
                                 result.put("fisioID", ds.child("fisioID").getValue());
                                 result.put("listaNotas", ds.child("listaNotas").getValue());
-                                result.put("listaLembretes", a);
-                                result.put("listaMoods", ds.child("listaMoods").getValue());
+                                result.put("listaLembretes", ds.child("listaLembretes").getValue());
+                                result.put("listaMoods", a);
 
                                 mapUsers.put(s, result);
                             }
@@ -136,18 +126,18 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
 
                     }
                 });
-                mReminders.remove(position2);
+                mMoods.remove(position2);
                 notifyItemRemoved(position2);
-                notifyItemRangeChanged(position2, mReminders.size());
+                notifyItemRangeChanged(position2, mMoods.size());
                 holder.itemView.setVisibility(View.GONE);
 
             }
         });
     }
 
-
     @Override
     public int getItemCount() {
-        return mReminders.size();
+        return mMoods.size();
     }
 }
+

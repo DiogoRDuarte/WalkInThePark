@@ -443,6 +443,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.warkiz.widget.IndicatorSeekBar
+            android:id="@+id/barraMood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:isb_indicator_color="#000000"

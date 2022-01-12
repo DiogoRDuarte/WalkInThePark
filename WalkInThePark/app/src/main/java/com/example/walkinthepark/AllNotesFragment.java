@@ -1,5 +1,6 @@
 package com.example.walkinthepark;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,7 @@ public class AllNotesFragment extends Fragment {
 
     private DatabaseReference myRef;
     private FirebaseDatabase db;
+    private Context context = this.getContext();
     String user_email;
     private ArrayList<HashMap<String, String>> notasCurrent;
 
@@ -37,12 +39,6 @@ public class AllNotesFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         allNotesView = inflater.inflate(R.layout.fragment_all_notes, container, false);
-
-
-        listaNotas =  ((NotesFragment)getParentFragment()).listaNotas;
-        notasCurrent = new ArrayList<>();
-        user_email =((UserHomeActivity)getActivity()).user_email;
-
         RecyclerView rvNotes = (RecyclerView) allNotesView.findViewById(R.id.rvNotes);
 
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
@@ -51,12 +47,29 @@ public class AllNotesFragment extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                notasCurrent = new ArrayList<>();
                 for(DataSnapshot ds : snapshot.getChildren()){
+                    user_email =((UserHomeActivity)getActivity()).user_email;
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaNotas = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
 
+                        for (int i = 1; i < listaNotas.size(); i++) {
+                            notasCurrent.add(listaNotas.get(i));
+                        }
+
+                        NotesAdapter notesAdapter = new NotesAdapter(notasCurrent,getContext());
+
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+                        layoutManager.setOrientation(RecyclerView.VERTICAL);
+                        rvNotes.setLayoutManager(layoutManager);
+
+                        rvNotes.setAdapter(notesAdapter);
+
                     }
                 }
+
+
+
             }
 
             @Override
@@ -65,17 +78,6 @@ public class AllNotesFragment extends Fragment {
             }
         });
 
-        for (int i = 1; i < listaNotas.size(); i++) {
-            notasCurrent.add(listaNotas.get(i));
-        }
-
-        NotesAdapter notesAdapter = new NotesAdapter(notasCurrent);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
-        layoutManager.setOrientation(RecyclerView.VERTICAL);
-        rvNotes.setLayoutManager(layoutManager);
-
-        rvNotes.setAdapter(notesAdapter);
 
         return allNotesView;
     }

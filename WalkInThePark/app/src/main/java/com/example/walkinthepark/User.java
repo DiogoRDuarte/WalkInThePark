@@ -14,6 +14,7 @@ public class User {
     private List<Note> listaNotas;
     private List<Reminder> listaLembretes;
     private List<User> listaPacientes;
+    private List<Mood> listaMoods;
 
 
     public User(String nome, String email, String password, String fisioID, boolean fisioSN) {
@@ -24,9 +25,12 @@ public class User {
         this.listaPacientes = new ArrayList<User>();
         this.listaLembretes = new ArrayList<Reminder>();
         this.listaNotas = new ArrayList<Note>();
+        this.listaMoods = new ArrayList<Mood>();
+
 
         this.listaNotas.add(new Note("",""));
         this.listaLembretes.add(new Reminder("", "", ""));
+        this.listaMoods.add(new Mood("", -1));
 
         if(!paciente)
             listaPacientes.add(new User("", "", "", "", true));
@@ -71,6 +75,7 @@ public class User {
 
     public void addPaciente(User user){listaPacientes.add(user);}
 
+    public void addMood(Mood mood){listaMoods.add(mood);}
 
 
     public Map toMap() {
@@ -83,6 +88,7 @@ public class User {
         result.put("listaPacientes", listaPacientes);
         result.put("listaNotas", this.listaNotas);
         result.put("listaLembretes", this.listaLembretes);
+        result.put("listaMoods", this.listaMoods);
         return result;
     }
 

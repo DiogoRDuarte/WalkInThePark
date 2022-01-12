@@ -131,8 +131,9 @@ public class NewReminderFragment extends Fragment {
                                     result.put("email", emailF);
                                     result.put("password", passwordF);
                                     result.put("paciente", true);
-                                    result.put("fisioID", "");
+                                    result.put("fisioID", ds.child("fisioID").getValue());
                                     result.put("listaNotas", ds.child("listaNotas").getValue());
+                                    result.put("listaMoods", ds.child("listaMoods").getValue());
                                     result.put("listaLembretes", a);
 
                                     mapUsers.put(user_email, result);
