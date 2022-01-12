@@ -5,6 +5,7 @@ import static android.app.Activity.RESULT_OK;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -45,9 +46,11 @@ public class ExerciseFragment extends Fragment {
         if (requestCode == 1 && resultCode == RESULT_OK) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             VideoView videoView = new VideoView(getContext());
-            videoView.setVideoURI(data.getData());
+            Uri videoUri = data.getData();
+            videoView.setVideoURI(videoUri);
             videoView.start();
             builder.setView(videoView).show();
+            // GUARDAR O videoUri na Firebase
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
