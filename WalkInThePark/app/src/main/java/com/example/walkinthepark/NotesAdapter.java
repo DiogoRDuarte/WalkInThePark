@@ -100,7 +100,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
                                 ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
                                 //a.add(put("",""));
                                 try{
-                                    a.remove(position+1);
+                                    a.remove(holder.getAdapterPosition());
                                 }catch(IndexOutOfBoundsException e){
                                     System.out.println("a");
                                 }
@@ -140,7 +140,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
                 mNotes.remove(position2);
                 notifyItemRemoved(position2);
                 notifyItemRangeChanged(position2, mNotes.size());
-                holder.itemView.setVisibility(View.GONE);
+                //holder.itemView.setVisibility(View.GONE);
 
             }
         });

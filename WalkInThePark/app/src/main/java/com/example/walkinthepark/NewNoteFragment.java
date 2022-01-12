@@ -102,8 +102,8 @@ public class NewNoteFragment extends Fragment {
                                     a = false;
 
                                     /*goToMain(view);*/
-                                    //((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
-                                    //((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);
+                                    ((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
+                                    ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);
                                 }
 
 
