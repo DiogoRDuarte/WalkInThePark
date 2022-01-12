@@ -9,6 +9,13 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    
+    <style name="ThemeOverlay.AppCompat.navTheme">
+        <!-- Color of text when selected -->
+        <item name="colorPrimary">#bddba4</item>
+        <!-- Color of background when selected -->
+        <item name="colorControlHighlight">@color/black</item>
+    </style>
 
     <style name="viewParent">
         <item name="android:layout_width">wrap_content</item>
