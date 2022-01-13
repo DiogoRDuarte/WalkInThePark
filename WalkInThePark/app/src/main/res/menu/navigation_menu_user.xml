@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/menuAc"
+            android:id="@+id/menuPAc"
             android:title="Página Inicial" />
 
         <item
@@ -18,7 +18,7 @@
             android:title="Lembretes" />
 
         <item
-            android:id="@+id/videosAc"
+            android:id="@+id/videosPAc"
             android:icon="@drawable/video"
             android:title="Vídeos Exercícios" />
 

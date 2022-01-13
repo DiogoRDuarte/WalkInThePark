@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -27,6 +26,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:baselineAligned="false"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -39,7 +39,7 @@
                     android:id="@+id/lembrete1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
@@ -87,7 +87,7 @@
                                 style="?attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
+                                android:layout_alignParentEnd="true"
                                 android:text="Editar"
                                 android:textColor="#000000"
                                 app:backgroundTint="#C4C4C4" />
@@ -112,7 +112,8 @@
                     android:textColor="#2B2C2C"
                     app:backgroundTint="#E8E8E8"
                     app:contentPadding="8dp"
-                    app:cornerRadius="15dp" />
+                    app:cornerRadius="15dp"
+                    tools:ignore="TextContrastCheck" />
 
             </RelativeLayout>
 
@@ -172,7 +173,7 @@
                                 style="?attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
+                                android:layout_alignParentEnd="true"
                                 android:text="Editar"
                                 android:textColor="#000000"
                                 app:backgroundTint="#C4C4C4" />
@@ -213,6 +214,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
+        android:baselineAligned="false"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/humor"
         app:layout_constraintEnd_toEndOf="parent"
@@ -300,7 +302,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvNotesUser"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent" />
 
                     <!--<com.google.android.material.button.MaterialButton
                         android:id="@+id/nota1"
@@ -394,51 +396,54 @@
 
             <ImageView
                 android:id="@+id/neutro"
-                android:layout_width="35"
-                android:layout_height="45"
+                android:layout_width="35dp"
+                android:layout_height="45dp"
                 android:src="@drawable/neutro"
                 app:layout_constraintEnd_toStartOf="@+id/feliz"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/triste" />
+                app:layout_constraintStart_toEndOf="@+id/triste"
+                tools:ignore="MissingConstraints" />
 
             <ImageView
                 android:id="@+id/triste"
-                android:layout_width="35"
-                android:layout_height="45"
+                android:layout_width="35dp"
+                android:layout_height="45dp"
                 android:src="@drawable/triste"
                 app:layout_constraintEnd_toStartOf="@+id/neutro"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/chateado" />
+                app:layout_constraintStart_toEndOf="@+id/chateado"
+                tools:ignore="MissingConstraints" />
 
             <ImageView
                 android:id="@+id/feliz"
-                android:layout_width="35"
-                android:layout_height="45"
+                android:layout_width="35dp"
+                android:layout_height="45dp"
                 android:src="@drawable/feliz"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="MissingConstraints" />
 
             <ImageView
                 android:id="@+id/magoado"
                 android:layout_width="35dp"
                 android:layout_height="45dp"
                 android:src="@drawable/magoado"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
 
             <ImageView
                 android:id="@+id/chateado"
-                android:layout_width="35"
-                android:layout_height="45"
+                android:layout_width="35dp"
+                android:layout_height="45dp"
                 android:src="@drawable/chateado"
                 app:layout_constraintEnd_toStartOf="@+id/triste"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/magoado" />
+                app:layout_constraintStart_toEndOf="@+id/magoado"
+                tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-
         <com.warkiz.widget.IndicatorSeekBar
+            android:id="@+id/barraMood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:isb_indicator_color="#000000"
@@ -463,31 +468,44 @@
             app:isb_track_progress_color="#80FFFFFF"
             app:isb_track_progress_size="4dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/verMood"
-            style="?attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="45dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="4dp"
-            android:text="Ver mood"
-            android:textColor="#000000"
-            app:backgroundTint="#C4C4C4" />
+            android:layout_gravity="bottom"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/submeterMoods"
-            style="?attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
-            android:layout_marginTop="45dp"
-            android:layout_marginEnd="13dp"
-            android:layout_marginBottom="4dp"
-            android:text="Submeter"
-            android:textColor="#000000"
-            app:backgroundTint="#C4C4C4" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/verMood"
+                style="?attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="Ver mood"
+                android:textColor="#2B2C2C"
+                app:backgroundTint="#E8E8E8"
+                app:contentPadding="8dp"
+                app:cornerRadius="15dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submeterMoods"
+                style="?attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="Submeter"
+                android:textColor="#2B2C2C"
+                app:backgroundTint="#E8E8E8"
+                app:contentPadding="8dp"
+                app:cornerRadius="15dp" />
+
+        </LinearLayout>
 
 
     </com.google.android.material.card.MaterialCardView>

@@ -126,6 +126,7 @@ public class StartActivity extends AppCompatActivity {
                                                 result.put("listaPacientes", a);
                                                 result.put("listaNotas", ds.child("listaNotas").getValue());
                                                 result.put("listaLembretes", ds.child("listaLembretes").getValue());
+                                                result.put("listaMoods", ds.child("listaMoods").getValue());
 
                                                 mapUsers.put(fisioID, result);
                                             }
@@ -173,6 +174,7 @@ public class StartActivity extends AppCompatActivity {
     public void goToPatMain(View view) {
         Intent i = new Intent(this, UserHomeActivity.class);
         i.putExtra("user_email", email+"");
+        i.putExtra("user_email", nome+"");
         startActivity(i);
         finish();
     }
@@ -180,6 +182,7 @@ public class StartActivity extends AppCompatActivity {
     public void goToPhyMain(View view) {
         Intent i = new Intent(this, ProfHomeActivity.class);
         i.putExtra("user_email",email+"");
+        i.putExtra("user_name", nome+"");
         startActivity(i);
         finish();
     }

@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/exercisesFragment"
+    android:id="@+id/exProfFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExerciseFragment">
+    tools:context=".ExerciseProfFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvExercises"
+        android:id="@+id/rvExercisesProf"
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
         android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_exercises"
+        app:layout_constraintBottom_toTopOf="@+id/button_upload_ex"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_exercises"
+        android:id="@+id/button_upload_ex"
         style="?attr/borderlessButtonStyle"
         android:layout_width="193dp"
         android:layout_height="73dp"
-        android:text="@string/button_ac_exercises"
+        android:text="@string/button_ac_upExercises"
         android:textColor="#E8E8E8"
         app:backgroundTint="#2B2C2C"
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvExercises" />
+        app:layout_constraintTop_toBottomOf="@+id/rvExercisesProf" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

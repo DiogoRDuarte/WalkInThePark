@@ -15,10 +15,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,7 +34,8 @@ public class UserHomeActivity extends AppCompatActivity {
     private FirebaseDatabase db;
     private DatabaseReference myRef;
     String user_email;
-
+    String user_name;
+    boolean paciente = true;
 
     // Fragmentos
     static UserHomeFragment userHomeFragment;
@@ -48,6 +53,8 @@ public class UserHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home);
         user_email = getIntent().getStringExtra("user_email");
+        user_name = getIntent().getStringExtra("user_name");
+
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         refNotas = db.getReference("Note");
         refReminders = db.getReference("Reminder");
@@ -55,9 +62,7 @@ public class UserHomeActivity extends AppCompatActivity {
         Map m = new HashMap<String,Map>();
 
         // Inicializar fragmentos
-        if(userHomeFragment == null) {
-            userHomeFragment = new UserHomeFragment();
-        }
+
         if(notesFragment == null) {
             notesFragment = new NotesFragment();
         }
@@ -79,6 +84,9 @@ public class UserHomeActivity extends AppCompatActivity {
         if(aboutFragment == null) {
             aboutFragment = new AboutFragment();
         }
+        if(userHomeFragment == null) {
+            userHomeFragment = new UserHomeFragment();
+        }
 
         /*replaceFragment(userHomeFragment);*/
 
@@ -91,6 +99,28 @@ public class UserHomeActivity extends AppCompatActivity {
         });
 
         NavigationView navigationView = findViewById(R.id.navigationMenuUser);
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView nomeText = headerView.findViewById(R.id.username);
+        nomeText.setText(user_name);
+        TextView pacienteText = headerView.findViewById(R.id.usertype);
+        pacienteText.setText("Paciente");
+
+
+        //PARA ESCREVER O NOME DO PACIENTE NO MENU LATERAL
+        //da Null
+        //TextView nomeText = navigationView.findViewById(R.id.username);
+        //TextView pacineteText = navigationView.findViewById(R.id.username);
+        
+        //Da erro
+        //nomeText.setText(user_name);
+        //pacineteText.setText("Paciente");
+        ///////////// end //////////////
+
+
+
+
+
         /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -152,6 +182,7 @@ public class UserHomeActivity extends AppCompatActivity {
     public String getCurrentUserEmail(){
         return this.user_email;
     }
+
 
 
 }

@@ -26,7 +26,8 @@ public class LoginActivity extends AppCompatActivity {
     private List<String> listEmails = new ArrayList<String>();
 
 
-    private String n;
+    private String nome;
+    private boolean paciente;
     private String email;
     private String password;
     boolean log = false;
@@ -58,12 +59,12 @@ public class LoginActivity extends AppCompatActivity {
                             for (DataSnapshot ds: snapshot.getChildren()){
                                 String s = ds.child("email").getValue().toString();
                                 String p = ds.child("password").getValue().toString();
-                                String n = ds.child("nome").getValue().toString();
-                                boolean b = ds.child("paciente").getValue(Boolean.class);
+                                nome = ds.child("nome").getValue().toString();
+                                paciente = ds.child("paciente").getValue(Boolean.class);
                                 if(email.equals(s) && password.equals(p)){
                                     log = true;
-                                    Toast.makeText(getApplicationContext(), "Bem vindo "+n+"!", Toast.LENGTH_SHORT).show();
-                                    if(b == true){
+                                    Toast.makeText(getApplicationContext(), "Bem vindo "+nome+"!", Toast.LENGTH_SHORT).show();
+                                    if(paciente == true){
                                        goToPatMain(view);
                                        break;
                                     }else{
@@ -99,6 +100,7 @@ public class LoginActivity extends AppCompatActivity {
     public void goToPatMain(View view) {
         Intent i = new Intent(this, UserHomeActivity.class);
         i.putExtra("user_email", email+"");
+        i.putExtra("user_name", nome+"");
         startActivity(i);
         finish();
     }
@@ -106,6 +108,7 @@ public class LoginActivity extends AppCompatActivity {
     public void goToPhyMain(View view) {
         Intent i = new Intent(this, ProfHomeActivity.class);
         i.putExtra("user_email", email+"");
+        i.putExtra("user_name", nome+"");
         startActivity(i);
         finish();
     }
