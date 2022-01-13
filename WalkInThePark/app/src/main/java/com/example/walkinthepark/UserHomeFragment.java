@@ -65,8 +65,8 @@ public class UserHomeFragment extends Fragment {
         MaterialButton criarLembButton = userView.findViewById(R.id.adicionarLembrete);
         MaterialButton criarNotaButton = userView.findViewById(R.id.adicionarNota);
         MaterialButton calibrarButton = userView.findViewById(R.id.calibrar);
-        MaterialButton editar1Button = userView.findViewById(R.id.editar1);
-        MaterialButton editar2Button = userView.findViewById(R.id.editar2);
+        /*MaterialButton editar1Button = userView.findViewById(R.id.editar1);
+        MaterialButton editar2Button = userView.findViewById(R.id.editar2);*/
         MaterialButton submeterMood = userView.findViewById(R.id.submeterMoods);
         MaterialCardView videoCard = userView.findViewById(R.id.video);
         MaterialButton verMood = userView.findViewById(R.id.verMood);
@@ -201,7 +201,7 @@ public class UserHomeFragment extends Fragment {
             }
         });
 
-        editar1Button.setOnClickListener(new View.OnClickListener() {
+        /*editar1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -213,7 +213,7 @@ public class UserHomeFragment extends Fragment {
             public void onClick(View view) {
 
             }
-        });
+        });*/
 
         // CARDS
         videoCard.setOnClickListener(new View.OnClickListener() {
