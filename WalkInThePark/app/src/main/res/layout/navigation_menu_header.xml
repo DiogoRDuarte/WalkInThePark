@@ -8,7 +8,7 @@
     android:padding="20dp">
 
     <TextView
-        android:id="@+id/textView31"
+        android:id="@+id/saudacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -16,12 +16,12 @@
         android:textColor="#bddba4"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView30"
-        app:layout_constraintStart_toStartOf="@+id/textView30"
+        app:layout_constraintBottom_toTopOf="@+id/username"
+        app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView30"
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -30,15 +30,15 @@
         android:textColor="#bddba4"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView32"
+        app:layout_constraintBottom_toTopOf="@+id/usertype"
         app:layout_constraintEnd_toStartOf="@+id/imageView9"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView31" />
+        app:layout_constraintTop_toBottomOf="@+id/saudacao" />
 
     <TextView
-        android:id="@+id/textView32"
+        android:id="@+id/usertype"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TIPO"
@@ -46,8 +46,8 @@
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView31"
-        app:layout_constraintTop_toBottomOf="@+id/textView30" />
+        app:layout_constraintEnd_toEndOf="@+id/saudacao"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <ImageView
         android:id="@+id/imageView9"
@@ -55,11 +55,11 @@
         android:layout_height="73dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        app:layout_constraintBottom_toBottomOf="@+id/textView30"
+        app:layout_constraintBottom_toBottomOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView30"
-        app:layout_constraintTop_toTopOf="@+id/textView30"
+        app:layout_constraintStart_toEndOf="@+id/username"
+        app:layout_constraintTop_toTopOf="@+id/username"
         app:srcCompat="@drawable/walk_in_the_park_final" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
