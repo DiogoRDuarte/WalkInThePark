@@ -38,7 +38,7 @@ public class NewNoteFragment extends Fragment {
     private String tituloS;
     private String notaS;
     private Map mapUsers = new HashMap<String, User>();
-    private boolean a = true;
+    private boolean p = true;
     String user_email;
     private String nomeF;
     private String emailF;
@@ -105,10 +105,10 @@ public class NewNoteFragment extends Fragment {
                                 }
                             }
 
-                                if(a) {
+                                if(p) {
                                     Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
                                     myRef.updateChildren(mapUsers);
-                                    a = false;
+                                    p = false;
 
                                     /*goToMain(view);*/
                                     ((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
