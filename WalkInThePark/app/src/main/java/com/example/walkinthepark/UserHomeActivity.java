@@ -103,6 +103,8 @@ public class UserHomeActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
         TextView nomeText = navigationView.findViewById(R.id.username);
         nomeText.setText(user_name);
+        TextView pacineteText = navigationView.findViewById(R.id.username);
+        pacineteText.setText("Paciente");
 
 
         //PARA ESCREVER O NOME DO PACIENTE NO MENU LATERAL
