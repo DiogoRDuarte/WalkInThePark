@@ -50,6 +50,9 @@ public class UserHomeFragment extends Fragment {
     private String passwordF;
     private boolean flag = true;
     private int nMoods;
+
+    private NotesUserAdapter.RecyclerViewListener listener;
+
     // Notas
     ArrayList<HashMap<String, String>> listaNotas;
     private ArrayList<HashMap<String, String>> notasCurrent;
@@ -80,6 +83,7 @@ public class UserHomeFragment extends Fragment {
         Map m = new HashMap<String,Map>();
 
 
+        //Notas
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -94,7 +98,9 @@ public class UserHomeFragment extends Fragment {
                             notasCurrent.add(listaNotas.get(i));
                         }
                         // NOTAS
-                        NotesUserAdapter notesUserAdapter = new NotesUserAdapter(notasCurrent);
+
+                        setOnClickListener();
+                        NotesUserAdapter notesUserAdapter = new NotesUserAdapter(notasCurrent, listener);
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                         layoutManager.setOrientation(RecyclerView.VERTICAL);
                         rvNotesUser.setLayoutManager(layoutManager);
@@ -231,6 +237,23 @@ public class UserHomeFragment extends Fragment {
         });
 
         return userView;
+    }
+
+    private void setOnClickListener() {
+        listener = new NotesUserAdapter.RecyclerViewListener() {
+            @Override
+            public void onClick(View v, int position) {
+                //FAZER
+
+
+
+                Bundle bundle = new Bundle();
+                bundle.putString("fragment", "fragN");
+                bundle.putString("titulo", listaNotas.get(position).get("titulo"));
+                bundle.putString("mensagem", listaNotas.get(position).get("Nota"));
+                Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
+            }
+        };
     }
 
     private void adicionaMood(Mood newMood) {

@@ -14,21 +14,31 @@ import java.util.HashMap;
 
 public class NotesUserAdapter extends RecyclerView.Adapter<NotesUserAdapter.ViewHolder>  {
 
+    private RecyclerViewListener listener;
     private ArrayList<HashMap<String, String>> mNotesUser;
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView tituloTextView;
+        private RecyclerViewListener listener;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             tituloTextView = (TextView) itemView.findViewById(R.id.txtTitulo);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            listener.onClick(v, getAdapterPosition());
         }
     }
 
-    public NotesUserAdapter(ArrayList<HashMap<String, String>> notes){
+    public NotesUserAdapter(ArrayList<HashMap<String, String>> notes, RecyclerViewListener listener){
         mNotesUser = notes;
+        this.listener = listener;
     }
 
 
@@ -54,5 +64,9 @@ public class NotesUserAdapter extends RecyclerView.Adapter<NotesUserAdapter.View
             return 3;
         }
         return mNotesUser.size();
+    }
+
+    public interface RecyclerViewListener {
+        void onClick(View v, int position);
     }
 }

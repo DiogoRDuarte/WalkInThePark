@@ -56,6 +56,15 @@ public class NewNoteFragment extends Fragment {
         nota = (EditText) newNoteView.findViewById(R.id.descricaoNota);
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
+
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            tituloS = bundle.getString("titulo2");
+            notaS = bundle.getString("mensagem2");
+        }
+
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
