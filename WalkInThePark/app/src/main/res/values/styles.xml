@@ -12,9 +12,9 @@
     
     <style name="ThemeOverlay.AppCompat.navTheme">
         <!-- Color of text when selected -->
-        <item name="colorPrimary">@color/black</item>
+        <!-- <item name="colorPrimary">@color/black</item> -->
         <!-- Color of background when selected -->
-        <item name="colorControlHighlight">#bddba4</item>
+        <item name="colorControlHighlight">@color/greenColor</item>
     </style>
 
     <style name="viewParent">

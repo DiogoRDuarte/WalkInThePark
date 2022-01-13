@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class UserHomeActivity extends AppCompatActivity {
@@ -102,7 +103,7 @@ public class UserHomeActivity extends AppCompatActivity {
 
         View headerView = navigationView.getHeaderView(0);
         TextView nomeText = headerView.findViewById(R.id.username);
-        nomeText.setText(user_name);
+        nomeText.setText(user_name.toUpperCase());
         TextView pacienteText = headerView.findViewById(R.id.usertype);
         pacienteText.setText("Paciente");
 
