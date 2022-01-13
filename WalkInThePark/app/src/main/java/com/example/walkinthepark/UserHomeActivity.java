@@ -108,20 +108,6 @@ public class UserHomeActivity extends AppCompatActivity {
         pacienteText.setText("Paciente");
 
 
-        //PARA ESCREVER O NOME DO PACIENTE NO MENU LATERAL
-        //da Null
-        //TextView nomeText = navigationView.findViewById(R.id.username);
-        //TextView pacineteText = navigationView.findViewById(R.id.username);
-        
-        //Da erro
-        //nomeText.setText(user_name);
-        //pacineteText.setText("Paciente");
-        ///////////// end //////////////
-
-
-
-
-
         /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
