@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,14 +18,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.ViewHolder> {
     private final Context cont;
     private ArrayList<HashMap<String, String>> mReminders;
     private Map mapUsers = new HashMap<String, User>();
-    private boolean a = true;
+    private boolean p = true;
     private int position;
     private String s;
     private String nomeF;
@@ -100,7 +98,9 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
                                 ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaLembretes");
                                 //a.add(put("",""));
                                 try{
-                                    a.remove(holder.getAdapterPosition());
+                                    a.remove(position);
+                                    notifyItemRemoved(position);
+                                    notifyItemRangeChanged(position,getItemCount()+1);
                                 }catch(IndexOutOfBoundsException e){
                                     System.out.println("a");
                                 }
@@ -118,10 +118,10 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
                                 mapUsers.put(s, result);
                             }
                         }
-                        if(a) {
+                        if(p) {
                             //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
                             myRef.updateChildren(mapUsers);
-                            a = false;
+                            p = false;
 
                             /*goToMain(view);*/
                             /*((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
@@ -139,7 +139,7 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
                 mReminders.remove(position2);
                 notifyItemRemoved(position2);
                 notifyItemRangeChanged(position2, mReminders.size());
-                holder.itemView.setVisibility(View.GONE);
+                //holder.itemView.setVisibility(View.GONE);
 
             }
         });

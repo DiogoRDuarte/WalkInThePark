@@ -92,7 +92,7 @@ public class UserHomeFragment extends Fragment {
                     user_name =((UserHomeActivity)getActivity()).user_name;
 
                     if (ds.child("email").getValue().toString().equals(user_email)) {
-                        listaNotas = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
+                        listaNotas = (ArrayList<HashMap<String, String>>) ds.child("listaNotas").getValue();
                         notasCurrent = new ArrayList<>();
                         for (int i = 1; i < listaNotas.size(); i++) {
                             notasCurrent.add(listaNotas.get(i));

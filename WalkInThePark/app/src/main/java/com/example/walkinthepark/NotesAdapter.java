@@ -1,13 +1,11 @@
 package com.example.walkinthepark;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,11 +16,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.json.JSONArray;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
@@ -36,7 +31,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     private String nomeF;
     private String emailF;
     private String passwordF;
-    private boolean a = true;
+    private boolean p = true;
     private Map mapUsers = new HashMap<String, User>();
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -100,7 +95,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
                                 ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
                                 //a.add(put("",""));
                                 try{
-                                    a.remove(holder.getAdapterPosition());
+                                    a.remove(position+1);
+                                    notifyItemRemoved(position);
+                                    notifyItemRangeChanged(position,getItemCount()+1);
                                 }catch(IndexOutOfBoundsException e){
                                     System.out.println("a");
                                 }
@@ -119,10 +116,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
                                 mapUsers.put(s, result);
                             }
                         }
-                        if(a) {
+                        if(p) {
                             //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
                             myRef.updateChildren(mapUsers);
-                            a = false;
+                            p = false;
 
                             /*goToMain(view);*/
                             /*((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");

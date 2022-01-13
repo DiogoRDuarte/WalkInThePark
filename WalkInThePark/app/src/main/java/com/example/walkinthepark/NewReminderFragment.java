@@ -51,7 +51,7 @@ public class NewReminderFragment extends Fragment {
     private Reminder rem;
     private DatabaseReference myRef;
     private List<String> listReminder = new ArrayList<String>();
-    private boolean a = true;
+    private boolean p = true;
     private Map mapUsers = new HashMap<String, User>();
 
     private String nomeF;
@@ -141,11 +141,11 @@ public class NewReminderFragment extends Fragment {
 
 
                             }
-                                if(a) {
+                                if(p) {
                                     //myRef.child("User").child(email);
                                     Toast.makeText(getContext(), "Lembrete adicionado!", Toast.LENGTH_SHORT).show();
                                     myRef.updateChildren(mapUsers);
-                                    a = false;
+                                    p = false;
 
                                     /*//MUDAR ISTO
                                     goToMain(view);*/
