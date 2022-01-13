@@ -84,6 +84,13 @@ public class ProfHomeActivity extends AppCompatActivity {
         });
 
         NavigationView navigationView = findViewById(R.id.navigationMenuFisio);
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView nomeText = headerView.findViewById(R.id.username);
+        nomeText.setText(prof_name.toUpperCase());
+        TextView fisioText = headerView.findViewById(R.id.usertype);
+        fisioText.setText("Fisioterapeuta");
+
         /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
