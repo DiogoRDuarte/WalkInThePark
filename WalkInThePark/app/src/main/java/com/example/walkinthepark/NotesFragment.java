@@ -62,10 +62,12 @@ public class NotesFragment extends Fragment {
                 case "fragN":
                     button.setText("Ver Notas");
 
-                    Bundle b = new Bundle();
-                    b.putString("titulo2" , getArguments().getString("titulo"));
-                    b.putString("mensagem2" , getArguments().getString("mensagem"));
-                    newNoteFragment.setArguments(b);
+                    if(getArguments().getString("titulo") != null && getArguments().getString("mensagem") != null) {
+                        Bundle b = new Bundle();
+                        b.putString("titulo2" , getArguments().getString("titulo"));
+                        b.putString("mensagem2" , getArguments().getString("mensagem"));
+                        newNoteFragment.setArguments(b);
+                    }
 
                     replaceFragment(newNoteFragment);
                     break;
