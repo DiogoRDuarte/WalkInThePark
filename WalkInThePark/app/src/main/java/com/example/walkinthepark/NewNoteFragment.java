@@ -60,8 +60,8 @@ public class NewNoteFragment extends Fragment {
 
         Bundle bundle = getArguments();
         if (bundle != null) {
-            tituloS = bundle.getString("titulo2");
-            notaS = bundle.getString("mensagem2");
+            titulo.setText(bundle.getString("titulo2"));
+            nota.setText( bundle.getString("mensagem2"));
         }
 
 

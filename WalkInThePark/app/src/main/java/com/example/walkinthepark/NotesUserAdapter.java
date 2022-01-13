@@ -20,7 +20,6 @@ public class NotesUserAdapter extends RecyclerView.Adapter<NotesUserAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView tituloTextView;
-        private RecyclerViewListener listener;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -32,7 +31,9 @@ public class NotesUserAdapter extends RecyclerView.Adapter<NotesUserAdapter.View
 
         @Override
         public void onClick(View v) {
-            listener.onClick(v, getAdapterPosition());
+            if(listener != null && getAdapterPosition() != RecyclerView.NO_POSITION){
+                listener.onClick(v, getAdapterPosition());
+            }
         }
     }
 

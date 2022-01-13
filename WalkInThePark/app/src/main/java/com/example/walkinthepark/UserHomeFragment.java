@@ -51,7 +51,7 @@ public class UserHomeFragment extends Fragment {
     private boolean flag = true;
     private int nMoods;
 
-    private NotesUserAdapter.RecyclerViewListener listener;
+    private NotesUserAdapter.RecyclerViewListener listenerAdapter;
 
     // Notas
     ArrayList<HashMap<String, String>> listaNotas;
@@ -100,7 +100,7 @@ public class UserHomeFragment extends Fragment {
                         // NOTAS
 
                         setOnClickListener();
-                        NotesUserAdapter notesUserAdapter = new NotesUserAdapter(notasCurrent, listener);
+                        NotesUserAdapter notesUserAdapter = new NotesUserAdapter(notasCurrent, listenerAdapter);
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                         layoutManager.setOrientation(RecyclerView.VERTICAL);
                         rvNotesUser.setLayoutManager(layoutManager);
@@ -240,18 +240,20 @@ public class UserHomeFragment extends Fragment {
     }
 
     private void setOnClickListener() {
-        listener = new NotesUserAdapter.RecyclerViewListener() {
+        listenerAdapter = new NotesUserAdapter.RecyclerViewListener() {
             @Override
             public void onClick(View v, int position) {
-                //FAZER
 
+                if(listenerAdapter != null){
+                    //FAZER
 
+                    Bundle bundle = new Bundle();
+                    bundle.putString("fragment", "fragN");
+                    bundle.putString("titulo", listaNotas.get(position+1).get("titulo"));
+                    bundle.putString("mensagem", listaNotas.get(position+1).get("mensagem"));
+                    Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
+                }
 
-                Bundle bundle = new Bundle();
-                bundle.putString("fragment", "fragN");
-                bundle.putString("titulo", listaNotas.get(position).get("titulo"));
-                bundle.putString("mensagem", listaNotas.get(position).get("Nota"));
-                Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
             }
         };
     }
