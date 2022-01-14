@@ -25,15 +25,24 @@
             android:id="@+id/PcNome"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1.6"
+            android:layout_weight="2.4"
             android:gravity="center_vertical"
+            android:paddingStart="4dp"
             android:text="Paciente"
-            android:textAlignment="center"
             android:textAppearance="?attr/textAppearanceHeadline6"
             tools:ignore="RtlCompat" />
 
         <ImageButton
-            android:id="@+id/delButton"
+            android:id="@+id/editButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight=".8"
+            android:backgroundTint="#E8E8E8"
+            android:scaleType="fitCenter"
+            android:src="@drawable/pencil" />
+
+        <ImageButton
+            android:id="@+id/statisticButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight=".8"
@@ -41,23 +50,14 @@
             android:scaleType="fitCenter"
             android:src="@drawable/ic_delete" />
 
-        <ImageButton
-            android:id="@+id/deleteButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight=".8"
-            android:backgroundTint="#E8E8E8"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_delete" />
-
-        <ImageButton
+        <!--<ImageButton
             android:id="@+id/deleteButtono"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight=".8"
             android:backgroundTint="#E8E8E8"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_delete" />
+            android:src="@drawable/ic_delete" />-->
 
     </LinearLayout>
 

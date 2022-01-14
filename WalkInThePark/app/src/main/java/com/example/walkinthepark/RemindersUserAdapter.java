@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class RemindersUserAdapter extends RecyclerView.Adapter<RemindersUserAdapter.ViewHolder> {
 
-    private ArrayList<HashMap<String, String>> mRemindersUser;
+    private HashMap<String, String> mRemindersUser;
     private Map mapUsers = new HashMap<String, User>();
     private boolean a = true;
     private int position;
@@ -33,7 +33,7 @@ public class RemindersUserAdapter extends RecyclerView.Adapter<RemindersUserAdap
     private String passwordF;
     private FirebaseDatabase db;
     private DatabaseReference myRef;
-
+    private RecyclerViewListener listener;
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView dataTextView;
@@ -52,8 +52,9 @@ public class RemindersUserAdapter extends RecyclerView.Adapter<RemindersUserAdap
         }
     }
 
-    public RemindersUserAdapter(ArrayList<HashMap<String, String>> reminders){
-        mRemindersUser = reminders;
+    public RemindersUserAdapter(HashMap<String, String> reminder, RecyclerViewListener listener){
+        mRemindersUser = reminder;
+        this.listener = listener;
     }
 
 
@@ -69,7 +70,7 @@ public class RemindersUserAdapter extends RecyclerView.Adapter<RemindersUserAdap
     @Override
     public void onBindViewHolder(RemindersUserAdapter.ViewHolder holder, int position) {
         int position2 = position;
-        HashMap<String, String> reminder = mRemindersUser.get(position2);
+        HashMap<String, String> reminder = mRemindersUser;
         TextView textViewData = holder.dataTextView;
         textViewData.setText(reminder.get("data"));
         TextView textViewHora = holder.horaTextView;
@@ -145,9 +146,11 @@ public class RemindersUserAdapter extends RecyclerView.Adapter<RemindersUserAdap
 
     @Override
     public int getItemCount() {
-        if(mRemindersUser.size() > 1) {
-            return 1;
-        }
-        return mRemindersUser.size();
+
+        return 1;
+    }
+
+    public interface RecyclerViewListener {
+        void onClick(View v, int position);
     }
 }

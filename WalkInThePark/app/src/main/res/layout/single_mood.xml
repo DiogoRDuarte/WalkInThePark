@@ -29,15 +29,17 @@
             android:layout_weight="1.9"
             android:weightSum="2">
 
-            <ImageView
+            <TextView
                 android:id="@+id/txtMood"
-                android:layout_weight="0.6"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:backgroundTint="#E8E8E8"
-                android:scaleType="fitCenter"
-                android:src="@drawable/triste"/>
+                android:layout_weight="1.4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Humor"
+                android:textAlignment="center"
+                android:gravity="center_vertical"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="?android:attr/textColorSecondary"
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:id="@+id/txtHora"

@@ -7,81 +7,69 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.ViewHolder> {
-    //private final Context cont;
-    private final RecyclerViewListener listener;
-    private ArrayList<HashMap<String, String>> mReminders;
+public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> {
+
+    private ArrayList<String> mUsers;
     private Map mapUsers = new HashMap<String, User>();
     private boolean p = true;
-    private int position;
     private String s;
-    private String nomeF;
-    private String emailF;
-    private String passwordF;
     private FirebaseDatabase db;
     private DatabaseReference myRef;
 
+    private RecyclerViewListener listener;
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView dataTextView;
-        public TextView horaTextView;
-        public TextView mensagemTextView;
-        public ImageButton deleteButton;
+        public TextView pacNameTextView;
+        public ImageButton editButton;
+        public ImageButton statisticButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            dataTextView = (TextView) itemView.findViewById(R.id.txtDate);
-            horaTextView = (TextView) itemView.findViewById(R.id.txtTime);
-            mensagemTextView = (TextView) itemView.findViewById(R.id.txtTitle);
-            deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
+            pacNameTextView = (TextView) itemView.findViewById(R.id.PcNome);
+            editButton = (ImageButton) itemView.findViewById(R.id.editButton);
+            statisticButton = (ImageButton) itemView.findViewById(R.id.statisticButton);
 
         }
     }
 
-    public RemindersAdapter(ArrayList<HashMap<String, String>> reminders, RecyclerViewListener listener, String mail){
-        this.s = mail;
+    public UsersAdapter(ArrayList<String> users, RecyclerViewListener listener){
+        mUsers = users;
         this.listener = listener;
-        mReminders = reminders;
     }
 
 
     @Override
-    public RemindersAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public UsersAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View reminderView = inflater.inflate(R.layout.single_reminder,parent,false);
-        ViewHolder viewHolder = new ViewHolder(reminderView);
+        View userView = inflater.inflate(R.layout.single_paciente,parent,false);
+        ViewHolder viewHolder = new ViewHolder(userView);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(RemindersAdapter.ViewHolder holder, int position) {
-        int position2 = position;
-        HashMap<String, String> reminder = mReminders.get(position2);
-        TextView textViewData = holder.dataTextView;
-        textViewData.setText(reminder.get("data"));
-        TextView textViewHora = holder.horaTextView;
-        textViewHora.setText(reminder.get("hora"));
-        TextView textViewMensagem = holder.mensagemTextView;
-        textViewMensagem.setText(reminder.get("mensagem"));
-        ImageButton delButton = holder.deleteButton;
+    public void onBindViewHolder(UsersAdapter.ViewHolder holder, int position) {
+        String nomeUser = mUsers.get(position);
+        TextView pacName = holder.pacNameTextView;
+        pacName.setText(nomeUser);
+
+        ImageButton edButton = holder.editButton;
+        ImageButton statsButton = holder.statisticButton;
+
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
-        delButton.setOnClickListener(new View.OnClickListener() {
+        /*edButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //HashMap<String, String> rem = mNotes.get(holder.getAdapterPosition());
@@ -122,9 +110,9 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
                             myRef.updateChildren(mapUsers);
                             p = false;
 
-                            /*goToMain(view);*/
-                            /*((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
-                            ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);*/
+                            *//*goToMain(view);*//*
+                            *//*((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
+                            ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);*//*
                         }
 
 
@@ -141,13 +129,16 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
                 //holder.itemView.setVisibility(View.GONE);
 
             }
-        });
+        });*/
     }
 
 
     @Override
     public int getItemCount() {
-        return mReminders.size();
+        if(mUsers.size() > 5) {
+            return 5;
+        }
+        return mUsers.size();
     }
 
     public interface RecyclerViewListener {
