@@ -33,7 +33,7 @@
             tools:ignore="RtlCompat" />
 
         <ImageButton
-            android:id="@+id/deleteButton"
+            android:id="@+id/delButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight=".8"
@@ -51,7 +51,7 @@
             android:src="@drawable/ic_delete" />
 
         <ImageButton
-            android:id="@+id/deleteButton"
+            android:id="@+id/deleteButtono"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight=".8"

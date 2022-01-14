@@ -103,7 +103,7 @@ public class UserHomeActivity extends AppCompatActivity {
 
         View headerView = navigationView.getHeaderView(0);
         TextView nomeText = headerView.findViewById(R.id.username);
-        //nomeText.setText(user_name.toUpperCase());
+        nomeText.setText(user_name.toUpperCase());
         TextView pacienteText = headerView.findViewById(R.id.usertype);
         pacienteText.setText("Paciente");
 
