@@ -62,7 +62,7 @@ public class AllNotesFragment extends Fragment {
                         }
 
                         setOnClickListener();
-                        NotesAdapter notesAdapter = new NotesAdapter(notasCurrent, listenerAdapter);
+                        NotesAdapter notesAdapter = new NotesAdapter(notasCurrent, listenerAdapter,user_email);
 
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                         layoutManager.setOrientation(RecyclerView.VERTICAL);

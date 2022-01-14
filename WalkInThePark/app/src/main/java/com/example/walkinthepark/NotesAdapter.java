@@ -57,9 +57,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
         }
     }
 
-    public NotesAdapter(ArrayList<HashMap<String, String>> notes, RecyclerViewListener listener){
+    public NotesAdapter(ArrayList<HashMap<String, String>> notes, RecyclerViewListener listener,String mail){
         mNotes = notes;
         this.listener = listener;
+        this.s = mail;
     }
 
 
