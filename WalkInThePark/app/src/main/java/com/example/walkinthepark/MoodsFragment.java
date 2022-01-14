@@ -52,6 +52,20 @@ public class MoodsFragment extends Fragment {
                 throw new IllegalStateException("Unexpected value: " + str);
         }
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(button.getText().equals("Adicionar Humor")) {
+                    button.setText("Ver Humores");
+                    newMoodFragment = new NewMoodFragment();
+                    replaceFragment(newMoodFragment);
+                } else if (button.getText().equals("Ver Humores")) {
+                    button.setText("Adicionar Humor");
+                    replaceFragment(allMoodsFragment);
+                }
+            }
+        });
+
         return moodsView;
     }
 
