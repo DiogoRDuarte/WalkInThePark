@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp"
+    android:checkable="true"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="#E8E8E8"
+    app:cardCornerRadius="15dp"
+    app:contentPadding="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <TextView
+            android:id="@+id/PcNome"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1.6"
+            android:gravity="center_vertical"
+            android:text="Paciente"
+            android:textAlignment="center"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            tools:ignore="RtlCompat" />
+
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight=".8"
+            android:backgroundTint="#E8E8E8"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_delete" />
+
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight=".8"
+            android:backgroundTint="#E8E8E8"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_delete" />
+
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight=".8"
+            android:backgroundTint="#E8E8E8"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_delete" />
+
+    </LinearLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

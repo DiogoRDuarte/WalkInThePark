@@ -28,43 +28,22 @@
         <argument
             android:name="fragment"
             app:argType="string"/>
-        <action
-            android:id="@+id/action_menuPAc_self"
-            app:destination="@id/menuPAc" />
-        <action
-            android:id="@+id/action_menuPAc_to_definicoesAc"
-            app:destination="@id/definicoesAc" />
-        <action
-            android:id="@+id/action_menuPAc_to_ajudaAc"
-            app:destination="@id/ajudaAc" />
     </fragment>
     <fragment
         android:id="@+id/ajudaAc"
         android:name="com.example.walkinthepark.AboutFragment"
         android:label="Sobre"
-        tools:layout="@layout/fragment_about" >
-        <action
-            android:id="@+id/action_ajudaAc_self"
-            app:destination="@id/ajudaAc" />
-    </fragment>
+        tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/calibracaoAc"
         android:name="com.example.walkinthepark.CalibrationFragment"
         android:label="Calibração"
-        tools:layout="@layout/fragment_calibration" >
-        <action
-            android:id="@+id/action_calibracaoAc_self"
-            app:destination="@id/calibracaoAc" />
-    </fragment>
+        tools:layout="@layout/fragment_calibration" />
     <fragment
         android:id="@+id/videosPAc"
         android:name="com.example.walkinthepark.ExerciseFragment"
         android:label="Vídeos Exercícios"
-        tools:layout="@layout/fragment_exercise" >
-        <action
-            android:id="@+id/action_videosPAc_self"
-            app:destination="@id/videosPAc" />
-    </fragment>
+        tools:layout="@layout/fragment_exercise" />
     <fragment
         android:id="@+id/humorAc"
         android:name="com.example.walkinthepark.MoodsFragment"
@@ -74,9 +53,6 @@
             android:name="fragment"
             app:argType="string"
             android:defaultValue="fragM"/>
-        <action
-            android:id="@+id/action_humorAc_self"
-            app:destination="@id/humorAc" />
     </fragment>
     <fragment
         android:id="@+id/notasAc"
@@ -87,9 +63,6 @@
             android:name="fragment"
             app:argType="string"
             android:defaultValue="fragNT"/>
-        <action
-            android:id="@+id/action_notasAc_self"
-            app:destination="@id/notasAc" />
     </fragment>
     <fragment
         android:id="@+id/lembretesAc"
@@ -100,17 +73,10 @@
             android:name="fragment"
             app:argType="string"
             android:defaultValue="frag1"/>
-        <action
-            android:id="@+id/action_lembretesAc_self"
-            app:destination="@id/lembretesAc" />
     </fragment>
     <fragment
         android:id="@+id/definicoesAc"
         android:name="com.example.walkinthepark.SettingsFragment"
         android:label="Definições"
-        tools:layout="@layout/fragment_settings" >
-        <action
-            android:id="@+id/action_definicoesAc_self"
-            app:destination="@id/definicoesAc" />
-    </fragment>
+        tools:layout="@layout/fragment_settings" />
 </navigation>
