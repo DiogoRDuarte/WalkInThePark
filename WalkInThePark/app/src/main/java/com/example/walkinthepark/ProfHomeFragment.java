@@ -76,7 +76,7 @@ public class ProfHomeFragment extends Fragment {
 
                     for (int i = 1; i < pacientes.size(); i++) {
                         if(pacientes.get(i) != null) {
-                            String pn = pacientes.get(1).get("nome") + "";
+                            String pn = pacientes.get(i).get("nome") + "";
                             listNomesPacs.add(pn);
                         }
                     }
