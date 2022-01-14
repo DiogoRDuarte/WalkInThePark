@@ -21,7 +21,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.ViewHolder> {
-    private final Context cont;
+    //private final Context cont;
+    private final RecyclerViewListener listener;
     private ArrayList<HashMap<String, String>> mReminders;
     private Map mapUsers = new HashMap<String, User>();
     private boolean p = true;
@@ -51,11 +52,9 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
         }
     }
 
-    public RemindersAdapter(ArrayList<HashMap<String, String>> reminders, Context c){
-        cont = c;
-        if(c instanceof UserHomeActivity){
-            s = ((UserHomeActivity) c).getCurrentUserEmail();
-        }
+    public RemindersAdapter(ArrayList<HashMap<String, String>> reminders, RecyclerViewListener listener, String mail){
+        this.s = mail;
+        this.listener = listener;
         mReminders = reminders;
     }
 
@@ -149,5 +148,9 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
     @Override
     public int getItemCount() {
         return mReminders.size();
+    }
+
+    public interface RecyclerViewListener {
+        void onClick(View v, int position);
     }
 }

@@ -26,7 +26,7 @@ import java.util.Map;
 public class AllRemindersFragment extends Fragment {
 
     ArrayList<HashMap<String, String>> listaLembretes;
-
+    private RemindersAdapter.RecyclerViewListener listenerAdapter;
     private DatabaseReference myRef;
     private FirebaseDatabase db;
     String user_email;
@@ -58,7 +58,7 @@ public class AllRemindersFragment extends Fragment {
                             lembretesCurrent.add(listaLembretes.get(i));
                         }
 
-                        RemindersAdapter remindersAdapter = new RemindersAdapter(lembretesCurrent,getContext());
+                        RemindersAdapter remindersAdapter = new RemindersAdapter(lembretesCurrent,listenerAdapter,user_email);
 
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                         layoutManager.setOrientation(RecyclerView.VERTICAL);
