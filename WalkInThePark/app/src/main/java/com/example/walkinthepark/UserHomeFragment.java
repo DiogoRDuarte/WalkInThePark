@@ -66,14 +66,11 @@ public class UserHomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         userView = inflater.inflate(R.layout.fragment_user_home, container, false);
-
-
+        
         MaterialButton verLembsButton = userView.findViewById(R.id.verLembretes);
         MaterialButton criarLembButton = userView.findViewById(R.id.adicionarLembrete);
         MaterialButton criarNotaButton = userView.findViewById(R.id.adicionarNota);
         MaterialButton calibrarButton = userView.findViewById(R.id.calibrar);
-        /*MaterialButton editar1Button = userView.findViewById(R.id.editar1);
-        MaterialButton editar2Button = userView.findViewById(R.id.editar2);*/
         MaterialButton submeterMood = userView.findViewById(R.id.submeterMoods);
         MaterialCardView videoCard = userView.findViewById(R.id.video);
         MaterialButton verMood = userView.findViewById(R.id.verMood);
@@ -86,7 +83,6 @@ public class UserHomeFragment extends Fragment {
         refReminders = db.getReference("Reminder");
         myRef = db.getReference("User");
         Map m = new HashMap<String,Map>();
-
 
         //Notas
         myRef.addValueEventListener(new ValueEventListener() {
@@ -132,7 +128,6 @@ public class UserHomeFragment extends Fragment {
 
                         rvNotesUser.setLayoutManager(layoutManager);
                         rvNotesUser.setAdapter(notesUserAdapter);
-
                     }
                 }
             }
@@ -233,20 +228,6 @@ public class UserHomeFragment extends Fragment {
                 Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_calibracaoAc);
             }
         });
-
-        /*editar1Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        editar2Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });*/
 
         // CARDS
         videoCard.setOnClickListener(new View.OnClickListener() {

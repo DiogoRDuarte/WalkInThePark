@@ -68,8 +68,6 @@ public class NewMoodFragment extends Fragment {
                 radioButton = newMoodView.findViewById(radioId);
                 String txt = (String) radioButton.getText();
 
-                // O QUE FAZER QUANDO MOOD=0?
-
                 switch (txt) {
                     case "Magoado":
                         mood = 1;
