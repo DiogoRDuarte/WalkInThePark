@@ -1,9 +1,12 @@
 package com.example.walkinthepark;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +34,9 @@ public class ProfHomeFragment extends Fragment {
     private FirebaseDatabase db;
     private ArrayList<Map> pacientes;
 
+    private UsersAdapter.RecyclerViewListener listenerAdapter;
+    private Context context = getContext();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,16 +47,19 @@ public class ProfHomeFragment extends Fragment {
         MaterialButton criarVideo = profView.findViewById(R.id.adicionarVideo);
         MaterialButton verPacientes = profView.findViewById(R.id.verPacientes);
 
-        TextView pc1 = profView.findViewById(R.id.paciente1Name);
+        RecyclerView rvExerciciosProf = (RecyclerView) profView.findViewById(R.id.rvExerciciosProf);
+        RecyclerView rvPacientesProf = (RecyclerView) profView.findViewById(R.id.rvPacientesProf);
+
+        /*TextView pc1 = profView.findViewById(R.id.paciente1Name);
         TextView pc2 = profView.findViewById(R.id.paciente2Name);
         TextView pc3 = profView.findViewById(R.id.paciente3Name);
-        TextView pc4 = profView.findViewById(R.id.paciente4Name);
+        TextView pc4 = profView.findViewById(R.id.paciente4Name);*/
 
         String user_email = ((ProfHomeActivity) getActivity()).getIntent().getStringExtra("user_email");
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
         Map m = new HashMap<String,Map>();
-        List<HashMap<String, User>> list = new ArrayList<>();
+        ArrayList<String> listNomesPacs = new ArrayList<>();
 
         myRef.addValueEventListener(new ValueEventListener() {
 
@@ -65,13 +74,26 @@ public class ProfHomeFragment extends Fragment {
 
                 if (pacientes != null && pacientes.size() > 1) {
 
-                    if (pacientes.get(1) != null){
-                        String pn = pacientes.get(1).get("nome") + "";
-                        /*Toast.makeText(getActivity().getApplicationContext(), pn, Toast.LENGTH_SHORT).show();*/
-                        pc1.setText(pn);
+                    for (int i = 1; i < pacientes.size(); i++) {
+                        if(pacientes.get(i) != null) {
+                            String pn = pacientes.get(1).get("nome") + "";
+                            listNomesPacs.add(pn);
+                        }
                     }
 
-                    /*if (pacientes.get(2) != null)
+                    UsersAdapter usersAdapter = new UsersAdapter(listNomesPacs, listenerAdapter);
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+                    layoutManager.setOrientation(RecyclerView.VERTICAL);
+                    rvPacientesProf.setLayoutManager(layoutManager);
+                    
+                    rvPacientesProf.setAdapter(usersAdapter);
+
+                    /* if (pacientes.get(1) != null){
+                        String pn = pacientes.get(1).get("nome") + "";
+                        Toast.makeText(getActivity().getApplicationContext(), pn, Toast.LENGTH_SHORT).show();
+                        pc1.setText(pn);
+                    }
+                   if (pacientes.get(2) != null)
                         pc2.setText(pacientes.get(2).get("nome") + "");
                     if (pacientes.get(3) != null)
                         pc3.setText(pacientes.get(3).get("nome") + "");

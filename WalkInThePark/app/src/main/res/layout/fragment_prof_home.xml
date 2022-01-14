@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        android:backgroundTint="#8A8A8A"
+        app:cardBackgroundColor="#DC6E58"
         app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toTopOf="@+id/pacientes"
         app:layout_constraintEnd_toEndOf="@+id/pacientes"
@@ -26,7 +26,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvExerciciosProf"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -65,7 +70,7 @@
                 </RelativeLayout>
 
 
-            </LinearLayout>
+            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -134,7 +139,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        android:backgroundTint="#8A8A8A"
+        app:cardBackgroundColor="#bddba4"
         app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +151,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPacientesProf"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -564,7 +574,7 @@
                 </RelativeLayout>
 
 
-            </LinearLayout>
+            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
