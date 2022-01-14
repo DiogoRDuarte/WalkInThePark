@@ -26,82 +26,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvLembretes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <!-- Lembrete 1 -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/lembrete1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <!-- <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/lembrete1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:checkable="true"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardCornerRadius="15dp"
-                    app:contentPadding="8dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Mensagem"
-                            android:textAppearance="?attr/textAppearanceHeadline6" />
-
-                        <RelativeLayout
-                            android:id="@+id/lemb1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="Data"
-                                android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="?android:attr/textColorSecondary" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="24dp"
-                                android:text="Hora"
-                                android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="?android:attr/textColorSecondary" />
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/editar1"
-                                style="?attr/borderlessButtonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:text="Editar"
-                                android:textColor="#000000"
-                                app:backgroundTint="#C4C4C4" />
-
-                        </RelativeLayout>
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView> -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/verLembretes"
@@ -113,6 +50,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
                     android:text="Ver todos"
                     android:textColor="#2B2C2C"
                     app:backgroundTint="#E8E8E8"
@@ -120,83 +58,6 @@
                     app:cornerRadius="15dp"
                     tools:ignore="TextContrastCheck" />
 
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <!-- Lembrete 2 -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/lembrete2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <!-- <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/lembrete2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:checkable="true"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardCornerRadius="15dp"
-                    app:contentPadding="8dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Mensagem"
-                            android:textAppearance="?attr/textAppearanceHeadline6" />
-
-
-                        <RelativeLayout
-                            android:id="@+id/lemb2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="Data"
-                                android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="?android:attr/textColorSecondary" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="24dp"
-                                android:text="Hora"
-                                android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="?android:attr/textColorSecondary" />
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/editar2"
-                                style="?attr/borderlessButtonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:text="Editar"
-                                android:textColor="#000000"
-                                app:backgroundTint="#C4C4C4" />
-
-                        </RelativeLayout>
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView> -->
-
-                <!-- android:drawable="@drawable/ic_action_add" -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/adicionarLembrete"
                     style="?attr/borderlessButtonStyle"
@@ -207,13 +68,14 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
                     android:text="NOVO LEMBRETE"
                     android:textColor="#2B2C2C"
                     app:backgroundTint="#E8E8E8"
                     app:contentPadding="8dp"
                     app:cornerRadius="15dp" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -316,51 +178,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
-                    <!--<com.google.android.material.button.MaterialButton
-                        android:id="@+id/nota1"
-                        style="?attr/borderlessButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_margin="8dp"
-                        android:text="Nota 1"
-                        android:textColor="#2B2C2C"
-                        android:textSize="20sp"
-                        app:backgroundTint="#E8E8E8"
-                        app:contentPadding="8dp"
-                        app:cornerRadius="15dp"
-                        tools:layout_editor_absoluteX="8dp" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/nota2"
-                        style="?attr/borderlessButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_margin="8dp"
-                        android:text="Nota 2"
-                        android:textColor="#2B2C2C"
-                        android:textSize="20sp"
-                        app:backgroundTint="#E8E8E8"
-                        app:contentPadding="8dp"
-                        app:cornerRadius="15dp"
-                        tools:layout_editor_absoluteX="8dp" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/nota3"
-                        style="?attr/borderlessButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_margin="8dp"
-                        android:text="Nota 3"
-                        android:textColor="#2B2C2C"
-                        android:textSize="20sp"
-                        app:backgroundTint="#E8E8E8"
-                        app:contentPadding="8dp"
-                        app:cornerRadius="15dp"
-                        tools:layout_editor_absoluteX="8dp" />-->
-
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/adicionarNota"
                         style="?attr/borderlessButtonStyle"
@@ -455,13 +272,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.warkiz.widget.IndicatorSeekBar
-            android:paddingTop="40dp"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
-
             android:id="@+id/barraMood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
+            android:paddingLeft="25dp"
+            android:paddingTop="40dp"
+            android:paddingRight="25dp"
             app:isb_indicator_color="#000000"
             app:isb_indicator_text_color="#FFFFFF"
             app:isb_indicator_text_size="18sp"

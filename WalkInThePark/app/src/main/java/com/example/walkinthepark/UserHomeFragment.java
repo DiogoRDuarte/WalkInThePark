@@ -79,8 +79,8 @@ public class UserHomeFragment extends Fragment {
         MaterialButton verMood = userView.findViewById(R.id.verMood);
         IndicatorSeekBar barraMood = userView.findViewById(R.id.barraMood);
         RecyclerView rvNotesUser = (RecyclerView) userView.findViewById(R.id.rvNotesUser);
-        RecyclerView rvRem1 = (RecyclerView) userView.findViewById(R.id.lembrete1);
-        RecyclerView rvRem2 = (RecyclerView) userView.findViewById(R.id.lembrete2);
+        RecyclerView rvRems = (RecyclerView) userView.findViewById(R.id.rvLembretes);
+        /*RecyclerView rvRem2 = (RecyclerView) userView.findViewById(R.id.lembrete2);*/
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         refNotas = db.getReference("Note");
         refReminders = db.getReference("Reminder");
@@ -115,10 +115,10 @@ public class UserHomeFragment extends Fragment {
                             //RemindersUserAdapter remindersUserAdapterII = new RemindersUserAdapter(segundo,listenerAdapterIII);
                             LinearLayoutManager man = new LinearLayoutManager(context);
                             //LinearLayoutManager manI = new LinearLayoutManager(context);
-                            man.setOrientation(RecyclerView.VERTICAL);
+                            man.setOrientation(RecyclerView.HORIZONTAL);
                             //manI.setOrientation(RecyclerView.VERTICAL);
-                            rvRem1.setLayoutManager(man);
-                            rvRem1.setAdapter(remindersUserAdapterI);
+                            rvRems.setLayoutManager(man);
+                            rvRems.setAdapter(remindersUserAdapterI);
                             //rvRem2.setLayoutManager(manI);
                             //rvRem2.setAdapter(remindersUserAdapterII);
                         }
@@ -143,6 +143,7 @@ public class UserHomeFragment extends Fragment {
             }
         });
 
+        //Moods
         ValueEventListener  listener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

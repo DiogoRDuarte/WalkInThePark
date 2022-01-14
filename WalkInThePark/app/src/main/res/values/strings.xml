@@ -4,7 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="button_ac_notes">Adicionar Nota</string>
     <string name="string_notes">Notas Existentes</string>
-    <string name="string_moods">Moods Existentes</string>
+    <string name="string_moods">Humores Existentes</string>
     <string name="string_new_note">Adicione uma Nota!</string>
     <string name="button_add">Adicionar</string>
     <string name="button_cancel">Cancelar</string>
@@ -20,4 +20,5 @@
     <string name="string_new_reminder">Adicione um Lembrete!</string>
     <string name="button_ac_exercises">Gravar Vídeo</string>
     <string name="button_ac_upExercises">Carregar Vídeo</string>
+    <string name="button_ac_moods">Adicionar Humor</string>
 </resources>
