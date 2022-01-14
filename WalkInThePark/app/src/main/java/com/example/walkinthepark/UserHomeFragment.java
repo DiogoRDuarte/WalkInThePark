@@ -66,7 +66,7 @@ public class UserHomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         userView = inflater.inflate(R.layout.fragment_user_home, container, false);
-        
+
         MaterialButton verLembsButton = userView.findViewById(R.id.verLembretes);
         MaterialButton criarLembButton = userView.findViewById(R.id.adicionarLembrete);
         MaterialButton criarNotaButton = userView.findViewById(R.id.adicionarNota);

@@ -35,7 +35,7 @@ public class AllMoodsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View allMoodsView =  inflater.inflate(R.layout.fragment_all_moods, container, false);
+        allMoodsView =  inflater.inflate(R.layout.fragment_all_moods, container, false);
 
         RecyclerView rvMoods = (RecyclerView) allMoodsView.findViewById(R.id.rvMoods);
 
@@ -55,20 +55,13 @@ public class AllMoodsFragment extends Fragment {
                             moodsCurrent.add(listaMoods.get(i));
                         }
 
-
-                        ///MUDAR PARA MOOD ADAPTER
                         MoodAdapter moodAdapter = new MoodAdapter(moodsCurrent,getContext());
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                         layoutManager.setOrientation(RecyclerView.VERTICAL);
                         rvMoods.setLayoutManager(layoutManager);
                         rvMoods.setAdapter(moodAdapter);
-                        ////////////////////////////////////
-
                     }
                 }
-
-
-
             }
 
             @Override
