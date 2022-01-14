@@ -98,7 +98,7 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
                                 ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaLembretes");
                                 //a.add(put("",""));
                                 try{
-                                    a.remove(position);
+                                    a.remove(position+1);
                                     notifyItemRemoved(position);
                                     notifyItemRangeChanged(position,getItemCount()+1);
                                 }catch(IndexOutOfBoundsException e){
