@@ -52,10 +52,14 @@ public class UserHomeFragment extends Fragment {
     private int nMoods;
 
     private NotesUserAdapter.RecyclerViewListener listenerAdapter;
-
+    private RemindersUserAdapter.RecyclerViewListener listenerAdapterII;
+    private RemindersUserAdapter.RecyclerViewListener listenerAdapterIII;
     // Notas
     ArrayList<HashMap<String, String>> listaNotas;
+    ArrayList<HashMap<String, String>> listaLembretes;
+
     private ArrayList<HashMap<String, String>> notasCurrent;
+    private ArrayList<HashMap<String, String>> lembretesCurrent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,7 +79,8 @@ public class UserHomeFragment extends Fragment {
         MaterialButton verMood = userView.findViewById(R.id.verMood);
         IndicatorSeekBar barraMood = userView.findViewById(R.id.barraMood);
         RecyclerView rvNotesUser = (RecyclerView) userView.findViewById(R.id.rvNotesUser);
-
+        RecyclerView rvRem1 = (RecyclerView) userView.findViewById(R.id.lembrete1);
+        RecyclerView rvRem2 = (RecyclerView) userView.findViewById(R.id.lembrete2);
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         refNotas = db.getReference("Note");
         refReminders = db.getReference("Reminder");
@@ -93,18 +98,39 @@ public class UserHomeFragment extends Fragment {
 
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaNotas = (ArrayList<HashMap<String, String>>) ds.child("listaNotas").getValue();
+                        listaLembretes = (ArrayList<HashMap<String, String>>) ds.child("listaLembretes").getValue();
                         notasCurrent = new ArrayList<>();
+                        lembretesCurrent = new ArrayList<>();
                         for (int i = 1; i < listaNotas.size(); i++) {
                             notasCurrent.add(listaNotas.get(i));
                         }
+                        for (int i = 1; i < listaLembretes.size(); i++) {
+                            lembretesCurrent.add(listaLembretes.get(i));
+                        }
                         // NOTAS
+                        if(lembretesCurrent.size() > 0){
+                            HashMap<String,String> primeiro = lembretesCurrent.get(0);
+                            //HashMap<String,String> segundo = lembretesCurrent.get(1);
+                            RemindersUserAdapter remindersUserAdapterI = new RemindersUserAdapter(primeiro,listenerAdapterII);
+                            //RemindersUserAdapter remindersUserAdapterII = new RemindersUserAdapter(segundo,listenerAdapterIII);
+                            LinearLayoutManager man = new LinearLayoutManager(context);
+                            //LinearLayoutManager manI = new LinearLayoutManager(context);
+                            man.setOrientation(RecyclerView.VERTICAL);
+                            //manI.setOrientation(RecyclerView.VERTICAL);
+                            rvRem1.setLayoutManager(man);
+                            rvRem1.setAdapter(remindersUserAdapterI);
+                            //rvRem2.setLayoutManager(manI);
+                            //rvRem2.setAdapter(remindersUserAdapterII);
+                        }
 
                         setOnClickListener();
                         NotesUserAdapter notesUserAdapter = new NotesUserAdapter(notasCurrent, listenerAdapter);
-                        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-                        layoutManager.setOrientation(RecyclerView.VERTICAL);
-                        rvNotesUser.setLayoutManager(layoutManager);
 
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+
+                        layoutManager.setOrientation(RecyclerView.VERTICAL);
+
+                        rvNotesUser.setLayoutManager(layoutManager);
                         rvNotesUser.setAdapter(notesUserAdapter);
 
                     }
