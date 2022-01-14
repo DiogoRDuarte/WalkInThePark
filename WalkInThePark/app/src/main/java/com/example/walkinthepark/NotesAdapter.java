@@ -22,7 +22,6 @@ import java.util.Map;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
 
-    private final Context cont;
     private String s;
     private ArrayList<HashMap<String, String>> mNotes;
     private int position;
@@ -34,7 +33,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     private boolean p = true;
     private Map mapUsers = new HashMap<String, User>();
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    private RecyclerViewListener listener;
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView tituloTextView;
         public TextView mensagemTextView;
@@ -47,15 +48,18 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
             mensagemTextView = (TextView) itemView.findViewById(R.id.txtMensagem);
             deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
         }
+
+        @Override
+        public void onClick(View v) {
+            if(listener != null && getAdapterPosition() != RecyclerView.NO_POSITION){
+                listener.onClick(v, getAdapterPosition());
+            }
+        }
     }
 
-    public NotesAdapter(ArrayList<HashMap<String, String>> notes, Context c){
+    public NotesAdapter(ArrayList<HashMap<String, String>> notes, RecyclerViewListener listener){
         mNotes = notes;
-        cont = c;
-        if(c instanceof UserHomeActivity){
-            s = ((UserHomeActivity) c).getCurrentUserEmail();
-        }
-        System.out.println(c);
+        this.listener = listener;
     }
 
 
@@ -146,6 +150,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     @Override
     public int getItemCount() {
         return mNotes.size();
+    }
+
+    public interface RecyclerViewListener {
+        void onClick(View v, int position);
     }
 }
 

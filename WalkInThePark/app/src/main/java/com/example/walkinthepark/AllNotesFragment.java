@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,12 +27,16 @@ public class AllNotesFragment extends Fragment {
 
     static View allNotesView;
 
-    ArrayList<HashMap<String, String>> listaNotas;
 
     private DatabaseReference myRef;
     private FirebaseDatabase db;
     private Context context = this.getContext();
     String user_email;
+
+    private NotesAdapter.RecyclerViewListener listenerAdapter;
+
+    // Notas
+    ArrayList<HashMap<String, String>> listaNotas;
     private ArrayList<HashMap<String, String>> notasCurrent;
 
     @Override
@@ -47,17 +52,17 @@ public class AllNotesFragment extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                notasCurrent = new ArrayList<>();
                 for(DataSnapshot ds : snapshot.getChildren()){
                     user_email =((UserHomeActivity)getActivity()).user_email;
                     if (ds.child("email").getValue().toString().equals(user_email)) {
-                        listaNotas = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
-
+                        listaNotas = (ArrayList<HashMap<String, String>>) ds.child("listaNotas").getValue();
+                        notasCurrent = new ArrayList<>();
                         for (int i = 1; i < listaNotas.size(); i++) {
                             notasCurrent.add(listaNotas.get(i));
                         }
 
-                        NotesAdapter notesAdapter = new NotesAdapter(notasCurrent,getContext());
+                        setOnClickListener();
+                        NotesAdapter notesAdapter = new NotesAdapter(notasCurrent, listenerAdapter);
 
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                         layoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -67,9 +72,6 @@ public class AllNotesFragment extends Fragment {
 
                     }
                 }
-
-
-
             }
 
             @Override
@@ -80,5 +82,27 @@ public class AllNotesFragment extends Fragment {
 
 
         return allNotesView;
+    }
+
+    private void setOnClickListener() {
+        listenerAdapter = new NotesAdapter.RecyclerViewListener() {
+            @Override
+            public void onClick(View v, int position) {
+
+                if(listenerAdapter != null){
+                    //FAZER
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("fragment", "fragAN");
+                    bundle.putString("titulo", listaNotas.get(position+1).get("titulo"));
+                    bundle.putString("mensagem", listaNotas.get(position+1).get("mensagem"));
+
+                    //mudar
+
+                    //Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
+                }
+
+            }
+        };
     }
 }
