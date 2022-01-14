@@ -31,6 +31,7 @@ public class AllMoodsFragment extends Fragment {
     private Context context = this.getContext();
     String user_email;
     private ArrayList<HashMap<String, String>> moodsCurrent;
+    private MoodAdapter.RecyclerViewListener listenerAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,7 +58,7 @@ public class AllMoodsFragment extends Fragment {
 
 
                         ///MUDAR PARA MOOD ADAPTER
-                        MoodAdapter moodAdapter = new MoodAdapter(moodsCurrent,getContext());
+                        MoodAdapter moodAdapter = new MoodAdapter(moodsCurrent,listenerAdapter,user_email);
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                         layoutManager.setOrientation(RecyclerView.VERTICAL);
                         rvMoods.setLayoutManager(layoutManager);

@@ -22,7 +22,8 @@ import java.util.Map;
 
 public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
 
-    private final Context cont;
+
+    private final RecyclerViewListener listener;
     private String s;
     private ArrayList<HashMap<String, String>> mMoods;
     private int position;
@@ -31,7 +32,7 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
     private String nomeF;
     private String emailF;
     private String passwordF;
-    private boolean a = true;
+    private boolean p = true;
     private Map mapUsers = new HashMap<String, User>();
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -49,12 +50,10 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
         }
     }
 
-    public MoodAdapter(ArrayList<HashMap<String, String>> moods, Context c){
+    public MoodAdapter(ArrayList<HashMap<String, String>> moods, RecyclerViewListener listener, String mail){
         mMoods = moods;
-        cont = c;
-        if(c instanceof UserHomeActivity){
-            s = ((UserHomeActivity) c).getCurrentUserEmail();
-        }
+        this.listener = listener;
+        this.s = mail;
     }
 
 
@@ -72,7 +71,7 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
         int position2 = position;
         HashMap<String, String> mood = mMoods.get(position2);
         TextView textViewMood = holder.moodTextView;
-        textViewMood.setText(mood.get("mood"));
+        textViewMood.setText(String.valueOf(mood.get("mood")));
         TextView textViewHora = holder.horaTextView;
         textViewHora.setText(mood.get("hora"));
         ImageButton delButton = holder.deleteButton;
@@ -93,7 +92,13 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
 
                                 ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaMoods");
                                 //a.add(put("",""));
-                                a.remove(position2);
+                                try{
+                                    a.remove(position+1);
+                                    notifyItemRemoved(position);
+                                    notifyItemRangeChanged(position,getItemCount()+1);
+                                }catch(IndexOutOfBoundsException e){
+                                    System.out.println("a");
+                                }
 
                                 HashMap result = new HashMap<>();
                                 result.put("nome", nomeF);
@@ -108,10 +113,10 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
                                 mapUsers.put(s, result);
                             }
                         }
-                        if(a) {
+                        if(p) {
                             //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
                             myRef.updateChildren(mapUsers);
-                            a = false;
+                            p = false;
 
                             /*goToMain(view);*/
                             /*((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
@@ -138,6 +143,10 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return mMoods.size();
+    }
+
+    public interface RecyclerViewListener {
+        void onClick(View v, int position);
     }
 }
 
