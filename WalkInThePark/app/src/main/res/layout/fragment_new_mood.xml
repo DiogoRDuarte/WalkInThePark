@@ -8,153 +8,164 @@
     tools:context=".NewMoodFragment">
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:id="@+id/adicionarMood"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="NewMoodFragment"
+        android:layout_marginEnd="16dp"
+        android:text="@string/string_new_mood"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <SeekBar
-        android:id="@+id/seekBar4"
-        android:layout_width="156dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="60dp"
-        android:max="100"
-        android:progress="50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCancelar"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar3" />
+        app:layout_constraintTop_toBottomOf="@+id/adicionarMood">
 
-    <TextView
-        android:id="@+id/textView22"
+        <RadioButton
+            android:id="@+id/mood1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Magoado"
+            android:textSize="25dp" />
+
+        <RadioButton
+            android:id="@+id/mood2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Chateado"
+            android:textSize="25dp" />
+
+        <RadioButton
+            android:id="@+id/mood3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Triste"
+            android:textSize="25dp" />
+
+        <RadioButton
+            android:id="@+id/mood4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Neutro"
+            android:textSize="25dp" />
+
+        <RadioButton
+            android:id="@+id/mood5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Feliz"
+            android:textSize="25dp" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="284dp"
-        android:text="Zangado"
-        app:layout_constraintStart_toEndOf="@+id/seekBar3"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="388dp"
-        android:layout_marginEnd="48dp"
-        android:text="Otimista"
-        app:layout_constraintEnd_toStartOf="@+id/seekBar4"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="159dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="52dp"
-        android:max="100"
-        android:progress="50"
+        android:layout_marginEnd="12dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/radioGroup2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup2"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup2">
+
+        <ImageView
+            android:id="@+id/magoado"
+            android:layout_width="50dp"
+            android:layout_height="75dp"
+            android:src="@drawable/magoado"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/chateado"
+            android:layout_width="50dp"
+            android:layout_height="75dp"
+            android:src="@drawable/chateado"
+            app:layout_constraintEnd_toStartOf="@+id/triste"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/magoado"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/triste"
+            android:layout_width="50dp"
+            android:layout_height="75dp"
+            android:src="@drawable/triste"
+            app:layout_constraintEnd_toStartOf="@+id/neutro"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/chateado"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/neutro"
+            android:layout_width="50dp"
+            android:layout_height="75dp"
+            android:src="@drawable/neutro"
+            app:layout_constraintEnd_toStartOf="@+id/feliz"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/triste"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/feliz"
+            android:layout_width="50dp"
+            android:layout_height="75dp"
+            android:src="@drawable/feliz"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonCancelar"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="@string/button_cancel"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:backgroundTint="#bddba4"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAdicionar"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="52dp"
-        android:text="Triste"
-        app:layout_constraintEnd_toStartOf="@+id/seekBar"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
-        android:layout_marginEnd="48dp"
-        android:text="Tranquilo"
-        app:layout_constraintEnd_toStartOf="@+id/seekBar2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="284dp"
-        android:layout_marginEnd="52dp"
-        android:text="Calmo"
-        app:layout_constraintEnd_toStartOf="@+id/seekBar3"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="72dp"
-        android:text="Alegre"
-        app:layout_constraintStart_toEndOf="@+id/seekBar"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <SeekBar
-        android:id="@+id/seekBar2"
-        android:layout_width="156dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="60dp"
-        android:max="100"
-        android:progress="50"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonAdicionar"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="@string/button_add"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:backgroundTint="#bddba4"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonCancelar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="388dp"
-        android:text="Pessimista"
-        app:layout_constraintStart_toEndOf="@+id/seekBar4"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="176dp"
-        android:text="Ansioso"
-        app:layout_constraintStart_toEndOf="@+id/seekBar2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <SeekBar
-        android:id="@+id/seekBar3"
-        android:layout_width="156dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="44dp"
-        android:max="100"
-        android:progress="50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="456dp"
-        android:layout_marginEnd="76dp"
-        android:text="Data"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonCancelar"
+        app:layout_constraintTop_toTopOf="@+id/buttonCancelar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

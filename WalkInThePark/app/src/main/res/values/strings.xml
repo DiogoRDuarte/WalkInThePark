@@ -21,4 +21,5 @@
     <string name="button_ac_exercises">Gravar Vídeo</string>
     <string name="button_ac_upExercises">Carregar Vídeo</string>
     <string name="button_ac_moods">Adicionar Humor</string>
+    <string name="string_new_mood">Adicione um Humor!</string>
 </resources>
