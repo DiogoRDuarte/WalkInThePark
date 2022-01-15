@@ -56,7 +56,7 @@ public class AllMoodsFragment extends Fragment {
                             moodsCurrent.add(listaMoods.get(i));
                         }
 
-                        MoodAdapter moodAdapter = new MoodAdapter(moodsCurrent,getContext());
+                        MoodAdapter moodAdapter = new MoodAdapter(moodsCurrent,listenerAdapter,user_email);
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                         layoutManager.setOrientation(RecyclerView.VERTICAL);
                         rvMoods.setLayoutManager(layoutManager);

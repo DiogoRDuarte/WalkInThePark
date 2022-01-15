@@ -71,7 +71,7 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
         int position2 = position;
         HashMap<String, String> mood = mMoods.get(position2);
         ImageView imageViewMood = holder.moodImageView;
-        String moodNum = mood.get("mood");
+        String moodNum = String.valueOf(mood.get("mood"));
         switch (moodNum) {
             case "1":
                 imageViewMood.setImageResource(R.drawable.magoado);

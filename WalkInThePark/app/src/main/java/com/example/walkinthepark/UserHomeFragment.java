@@ -103,21 +103,27 @@ public class UserHomeFragment extends Fragment {
                         for (int i = 1; i < listaLembretes.size(); i++) {
                             lembretesCurrent.add(listaLembretes.get(i));
                         }
-                        // NOTAS
-                        if(lembretesCurrent.size() > 0){
-                            HashMap<String,String> primeiro = lembretesCurrent.get(0);
+                        // NOTASif(lembretesCurrent.size() > 0){
+                            //HashMap<String,String> primeiro = lembretesCurrent.get(0);
                             //HashMap<String,String> segundo = lembretesCurrent.get(1);
-                            RemindersUserAdapter remindersUserAdapterI = new RemindersUserAdapter(primeiro,listenerAdapterII);
+                            //RemindersUserAdapter remindersUserAdapterI = new RemindersUserAdapter(primeiro,listenerAdapterII);
                             //RemindersUserAdapter remindersUserAdapterII = new RemindersUserAdapter(segundo,listenerAdapterIII);
-                            LinearLayoutManager man = new LinearLayoutManager(context);
+                            //LinearLayoutManager man = new LinearLayoutManager(context);
                             //LinearLayoutManager manI = new LinearLayoutManager(context);
-                            man.setOrientation(RecyclerView.HORIZONTAL);
+                            //man.setOrientation(RecyclerView.HORIZONTAL);
                             //manI.setOrientation(RecyclerView.VERTICAL);
-                            rvRems.setLayoutManager(man);
-                            rvRems.setAdapter(remindersUserAdapterI);
+                            //rvRems.setLayoutManager(man);
+                            //rvRems.setAdapter(remindersUserAdapterI);
                             //rvRem2.setLayoutManager(manI);
                             //rvRem2.setAdapter(remindersUserAdapterII);
-                        }
+                            RemindersUserAdapter remindersUserAdapter = new RemindersUserAdapter(lembretesCurrent, listenerAdapterII);
+
+                            LinearLayoutManager man = new LinearLayoutManager(context);
+
+                            man.setOrientation(RecyclerView.HORIZONTAL);
+
+                            rvRems.setLayoutManager(man);
+                            rvRems.setAdapter(remindersUserAdapter);
 
                         setOnClickListener();
                         NotesUserAdapter notesUserAdapter = new NotesUserAdapter(notasCurrent, listenerAdapter);
