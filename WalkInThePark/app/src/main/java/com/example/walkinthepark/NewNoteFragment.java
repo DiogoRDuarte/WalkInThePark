@@ -74,8 +74,7 @@ public class NewNoteFragment extends Fragment {
                 if(tituloS.equals("") || notaS.equals("")){
                     Toast toast = Toast.makeText(getContext(), "Escolhe um Titulo e uma Nota!", Toast.LENGTH_SHORT);
                     toast.show();
-
-                }else {
+                } else {
                     note = new Note(tituloS, notaS);
 
                     Map noteValues = note.toMap();

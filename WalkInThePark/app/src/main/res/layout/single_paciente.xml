@@ -34,21 +34,21 @@
 
         <ImageButton
             android:id="@+id/editButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight=".8"
             android:backgroundTint="#E8E8E8"
             android:scaleType="fitCenter"
-            android:src="@drawable/pencil" />
+            android:src="@drawable/edit" />
 
         <ImageButton
             android:id="@+id/statisticButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight=".8"
             android:backgroundTint="#E8E8E8"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_delete" />
+            android:src="@drawable/results" />
 
         <!--<ImageButton
             android:id="@+id/deleteButtono"

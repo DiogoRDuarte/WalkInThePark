@@ -1,6 +1,10 @@
 package com.example.walkinthepark;
 
+import static android.content.Context.ALARM_SERVICE;
+
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,11 +28,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import java.text.SimpleDateFormat;
 
 
 public class NewReminderFragment extends Fragment {
@@ -42,6 +50,12 @@ public class NewReminderFragment extends Fragment {
     String time ="";
     String message="";
     String date ="";
+
+    private int year;
+    private int month;
+    private int day;
+    private int hour;
+    private int minute;
 
     String user_email;
     private View view;
@@ -57,6 +71,13 @@ public class NewReminderFragment extends Fragment {
     private String nomeF;
     private String emailF;
     private String passwordF;
+
+    //Notificacoes
+
+    private int notificationId = 1;
+
+
+    ///////////
 
     public NewReminderFragment() {
         // Required empty public constructor
@@ -166,6 +187,44 @@ public class NewReminderFragment extends Fragment {
                     //toast.show();
                 }
 
+                // Intent
+                Intent intent = new Intent(NewReminderFragment.this.getContext(), AlarmReceiver.class);
+                intent.putExtra("notificationId", notificationId);
+                intent.putExtra("message", te.getText().toString());
+
+                // PendingIntent
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                        NewReminderFragment.this.getContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT
+                );
+
+                // AlarmManager
+                AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(ALARM_SERVICE);
+
+                // Create time.
+//                Calendar startTime = Calendar.getInstance();
+//                startTime.set(Calendar.YEAR, year);
+//                startTime.set(Calendar.MONTH, month);
+//                startTime.set(Calendar.DAY_OF_MONTH, day);
+//                startTime.set(Calendar.HOUR_OF_DAY, hour);
+//                startTime.set(Calendar.MINUTE, minute);
+//                startTime.set(Calendar.SECOND, 0);
+
+                SimpleDateFormat formatter =new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                String dateAuxS = date + " " + time;
+                Date dateAuxD = null;
+                try {
+                    dateAuxD = formatter.parse(dateAuxS);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                long millis = dateAuxD.getTime();
+
+//                long alarmStartTime = startTime.getTimeInMillis();
+
+
+                // Set Alarm
+                alarmManager.set(AlarmManager.RTC_WAKEUP, millis, pendingIntent);
+
             }
         });
 
@@ -190,12 +249,12 @@ public class NewReminderFragment extends Fragment {
 
     private void selectTime() {
         Calendar cal = Calendar.getInstance();
-        int hour = cal.get(Calendar.HOUR_OF_DAY);
-        int minute = cal.get(Calendar.MINUTE);
+        hour = cal.get(Calendar.HOUR_OF_DAY);
+        minute = cal.get(Calendar.MINUTE);
         TimePickerDialog timePickerDialog = new TimePickerDialog(this.getContext(), new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
-                time = hour + ":" + minute;
+                time = hour + ":" + minute + ":00";
                 hora.setText(time+"h");
             }
         },hour,minute,true);
@@ -204,9 +263,9 @@ public class NewReminderFragment extends Fragment {
 
     private void selectDate() {
         Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
+        year = cal.get(Calendar.YEAR);
+        month = cal.get(Calendar.MONTH);
+        day = cal.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog datePickerDialog = new DatePickerDialog(this.getContext(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {

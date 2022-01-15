@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MoodsFragment extends Fragment {
@@ -19,9 +20,12 @@ public class MoodsFragment extends Fragment {
     static AllMoodsFragment allMoodsFragment;
     static NewMoodFragment newMoodFragment;
 
+    MaterialButton button;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         moodsView = inflater.inflate(R.layout.fragment_moods, container, false);
 
         if (newMoodFragment== null){
@@ -31,25 +35,34 @@ public class MoodsFragment extends Fragment {
             allMoodsFragment = new AllMoodsFragment();
         }
 
+        button = moodsView.findViewById(R.id.button_moods);
         replaceFragment(allMoodsFragment);
 
         String str = getArguments().getString("fragment");
         switch (str) {
             case "fragNM":
+                button.setText("Ver Humores");
                 replaceFragment(newMoodFragment);
                 break;
             case "fragM":
+                button.setText("Adicionar Humor");
                 replaceFragment(allMoodsFragment);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + str);
         }
 
-        FloatingActionButton floatingActionButton = moodsView.findViewById(R.id.floatingActionButton2);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragment(newMoodFragment);
+                if(button.getText().equals("Adicionar Humor")) {
+                    button.setText("Ver Humores");
+                    newMoodFragment = new NewMoodFragment();
+                    replaceFragment(newMoodFragment);
+                } else if (button.getText().equals("Ver Humores")) {
+                    button.setText("Adicionar Humor");
+                    replaceFragment(allMoodsFragment);
+                }
             }
         });
 

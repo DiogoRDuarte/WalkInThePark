@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,14 +38,14 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView moodTextView;
+        public ImageView moodImageView;
         public TextView horaTextView;
         public ImageButton deleteButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            moodTextView = (TextView) itemView.findViewById(R.id.txtMood);
+            moodImageView = (ImageView) itemView.findViewById(R.id.imgMood);
             horaTextView = (TextView) itemView.findViewById(R.id.txtHora);
             deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
         }
@@ -55,7 +56,6 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
         this.listener = listener;
         this.s = mail;
     }
-
 
     @Override
     public MoodAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -70,8 +70,27 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
     public void onBindViewHolder(MoodAdapter.ViewHolder holder, int position) {
         int position2 = position;
         HashMap<String, String> mood = mMoods.get(position2);
-        TextView textViewMood = holder.moodTextView;
-        textViewMood.setText(String.valueOf(mood.get("mood")));
+        ImageView imageViewMood = holder.moodImageView;
+        String moodNum = mood.get("mood");
+        switch (moodNum) {
+            case "1":
+                imageViewMood.setImageResource(R.drawable.magoado);
+                break;
+            case "2":
+                imageViewMood.setImageResource(R.drawable.chateado);
+                break;
+            case "3":
+                imageViewMood.setImageResource(R.drawable.triste);
+                break;
+            case "4":
+                imageViewMood.setImageResource(R.drawable.neutro);
+                break;
+            case "5":
+                imageViewMood.setImageResource(R.drawable.feliz);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + moodNum);
+        }
         TextView textViewHora = holder.horaTextView;
         textViewHora.setText(mood.get("hora"));
         ImageButton delButton = holder.deleteButton;
@@ -118,12 +137,9 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
                             myRef.updateChildren(mapUsers);
                             p = false;
 
-                            /*goToMain(view);*/
                             /*((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
                             ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);*/
                         }
-
-
                     }
 
                     @Override
@@ -135,7 +151,6 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
                 notifyItemRemoved(position2);
                 notifyItemRangeChanged(position2, mMoods.size());
                 holder.itemView.setVisibility(View.GONE);
-
             }
         });
     }
