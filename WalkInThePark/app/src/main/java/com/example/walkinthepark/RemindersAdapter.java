@@ -147,9 +147,6 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
 
     @Override
     public int getItemCount() {
-        if(mReminders.size() > 3){
-            return 3;
-        }
         return mReminders.size();
     }
 
