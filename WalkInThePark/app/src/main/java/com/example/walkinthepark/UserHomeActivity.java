@@ -107,6 +107,13 @@ public class UserHomeActivity extends AppCompatActivity {
         TextView pacienteText = headerView.findViewById(R.id.usertype);
         pacienteText.setText("Paciente");
 
+        navigationView.findViewById(R.id.logoutAc).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // ONCLICK LOGOUT
+            }
+        });
+
 
         /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
