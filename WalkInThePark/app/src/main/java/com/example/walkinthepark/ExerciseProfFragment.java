@@ -3,6 +3,7 @@ package com.example.walkinthepark;
 import static android.app.Activity.RESULT_OK;
 
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,8 +18,11 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.net.URI;
 
@@ -27,10 +31,11 @@ public class ExerciseProfFragment extends Fragment {
 
     static View exerView;
     int SELECT_VIDEO = 200;
-
+    FirebaseDatabase db;
+    DatabaseReference ref;
     RecyclerView recyclerView;
     ProgressDialog progressDialog;
-
+    Uri video;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,7 +74,21 @@ public class ExerciseProfFragment extends Fragment {
             Uri selectedVideo = data.getData();
             progressDialog.setTitle("A carregar...");
             progressDialog.show();
+            mandarVideo();
             // ADICIONAR VIDEO À FIREBASE!!
+        }
+    }
+    
+    private String getTipo(Uri video){
+        ContentResolver c = getContext().getContentResolver();
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        return mimeTypeMap.getExtensionFromMimeType(c.getType(video));
+    }
+
+    private void mandarVideo(){
+        if(video != null){
+            db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
+            ref = db.getReference("User");
         }
     }
 }
