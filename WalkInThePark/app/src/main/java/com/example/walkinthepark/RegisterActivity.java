@@ -15,7 +15,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ import java.util.Map;
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
 
-public class StartActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
     private FirebaseDatabase db;
     private DatabaseReference myRef;
     private List<String> listEmails = new ArrayList<String>();
@@ -46,7 +45,7 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_register);
 
         EditText eNome = findViewById(R.id.editTextName);
         EditText eMail = findViewById(R.id.editTextEmail);
