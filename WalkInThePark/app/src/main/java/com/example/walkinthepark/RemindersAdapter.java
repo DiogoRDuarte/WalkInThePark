@@ -64,7 +64,7 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View reminderView = inflater.inflate(R.layout.single_reminder,parent,false);
-        ViewHolder viewHolder = new ViewHolder(reminderView);
+        RemindersAdapter.ViewHolder viewHolder = new RemindersAdapter.ViewHolder(reminderView);
         return viewHolder;
     }
 

@@ -21,9 +21,10 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_notes"
         style="?attr/borderlessButtonStyle"
-        android:layout_width="193dp"
-        android:layout_height="73dp"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
         android:text="@string/button_ac_notes"
+        android:textSize="16dp"
         android:textColor="#E8E8E8"
         app:backgroundTint="#2B2C2C"
         app:cornerRadius="15dp"
