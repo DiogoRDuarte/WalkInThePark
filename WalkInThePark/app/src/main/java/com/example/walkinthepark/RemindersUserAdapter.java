@@ -146,9 +146,9 @@ public class RemindersUserAdapter extends RecyclerView.Adapter<RemindersUserAdap
 
     @Override
     public int getItemCount() {
-        /*if(mRemindersUser.size() > 2) {
+        if(mRemindersUser.size() > 2) {
             return 2;
-        }*/
+        }
         return mRemindersUser.size();
     }
 

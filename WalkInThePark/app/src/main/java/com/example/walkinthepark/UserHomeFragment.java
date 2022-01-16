@@ -82,15 +82,15 @@ public class UserHomeFragment extends Fragment {
         refNotas = db.getReference("Note");
         refReminders = db.getReference("Reminder");
         myRef = db.getReference("User");
-        Map m = new HashMap<String,Map>();
+        Map m = new HashMap<String, Map>();
 
         //Notas
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds : snapshot.getChildren()){
-                    user_email =((UserHomeActivity)getActivity()).user_email;
-                    user_name =((UserHomeActivity)getActivity()).user_name;
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    user_email = ((UserHomeActivity) getActivity()).user_email;
+                    user_name = ((UserHomeActivity) getActivity()).user_name;
 
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaNotas = (ArrayList<HashMap<String, String>>) ds.child("listaNotas").getValue();
@@ -104,26 +104,26 @@ public class UserHomeFragment extends Fragment {
                             lembretesCurrent.add(listaLembretes.get(i));
                         }
                         // NOTASif(lembretesCurrent.size() > 0){
-                            //HashMap<String,String> primeiro = lembretesCurrent.get(0);
-                            //HashMap<String,String> segundo = lembretesCurrent.get(1);
-                            //RemindersUserAdapter remindersUserAdapterI = new RemindersUserAdapter(primeiro,listenerAdapterII);
-                            //RemindersUserAdapter remindersUserAdapterII = new RemindersUserAdapter(segundo,listenerAdapterIII);
-                            //LinearLayoutManager man = new LinearLayoutManager(context);
-                            //LinearLayoutManager manI = new LinearLayoutManager(context);
-                            //man.setOrientation(RecyclerView.HORIZONTAL);
-                            //manI.setOrientation(RecyclerView.VERTICAL);
-                            //rvRems.setLayoutManager(man);
-                            //rvRems.setAdapter(remindersUserAdapterI);
-                            //rvRem2.setLayoutManager(manI);
-                            //rvRem2.setAdapter(remindersUserAdapterII);
-                            RemindersUserAdapter remindersUserAdapter = new RemindersUserAdapter(lembretesCurrent, listenerAdapterII);
+                        //HashMap<String,String> primeiro = lembretesCurrent.get(0);
+                        //HashMap<String,String> segundo = lembretesCurrent.get(1);
+                        //RemindersUserAdapter remindersUserAdapterI = new RemindersUserAdapter(primeiro,listenerAdapterII);
+                        //RemindersUserAdapter remindersUserAdapterII = new RemindersUserAdapter(segundo,listenerAdapterIII);
+                        //LinearLayoutManager man = new LinearLayoutManager(context);
+                        //LinearLayoutManager manI = new LinearLayoutManager(context);
+                        //man.setOrientation(RecyclerView.HORIZONTAL);
+                        //manI.setOrientation(RecyclerView.VERTICAL);
+                        //rvRems.setLayoutManager(man);
+                        //rvRems.setAdapter(remindersUserAdapterI);
+                        //rvRem2.setLayoutManager(manI);
+                        //rvRem2.setAdapter(remindersUserAdapterII);
+                        RemindersUserAdapter remindersUserAdapter = new RemindersUserAdapter(lembretesCurrent, listenerAdapterII);
 
-                            LinearLayoutManager man = new LinearLayoutManager(context);
+                        LinearLayoutManager man = new LinearLayoutManager(context);
 
-                            man.setOrientation(RecyclerView.HORIZONTAL);
+                        man.setOrientation(RecyclerView.HORIZONTAL);
 
-                            rvRems.setLayoutManager(man);
-                            rvRems.setAdapter(remindersUserAdapter);
+                        rvRems.setLayoutManager(man);
+                        rvRems.setAdapter(remindersUserAdapter);
 
                         setOnClickListener();
                         NotesUserAdapter notesUserAdapter = new NotesUserAdapter(notasCurrent, listenerAdapter);
@@ -145,7 +145,7 @@ public class UserHomeFragment extends Fragment {
         });
 
         //Moods
-        ValueEventListener  listener = new ValueEventListener() {
+        ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int mood = barraMood.getProgress();
@@ -155,26 +155,26 @@ public class UserHomeFragment extends Fragment {
                 Mood newMood = new Mood(hora, mood);
 
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    if (ds.child("email").getValue().toString().equals(user_email) ) {
+                    if (ds.child("email").getValue().toString().equals(user_email)) {
                         ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaMoods");
-                            nomeF = ds.child("nome").getValue().toString();
-                            emailF = ds.child("email").getValue().toString();
-                            passwordF = ds.child("password").getValue().toString();
-                            a.add(newMood.toMap());
+                        nomeF = ds.child("nome").getValue().toString();
+                        emailF = ds.child("email").getValue().toString();
+                        passwordF = ds.child("password").getValue().toString();
+                        a.add(newMood.toMap());
 
-                            HashMap result = new HashMap<>();
-                            result.put("nome", nomeF);
-                            result.put("email", emailF);
-                            result.put("password", passwordF);
-                            result.put("paciente", true);
-                            result.put("fisioID", ds.child("fisioID").getValue());
-                            result.put("listaMoods", a);
-                            result.put("listaLembretes", ds.child("listaLembretes").getValue());
-                            result.put("listaNotas", ds.child("listaNotas").getValue());
+                        HashMap result = new HashMap<>();
+                        result.put("nome", nomeF);
+                        result.put("email", emailF);
+                        result.put("password", passwordF);
+                        result.put("paciente", true);
+                        result.put("fisioID", ds.child("fisioID").getValue());
+                        result.put("listaMoods", a);
+                        result.put("listaLembretes", ds.child("listaLembretes").getValue());
+                        result.put("listaNotas", ds.child("listaNotas").getValue());
 
-                            mapUsers.put(user_email, result);
-                            Toast.makeText(getContext(), "Moods adicionado!", Toast.LENGTH_SHORT).show();
-                            myRef.updateChildren(mapUsers);
+                        mapUsers.put(user_email, result);
+                        Toast.makeText(getContext(), "Moods adicionado!", Toast.LENGTH_SHORT).show();
+                        myRef.updateChildren(mapUsers);
                     }
                 }
             }
@@ -258,13 +258,13 @@ public class UserHomeFragment extends Fragment {
             @Override
             public void onClick(View v, int position) {
 
-                if(listenerAdapter != null){
+                if (listenerAdapter != null) {
                     //FAZER
 
                     Bundle bundle = new Bundle();
                     bundle.putString("fragment", "fragN");
-                    bundle.putString("titulo", listaNotas.get(position+1).get("titulo"));
-                    bundle.putString("mensagem", listaNotas.get(position+1).get("mensagem"));
+                    bundle.putString("titulo", listaNotas.get(position + 1).get("titulo"));
+                    bundle.putString("mensagem", listaNotas.get(position + 1).get("mensagem"));
                     Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
                 }
 
@@ -273,7 +273,6 @@ public class UserHomeFragment extends Fragment {
     }
 
     private void adicionaMood(Mood newMood) {
-
 
 
     }
