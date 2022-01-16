@@ -2,9 +2,11 @@ package com.example.walkinthepark;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -86,6 +88,7 @@ public class UserHomeFragment extends Fragment {
 
         //Notas
         myRef.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
@@ -116,22 +119,25 @@ public class UserHomeFragment extends Fragment {
                         //rvRems.setAdapter(remindersUserAdapterI);
                         //rvRem2.setLayoutManager(manI);
                         //rvRem2.setAdapter(remindersUserAdapterII);
+
+                        // ordenar lembretes dos proximo a ocorrer ao ultimo
+                        ArrayList<HashMap<String, String>> lembsOrdenados = lembretesCurrent;
+                        lembsOrdenados.sort(new SortData());
+                        Toast.makeText(getContext(), "primeiro: " + lembsOrdenados.get(0).get("mensagem"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "segundo: " + lembsOrdenados.get(1).get("mensagem"), Toast.LENGTH_SHORT).show();
+
+                        // lembretes user
                         RemindersUserAdapter remindersUserAdapter = new RemindersUserAdapter(lembretesCurrent, listenerAdapterII);
-
                         LinearLayoutManager man = new LinearLayoutManager(context);
-
                         man.setOrientation(RecyclerView.HORIZONTAL);
-
                         rvRems.setLayoutManager(man);
                         rvRems.setAdapter(remindersUserAdapter);
 
+                        // notas user
                         setOnClickListener();
                         NotesUserAdapter notesUserAdapter = new NotesUserAdapter(notasCurrent, listenerAdapter);
-
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-
                         layoutManager.setOrientation(RecyclerView.VERTICAL);
-
                         rvNotesUser.setLayoutManager(layoutManager);
                         rvNotesUser.setAdapter(notesUserAdapter);
                     }

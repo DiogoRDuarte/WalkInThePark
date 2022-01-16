@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
@@ -30,7 +30,7 @@
             android:textAppearance="?attr/textAppearanceHeadline6" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:weightSum="2"
             android:orientation="horizontal">
@@ -38,8 +38,8 @@
             <RelativeLayout
                 android:id="@+id/lemb"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.4">
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
                 <TextView
                     android:id="@+id/dataLemb"
@@ -64,7 +64,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/editarLemb"
                 style="?attr/borderlessButtonStyle"
-                android:layout_weight="0.6"
+                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"

@@ -76,14 +76,9 @@ public class NewReminderFragment extends Fragment {
 
     private int notificationId = 1;
 
-
-    ///////////
-
     public NewReminderFragment() {
         // Required empty public constructor
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

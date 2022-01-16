@@ -95,7 +95,7 @@ public class NewMoodFragment extends Fragment {
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
                             Date date = new Date();
                             String hora = formatter.format(date);
                             Mood newMood = new Mood(hora, mood);
