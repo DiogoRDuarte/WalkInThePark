@@ -110,11 +110,11 @@ public class UserHomeActivity extends AppCompatActivity {
         TextView pacienteText = headerView.findViewById(R.id.usertype);
         pacienteText.setText("Paciente");
 
-        navigationView.findViewById(R.id.logoutAc).setOnClickListener(new View.OnClickListener() {
+        navigationView.getMenu().findItem(R.id.logoutAc).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
-            public void onClick(View view) {
-                // ONCLICK LOGOUT
+            public boolean onMenuItemClick(MenuItem menuItem) {
                 Toast.makeText(getApplicationContext(), "logout!!", Toast.LENGTH_SHORT).show();
+                return true;
             }
         });
 
