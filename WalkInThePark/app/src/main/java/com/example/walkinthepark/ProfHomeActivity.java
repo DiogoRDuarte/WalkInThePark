@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
@@ -90,6 +91,18 @@ public class ProfHomeActivity extends AppCompatActivity {
         nomeText.setText(prof_name.toUpperCase());
         TextView fisioText = headerView.findViewById(R.id.usertype);
         fisioText.setText("Fisioterapeuta");
+
+        navigationView.getMenu().findItem(R.id.logoutAc).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Toast.makeText(getApplicationContext(), "Fez logout com sucesso", Toast.LENGTH_SHORT).show();
+                Intent l = new Intent(ProfHomeActivity.this, LoginActivity.class);
+                l.putExtra("logout", "true");
+                startActivity(l);
+                finish();
+                return true;
+            }
+        });
 
         /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

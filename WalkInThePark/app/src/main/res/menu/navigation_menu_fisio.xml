@@ -38,6 +38,11 @@
             </menu>
         </item>
 
+        <item
+            android:id="@+id/logoutAc"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
+
     </group>
 
 </menu>
