@@ -113,7 +113,11 @@ public class UserHomeActivity extends AppCompatActivity {
         navigationView.getMenu().findItem(R.id.logoutAc).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                Toast.makeText(getApplicationContext(), "logout!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Fez logout com sucesso", Toast.LENGTH_SHORT).show();
+                Intent l = new Intent(UserHomeActivity.this, LoginActivity.class);
+                l.putExtra("logout", "true");
+                startActivity(l);
+                finish();
                 return true;
             }
         });

@@ -46,9 +46,11 @@ public class LoginActivity extends AppCompatActivity {
 
         ////////////////////////////// esta logado //////////////////
 
-        //ssp.setUserName(this, ""); // tirar
-        // ssp.setUserEmail(this, ""); // tirar
-
+        String houveLogout = getIntent().getStringExtra("logout");
+        if (houveLogout != null){
+            ssp.setUserName(this, ""); // tirar
+            ssp.setUserEmail(this, ""); // tirar
+        }
 
         if(SaveSharedPreference.getUserName(LoginActivity.this).length() != 0 &&
                 SaveSharedPreference.getUserEmail(LoginActivity.this).length() != 0)
