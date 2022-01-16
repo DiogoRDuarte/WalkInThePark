@@ -35,12 +35,8 @@ public class User {
         this.listaMoods.add(new Mood("", -1));
         this.listaExercicios.add(new Exercise(""));
 
-        if(!paciente){
+        if(!paciente)
             listaPacientes.add(new User("", "", "", "", true));
-            for(Exercise e : listaExercicios){
-                e.setFisio(true);
-            }
-        }
 
         if(!fisioID.equals("")){
             this.fisioID = fisioID;
