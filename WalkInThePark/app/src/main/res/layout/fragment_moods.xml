@@ -11,7 +11,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_moods"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="600dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toTopOf="@+id/button_moods"

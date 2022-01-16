@@ -13,14 +13,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="4dp"
         app:cardBackgroundColor="#DC6E58"
         app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -208,7 +209,7 @@
         android:layout_height="150dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="16dp"
         android:text="Rastreio de humor"
         android:textColor="#FFFFFF"
         app:cardBackgroundColor="#8A8A8A"
