@@ -127,7 +127,7 @@ public class UserHomeFragment extends Fragment {
                         Toast.makeText(getContext(), "segundo: " + lembsOrdenados.get(1).get("mensagem"), Toast.LENGTH_SHORT).show();
 
                         // lembretes user
-                        RemindersUserAdapter remindersUserAdapter = new RemindersUserAdapter(lembretesCurrent, listenerAdapterII);
+                        RemindersUserAdapter remindersUserAdapter = new RemindersUserAdapter(lembsOrdenados, listenerAdapterII);
                         LinearLayoutManager man = new LinearLayoutManager(context);
                         man.setOrientation(RecyclerView.HORIZONTAL);
                         rvRems.setLayoutManager(man);
