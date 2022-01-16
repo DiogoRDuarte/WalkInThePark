@@ -48,11 +48,16 @@
         <entry key="..\:/WalkInThePark/WalkInThePark/app/src/main/res/layout/fragment_new_reminder.xml" value="0.290234375" />
         <entry key="..\:/WalkInThePark/WalkInThePark/app/src/main/res/layout/fragment_notes.xml" value="0.290234375" />
         <entry key="..\:/WalkInThePark/WalkInThePark/app/src/main/res/layout/fragment_reminders.xml" value="0.290234375" />
+        <entry key="..\:/WalkInThePark/WalkInThePark/app/src/main/res/layout/fragment_settings.xml" value="0.290234375" />
         <entry key="..\:/WalkInThePark/WalkInThePark/app/src/main/res/layout/fragment_user_home.xml" value="0.25" />
+        <entry key="..\:/WalkInThePark/WalkInThePark/app/src/main/res/layout/navigation_menu_header.xml" value="0.290234375" />
         <entry key="..\:/WalkInThePark/WalkInThePark/app/src/main/res/layout/single_mood.xml" value="0.290234375" />
         <entry key="..\:/WalkInThePark/WalkInThePark/app/src/main/res/layout/single_note.xml" value="0.290234375" />
         <entry key="..\:/WalkInThePark/WalkInThePark/app/src/main/res/layout/single_note_user.xml" value="0.290234375" />
+        <entry key="..\:/WalkInThePark/WalkInThePark/app/src/main/res/layout/single_paciente.xml" value="0.290234375" />
         <entry key="..\:/WalkInThePark/WalkInThePark/app/src/main/res/layout/single_reminder.xml" value="0.290234375" />
+        <entry key="..\:/WalkInThePark/WalkInThePark/app/src/main/res/menu/navigation_menu_fisio.xml" value="0.290234375" />
+        <entry key="..\:/WalkInThePark/WalkInThePark/app/src/main/res/menu/navigation_menu_user.xml" value="0.290234375" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/drawable/ic_menu.xml" value="0.14765625" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/drawable/walk_in_the_park_final.xml" value="0.215234375" />
         <entry key="..\:/android/WP/WalkInThePark/app/src/main/res/layout/activity_about.xml" value="0.264" />

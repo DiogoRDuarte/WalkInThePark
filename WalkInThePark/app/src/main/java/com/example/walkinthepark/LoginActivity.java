@@ -23,6 +23,7 @@ import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 public class LoginActivity extends AppCompatActivity {
     private FirebaseDatabase db;
     private DatabaseReference myRef;
+    private SaveSharedPreference ssp;
     private List<String> listEmails = new ArrayList<String>();
 
 
@@ -42,6 +43,38 @@ public class LoginActivity extends AppCompatActivity {
         CircularProgressButton button = findViewById(R.id.cirRegisterButton);
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
+
+        ////////////////////////////// esta logado //////////////////
+
+        //ssp.setUserName(this, ""); // tirar
+        // ssp.setUserEmail(this, ""); // tirar
+
+
+        if(SaveSharedPreference.getUserName(LoginActivity.this).length() != 0 &&
+                SaveSharedPreference.getUserEmail(LoginActivity.this).length() != 0)
+        {
+            String nameSsp = SaveSharedPreference.getUserName(LoginActivity.this);
+            String emailSsp = SaveSharedPreference.getUserEmail(LoginActivity.this);
+            log = true;
+            Toast.makeText(getApplicationContext(), "Bem vindo "+nameSsp+"!", Toast.LENGTH_SHORT).show();
+
+            if (SaveSharedPreference.getRole(LoginActivity.this)){ //eh Paciente
+                Intent i = new Intent(this, UserHomeActivity.class);
+                i.putExtra("user_email", emailSsp+"");
+                i.putExtra("user_name", nameSsp+"");
+                startActivity(i);
+                finish();
+
+            } else { //eh Prof
+                Intent i = new Intent(this, ProfHomeActivity.class);
+                i.putExtra("user_email", emailSsp+"");
+                i.putExtra("user_name", nameSsp+"");
+                startActivity(i);
+                finish();
+            }
+        }
+
+        /////////////////////////////
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,9 +98,15 @@ public class LoginActivity extends AppCompatActivity {
                                     log = true;
                                     Toast.makeText(getApplicationContext(), "Bem vindo "+nome+"!", Toast.LENGTH_SHORT).show();
                                     if(paciente == true){
+                                        ssp.setUserName(view.getContext(), nome);
+                                        ssp.setUserEmail(view.getContext(), s);
+                                        ssp.setRole(view.getContext(), true);
                                        goToPatMain(view);
                                        break;
                                     }else{
+                                        ssp.setUserName(view.getContext(), nome);
+                                        ssp.setUserEmail(view.getContext(), s);
+                                        ssp.setRole(view.getContext(), false);
                                     goToPhyMain(view);
                                     break;}
                                 }

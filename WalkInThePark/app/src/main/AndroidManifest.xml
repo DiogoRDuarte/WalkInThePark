@@ -23,7 +23,7 @@
             android:name=".ProfHomeActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
-        
+
         <activity
             android:name=".LoginActivity"
             android:exported="true"
