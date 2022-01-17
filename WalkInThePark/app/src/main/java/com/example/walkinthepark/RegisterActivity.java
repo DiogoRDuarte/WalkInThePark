@@ -126,6 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                 result.put("listaNotas", ds.child("listaNotas").getValue());
                                                 result.put("listaLembretes", ds.child("listaLembretes").getValue());
                                                 result.put("listaMoods", ds.child("listaMoods").getValue());
+                                                result.put("listaExercicios",ds.child("listaExercicios").getValue());
 
                                                 mapUsers.put(fisioID, result);
                                             }

@@ -114,9 +114,10 @@ public class NewMoodFragment extends Fragment {
                                     result.put("password", passwordF);
                                     result.put("paciente", true);
                                     result.put("fisioID", ds.child("fisioID").getValue());
-                                    result.put("listaMoods", a);
-                                    result.put("listaLembretes", ds.child("listaLembretes").getValue());
                                     result.put("listaNotas", ds.child("listaNotas").getValue());
+                                    result.put("listaLembretes", ds.child("listaLembretes").getValue());
+                                    result.put("listaMoods", a);
+                                    result.put("listaExercicios",ds.child("listaLembretes").getValue());
 
                                     mapUsers.put(user_email, result);
                                     Toast.makeText(getContext(), "Moods adicionado!", Toast.LENGTH_SHORT).show();

@@ -96,6 +96,7 @@ public class NewReminderFragment extends Fragment {
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
 
+
         bDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,6 +114,14 @@ public class NewReminderFragment extends Fragment {
         });
 
         te = (EditText) view.findViewById(R.id.message);
+
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            data.setText(bundle.getString("data2"));
+            hora.setText( bundle.getString("hora2"));
+            te.setText( bundle.getString("mensagem2"));
+        }
 
         bAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,8 +158,10 @@ public class NewReminderFragment extends Fragment {
                                     result.put("paciente", true);
                                     result.put("fisioID", ds.child("fisioID").getValue());
                                     result.put("listaNotas", ds.child("listaNotas").getValue());
-                                    result.put("listaMoods", ds.child("listaMoods").getValue());
                                     result.put("listaLembretes", a);
+                                    result.put("listaMoods", ds.child("listaMoods").getValue());
+                                    result.put("listaExercicios",ds.child("listaExercicios").getValue());
+
 
                                     mapUsers.put(user_email, result);
                                 }
@@ -205,10 +216,11 @@ public class NewReminderFragment extends Fragment {
 //                startTime.set(Calendar.SECOND, 0);
 
                 SimpleDateFormat formatter =new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-                String dateAuxS = date + " " + time;
+                String timeSsp = dataS + " " + horaS;
+                timeSsp = timeSsp.substring(0, timeSsp.length() - 1);
                 Date dateAuxD = null;
                 try {
-                    dateAuxD = formatter.parse(dateAuxS);
+                    dateAuxD = formatter.parse(timeSsp);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
