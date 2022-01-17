@@ -64,18 +64,6 @@ public class RemindersFragment extends Fragment {
                     break;
                 case "frag2":
                     bAdd.setText("Ver Lembretes");
-
-
-                    if(getArguments().getString("data") != null &&
-                            getArguments().getString("hora") != null &&
-                            getArguments().getString("mensagem") != null) {
-                        Bundle b = new Bundle();
-                        b.putString("data2" , getArguments().getString("data"));
-                        b.putString("hora2" , getArguments().getString("hora"));
-                        b.putString("mensagem2" , getArguments().getString("mensagem"));
-                        newReminderFragment.setArguments(b);
-                    }
-
                     replaceFragment(newReminderFragment);
                     break;
                 default:
