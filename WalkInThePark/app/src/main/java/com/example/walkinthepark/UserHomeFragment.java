@@ -272,12 +272,7 @@ public class UserHomeFragment extends Fragment {
                     bundle.putString("fragment", "fragN");
                     bundle.putString("titulo", listaNotas.get(position + 1).get("titulo"));
                     bundle.putString("mensagem", listaNotas.get(position + 1).get("mensagem"));
-<<<<<<< HEAD
-                    bundle.putString("mensagem", listaNotas.get(position + 1).get("mensagem"));
-                    Navigation.findNavContoller(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
-=======
                     Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
->>>>>>> parent of 5c03da2 (Merge branch 'main' of https://github.com/Ramulho/WalkInThePark)
                 }
 
             }
