@@ -4,6 +4,7 @@ import static android.app.Activity.RESULT_OK;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -49,7 +50,7 @@ public class ExerciseProfFragment extends Fragment {
     FirebaseDatabase db;
     DatabaseReference ref;
     DatabaseReference reference1;
-    RecyclerView recyclerView;
+    //RecyclerView recyclerView;
     ProgressDialog progressDialog;
     Uri video;
     String prof_email;
@@ -58,6 +59,10 @@ public class ExerciseProfFragment extends Fragment {
     private String emailF;
     private String passwordF;
     private boolean p = true;
+    ArrayList<HashMap<String, String>> listaExercises;
+    private ArrayList<HashMap<String, String>> exercisesCurrent;
+    private ExerciseAdapter.RecyclerViewListener listenerAdapter;
+    private Context context = this.getContext();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,12 +70,42 @@ public class ExerciseProfFragment extends Fragment {
 
         // FAZER ADAPTER PARA MOSTRAR VIDEOS
         // AARANJAR FORMA DE PODER ADICIONAR VIDEO A PACIENTES E APAGAR VIDEOS
-        recyclerView = exerView.findViewById(R.id.rvExercisesProf);
-        GridLayoutManager layoutManager = new GridLayoutManager(this.getContext(), 2);
+        RecyclerView recyclerView = exerView.findViewById(R.id.rvExercisesProf);
+        db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
+        ref = db.getReference("User");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()){
+                    prof_email = ((ProfHomeActivity) getActivity()).prof_email;
+                    if(ds.child("email").getValue().equals(prof_email)){
+                        listaExercises = (ArrayList<HashMap<String, String>>) ds.child("listaExercicios").getValue();
+                        exercisesCurrent = new ArrayList<>();
+
+                        for (int i = 1; i < listaExercises.size(); i++) {
+                            exercisesCurrent.add(listaExercises.get(i));
+                        }
+                        //setOnClickListener();
+                        ExerciseAdapter exerciseAdapter = new ExerciseAdapter(exercisesCurrent, listenerAdapter,prof_email);
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+                        layoutManager.setOrientation(RecyclerView.VERTICAL);
+                        recyclerView.setLayoutManager(layoutManager);
+
+                        recyclerView.setAdapter(exerciseAdapter);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        //GridLayoutManager layoutManager = new GridLayoutManager(this.getContext(), 2);
 
         reference1 = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/").getReference("User");
         /*recyclerView.setAdapter(exAdapter);*/
-        this.prof_email = ((ProfHomeActivity) getActivity()).prof_email;
+
         MaterialButton upload = exerView.findViewById(R.id.button_upload_ex);
         upload.setOnClickListener(new View.OnClickListener() {
             @Override

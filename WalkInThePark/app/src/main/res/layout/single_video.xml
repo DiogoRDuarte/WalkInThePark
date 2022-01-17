@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
+        <VideoView
             android:id="@+id/imgVideos"
             android:layout_width="130dp"
             android:layout_height="130dp"
