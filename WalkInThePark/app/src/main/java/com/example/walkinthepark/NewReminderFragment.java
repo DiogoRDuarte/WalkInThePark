@@ -96,6 +96,7 @@ public class NewReminderFragment extends Fragment {
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
 
+
         bDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,6 +114,14 @@ public class NewReminderFragment extends Fragment {
         });
 
         te = (EditText) view.findViewById(R.id.message);
+
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            data.setText(bundle.getString("data2"));
+            hora.setText( bundle.getString("hora2"));
+            te.setText( bundle.getString("mensagem2"));
+        }
 
         bAdd.setOnClickListener(new View.OnClickListener() {
             @Override
