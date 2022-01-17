@@ -1,38 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.wear.widget.drawer.WearableDrawerLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawerLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/box_inset_layout_padding"
-    tools:context=".MainActivity"
-    tools:deviceIds="wear">
+    tools:context=".MainActivity">
 
-    <ScrollView
-        android:id="@+id/content"
+    <androidx.wear.widget.WearableRecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:nestedScrollingEnabled="true">
+        android:scrollbars="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+    </androidx.wear.widget.WearableRecyclerView>
 
-    </ScrollView>
-
-    <androidx.wear.widget.drawer.WearableNavigationDrawerView
-        android:id="@+id/topNavigationDrawer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:navigationStyle="multiPage" />
-
-    <androidx.wear.widget.drawer.WearableActionDrawerView
-        android:id="@+id/bottomActionDrawer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:actionMenu="@menu/action_drawer_menu"/>
-
-</androidx.wear.widget.drawer.WearableDrawerLayout>
+</layout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.drawer.WearableDrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/box_inset_layout_padding"
+    tools:deviceIds="wear">
+
+    <ScrollView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:nestedScrollingEnabled="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+    </ScrollView>
+
+    <androidx.wear.widget.drawer.WearableNavigationDrawerView
+        android:id="@+id/topNavigationDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:navigationStyle="multiPage" />
+
+    <androidx.wear.widget.drawer.WearableDrawerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        app:drawerContent="@+id/drawerContent"
+        app:peekView="@+id/peekView">
+        <FrameLayout
+            android:id="@+id/drawerContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+        <LinearLayout
+            android:id="@+id/peekView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+    </androidx.wear.widget.drawer.WearableDrawerView>
+
+    <!--<androidx.wear.widget.drawer.WearableActionDrawerView
+        android:id="@+id/bottomActionDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:actionMenu="@menu/action_drawer_menu"/>-->
+
+</androidx.wear.widget.drawer.WearableDrawerLayout>
