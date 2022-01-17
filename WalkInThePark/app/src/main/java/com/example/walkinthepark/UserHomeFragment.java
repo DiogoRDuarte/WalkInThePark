@@ -277,7 +277,7 @@ public class UserHomeFragment extends Fragment {
                     bundle.putString("titulo", listaNotas.get(position + 1).get("titulo"));
                     bundle.putString("mensagem", listaNotas.get(position + 1).get("mensagem"));
                     bundle.putString("mensagem", listaNotas.get(position + 1).get("mensagem"));
-                    Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
+                    Navigation.findNavContoller(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
                 }
 
             }
