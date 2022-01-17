@@ -216,10 +216,11 @@ public class NewReminderFragment extends Fragment {
 //                startTime.set(Calendar.SECOND, 0);
 
                 SimpleDateFormat formatter =new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-                String dateAuxS = date + " " + time;
+                String timeSsp = dataS + " " + horaS;
+                timeSsp = timeSsp.substring(0, timeSsp.length() - 1);
                 Date dateAuxD = null;
                 try {
-                    dateAuxD = formatter.parse(dateAuxS);
+                    dateAuxD = formatter.parse(timeSsp);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
