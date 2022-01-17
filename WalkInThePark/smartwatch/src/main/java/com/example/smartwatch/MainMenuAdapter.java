@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.RecyclerViewHolder> {
@@ -34,21 +36,23 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.Recycl
     @NonNull
     @Override
     public MainMenuAdapter.RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main, parent, false);
-
+        Context c = parent.getContext();
+        LayoutInflater i = LayoutInflater.from(c);
+        View view = i.inflate(R.layout.list_item, parent, false);
+        MainMenuAdapter.RecyclerViewHolder viewHolder = new MainMenuAdapter.RecyclerViewHolder(view);
         return new RecyclerViewHolder(view);
     }
 
-    public static class RecyclerViewHolder extends RecyclerView.ViewHolder {
+    public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         RelativeLayout menuContainer;
         TextView menuItem;
         ImageView menuIcon;
 
         public RecyclerViewHolder(View view) {
             super(view);
-            menuContainer = view.findViewById(R.id.menu_container);
-            menuItem = view.findViewById(R.id.menu_item);
-            menuIcon = view.findViewById(R.id.menu_icon);
+            menuContainer = (RelativeLayout) view.findViewById(R.id.menu_container);
+            menuItem = (TextView) view.findViewById(R.id.menu_item);
+            menuIcon = (ImageView) view.findViewById(R.id.menu_icon);
         }
     }
 

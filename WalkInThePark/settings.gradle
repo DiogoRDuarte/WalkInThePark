@@ -7,5 +7,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "WalkInThePark"
-include ':app'
-include ':smartwatch'
+include 'app'
+include 'smartwatch'
