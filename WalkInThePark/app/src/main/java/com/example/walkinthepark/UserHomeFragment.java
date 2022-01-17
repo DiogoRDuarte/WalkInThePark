@@ -123,11 +123,8 @@ public class UserHomeFragment extends Fragment {
 
                         // ordenar lembretes dos proximo a ocorrer ao ultimo
                         ArrayList<HashMap<String, String>> lembsOrdenados = lembretesCurrent;
-                        /*lembsOrdenados.sort(new SortData());*/
                         if(lembsOrdenados.size() > 1) {
                             Collections.sort(lembsOrdenados, new SortData());
-                            Toast.makeText(getContext(), "primeiro: " + lembsOrdenados.get(0).get("mensagem"), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(getContext(), "segundo: " + lembsOrdenados.get(1).get("mensagem"), Toast.LENGTH_SHORT).show();
                         }
 
                         // lembretes user
