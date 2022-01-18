@@ -26,21 +26,24 @@
 
 
             <RelativeLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/frase"
                     style="@style/viewParent.headerText.NoMode"
-                    android:layout_width="115dp"
-                    android:layout_height="110dp"
+                    android:layout_width="140dp"
+                    android:layout_height="120dp"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:text="Tornamos \na sua vida \nmelhor!"
+                    android:gravity="center"
+                    android:text="Tornamos a sua vida melhor!"
+                    android:textAlignment="center"
                     android:textColor="@color/black"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
+                    android:id="@+id/imagem"
                     android:layout_width="240dp"
                     android:layout_height="150dp"
                     android:layout_alignParentTop="true"
@@ -74,10 +77,10 @@
                         <EditText
                             android:id="@+id/editTextEmail"
                             style="@style/modifiedEditText"
+                            android:backgroundTint="@color/white"
                             android:hint="Email:*"
                             android:inputType="textEmailAddress"
-                            android:maxLines="1"
-                            android:backgroundTint="@color/white"/>
+                            android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -89,9 +92,9 @@
                         <EditText
                             android:id="@+id/editTextPassword"
                             style="@style/modifiedEditText"
+                            android:backgroundTint="@color/white"
                             android:hint="Password:*"
                             android:inputType="textPassword"
-                            android:backgroundTint="@color/white"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,11 +104,11 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/loginViewsMargin"
                         android:text="Login"
+                        android:textColor="@color/black"
                         app:initialCornerAngle="27dp"
                         app:spinning_bar_color="#FFF"
                         app:spinning_bar_padding="6dp"
-                        app:spinning_bar_width="4dp"
-                        android:textColor="@color/black"/>
+                        app:spinning_bar_width="4dp" />
 
                     <TextView
                         style="@style/parent"
@@ -115,8 +118,7 @@
                         android:textAlignment="center"
                         android:textColor="#DC6E58"
                         android:textSize="17sp"
-                        android:textStyle="bold"
-                        />
+                        android:textStyle="bold" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
