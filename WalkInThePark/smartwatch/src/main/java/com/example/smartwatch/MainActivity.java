@@ -1,20 +1,14 @@
 package com.example.smartwatch;
 
 import android.app.Activity;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.wear.widget.WearableLinearLayoutManager;
 import androidx.wear.widget.WearableRecyclerView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class MainActivity extends Activity  {
 
@@ -35,8 +29,8 @@ public class MainActivity extends Activity  {
 
         ArrayList<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(new MenuItem(R.drawable.pencil, "Notas"));
-        menuItems.add(new MenuItem(R.drawable.pencil, "Lembretes"));
-        menuItems.add(new MenuItem(R.drawable.pencil, "Item3"));
+        menuItems.add(new MenuItem(R.drawable.bell, "Lembretes"));
+        menuItems.add(new MenuItem(R.drawable.fitness, "Exercício"));
         menuItems.add(new MenuItem(R.drawable.pencil, "Item4"));
         menuItems.add(new MenuItem(R.drawable.pencil, "Item5"));
 
@@ -51,7 +45,7 @@ public class MainActivity extends Activity  {
                         action_2();
                         break;
                     case 2:
-                        action_3();
+                        comecarExercicio();
                         break;
                     case 3:
                         action_4();
@@ -87,9 +81,11 @@ public class MainActivity extends Activity  {
         Toast.makeText(getApplicationContext(), "lembretes", Toast.LENGTH_SHORT);
     }
 
-    public void action_3(){
+    public void comecarExercicio(){
         /*Log.i("ACTION", "action_3()");*/
-        Toast.makeText(getApplicationContext(), "item3", Toast.LENGTH_SHORT);
+        Toast.makeText(getApplicationContext(), "Exercício", Toast.LENGTH_SHORT);
+        Intent intent = new Intent(MainActivity.this, ExerciseActivity.class);
+        startActivity(intent);
     }
 
     public void action_4(){

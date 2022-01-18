@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">Walk in the Park</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
+    <string name="title_activity_start">StartActivity</string>
+    <string name="title_activity_exercise">ExerciseActivity</string>
+    <string name="exercise_button">Começar Exercício</string>
 </resources>

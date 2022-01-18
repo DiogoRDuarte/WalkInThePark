@@ -8,7 +8,7 @@
     android:layout_height="wrap_content"
     android:paddingBottom="5dp"
     android:paddingTop="5dp"
-    android:background="#bddba4">
+    android:background="@drawable/background">
 
     <ImageView
         android:id="@+id/menu_icon"
@@ -22,11 +22,11 @@
         android:id="@+id/menu_item"
         android:paddingLeft="10dp"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="45dp"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/menu_icon"
         android:text="item"
         android:textColor="#000000"
-        android:textSize="24sp" />
+        android:textSize="30sp" />
 
 </RelativeLayout>
