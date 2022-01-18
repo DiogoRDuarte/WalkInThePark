@@ -6,9 +6,12 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class ExerciseActivity extends Activity implements SensorEventListener {
@@ -17,6 +20,25 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
 
     private static final String TAG = "SensorService";
     SensorManager mSensorManager;
+
+    String time;
+    private static Handler handler;
+    private static boolean isRunning;
+    private static long initialTime;
+    private static final int SECS_IN_MIN = 60;
+    private static final long MILLIS_IN_SEC = 1000L;
+
+    private final Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            if(isRunning) {
+                long seconds = (System.currentTimeMillis() - initialTime) / MILLIS_IN_SEC;
+                time = String.format("%02d:%02d", seconds / SECS_IN_MIN, seconds % SECS_IN_MIN);
+                Toast.makeText(getApplicationContext(), "Tempo: " + time, Toast.LENGTH_SHORT).show();
+                handler.postDelayed(runnable, MILLIS_IN_SEC);
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +53,17 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
                 String txt = (String) exButton.getText();
                 switch (txt) {
                     case "Começar Exercício":
+                        // iniciar timer
+                        startTimer();
+
                         // começar a recolher dados
                         iniciarSensoresEx();
                         exButton.setText("Terminar Exercício");
                         break;
                     case "Terminar Exercício":
+                        // terminar timer
+                        stopTimer();
+
                         // parar de recolher dados
                         // guardar dados
                         exButton.setText("Começar Exercício");
@@ -45,6 +73,17 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
                 }
             }
         });
+    }
+
+    private void startTimer() {
+        isRunning = true;
+        initialTime = System.currentTimeMillis();
+        handler.postDelayed(runnable, MILLIS_IN_SEC);
+    }
+
+    private void stopTimer() {
+        isRunning = false;
+        handler.removeCallbacks(runnable);
     }
 
     protected void iniciarSensoresEx() {
