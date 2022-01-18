@@ -115,12 +115,12 @@ public class NewReminderFragment extends Fragment {
         te = (EditText) view.findViewById(R.id.message);
 
 
-        Bundle bundle = getArguments();
+        /*Bundle bundle = getArguments();
         if (bundle != null) {
             data.setText(bundle.getString("data2"));
             hora.setText( bundle.getString("hora2"));
             te.setText( bundle.getString("mensagem2"));
-        }
+        }*/
 
         bAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -278,6 +278,22 @@ public class NewReminderFragment extends Fragment {
             }
         },year,month,day);
         datePickerDialog.show();
+    }
+
+    @Override
+    public void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        data.setText("");
+        hora.setText("");
+        te.setText("");
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            data.setText(bundle.getString("data2"));
+            hora.setText( bundle.getString("hora2"));
+            te.setText(bundle.getString("mensagem2"));
+        }
     }
 
 }
