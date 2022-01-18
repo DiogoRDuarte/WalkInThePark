@@ -11,6 +11,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.Toast;
 
 
@@ -21,8 +22,9 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
     private static final String TAG = "SensorService";
     SensorManager mSensorManager;
 
+    Chronometer chronometer;
     String time;
-    private static Handler handler;
+    /*private static Handler handler;
     private static boolean isRunning;
     private static long initialTime;
     private static final int SECS_IN_MIN = 60;
@@ -38,13 +40,14 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
                 handler.postDelayed(runnable, MILLIS_IN_SEC);
             }
         }
-    };
+    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_exercise);
+        /*chronometer = new Chronometer();*/
 
         exButton = (Button) findViewById(R.id.startExercise);
         exButton.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +57,8 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
                 switch (txt) {
                     case "Começar Exercício":
                         // iniciar timer
-                        startTimer();
+                        /*startTimer();*/
+                        chronometer.start();
 
                         // começar a recolher dados
                         iniciarSensoresEx();
@@ -62,9 +66,10 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
                         break;
                     case "Terminar Exercício":
                         // terminar timer
-                        stopTimer();
-                        Log.i(TAG, time);
-
+                        /*stopTimer();*/
+                        chronometer.stop();
+                        time = chronometer.toString();
+                        Log.i(TAG, "-------------------" + time + "-------------------");
                         // parar de recolher dados
                         // guardar dados
                         exButton.setText("Começar Exercício");
@@ -76,7 +81,7 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
         });
     }
 
-    private void startTimer() {
+    /*private void startTimer() {
         isRunning = true;
         initialTime = System.currentTimeMillis();
         handler.postDelayed(runnable, MILLIS_IN_SEC);
@@ -85,7 +90,7 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
     private void stopTimer() {
         isRunning = false;
         handler.removeCallbacks(runnable);
-    }
+    }*/
 
     protected void iniciarSensoresEx() {
         // SENSORES
