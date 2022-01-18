@@ -203,11 +203,12 @@ public class UserHomeFragment extends Fragment {
         criarLembButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("fragment", "frag2");
-                /*((UserHomeActivity) getActivity()).remindersFragment.setArguments(bundle);*/
-                Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_lembretesAc, bundle);
-                /*((UserHomeActivity) getActivity()).replaceFragment(((UserHomeActivity) getActivity()).remindersFragment);*/
+                Bundle bundle2 = new Bundle();
+                bundle2.putString("fragment", "frag2");
+                bundle2.putString("data", "");
+                bundle2.putString("hora", "");
+                bundle2.putString("mensagem", "");
+                Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_lembretesAc, bundle2);
             }
         });
 
