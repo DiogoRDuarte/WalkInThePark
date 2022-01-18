@@ -1,4 +1,4 @@
-package com.example.smartwatch;
+package com.example.walkinthepark;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import androidx.wear.widget.WearableLinearLayoutManager;
 import androidx.wear.widget.WearableRecyclerView;
+
+import com.example.walkinthepark.ExerciseActivity;
+import com.example.walkinthepark.MainMenuAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

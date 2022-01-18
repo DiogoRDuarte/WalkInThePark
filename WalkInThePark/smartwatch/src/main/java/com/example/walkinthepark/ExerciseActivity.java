@@ -1,4 +1,4 @@
-package com.example.smartwatch;
+package com.example.walkinthepark;
 
 import android.app.Activity;
 import android.hardware.Sensor;
@@ -9,9 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-import com.example.smartwatch.databinding.ActivityExerciseBinding;
 
 public class ExerciseActivity extends Activity implements SensorEventListener {
 
