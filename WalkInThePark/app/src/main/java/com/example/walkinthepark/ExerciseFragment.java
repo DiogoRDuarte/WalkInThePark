@@ -144,7 +144,7 @@ public class ExerciseFragment extends Fragment {
 
                     /*HashMap<String, String> map = new HashMap<>();
                     map.put("videolink", downloadUri);*/
-                    Exercise e = new Exercise(videoUri.getPath());
+                    Exercise e = new Exercise(downloadUri);
                     //HashMap<String, String> map = (HashMap<String, String>) e.toExerMap();
                     ref.addValueEventListener(new ValueEventListener() {
                         @Override
