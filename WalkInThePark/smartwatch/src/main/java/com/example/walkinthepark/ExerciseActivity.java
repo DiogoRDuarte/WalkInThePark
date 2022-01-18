@@ -6,13 +6,10 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
-import android.widget.Toast;
 
 
 public class ExerciseActivity extends Activity implements SensorEventListener {
@@ -72,6 +69,7 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
                         Log.i(TAG, "-------------------" + time + "-------------------");
                         // parar de recolher dados
                         // guardar dados
+                        terminarSensoresEx();
                         exButton.setText("Começar Exercício");
                         break;
                     default:
@@ -118,6 +116,12 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
             } else {
                 Log.w(TAG, "No Gyroscope Sensor found");
             }
+        }
+    }
+
+    protected void terminarSensoresEx() {
+        if (mSensorManager != null) {
+            mSensorManager.unregisterListener(this);
         }
     }
 
