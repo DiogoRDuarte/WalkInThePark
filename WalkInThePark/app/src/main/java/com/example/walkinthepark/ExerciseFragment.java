@@ -208,7 +208,7 @@ public class ExerciseFragment extends Fragment {
                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                     // show the progress bar
                     double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                    progressDialog.setMessage("Uploaded " + (int) progress + "%");
+                    progressDialog.setMessage("Carregado " + (int) progress + "%");
                 }
             });
         }
