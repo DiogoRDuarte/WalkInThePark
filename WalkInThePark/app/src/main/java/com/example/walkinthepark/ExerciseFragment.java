@@ -20,10 +20,14 @@ import android.widget.Button;
 import android.widget.VideoView;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ExerciseFragment extends Fragment {
 
     static View exerciseView;
+    private FirebaseDatabase db;
+    private DatabaseReference ref;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,6 +35,8 @@ public class ExerciseFragment extends Fragment {
         exerciseView = inflater.inflate(R.layout.fragment_exercise, container, false);
         RecyclerView rv = exerciseView.findViewById(R.id.rvExercises);
         MaterialButton record = exerciseView.findViewById(R.id.button_exercises);
+        db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
+        ref = db.getReference("User");
         record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

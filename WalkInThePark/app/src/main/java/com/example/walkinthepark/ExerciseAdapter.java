@@ -1,7 +1,11 @@
 package com.example.walkinthepark;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,10 +43,16 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         int position2 = position;
         HashMap<String, String> video = mExercicios.get(position2);
+        String s = video.get("recurso");
+        Bitmap b = ThumbnailUtils.createVideoThumbnail(s,MediaStore.Images.Thumbnails.MINI_KIND);
+        BitmapDrawable a = new BitmapDrawable(b);
         VideoView videoView = holder.videoView;
-        Uri uri = Uri.parse(video.get("recurso"));
-        videoView.setVideoURI(uri);
-        videoView.start();
+        videoView.setBackgroundDrawable(a);
+        //VideoView videoView = holder.videoView;
+        //Uri uri = Uri.parse(video.get("recurso"));
+        //videoView.setVideoURI(uri);
+        //videoView.start();
+
     }
 
     @Override
