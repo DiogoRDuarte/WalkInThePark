@@ -26,6 +26,17 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Vídeos"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="25dp">
+            </TextView>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvExerciciosProf"
                 android:layout_width="match_parent"
@@ -117,10 +128,10 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
-                        android:textSize="15sp"
                         android:backgroundTint="#E8E8E8"
-                        android:text="+"
+                        android:text="Novo Vídeo"
                         android:textColor="#2B2C2C"
+                        android:textSize="15sp"
                         app:contentPadding="8dp"
                         app:cornerRadius="15dp" />
 
@@ -152,6 +163,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Pacientes"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="25dp">
+            </TextView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPacientesProf"
