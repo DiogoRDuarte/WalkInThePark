@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -28,7 +29,7 @@ public class ExerciseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         exerciseView = inflater.inflate(R.layout.fragment_exercise, container, false);
-
+        //RecyclerView rv = exerciseView.findViewById(R.id.);
         MaterialButton record = exerciseView.findViewById(R.id.button_exercises);
         record.setOnClickListener(new View.OnClickListener() {
             @Override
