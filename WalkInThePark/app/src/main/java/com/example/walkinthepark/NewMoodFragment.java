@@ -66,27 +66,33 @@ public class NewMoodFragment extends Fragment {
             public void onClick(View view) {
                 int radioId = radioGroup.getCheckedRadioButtonId();
                 radioButton = newMoodView.findViewById(radioId);
-                String txt = (String) radioButton.getText();
+                if(radioButton == null){
+                    ((MoodsFragment)getParentFragment()).buttonM.setText("Adicionar Humor");
+                    ((MoodsFragment)getParentFragment()).replaceFragment(((MoodsFragment)getParentFragment()).allMoodsFragment);
+                }else{
+                    String txt = (String) radioButton.getText();
 
-                switch (txt) {
-                    case "Magoado":
-                        mood = 1;
-                        break;
-                    case "Chateado":
-                        mood = 2;
-                        break;
-                    case "Triste":
-                        mood = 3;
-                        break;
-                    case "Neutro":
-                        mood = 4;
-                        break;
-                    case "Feliz":
-                        mood = 5;
-                        break;
-                    default:
-                        throw new IllegalStateException("Unexpected value: " + txt);
+                    switch (txt) {
+                        case "Magoado":
+                            mood = 1;
+                            break;
+                        case "Chateado":
+                            mood = 2;
+                            break;
+                        case "Triste":
+                            mood = 3;
+                            break;
+                        case "Neutro":
+                            mood = 4;
+                            break;
+                        case "Feliz":
+                            mood = 5;
+                            break;
+                        default:
+                            throw new IllegalStateException("Unexpected value: " + txt);
+                    }
                 }
+
 
                 if(mood < 1 || mood > 5) {
                     Toast toast = Toast.makeText(getContext(), "Erro a selecionar o Humor!", Toast.LENGTH_SHORT);
