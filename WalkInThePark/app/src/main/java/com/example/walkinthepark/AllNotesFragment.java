@@ -27,7 +27,6 @@ public class AllNotesFragment extends Fragment {
 
     static View allNotesView;
 
-
     private DatabaseReference myRef;
     private FirebaseDatabase db;
     private Context context = this.getContext();
@@ -36,7 +35,7 @@ public class AllNotesFragment extends Fragment {
     private NotesAdapter.RecyclerViewListener listenerAdapter;
 
     // Notas
-    ArrayList<HashMap<String, String>> listaNotas;
+    static ArrayList<HashMap<String, String>> listaNotas;
     private ArrayList<HashMap<String, String>> notasCurrent;
 
     @Override
@@ -105,4 +104,9 @@ public class AllNotesFragment extends Fragment {
             }
         };
     }
+
+    public static ArrayList<HashMap<String, String>> getNotas() {
+        return listaNotas;
+    }
+
 }
