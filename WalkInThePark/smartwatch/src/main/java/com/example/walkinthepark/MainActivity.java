@@ -74,12 +74,12 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     public void notas(){
         /*Log.i("ACTION", "action_1()");*/
-        Toast.makeText(getApplicationContext(), "notas", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Notas", Toast.LENGTH_SHORT).show();
     }
 
     public void lembretes(){
         /*Log.i("ACTION", "action_2()");*/
-        Toast.makeText(getApplicationContext(), "lembretes", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Lembretes", Toast.LENGTH_SHORT).show();
     }
 
     public void comecarExercicio(){
