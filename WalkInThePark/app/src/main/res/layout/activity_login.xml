@@ -38,9 +38,10 @@
                     android:layout_centerVertical="true"
                     android:gravity="center"
                     android:text="Tornamos a sua vida melhor!"
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
                     android:textColor="@color/black"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="RtlCompat" />
 
                 <ImageView
                     android:id="@+id/imagem"
