@@ -3,6 +3,8 @@ package com.example.walkinthepark;
 import static android.app.Activity.RESULT_OK;
 
 import android.app.AlertDialog;
+import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -16,7 +18,9 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.google.android.material.button.MaterialButton;
@@ -28,7 +32,6 @@ public class ExerciseFragment extends Fragment {
     static View exerciseView;
     private FirebaseDatabase db;
     private DatabaseReference ref;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,7 +50,11 @@ public class ExerciseFragment extends Fragment {
 
         return exerciseView;
     }
-
+    private String getTipo(Uri video){
+        ContentResolver c = getContext().getContentResolver();
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        return mimeTypeMap.getExtensionFromMimeType(c.getType(video));
+    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK) {
