@@ -58,12 +58,8 @@ public class NewNoteFragment extends Fragment {
         myRef = db.getReference("User");
 
 
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            titulo.setText(bundle.getString("titulo2"));
-            nota.setText( bundle.getString("mensagem2"));
-        }
-
+        String a = titulo.getText().toString();
+        String b = nota.getText().toString();
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,9 +105,13 @@ public class NewNoteFragment extends Fragment {
                                     myRef.updateChildren(mapUsers);
                                     p = false;
 
+//                                    titulo.setText(null);
+//                                    nota.setText(null);
+
                                     /*goToMain(view);*/
                                     ((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
                                     ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);
+
                                 }
 
 
@@ -119,7 +119,6 @@ public class NewNoteFragment extends Fragment {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
                         }
                     });
 
@@ -144,6 +143,20 @@ public class NewNoteFragment extends Fragment {
     private void goToMain(View view) {
         Intent i = new Intent(getActivity(), UserHomeActivity.class);
         startActivity(i);
+    }
+
+    @Override
+    public void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        titulo.setText("");
+        nota.setText("");
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            titulo.setText(bundle.getString("titulo2"));
+            nota.setText( bundle.getString("mensagem2"));
+        }
     }
 
 
