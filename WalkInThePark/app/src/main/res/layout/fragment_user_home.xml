@@ -28,6 +28,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Lembretes"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="25dp">
+            </TextView>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvLembretes"
                 android:layout_width="match_parent"
@@ -173,6 +184,17 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Notas"
+                        android:paddingTop="10dp"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textSize="25dp">
+                    </TextView>
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvNotesUser"
                         android:layout_width="match_parent"
@@ -205,11 +227,8 @@
     <!-- Humor -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/humor"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Rastreio de humor"
         android:textColor="#FFFFFF"
         app:cardBackgroundColor="#8A8A8A"
@@ -219,24 +238,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Moods"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="25dp">
+        </TextView>
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <ImageView
                 android:id="@+id/neutro"
                 android:layout_width="50dp"
-                android:layout_height="100dp"
+                android:layout_height="60dp"
                 android:src="@drawable/neutro"
                 app:layout_constraintEnd_toStartOf="@+id/feliz"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/triste"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                />
 
             <ImageView
                 android:id="@+id/triste"
                 android:layout_width="50dp"
-                android:layout_height="100dp"
+                android:layout_height="60dp"
                 android:src="@drawable/triste"
                 app:layout_constraintEnd_toStartOf="@+id/neutro"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -246,7 +285,7 @@
             <ImageView
                 android:id="@+id/feliz"
                 android:layout_width="50dp"
-                android:layout_height="100dp"
+                android:layout_height="60dp"
                 android:src="@drawable/feliz"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:ignore="MissingConstraints" />
@@ -254,7 +293,7 @@
             <ImageView
                 android:id="@+id/magoado"
                 android:layout_width="50dp"
-                android:layout_height="100dp"
+                android:layout_height="60dp"
                 android:src="@drawable/magoado"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints" />
@@ -262,7 +301,7 @@
             <ImageView
                 android:id="@+id/chateado"
                 android:layout_width="50dp"
-                android:layout_height="100dp"
+                android:layout_height="60dp"
                 android:src="@drawable/chateado"
                 app:layout_constraintEnd_toStartOf="@+id/triste"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -277,10 +316,11 @@
             android:layout_height="wrap_content"
 
             android:paddingLeft="25dp"
-            android:paddingTop="40dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:paddingRight="25dp"
-            app:isb_indicator_color="#000000"
-            app:isb_indicator_text_color="#FFFFFF"
+            app:isb_indicator_color="@android:color/transparent"
+            app:isb_indicator_text_color="@android:color/transparent"
             app:isb_indicator_text_size="18sp"
             app:isb_max="5"
             app:isb_min="1"
@@ -289,9 +329,9 @@
             app:isb_show_indicator="rounded_rectangle"
             app:isb_show_tick_marks_type="oval"
             app:isb_show_tick_texts="false"
-            app:isb_thumb_color="#90000000"
+            app:isb_thumb_color="#000000"
             app:isb_thumb_size="20dp"
-            app:isb_tick_marks_color="#80FFFFFF"
+            app:isb_tick_marks_color="#FFFFFF"
             app:isb_tick_marks_size="13dp"
             app:isb_tick_texts_color="#90FFFFFF"
             app:isb_tick_texts_size="15sp"
@@ -340,6 +380,7 @@
 
         </LinearLayout>
 
+        </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 

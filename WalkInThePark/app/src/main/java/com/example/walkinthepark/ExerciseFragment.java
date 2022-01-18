@@ -29,7 +29,7 @@ public class ExerciseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         exerciseView = inflater.inflate(R.layout.fragment_exercise, container, false);
-        //RecyclerView rv = exerciseView.findViewById(R.id.);
+        RecyclerView rv = exerciseView.findViewById(R.id.rvExercises);
         MaterialButton record = exerciseView.findViewById(R.id.button_exercises);
         record.setOnClickListener(new View.OnClickListener() {
             @Override
