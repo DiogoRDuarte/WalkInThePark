@@ -38,7 +38,7 @@
             android:layout_height="match_parent"
             android:layout_weight=".8"
             android:padding="8dp"
-            android:background="@drawable/buttons_style"
+            android:background="@drawable/buttons_prof"
             android:scaleType="fitCenter"
             android:src="@drawable/edit" />
 
@@ -48,7 +48,7 @@
             android:layout_height="match_parent"
             android:layout_weight=".8"
             android:padding="8dp"
-            android:background="@drawable/buttons_style"
+            android:background="@drawable/buttons_prof"
             android:scaleType="fitCenter"
             android:src="@drawable/results" />
 
