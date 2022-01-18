@@ -13,7 +13,7 @@
     android:focusable="true"
     app:cardBackgroundColor="#E8E8E8"
     app:cardCornerRadius="15dp"
-    app:contentPadding="8dp">
+    app:contentPadding="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
 
         <TextView
             android:id="@+id/PcNome"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2.4"
             android:gravity="center_vertical"
@@ -34,7 +34,7 @@
 
         <ImageButton
             android:id="@+id/editButton"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".8"
             android:backgroundTint="#E8E8E8"
@@ -43,7 +43,7 @@
 
         <ImageButton
             android:id="@+id/statisticButton"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".8"
             android:backgroundTint="#E8E8E8"
