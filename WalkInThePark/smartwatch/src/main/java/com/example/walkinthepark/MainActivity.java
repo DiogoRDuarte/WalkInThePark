@@ -21,6 +21,7 @@ import com.google.android.gms.wearable.Wearable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class MainActivity extends Activity implements SensorEventListener {
 
@@ -34,9 +35,9 @@ public class MainActivity extends Activity implements SensorEventListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DataClient dataClient = Wearable.getDataClient(getApplicationContext());
+        /*DataClient dataClient = Wearable.getDataClient(getApplicationContext());
         Toast.makeText(getApplicationContext(), "Cliente" + dataClient.toString(), Toast.LENGTH_LONG).show();
-        Log.i("Cliente", dataClient.toString());
+        Log.i("Cliente", dataClient.toString());*/
 
         wearableRecyclerView = findViewById(R.id.recyclerView);
         wearableRecyclerView.setEdgeItemsCenteringEnabled(true);
@@ -75,6 +76,10 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     public void notas(){
         /*Log.i("ACTION", "action_1()");*/
+        Intent i = new Intent(MainActivity.this, NotesActivity.class);
+        ArrayList<HashMap<String, String>> notas;
+        /*notas = AllNotesFragment.getNotas();*/
+        /*i.putExtra("notas", notas);*/
         Toast.makeText(getApplicationContext(), "Notas", Toast.LENGTH_SHORT).show();
     }
 
