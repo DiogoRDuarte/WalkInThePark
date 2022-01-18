@@ -21,7 +21,6 @@ import com.google.android.gms.wearable.Wearable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 
 public class MainActivity extends Activity implements SensorEventListener {
 
@@ -76,10 +75,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     public void notas(){
         /*Log.i("ACTION", "action_1()");*/
-        Intent i = new Intent(MainActivity.this, NotesActivity.class);
-        ArrayList<HashMap<String, String>> notas;
-        /*notas = AllNotesFragment.getNotas();*/
-        /*i.putExtra("notas", notas);*/
         Toast.makeText(getApplicationContext(), "Notas", Toast.LENGTH_SHORT).show();
     }
 
