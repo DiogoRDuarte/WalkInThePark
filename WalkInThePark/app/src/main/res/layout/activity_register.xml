@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1CB4BF"
+    android:background="#DC6E58"
     tools:context=".RegisterActivity"
     android:layout_gravity="center">
 
@@ -73,12 +73,13 @@
                         android:layout_marginTop="@dimen/loginViewsMargin">
 
                         <EditText
-                            app:boxBackgroundColor="@color/white"
                             android:id="@+id/editTextName"
                             style="@style/modifiedEditText"
                             android:hint="Nome*"
+                            android:backgroundTint="@color/white"
                             android:inputType="textPersonName"
-                            android:maxLines="1" />
+                            android:maxLines="1"
+                            app:boxBackgroundColor="@color/white" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -90,6 +91,7 @@
                             android:id="@+id/editTextEmail"
                             style="@style/modifiedEditText"
                             android:hint="Email:*"
+                            android:backgroundTint="@color/white"
                             android:inputType="textEmailAddress"
                             android:maxLines="1" />
 
@@ -102,6 +104,7 @@
                                 android:id="@+id/editTextPassword"
                                 style="@style/modifiedEditText"
                                 android:hint="Password:*"
+                                android:backgroundTint="@color/white"
                                 android:inputType="textPassword"
                                 android:maxLines="1" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -117,21 +120,25 @@
                             style="@style/modifiedEditText"
                             android:hint="Email do Fisioterapeuta:"
                             android:inputType="text"
+                            android:backgroundTint="@color/white"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <RadioGroup
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
                         android:gravity="center"
-                        android:layout_marginTop="15dp">
-                        <RadioButton android:id="@+id/radio_paciente"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radio_paciente"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="5dp"
                             android:checked="true"
+                            app:buttonTint="#DC6E58"
                             android:text="Sou Paciente" />
 
                         <RadioButton
@@ -139,6 +146,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
+                            app:buttonTint="#DC6E58"
                             android:text="Sou Profissional" />
                     </RadioGroup>
 
@@ -152,17 +160,18 @@
                         app:initialCornerAngle="27dp"
                         app:spinning_bar_color="#FFF"
                         app:spinning_bar_padding="6dp"
-                        app:spinning_bar_width="4dp" />
+                        app:spinning_bar_width="4dp"
+                        android:backgroundTint="#DC6E58"/>
 
                     <TextView
                         style="@style/parent"
                         android:layout_marginTop="@dimen/loginViewsMargin"
+                        android:onClick="goToLogin"
                         android:text="Já tem uma conta?"
                         android:textAlignment="center"
-                        android:textColor="@color/themeColor"
+                        android:textColor="#bddba4"
                         android:textSize="17sp"
-                        android:textStyle="bold"
-                        android:onClick="goToLogin"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1CB4BF"
+    android:background="#bddba4"
     tools:context=".LoginActivity"
     android:layout_gravity="center">
 
@@ -37,8 +37,8 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:text="Tornamos \na sua vida \nmelhor!"
-                    android:textColor="@color/white"
-                    app:layout_constraintTop_toTopOf="parent"/>/>
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:layout_width="240dp"
@@ -66,7 +66,6 @@
                     android:orientation="vertical">
 
 
-
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputEmail"
                         style="@style/parent"
@@ -77,9 +76,9 @@
                             style="@style/modifiedEditText"
                             android:hint="Email:*"
                             android:inputType="textEmailAddress"
-                            android:maxLines="1" />
+                            android:maxLines="1"
+                            android:backgroundTint="@color/white"/>
                     </com.google.android.material.textfield.TextInputLayout>
-
 
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -92,6 +91,7 @@
                             style="@style/modifiedEditText"
                             android:hint="Password:*"
                             android:inputType="textPassword"
+                            android:backgroundTint="@color/white"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -104,17 +104,19 @@
                         app:initialCornerAngle="27dp"
                         app:spinning_bar_color="#FFF"
                         app:spinning_bar_padding="6dp"
-                        app:spinning_bar_width="4dp" />
+                        app:spinning_bar_width="4dp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         style="@style/parent"
                         android:layout_marginTop="@dimen/loginViewsMargin"
+                        android:onClick="goToRegister"
                         android:text="Ainda não tem conta?"
                         android:textAlignment="center"
-                        android:textColor="@color/themeColor"
+                        android:textColor="#DC6E58"
                         android:textSize="17sp"
                         android:textStyle="bold"
-                        android:onClick="goToRegister"/>
+                        />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
