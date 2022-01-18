@@ -36,7 +36,7 @@ public class AllNotesFragment extends Fragment {
     private NotesAdapter.RecyclerViewListener listenerAdapter;
 
     // Notas
-    ArrayList<HashMap<String, String>> listaNotas;
+    static ArrayList<HashMap<String, String>> listaNotas;
     private ArrayList<HashMap<String, String>> notasCurrent;
 
     @Override
