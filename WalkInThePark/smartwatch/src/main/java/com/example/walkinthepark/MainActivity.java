@@ -35,7 +35,8 @@ public class MainActivity extends Activity implements SensorEventListener {
         setContentView(R.layout.activity_main);
 
         DataClient dataClient = Wearable.getDataClient(getApplicationContext());
-        Toast.makeText(getApplicationContext(), "Cliente" + dataClient.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Cliente" + dataClient.toString(), Toast.LENGTH_LONG).show();
+        Log.i("Cliente", dataClient.toString());
 
         wearableRecyclerView = findViewById(R.id.recyclerView);
         wearableRecyclerView.setEdgeItemsCenteringEnabled(true);
