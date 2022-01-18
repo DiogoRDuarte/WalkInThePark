@@ -1,4 +1,4 @@
-package com.example.smartwatch;
+package com.example.walkinthepark;
 
 import android.view.View;
 

@@ -1,4 +1,4 @@
-package com.example.smartwatch;
+package com.example.walkinthepark;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,6 +12,11 @@ import android.widget.Toast;
 
 import androidx.wear.widget.WearableLinearLayoutManager;
 import androidx.wear.widget.WearableRecyclerView;
+
+import com.example.walkinthepark.ExerciseActivity;
+import com.example.walkinthepark.MainMenuAdapter;
+import com.google.android.gms.wearable.DataClient;
+import com.google.android.gms.wearable.Wearable;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,6 +33,10 @@ public class MainActivity extends Activity implements SensorEventListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DataClient dataClient = Wearable.getDataClient(getApplicationContext());
+        Toast.makeText(getApplicationContext(), "Cliente" + dataClient.toString(), Toast.LENGTH_LONG).show();
+        Log.i("Cliente", dataClient.toString());
 
         wearableRecyclerView = findViewById(R.id.recyclerView);
         wearableRecyclerView.setEdgeItemsCenteringEnabled(true);
@@ -66,12 +75,12 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     public void notas(){
         /*Log.i("ACTION", "action_1()");*/
-        Toast.makeText(getApplicationContext(), "notas", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Notas", Toast.LENGTH_SHORT).show();
     }
 
     public void lembretes(){
         /*Log.i("ACTION", "action_2()");*/
-        Toast.makeText(getApplicationContext(), "lembretes", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Lembretes", Toast.LENGTH_SHORT).show();
     }
 
     public void comecarExercicio(){

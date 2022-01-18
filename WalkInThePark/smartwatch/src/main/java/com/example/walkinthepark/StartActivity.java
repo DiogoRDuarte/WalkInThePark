@@ -1,13 +1,10 @@
-package com.example.smartwatch;
+package com.example.walkinthepark;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.smartwatch.databinding.ActivityStartBinding;
-
-import java.util.Timer;
 
 public class StartActivity extends Activity {
 
