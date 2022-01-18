@@ -36,20 +36,22 @@ public class MoodsFragment extends Fragment {
 
         buttonM = moodsView.findViewById(R.id.button_moods);
         replaceFragment(allMoodsFragment);
-
-        String str = getArguments().getString("fragment");
-        switch (str) {
-            case "fragNM":
-                buttonM.setText("Ver Humores");
-                replaceFragment(newMoodFragment);
-                break;
-            case "fragM":
-                buttonM.setText("Adicionar Humor");
-                replaceFragment(allMoodsFragment);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + str);
+        if(getArguments().getString("fragment") != null){
+            String str = getArguments().getString("fragment");
+            switch (str) {
+                case "fragNM":
+                    buttonM.setText("Ver Humores");
+                    replaceFragment(newMoodFragment);
+                    break;
+                case "fragM":
+                    buttonM.setText("Adicionar Humor");
+                    replaceFragment(allMoodsFragment);
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + str);
+            }
         }
+
 
         buttonM.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +75,6 @@ public class MoodsFragment extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container_moods, fragment);
         fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 }

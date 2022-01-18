@@ -119,8 +119,8 @@ public class NewMoodFragment extends Fragment {
                                     result.put("listaNotas", ds.child("listaNotas").getValue());
 
                                     mapUsers.put(user_email, result);
-                                    Toast.makeText(getContext(), "Moods adicionado!", Toast.LENGTH_SHORT).show();
-                                    myRef.updateChildren(mapUsers);
+                                    //Toast.makeText(getContext(), "Moods adicionado!", Toast.LENGTH_SHORT).show();
+                                    //myRef.updateChildren(mapUsers);
                                 }
                             }
 
