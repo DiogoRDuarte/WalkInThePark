@@ -63,6 +63,7 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
                     case "Terminar Exercício":
                         // terminar timer
                         stopTimer();
+                        Log.i(TAG, time);
 
                         // parar de recolher dados
                         // guardar dados
