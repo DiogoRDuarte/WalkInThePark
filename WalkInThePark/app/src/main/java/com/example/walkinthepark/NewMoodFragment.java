@@ -129,7 +129,7 @@ public class NewMoodFragment extends Fragment {
                                 myRef.updateChildren(mapUsers);
                                 p = false;
 
-                                ((MoodsFragment)getParentFragment()).button.setText("Adicionar Humor");
+                                ((MoodsFragment)getParentFragment()).buttonM.setText("Adicionar Humor");
                                 ((MoodsFragment)getParentFragment()).replaceFragment(((MoodsFragment)getParentFragment()).allMoodsFragment);
                             }
 
@@ -150,7 +150,7 @@ public class NewMoodFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getParentFragmentManager().beginTransaction().remove(NewMoodFragment.this).commit();
-                ((MoodsFragment)getParentFragment()).button.setText("Adicionar Humor");
+                ((MoodsFragment)getParentFragment()).buttonM.setText("Adicionar Humor");
                 ((MoodsFragment)getParentFragment()).replaceFragment(((MoodsFragment)getParentFragment()).allMoodsFragment);
             }
         });

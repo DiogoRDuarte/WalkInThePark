@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MoodsFragment extends Fragment {
 
@@ -20,7 +19,7 @@ public class MoodsFragment extends Fragment {
     static AllMoodsFragment allMoodsFragment;
     static NewMoodFragment newMoodFragment;
 
-    MaterialButton button;
+    MaterialButton buttonM;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,32 +34,32 @@ public class MoodsFragment extends Fragment {
             allMoodsFragment = new AllMoodsFragment();
         }
 
-        button = moodsView.findViewById(R.id.button_moods);
+        buttonM = moodsView.findViewById(R.id.button_moods);
         replaceFragment(allMoodsFragment);
 
         String str = getArguments().getString("fragment");
         switch (str) {
             case "fragNM":
-                button.setText("Ver Humores");
+                buttonM.setText("Ver Humores");
                 replaceFragment(newMoodFragment);
                 break;
             case "fragM":
-                button.setText("Adicionar Humor");
+                buttonM.setText("Adicionar Humor");
                 replaceFragment(allMoodsFragment);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + str);
         }
 
-        button.setOnClickListener(new View.OnClickListener() {
+        buttonM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(button.getText().equals("Adicionar Humor")) {
-                    button.setText("Ver Humores");
+                if(buttonM.getText().equals("Adicionar Humor")) {
+                    buttonM.setText("Ver Humores");
                     newMoodFragment = new NewMoodFragment();
                     replaceFragment(newMoodFragment);
-                } else if (button.getText().equals("Ver Humores")) {
-                    button.setText("Adicionar Humor");
+                } else if (buttonM.getText().equals("Ver Humores")) {
+                    buttonM.setText("Adicionar Humor");
                     replaceFragment(allMoodsFragment);
                 }
             }
@@ -70,7 +69,7 @@ public class MoodsFragment extends Fragment {
     }
 
     public void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container_moods, fragment);
         fragmentTransaction.addToBackStack(null);
