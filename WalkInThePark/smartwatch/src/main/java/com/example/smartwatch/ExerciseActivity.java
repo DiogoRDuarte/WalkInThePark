@@ -31,7 +31,7 @@ public class ExerciseActivity extends Activity {
                     case "Terminar Exercício":
                         // parar de recolher dados
                         // guardar dados
-                        exButton.setText("Começar Exercício Exercício");
+                        exButton.setText("Começar Exercício");
                         break;
                     default:
                         throw new IllegalStateException("Unexpected value: " + txt);
