@@ -71,7 +71,6 @@ public class ProfHomeFragment extends Fragment {
                     }
                 }
 
-
                 if (pacientes != null && pacientes.size() > 1) {
 
                     for (int i = 1; i < pacientes.size(); i++) {
@@ -87,18 +86,6 @@ public class ProfHomeFragment extends Fragment {
                     rvPacientesProf.setLayoutManager(layoutManager);
                     
                     rvPacientesProf.setAdapter(usersAdapter);
-
-                    /* if (pacientes.get(1) != null){
-                        String pn = pacientes.get(1).get("nome") + "";
-                        Toast.makeText(getActivity().getApplicationContext(), pn, Toast.LENGTH_SHORT).show();
-                        pc1.setText(pn);
-                    }
-                   if (pacientes.get(2) != null)
-                        pc2.setText(pacientes.get(2).get("nome") + "");
-                    if (pacientes.get(3) != null)
-                        pc3.setText(pacientes.get(3).get("nome") + "");
-                    if (pacientes.get(4) != null)
-                        pc4.setText(pacientes.get(4).get("nome") + "");*/
 
                 }
 

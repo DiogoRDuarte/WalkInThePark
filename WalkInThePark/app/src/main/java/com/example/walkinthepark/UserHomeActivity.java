@@ -92,8 +92,6 @@ public class UserHomeActivity extends AppCompatActivity {
             userHomeFragment = new UserHomeFragment();
         }
 
-        /*replaceFragment(userHomeFragment);*/
-
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
         findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,64 +120,10 @@ public class UserHomeActivity extends AppCompatActivity {
             }
         });
 
-
-        /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Bundle bundle;
-                switch (item.getItemId()) {
-                    case R.id.menuAc:
-                        replaceFragment(userHomeFragment);
-                    case R.id.notasAc:
-                        bundle = new Bundle();
-                        bundle.putString("fragment", "fragNT");
-                        notesFragment.setArguments(bundle);
-                        replaceFragment(notesFragment);
-                        break;
-                    case R.id.lembretesAc:
-                        bundle = new Bundle();
-                        bundle.putString("fragment", "frag1");
-                        remindersFragment.setArguments(bundle);
-                        replaceFragment(remindersFragment);
-                        break;
-                    case R.id.videosAc:
-                        replaceFragment(exerciseFragment);
-                        break;
-                    case R.id.humorAc:
-                        bundle = new Bundle();
-                        bundle.putString("fragment", "fragM");
-                        moodsFragment.setArguments(bundle);
-                        replaceFragment(moodsFragment);
-                        break;
-                    case R.id.calibracaoAc:
-                        replaceFragment(calibrationFragment);
-                        break;
-                    case R.id.definicoesAc:
-                        replaceFragment(settingsFragment);
-                        break;
-                    case R.id.ajudaAc:
-                        replaceFragment(aboutFragment);
-                        break;
-                    default:
-                        throw new IllegalStateException("Unexpected value: " + item.getItemId());
-                }
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
-            }
-        });*/
-
         navController = Navigation.findNavController(this, R.id.navHostFragmet);
         NavigationUI.setupWithNavController(navigationView, navController);
 
     }
-
-    /*public void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container_user, fragment);
-        *//*fragmentTransaction.addToBackStack(null);*//*
-        fragmentTransaction.commit();
-    }*/
 
     public String getCurrentUserEmail(){
         return this.user_email;
