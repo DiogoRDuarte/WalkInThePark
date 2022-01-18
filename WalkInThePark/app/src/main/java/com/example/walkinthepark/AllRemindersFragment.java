@@ -49,6 +49,7 @@ public class AllRemindersFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 lembretesCurrent = new ArrayList<>();
                 RecyclerView rvReminders = (RecyclerView) view.findViewById(R.id.rvReminders);
+                if(user_email == null)
                 user_email =((UserHomeActivity)getActivity()).user_email;
                 
                 for (DataSnapshot ds : snapshot.getChildren()) {

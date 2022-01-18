@@ -52,6 +52,7 @@ public class AllNotesFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds : snapshot.getChildren()){
+                    if(user_email == null)
                     user_email =((UserHomeActivity)getActivity()).user_email;
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaNotas = (ArrayList<HashMap<String, String>>) ds.child("listaNotas").getValue();

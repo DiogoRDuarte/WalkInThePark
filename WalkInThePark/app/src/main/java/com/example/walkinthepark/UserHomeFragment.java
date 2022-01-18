@@ -35,6 +35,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class UserHomeFragment extends Fragment {
 
@@ -86,15 +87,20 @@ public class UserHomeFragment extends Fragment {
         myRef = db.getReference("User");
         Map m = new HashMap<String, Map>();
 
+
         //Notas
         myRef.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds : snapshot.getChildren()) {
-                    user_email = ((UserHomeActivity) getActivity()).user_email;
-                    user_name = ((UserHomeActivity) getActivity()).user_name;
 
+
+                for (DataSnapshot ds : snapshot.getChildren()) {
+
+            if(user_email == null) {
+                user_email = ((UserHomeActivity) getActivity()).user_email;
+                user_name = ((UserHomeActivity) getActivity()).user_name;
+            }
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaNotas = (ArrayList<HashMap<String, String>>) ds.child("listaNotas").getValue();
                         listaLembretes = (ArrayList<HashMap<String, String>>) ds.child("listaLembretes").getValue();

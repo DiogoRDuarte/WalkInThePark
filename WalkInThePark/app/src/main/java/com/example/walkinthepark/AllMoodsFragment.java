@@ -48,6 +48,7 @@ public class AllMoodsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 moodsCurrent = new ArrayList<>();
                 for(DataSnapshot ds : snapshot.getChildren()){
+                    if(user_email == null)
                     user_email =((UserHomeActivity)getActivity()).user_email;
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaMoods = (ArrayList) ((Map) ds.getValue()).get("listaMoods");
