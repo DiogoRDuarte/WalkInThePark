@@ -56,9 +56,7 @@ public class UserHomeFragment extends Fragment {
 
     private NotesUserAdapter.RecyclerViewListener listenerAdapter;
     private RemindersUserAdapter.RecyclerViewListener listenerAdapter2;
-    private RemindersUserAdapter.RecyclerViewListener listenerAdapterII;
-    private RemindersUserAdapter.RecyclerViewListener listenerAdapterIII;
-    // Notas
+
     ArrayList<HashMap<String, String>> listaNotas;
     ArrayList<HashMap<String, String>> listaLembretes;
 
@@ -108,19 +106,6 @@ public class UserHomeFragment extends Fragment {
                         for (int i = 1; i < listaLembretes.size(); i++) {
                             lembretesCurrent.add(listaLembretes.get(i));
                         }
-                        // NOTASif(lembretesCurrent.size() > 0){
-                        //HashMap<String,String> primeiro = lembretesCurrent.get(0);
-                        //HashMap<String,String> segundo = lembretesCurrent.get(1);
-                        //RemindersUserAdapter remindersUserAdapterI = new RemindersUserAdapter(primeiro,listenerAdapterII);
-                        //RemindersUserAdapter remindersUserAdapterII = new RemindersUserAdapter(segundo,listenerAdapterIII);
-                        //LinearLayoutManager man = new LinearLayoutManager(context);
-                        //LinearLayoutManager manI = new LinearLayoutManager(context);
-                        //man.setOrientation(RecyclerView.HORIZONTAL);
-                        //manI.setOrientation(RecyclerView.VERTICAL);
-                        //rvRems.setLayoutManager(man);
-                        //rvRems.setAdapter(remindersUserAdapterI);
-                        //rvRem2.setLayoutManager(manI);
-                        //rvRem2.setAdapter(remindersUserAdapterII);
 
                         // ordenar lembretes dos proximo a ocorrer ao ultimo
                         ArrayList<HashMap<String, String>> lembsOrdenados = lembretesCurrent;
