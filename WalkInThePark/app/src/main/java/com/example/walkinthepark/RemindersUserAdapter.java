@@ -47,7 +47,7 @@ public class RemindersUserAdapter extends RecyclerView.Adapter<RemindersUserAdap
             dataTextView = (TextView) itemView.findViewById(R.id.dataLemb);
             horaTextView = (TextView) itemView.findViewById(R.id.horaLemb);
             mensagemTextView = (TextView) itemView.findViewById(R.id.msgLemb);
-            editarButton = (MaterialButton) itemView.findViewById(R.id.editarLemb);
+            //editarButton = (MaterialButton) itemView.findViewById(R.id.editarLemb);
 
             itemView.setOnClickListener(this);
         }
@@ -78,22 +78,22 @@ public class RemindersUserAdapter extends RecyclerView.Adapter<RemindersUserAdap
     @Override
     public void onBindViewHolder(RemindersUserAdapter.ViewHolder holder, int position) {
         int position2 = position;
-        HashMap<String, String> reminder = mRemindersUser.get(position2);
+        HashMap<String, String> reminder = mRemindersUser.get(position);
         TextView textViewData = holder.dataTextView;
         textViewData.setText(reminder.get("data"));
         TextView textViewHora = holder.horaTextView;
         textViewHora.setText(reminder.get("hora"));
         TextView textViewMensagem = holder.mensagemTextView;
         textViewMensagem.setText(reminder.get("mensagem"));
-        MaterialButton edButton = holder.editarButton;
+        //MaterialButton edButton = holder.editarButton;
 
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
 
-        edButton.setOnClickListener(new View.OnClickListener() {
+        /*edButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*//HashMap<String, String> rem = mNotes.get(holder.getAdapterPosition());
+                /HashMap<String, String> rem = mNotes.get(holder.getAdapterPosition());
                 myRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -129,8 +129,8 @@ public class RemindersUserAdapter extends RecyclerView.Adapter<RemindersUserAdap
                             myRef.updateChildren(mapUsers);
                             a = false;
 
-                            *//*goToMain(view);*//*
-                            *//*((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
+                            /*goToMain(view);*//*
+                            /*((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
                             ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);*//*
                         }
 
@@ -145,10 +145,10 @@ public class RemindersUserAdapter extends RecyclerView.Adapter<RemindersUserAdap
                 mRemindersUser.remove(position2);
                 notifyItemRemoved(position2);
                 notifyItemRangeChanged(position2, mRemindersUser.size());
-                holder.itemView.setVisibility(View.GONE);*/
+                holder.itemView.setVisibility(View.GONE);
 
             }
-        });
+        });*/
     }
 
 
