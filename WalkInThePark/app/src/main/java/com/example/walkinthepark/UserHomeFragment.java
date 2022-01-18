@@ -55,6 +55,7 @@ public class UserHomeFragment extends Fragment {
     private int nMoods;
 
     private NotesUserAdapter.RecyclerViewListener listenerAdapter;
+    private RemindersUserAdapter.RecyclerViewListener listenerAdapter2;
     private RemindersUserAdapter.RecyclerViewListener listenerAdapterII;
     private RemindersUserAdapter.RecyclerViewListener listenerAdapterIII;
     // Notas
@@ -128,7 +129,8 @@ public class UserHomeFragment extends Fragment {
                         }
 
                         // lembretes user
-                        RemindersUserAdapter remindersUserAdapter = new RemindersUserAdapter(lembsOrdenados, listenerAdapterII);
+                        setOnClickListener2();
+                        RemindersUserAdapter remindersUserAdapter = new RemindersUserAdapter(lembsOrdenados, listenerAdapter2);
                         LinearLayoutManager man = new LinearLayoutManager(context);
                         man.setOrientation(RecyclerView.HORIZONTAL);
                         rvRems.setLayoutManager(man);
@@ -260,6 +262,7 @@ public class UserHomeFragment extends Fragment {
         return userView;
     }
 
+    //Notas Clicaveis
     private void setOnClickListener() {
         listenerAdapter = new NotesUserAdapter.RecyclerViewListener() {
             @Override
@@ -273,6 +276,27 @@ public class UserHomeFragment extends Fragment {
                     bundle.putString("titulo", listaNotas.get(position + 1).get("titulo"));
                     bundle.putString("mensagem", listaNotas.get(position + 1).get("mensagem"));
                     Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
+                }
+
+            }
+        };
+    }
+
+    //Lembretes Clicaveis
+    private void setOnClickListener2() {
+        listenerAdapter2 = new RemindersUserAdapter.RecyclerViewListener() {
+            @Override
+            public void onClick(View v, int position) {
+
+                if (listenerAdapter2 != null) {
+                    //FAZER
+
+                    Bundle bundle2 = new Bundle();
+                    bundle2.putString("fragment", "frag2");
+                    bundle2.putString("data", listaLembretes.get(position + 1).get("data"));
+                    bundle2.putString("hora", listaLembretes.get(position + 1).get("hora"));
+                    bundle2.putString("mensagem", listaLembretes.get(position + 1).get("mensagem"));
+                    Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_lembretesAc, bundle2);
                 }
 
             }
