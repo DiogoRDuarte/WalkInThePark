@@ -15,6 +15,8 @@ import androidx.wear.widget.WearableRecyclerView;
 
 import com.example.walkinthepark.ExerciseActivity;
 import com.example.walkinthepark.MainMenuAdapter;
+import com.google.android.gms.wearable.DataClient;
+import com.google.android.gms.wearable.Wearable;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,6 +33,9 @@ public class MainActivity extends Activity implements SensorEventListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DataClient dataClient = Wearable.getDataClient(getApplicationContext());
+        Toast.makeText(getApplicationContext(), "Cliente" + dataClient.toString(), Toast.LENGTH_SHORT).show();
 
         wearableRecyclerView = findViewById(R.id.recyclerView);
         wearableRecyclerView.setEdgeItemsCenteringEnabled(true);
