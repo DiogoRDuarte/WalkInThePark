@@ -46,10 +46,10 @@ public class MainActivity extends Activity implements SensorEventListener {
             public void onItemClicked(Integer menuPosition) {
                 switch (menuPosition) {
                     case 0:
-                        action_1();
+                        notas();
                         break;
                     case 1:
-                        action_2();
+                        lembretes();
                         break;
                     case 2:
                         comecarExercicio();
@@ -64,12 +64,12 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     }
 
-    public void action_1(){
+    public void notas(){
         /*Log.i("ACTION", "action_1()");*/
         Toast.makeText(getApplicationContext(), "notas", Toast.LENGTH_SHORT).show();
     }
 
-    public void action_2(){
+    public void lembretes(){
         /*Log.i("ACTION", "action_2()");*/
         Toast.makeText(getApplicationContext(), "lembretes", Toast.LENGTH_SHORT).show();
     }
