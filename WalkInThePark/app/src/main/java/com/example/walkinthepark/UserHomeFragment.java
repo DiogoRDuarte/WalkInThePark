@@ -231,9 +231,9 @@ public class UserHomeFragment extends Fragment {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("fragment", "fragN");
-                /*((UserHomeActivity) getActivity()).notesFragment.setArguments(bundle);*/
+                bundle.putString("titulo", "");
+                bundle.putString("mensagem", "");
                 Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
-                /*((UserHomeActivity) getActivity()).replaceFragment(((UserHomeActivity) getActivity()).notesFragment);*/
             }
         });
 
