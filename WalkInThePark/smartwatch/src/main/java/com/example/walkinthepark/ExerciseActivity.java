@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.Toast;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +26,14 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
     private long iTime;
     private long fTime;
     private long totalTime;
+
+    // fall
+    private float x, y, z;
+    private float last_x, last_y, last_z;
+    long shakeTime = -1;
+    private long lastUpdate = -1;
+
+    private static final int SHAKE_THRESHOLD = 50;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +59,8 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
                         // terminar timer
                         stopTimer();
                         time = getDurationBreakdown(totalTime);
-
                         Log.i(TAG, "-------------------" + time + "-------------------");
+
                         // parar de recolher dados
                         // guardar dados
                         terminarSensoresEx();
@@ -136,7 +145,32 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
+        // detetar uma queda
+        if(sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            long curTime = System.currentTimeMillis();
+            // only allow one update every 100ms.
+            if ((curTime - lastUpdate) > 100) {
+                long diffTime = (curTime - lastUpdate);
+                lastUpdate = curTime;
 
+                x = sensorEvent.values[SensorManager.DATA_X];
+                y = sensorEvent.values[SensorManager.DATA_Y];
+                z = sensorEvent.values[SensorManager.DATA_Z];
+
+                float speed = Math.abs(x + y + z - last_x - last_y - last_z) / (diffTime * 10000);
+
+                if (speed > SHAKE_THRESHOLD) {
+                    long curTime1 = System.currentTimeMillis();
+                    long diff = (curTime1 - shakeTime);
+                    shakeTime = curTime1;
+
+                    Toast.makeText(getApplicationContext(), "QUEDA!!", Toast.LENGTH_SHORT).show();
+                }
+                last_x = x;
+                last_y = y;
+                last_z = z;
+            }
+        }
     }
 
     @Override
