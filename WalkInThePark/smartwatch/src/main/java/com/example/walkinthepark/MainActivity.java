@@ -27,7 +27,12 @@ public class MainActivity extends Activity implements SensorEventListener {
     private WearableRecyclerView wearableRecyclerView;
 
     private static final String TAG = "SensorService";
-    SensorManager mSensorManager;
+    private SensorManager mSensorManager;
+    private Sensor mHeartRateSensor1;
+    private Sensor mStepCountSensor;
+    private Sensor mStepDetectSensor;
+    private Sensor mGravitySensor;
+    private int counterSteps;
 
     // fall
     private float x, y, z;
@@ -41,6 +46,13 @@ public class MainActivity extends Activity implements SensorEventListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // SENSORES
+        mSensorManager = ((SensorManager)getSystemService(SENSOR_SERVICE));
+        mHeartRateSensor1 = mSensorManager.getDefaultSensor(Sensor.TYPE_HEART_RATE);
+        mStepCountSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        mStepDetectSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+        mGravitySensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
 
         wearableRecyclerView = findViewById(R.id.recyclerView);
         wearableRecyclerView.setEdgeItemsCenteringEnabled(true);
@@ -73,9 +85,6 @@ public class MainActivity extends Activity implements SensorEventListener {
             }
         }));
 
-        startSensores();
-        stopSensores();
-
     }
 
     public void notas(){
@@ -96,18 +105,12 @@ public class MainActivity extends Activity implements SensorEventListener {
         Toast.makeText(getApplicationContext(), "cancel", Toast.LENGTH_SHORT).show();
     }
 
-    protected void startSensores() {
-        // SENSORES
-        mSensorManager = ((SensorManager)getSystemService(SENSOR_SERVICE));
-        Sensor mHeartRateSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_HEART_RATE);
-        Sensor mStepCountSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        Sensor mStepDetectSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
-        Sensor mGravitySensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
         if(mSensorManager != null) {
-            if (mHeartRateSensor != null) {
-                mSensorManager.registerListener((SensorEventListener) this, mHeartRateSensor, SensorManager.SENSOR_DELAY_NORMAL);
+            if (mHeartRateSensor1 != null) {
+                mSensorManager.registerListener((SensorEventListener) this, mHeartRateSensor1, SensorManager.SENSOR_DELAY_NORMAL);
             } else {
                 Log.w(TAG, "No Heartrate Sensor found");
             }
@@ -130,13 +133,74 @@ public class MainActivity extends Activity implements SensorEventListener {
                 Log.w(TAG, "No Gravity Sensor found");
             }
         }
+
     }
 
-    private void stopSensores() {
+    @Override
+    protected void onPause() {
+        super.onPause();
         if(mSensorManager != null) {
-            mSensorManager.unregisterListener(this);
+            mSensorManager.unregisterListener(heartListener1, mHeartRateSensor1);
+            mSensorManager.unregisterListener(stepCounterListener, mStepCountSensor);
+            mSensorManager.unregisterListener(stepDetectorListener, mStepDetectSensor);
+            mSensorManager.unregisterListener(gravityListener, mGravitySensor);
         }
     }
+
+    SensorEventListener heartListener1 = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent sensorEvent) {
+
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int i) {
+
+        }
+    };
+
+    SensorEventListener stepCounterListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent sensorEvent) {
+            if(sensorEvent.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
+                int steps = Math.round(sensorEvent.values[0]);
+                counterSteps += steps;
+                Toast.makeText(getApplicationContext(), "Passos: " + steps, Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int i) {
+
+        }
+    };
+
+    SensorEventListener stepDetectorListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent sensorEvent) {
+            /*if(sensorEvent.sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
+                int stepsDetector = Math.round(sensorEvent.values[0]);
+                Toast.makeText(getApplicationContext(), "Passos detetados: " + stepsDetector, Toast.LENGTH_SHORT).show();
+            }*/
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int i) {
+
+        }
+    };
+
+    SensorEventListener gravityListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent sensorEvent) {
+
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int i) {
+
+        }
+    };
 
     // hora para guardar dados
     private String currentTimeStr() {
@@ -147,32 +211,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        /*// detetar uma queda
-        if(sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            long curTime = System.currentTimeMillis();
-            // only allow one update every 100ms.
-            if ((curTime - lastUpdate) > 100) {
-                long diffTime = (curTime - lastUpdate);
-                lastUpdate = curTime;
 
-                x = sensorEvent.values[SensorManager.DATA_X];
-                y = sensorEvent.values[SensorManager.DATA_Y];
-                z = sensorEvent.values[SensorManager.DATA_Z];
-
-                float speed = Math.abs(x + y + z - last_x - last_y - last_z) / (diffTime * 10000);
-
-                if (speed > SHAKE_THRESHOLD) {
-                    long curTime1 = System.currentTimeMillis();
-                    long diff = (curTime1 - shakeTime);
-                    shakeTime = curTime1;
-
-                    Toast.makeText(getApplicationContext(), "QUEDA!!", Toast.LENGTH_SHORT).show();
-                }
-                last_x = x;
-                last_y = y;
-                last_z = z;
-            }
-        }*/
     }
 
     @Override

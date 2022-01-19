@@ -69,7 +69,7 @@ public class ProfHomeFragment extends Fragment {
                     }
                 }
 
-                if (pacientes != null && pacientes.size() > 1) {
+                if (pacientes != null && pacientes.size() >= 1) {
 
                     for (int i = 1; i < pacientes.size(); i++) {
                         if(pacientes.get(i) != null) {
@@ -78,6 +78,7 @@ public class ProfHomeFragment extends Fragment {
                         }
                     }
 
+                    setOnClickListener();
                     UsersAdapter usersAdapter = new UsersAdapter(listNomesPacs, listenerAdapter);
                     LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                     layoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -122,5 +123,25 @@ public class ProfHomeFragment extends Fragment {
 
 
         return profView;
+    }
+
+    //5 pacientes Clicaveis
+    private void setOnClickListener() {
+        listenerAdapter = new UsersAdapter.RecyclerViewListener() {
+            @Override
+            public void onClick(View v, int position) {
+
+                if (listenerAdapter != null) {
+                    //FAZER
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("fragment", "fragT");
+                    bundle.putString("nome", (String) pacientes.get(position+1).get("nome"));
+                    bundle.putString("email", (String) pacientes.get(position+1).get("email"));
+                    Navigation.findNavController(profView).navigate(R.id.action_menuPAc_to_moodsPatientFragment, bundle);
+                }
+
+            }
+        };
     }
 }
