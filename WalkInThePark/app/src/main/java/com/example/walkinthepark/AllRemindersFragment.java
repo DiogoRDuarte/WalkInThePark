@@ -59,6 +59,7 @@ public class AllRemindersFragment extends Fragment {
                             lembretesCurrent.add(listaLembretes.get(i));
                         }
 
+                        setOnClickListener();
                         RemindersAdapter remindersAdapter = new RemindersAdapter(lembretesCurrent,listenerAdapter,user_email);
 
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
@@ -82,6 +83,32 @@ public class AllRemindersFragment extends Fragment {
 
 
         return  view;
+    }
+
+    private void setOnClickListener() {
+        listenerAdapter = new RemindersAdapter.RecyclerViewListener() {
+            @Override
+            public void onClick(View v, int position) {
+
+                if(listenerAdapter != null){
+                    //FAZER
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data2", listaLembretes.get(position+1).get("data"));
+                    bundle.putString("hora2", listaLembretes.get(position+1).get("hora"));
+                    bundle.putString("mensagem2", listaLembretes.get(position+1).get("mensagem"));
+
+                    ((RemindersFragment)getParentFragment()).bAdd.setText("Ver Lembretes");
+                    (((RemindersFragment)getParentFragment()).newReminderFragment).setArguments(bundle);
+                    ((RemindersFragment)getParentFragment()).replaceFragment(((RemindersFragment)getParentFragment()).newReminderFragment);
+
+                    //mudar
+
+//                    Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
+                }
+
+            }
+        };
     }
 
 }

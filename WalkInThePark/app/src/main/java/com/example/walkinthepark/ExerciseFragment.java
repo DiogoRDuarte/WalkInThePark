@@ -69,7 +69,7 @@ public class ExerciseFragment extends Fragment {
         record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDialog = new ProgressDialog(getActivity());
+                progressDialog = new ProgressDialog(getContext());
                 upVideo();
 
             }
@@ -168,7 +168,6 @@ public class ExerciseFragment extends Fragment {
                                     result.put("listaMoods", ds.child("listaMoods").getValue());
                                     //result.put("listaPacientes",ds.child("listaPacientes").getValue());
                                     result.put("listaExercicios",a);
-
                                     mapUsers.put(user_email, result);
                                 }
                             }
