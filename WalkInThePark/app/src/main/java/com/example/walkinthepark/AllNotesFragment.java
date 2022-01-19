@@ -63,7 +63,7 @@ public class AllNotesFragment extends Fragment {
                         }
 
                         setOnClickListener();
-                        NotesAdapter notesAdapter = new NotesAdapter(notasCurrent, listenerAdapter,user_email);
+                        NotesAdapter notesAdapter = new NotesAdapter(notasCurrent, listenerAdapter);
 
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                         layoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -95,12 +95,16 @@ public class AllNotesFragment extends Fragment {
 
                     Bundle bundle = new Bundle();
                     bundle.putString("fragment", "fragAN");
-                    bundle.putString("titulo", listaNotas.get(position+1).get("titulo"));
-                    bundle.putString("mensagem", listaNotas.get(position+1).get("mensagem"));
+                    bundle.putString("titulo2", listaNotas.get(position+1).get("titulo"));
+                    bundle.putString("mensagem2", listaNotas.get(position+1).get("mensagem"));
+
+                    ((NotesFragment)getParentFragment()).button.setText("Ver Notas");
+                    (((NotesFragment)getParentFragment()).newNoteFragment).setArguments(bundle);
+                    ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).newNoteFragment);
 
                     //mudar
 
-                    //Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
+//                    Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
                 }
 
             }

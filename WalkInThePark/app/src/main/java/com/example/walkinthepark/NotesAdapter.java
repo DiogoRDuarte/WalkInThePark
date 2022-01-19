@@ -23,8 +23,9 @@ import java.util.Map;
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
 
     private String s;
+
+    private RecyclerViewListener listener;
     private ArrayList<HashMap<String, String>> mNotes;
-    private int position;
     private FirebaseDatabase db;
     private DatabaseReference myRef;
     private String nomeF;
@@ -33,7 +34,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     private boolean p = true;
     private Map mapUsers = new HashMap<String, User>();
 
-    private RecyclerViewListener listener;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -47,6 +47,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
             tituloTextView = (TextView) itemView.findViewById(R.id.txtTitulo);
             mensagemTextView = (TextView) itemView.findViewById(R.id.txtMensagem);
             deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
+
+            itemView.setOnClickListener(this);
         }
 
         @Override
@@ -57,10 +59,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
         }
     }
 
-    public NotesAdapter(ArrayList<HashMap<String, String>> notes, RecyclerViewListener listener,String mail){
+    public NotesAdapter(ArrayList<HashMap<String, String>> notes, RecyclerViewListener listener){
         mNotes = notes;
         this.listener = listener;
-        this.s = mail;
     }
 
 
@@ -75,8 +76,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(NotesAdapter.ViewHolder holder, int position) {
-        int position2 = position;
-        HashMap<String, String> note = mNotes.get(position2);
+        HashMap<String, String> note = mNotes.get(position);
         TextView textViewTitulo = holder.tituloTextView;
         textViewTitulo.setText(note.get("titulo"));
         TextView textViewMensagem = holder.mensagemTextView;
@@ -87,7 +87,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
         delButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //HashMap<String, String> rem = mNotes.get(holder.getAdapterPosition());
                 myRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -139,9 +138,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
                     }
                 });
-                mNotes.remove(position2);
-                notifyItemRemoved(position2);
-                notifyItemRangeChanged(position2, mNotes.size());
+                mNotes.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, mNotes.size());
                 //holder.itemView.setVisibility(View.GONE);
 
             }
