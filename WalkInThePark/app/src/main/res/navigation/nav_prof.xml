@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_menuPAc_to_pacientesAc"
             app:destination="@id/pacientesAc" />
+        <action
+            android:id="@+id/action_menuPAc_to_moodsPatientFragment"
+            app:destination="@id/moodsPatientFragment" />
     </fragment>
     <fragment
         android:id="@+id/ajudaAc"
@@ -42,4 +45,8 @@
         android:name="com.example.walkinthepark.ExerciseProfFragment"
         android:label="fragment_exercise_prof"
         tools:layout="@layout/fragment_exercise_prof" />
+    <fragment
+        android:id="@+id/moodsPatientFragment"
+        android:name="com.example.walkinthepark.MoodsPatientFragment"
+        android:label="MoodsPatientFragment" />
 </navigation>

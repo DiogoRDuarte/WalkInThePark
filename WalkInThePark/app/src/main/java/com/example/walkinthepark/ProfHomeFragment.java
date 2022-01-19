@@ -123,4 +123,24 @@ public class ProfHomeFragment extends Fragment {
 
         return profView;
     }
+
+    //5 pacientes Clicaveis
+    private void setOnClickListener() {
+        listenerAdapter = new UsersAdapter.RecyclerViewListener() {
+            @Override
+            public void onClick(View v, int position) {
+
+                if (listenerAdapter != null) {
+                    //FAZER
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("fragment", "fragT");
+                    bundle.putString("nome", (String) pacientes.get(position+1).get("nome"));
+                    bundle.putString("email", (String) pacientes.get(position+1).get("email"));
+                    Navigation.findNavController(profView).navigate(R.id.action_menuPAc_to_moodsPatientFragment, bundle);
+                }
+
+            }
+        };
+    }
 }
