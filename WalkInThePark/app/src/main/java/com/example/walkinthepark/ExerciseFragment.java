@@ -11,11 +11,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.MediaStore;
@@ -24,9 +27,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.google.android.exoplayer2.ExoPlayer;
+import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
+import com.google.android.exoplayer2.extractor.ExtractorsFactory;
+import com.google.android.exoplayer2.source.ExtractorMediaSource;
+import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
+import com.google.android.exoplayer2.trackselection.TrackSelector;
+import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
+import com.google.android.exoplayer2.upstream.BandwidthMeter;
+import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -42,8 +60,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class ExerciseFragment extends Fragment {
     Uri videoUri;
@@ -56,16 +76,74 @@ public class ExerciseFragment extends Fragment {
     private String emailF;
     private String passwordF;
     private boolean p = true;
+    private MediaController mController;
+    ArrayList<HashMap<String, String>> listaEx;
     private Map mapUsers = new HashMap<String, User>();
+    SimpleExoPlayer exoPlayer;
+    SimpleExoPlayerView exoPlayerView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         exerciseView = inflater.inflate(R.layout.fragment_exercise, container, false);
-        RecyclerView rv = exerciseView.findViewById(R.id.rvExercises);
+        //RecyclerView rv = exerciseView.findViewById(R.id.rvExercises);
         MaterialButton record = exerciseView.findViewById(R.id.button_exercises);
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         ref = db.getReference("User");
         this.user_email = ((UserHomeActivity) getActivity()).user_email;
+        mController = new MediaController(this.getContext());
+        exoPlayerView = exerciseView.findViewById(R.id.videoView);
+
+
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    if (ds.child("email").getValue().toString().equals(user_email)) {
+                            emailF = ds.child("fisioID").getValue().toString();
+                    }
+                }
+
+                for (DataSnapshot ds2 : snapshot.getChildren()) {
+                    try {
+                        if (ds2.child("email").getValue().toString().equals(emailF)) {
+                            listaEx = (ArrayList) ((Map) ds2.getValue()).get("listaExercicios");
+                            if (listaEx.get(1) != null) {
+                                try {
+                                    BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
+                                    TrackSelector trackSelector = new DefaultTrackSelector(new AdaptiveTrackSelection.Factory(bandwidthMeter));
+                                    exoPlayer = ExoPlayerFactory.newSimpleInstance(getContext(), trackSelector);
+                                    Uri video = Uri.parse(listaEx.get(1).get("recurso"));
+                                    DefaultHttpDataSourceFactory dataSourceFactory = new DefaultHttpDataSourceFactory("exoplayer_video");
+                                    ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
+                                    MediaSource mediaSource = new ExtractorMediaSource(video, dataSourceFactory, extractorsFactory, null, null);
+                                    exoPlayerView.setPlayer(exoPlayer);
+                                    exoPlayer.prepare(mediaSource);
+                                    exoPlayer.setPlayWhenReady(true);
+                                }catch (Exception e){
+
+                                }
+                                Uri video = Uri.parse(listaEx.get(1).get("recurso"));
+
+
+                            }
+                        }
+
+                    }catch (Exception e){
+
+                    }
+                }
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
         record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
