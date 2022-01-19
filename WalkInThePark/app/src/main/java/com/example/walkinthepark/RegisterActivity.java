@@ -73,6 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                 fisioID = String.valueOf(eToken.getText());
                 pat = rb.isChecked();
 
+
                 if (nome.equals("") || email.equals("") || password.equals("")) {
                     Toast toast = Toast.makeText(getApplicationContext(), "Preenche os campos obrigatorios!", Toast.LENGTH_SHORT);
                     toast.show();
@@ -92,7 +93,11 @@ public class RegisterActivity extends AppCompatActivity {
                             }
 
 
-                            if(listEmails.contains(email) && a){
+                            String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+                            if (!email.trim().matches(emailPattern)){
+                                    Toast.makeText(getApplicationContext(), "Por favor insira um Email no formato: exemplo@gmail.com", Toast.LENGTH_LONG).show();
+                            }else if(listEmails.contains(email) && a){
                                 Toast.makeText(getApplicationContext(), "Ja existe um utilizador com este email!", Toast.LENGTH_SHORT).show();
                                 eNome.setText("");
                                 ePass.setText("");
@@ -108,13 +113,15 @@ public class RegisterActivity extends AppCompatActivity {
                                 if(a) {
                                     if(!fisioID.equals("")) {
                                         for (DataSnapshot ds : snapshot.getChildren()) {
-                                            
+
                                             if (ds.child("email").getValue().toString().equals(fisioID)) {
                                                 nomeF = ds.child("nome").getValue().toString();
                                                 emailF = ds.child("email").getValue().toString();
                                                 passwordF = ds.child("password").getValue().toString();
                                                 ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaPacientes");
                                                 a.add(user.toMap());
+
+                                                email = encodeForFirebaseKey(email);
 
                                                 HashMap result = new HashMap<>();
                                                 result.put("nome", nomeF);
@@ -185,6 +192,18 @@ public class RegisterActivity extends AppCompatActivity {
         i.putExtra("user_name", nome+"");
         startActivity(i);
         finish();
+    }
+
+    public static String encodeForFirebaseKey(String s) {
+        return s
+                .replace("_", "__")
+                .replace(".", "_P")
+                .replace("$", "_D")
+                .replace("#", "_H")
+                .replace("[", "_O")
+                .replace("]", "_C")
+                .replace("/", "_S")
+                ;
     }
 
 

@@ -88,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                     toast.show();
 
                 }else {
+//                    email = encodeForFirebaseKey(email);
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -153,4 +154,16 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     }
+    public static String encodeForFirebaseKey(String s) {
+        return s
+                .replace("_", "__")
+                .replace(".", "_P")
+                .replace("$", "_D")
+                .replace("#", "_H")
+                .replace("[", "_O")
+                .replace("]", "_C")
+                .replace("/", "_S")
+                ;
+    }
 }
+
