@@ -44,7 +44,7 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_exercise);
-        /*chronometer = new Chronometer();*/
+        chronometer = new Chronometer(this);
 
         exButton = (Button) findViewById(R.id.startExercise);
         exButton.setOnClickListener(new View.OnClickListener() {
