@@ -79,24 +79,20 @@ public class MainActivity extends Activity implements SensorEventListener {
     }
 
     public void notas(){
-        /*Log.i("ACTION", "action_1()");*/
         Toast.makeText(getApplicationContext(), "Notas", Toast.LENGTH_SHORT).show();
     }
 
     public void lembretes(){
-        /*Log.i("ACTION", "action_2()");*/
         Toast.makeText(getApplicationContext(), "Lembretes", Toast.LENGTH_SHORT).show();
     }
 
     public void comecarExercicio(){
-        /*Log.i("ACTION", "action_3()");*/
         Toast.makeText(getApplicationContext(), "Exercício", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(MainActivity.this, ExerciseActivity.class);
         startActivity(intent);
     }
 
     public void cancelMenu(){
-        /*Log.i("ACTION", "cancelMenu()");*/
         Toast.makeText(getApplicationContext(), "cancel", Toast.LENGTH_SHORT).show();
     }
 

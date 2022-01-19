@@ -171,7 +171,10 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
                 last_z = z;
             }
         }*/
-
+        if(sensorEvent.sensor.getType() == Sensor.TYPE_HEART_RATE) {
+            int heartRate = Math.round(sensorEvent.values[0]);
+            Toast.makeText(getApplicationContext(), "Ritmo Cardiaco: " + heartRate, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
