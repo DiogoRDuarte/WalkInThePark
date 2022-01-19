@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.MediaStore;
@@ -55,8 +57,12 @@ public class ExerciseFragment extends Fragment {
     private String nomeF;
     private String emailF;
     private String passwordF;
+    private Context context = this.getContext();
     private boolean p = true;
     private Map mapUsers = new HashMap<String, User>();
+    private ArrayList<HashMap<String, String>> listaExercises;
+    private ArrayList<HashMap<String,String>> exercisesCurrent;
+    private ExerciseAdapter.RecyclerViewListener listenerAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,6 +72,34 @@ public class ExerciseFragment extends Fragment {
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         ref = db.getReference("User");
         this.user_email = ((UserHomeActivity) getActivity()).user_email;
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()){
+                    user_email = ((UserHomeActivity) getActivity()).user_email;
+                    if(ds.child("email").getValue().equals(user_email)){
+                        listaExercises = (ArrayList<HashMap<String, String>>) ds.child("listaExercicios").getValue();
+                        exercisesCurrent = new ArrayList<>();
+
+                        for (int i = 1; i < listaExercises.size(); i++) {
+                            exercisesCurrent.add(listaExercises.get(i));
+                        }
+                        //setOnClickListener();
+                        ExerciseAdapter exerciseAdapter = new ExerciseAdapter(exercisesCurrent, listenerAdapter,user_email);
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+                        layoutManager.setOrientation(RecyclerView.VERTICAL);
+                        rv.setLayoutManager(layoutManager);
+
+                        rv.setAdapter(exerciseAdapter);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
