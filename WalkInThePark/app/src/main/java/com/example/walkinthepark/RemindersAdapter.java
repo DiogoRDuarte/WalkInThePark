@@ -34,7 +34,7 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
     private FirebaseDatabase db;
     private DatabaseReference myRef;
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView dataTextView;
         public TextView horaTextView;
@@ -49,6 +49,15 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
             mensagemTextView = (TextView) itemView.findViewById(R.id.txtTitle);
             deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
 
+            itemView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            if(listener != null && getAdapterPosition() != RecyclerView.NO_POSITION){
+                listener.onClick(v, getAdapterPosition());
+            }
         }
     }
 

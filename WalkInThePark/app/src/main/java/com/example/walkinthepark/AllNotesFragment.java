@@ -94,7 +94,6 @@ public class AllNotesFragment extends Fragment {
                     //FAZER
 
                     Bundle bundle = new Bundle();
-                    bundle.putString("fragment", "fragAN");
                     bundle.putString("titulo2", listaNotas.get(position+1).get("titulo"));
                     bundle.putString("mensagem2", listaNotas.get(position+1).get("mensagem"));
 
