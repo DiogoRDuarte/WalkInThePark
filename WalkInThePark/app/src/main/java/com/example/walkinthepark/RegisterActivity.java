@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -62,6 +63,22 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.radio_fisio) {
+                    eToken.setVisibility(View.GONE);
+                    Toast a = Toast.makeText(getApplicationContext(), "Esquerda", Toast.LENGTH_SHORT);
+                    a.show();
+                } else {
+                    eToken.setVisibility(View.VISIBLE);
+                    Toast b = Toast.makeText(getApplicationContext(), "Direita", Toast.LENGTH_SHORT);
+                    b.show();
+                }
+            }
+        });
+
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
         button.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot ds: snapshot.getChildren()){
+                            for (DataSnapshot ds : snapshot.getChildren()) {
                                 String s = ds.child("email").getValue().toString();
                                 listEmails.add(s);
                             }
@@ -95,23 +112,27 @@ public class RegisterActivity extends AppCompatActivity {
 
                             String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
-                            if (!email.trim().matches(emailPattern)){
-                                    Toast.makeText(getApplicationContext(), "Por favor insira um Email no formato: exemplo@gmail.com", Toast.LENGTH_LONG).show();
-                            }else if(listEmails.contains(email) && a){
+                            if (!email.trim().matches(emailPattern)) {
+                                Toast.makeText(getApplicationContext(), "Por favor insira um Email no formato: exemplo@gmail.com", Toast.LENGTH_LONG).show();
+                            } else if (listEmails.contains(email) && a) {
                                 Toast.makeText(getApplicationContext(), "Ja existe um utilizador com este email!", Toast.LENGTH_SHORT).show();
                                 eNome.setText("");
                                 ePass.setText("");
                                 eMail.setText("");
                                 eToken.setText("");
 
-                            }else if(!fisioID.equals("") && !listEmails.contains(fisioID)) {
+                            } else if (!fisioID.equals("") && !listEmails.contains(fisioID)) {
                                 Toast.makeText(getApplicationContext(), "Não Existe um Fisioterapeuta com esse email!", Toast.LENGTH_SHORT).show();
                                 eToken.setText("");
 
-                            }else{
+                            } else {
 
-                                if(a) {
-                                    if(!fisioID.equals("")) {
+                                if (a) {
+
+                                    email = encodeForFirebaseKey(email);
+                                    fisioID = encodeForFirebaseKey(fisioID);
+
+                                    if (!fisioID.equals("")) {
                                         for (DataSnapshot ds : snapshot.getChildren()) {
 
                                             if (ds.child("email").getValue().toString().equals(fisioID)) {
@@ -121,7 +142,6 @@ public class RegisterActivity extends AppCompatActivity {
                                                 ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaPacientes");
                                                 a.add(user.toMap());
 
-                                                email = encodeForFirebaseKey(email);
 
                                                 HashMap result = new HashMap<>();
                                                 result.put("nome", nomeF);
@@ -140,23 +160,22 @@ public class RegisterActivity extends AppCompatActivity {
                                         }
                                     }
 
-
                                     mapUsers.put(email, userValues);
                                     Toast.makeText(getApplicationContext(), "Registo bem-sucedido!", Toast.LENGTH_SHORT).show();
-                                    }
-
-                                    myRef.updateChildren(mapUsers);
-
-                                    if(!pat){
-                                        goToPhyMain(view);
-                                    }else{
-                                        goToPatMain(view);
-                                    }
-
-                                    a = false;
-
                                 }
+
+                                myRef.updateChildren(mapUsers);
+
+                                if (!pat) {
+                                    goToPhyMain(view);
+                                } else {
+                                    goToPatMain(view);
+                                }
+
+                                a = false;
+
                             }
+                        }
 
 
                         @Override
@@ -180,16 +199,16 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void goToPatMain(View view) {
         Intent i = new Intent(this, UserHomeActivity.class);
-        i.putExtra("user_email", email+"");
-        i.putExtra("user_name", nome+"");
+        i.putExtra("user_email", email + "");
+        i.putExtra("user_name", nome + "");
         startActivity(i);
         finish();
     }
 
     public void goToPhyMain(View view) {
         Intent i = new Intent(this, ProfHomeActivity.class);
-        i.putExtra("user_email",email+"");
-        i.putExtra("user_name", nome+"");
+        i.putExtra("user_email", email + "");
+        i.putExtra("user_name", nome + "");
         startActivity(i);
         finish();
     }
