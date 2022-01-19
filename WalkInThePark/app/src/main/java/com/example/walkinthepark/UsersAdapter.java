@@ -27,7 +27,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
 
     private RecyclerViewListener listener;
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView pacNameTextView;
         public ImageButton editButton;
@@ -40,15 +40,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
             editButton = (ImageButton) itemView.findViewById(R.id.editButton);
             statisticButton = (ImageButton) itemView.findViewById(R.id.statisticButton);
 
-            itemView.setOnClickListener(this);
-
-        }
-
-        @Override
-        public void onClick(View v) {
-            if(listener != null && getAdapterPosition() != RecyclerView.NO_POSITION){
-                listener.onClick(v, getAdapterPosition());
-            }
         }
     }
 
