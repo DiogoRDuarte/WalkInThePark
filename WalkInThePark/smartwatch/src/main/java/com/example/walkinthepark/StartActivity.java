@@ -1,9 +1,15 @@
 package com.example.walkinthepark;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 
 public class StartActivity extends Activity {
@@ -15,6 +21,12 @@ public class StartActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_start);
+
+        /*if(ContextCompat.checkSelfPermission(StartActivity.this, Manifest.permission.ACTIVITY_RECOGNITION) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(getApplicationContext(), "Permissão recusada", Toast.LENGTH_SHORT).show();
+        }*/
+
+
 
         /** Setting timeout */
         new Handler().postDelayed(new Runnable() {
