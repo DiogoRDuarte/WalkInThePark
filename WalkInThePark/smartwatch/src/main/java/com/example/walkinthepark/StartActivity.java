@@ -22,12 +22,6 @@ public class StartActivity extends Activity {
 
         setContentView(R.layout.activity_start);
 
-        /*if(ContextCompat.checkSelfPermission(StartActivity.this, Manifest.permission.ACTIVITY_RECOGNITION) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(getApplicationContext(), "Permissão recusada", Toast.LENGTH_SHORT).show();
-        }*/
-
-
-
         /** Setting timeout */
         new Handler().postDelayed(new Runnable() {
             @Override

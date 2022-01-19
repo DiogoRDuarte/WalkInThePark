@@ -9,7 +9,14 @@
         android:id="@+id/menuPAc"
         android:name="com.example.walkinthepark.ProfHomeFragment"
         android:label="Página Inicial"
-        tools:layout="@layout/fragment_prof_home" />
+        tools:layout="@layout/fragment_prof_home" >
+        <action
+            android:id="@+id/action_menuPAc_to_videosPAc"
+            app:destination="@id/videosPAc" />
+        <action
+            android:id="@+id/action_menuPAc_to_pacientesAc"
+            app:destination="@id/pacientesAc" />
+    </fragment>
     <fragment
         android:id="@+id/ajudaAc"
         android:name="com.example.walkinthepark.AboutFragment"

@@ -1,10 +1,12 @@
 package com.example.walkinthepark;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,10 +52,6 @@ public class ProfHomeFragment extends Fragment {
         RecyclerView rvExerciciosProf = (RecyclerView) profView.findViewById(R.id.rvExerciciosProf);
         RecyclerView rvPacientesProf = (RecyclerView) profView.findViewById(R.id.rvPacientesProf);
 
-        /*TextView pc1 = profView.findViewById(R.id.paciente1Name);
-        TextView pc2 = profView.findViewById(R.id.paciente2Name);
-        TextView pc3 = profView.findViewById(R.id.paciente3Name);
-        TextView pc4 = profView.findViewById(R.id.paciente4Name);*/
 
         String user_email = ((ProfHomeActivity) getActivity()).getIntent().getStringExtra("user_email");
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
@@ -99,14 +97,12 @@ public class ProfHomeFragment extends Fragment {
         });
 
         // BUTTONS
-        /*verVideos.setOnClickListener(new View.OnClickListener() {
+        verVideos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ProfHomeActivity.this, VideosActivity.class);
-                i.putExtra("fragment", "frag1");
-                startActivity(i);
+                Navigation.findNavController(profView).navigate(R.id.action_menuAc_to_videosAc);
             }
-        });*/
+        });
 
         /*criarVideo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,14 +113,12 @@ public class ProfHomeFragment extends Fragment {
             }
         });*/
 
-        /*verPacientes.setOnClickListener(new View.OnClickListener() {
+        verPacientes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ProfHomeActivity.this, PacientesActivity.class);
-                i.putExtra("fragment", "frag1");
-                startActivity(i);
+                Navigation.findNavController(profView).navigate(R.id.action_menuPAc_to_pacientesAc);
             }
-        });*/
+        });
 
 
         return profView;
