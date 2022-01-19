@@ -29,6 +29,14 @@ public class MainActivity extends Activity implements SensorEventListener {
     private static final String TAG = "SensorService";
     SensorManager mSensorManager;
 
+    // fall
+    private float x, y, z;
+    private float last_x, last_y, last_z;
+    private long shakeTime = -1;
+    private long lastUpdate = -1;
+
+    private static final int SHAKE_THRESHOLD = 50;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -143,20 +151,32 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        /*if (sensorEvent.sensor.getType() == Sensor.TYPE_HEART_RATE) {
-            String msg = "" + (int)sensorEvent.values[0];
-            *//*mTextViewHeart.setText(msg);*//*
-        }
-        else if (sensorEvent.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
-            String msg = "Count: " + (int)sensorEvent.values[0];
-            *//*mTextViewStepCount.setText(msg);*//*
-        }
-        else if (sensorEvent.sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
-            String msg = "Detected at " + currentTimeStr();
-            *//*mTextViewStepDetect.setText(msg);*//*
-        }
-        else
-            Toast.makeText(getApplicationContext(), "Sensor inválido", Toast.LENGTH_SHORT).show();*/
+        /*// detetar uma queda
+        if(sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            long curTime = System.currentTimeMillis();
+            // only allow one update every 100ms.
+            if ((curTime - lastUpdate) > 100) {
+                long diffTime = (curTime - lastUpdate);
+                lastUpdate = curTime;
+
+                x = sensorEvent.values[SensorManager.DATA_X];
+                y = sensorEvent.values[SensorManager.DATA_Y];
+                z = sensorEvent.values[SensorManager.DATA_Z];
+
+                float speed = Math.abs(x + y + z - last_x - last_y - last_z) / (diffTime * 10000);
+
+                if (speed > SHAKE_THRESHOLD) {
+                    long curTime1 = System.currentTimeMillis();
+                    long diff = (curTime1 - shakeTime);
+                    shakeTime = curTime1;
+
+                    Toast.makeText(getApplicationContext(), "QUEDA!!", Toast.LENGTH_SHORT).show();
+                }
+                last_x = x;
+                last_y = y;
+                last_z = z;
+            }
+        }*/
     }
 
     @Override

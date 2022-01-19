@@ -30,7 +30,7 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
     // fall
     private float x, y, z;
     private float last_x, last_y, last_z;
-    long shakeTime = -1;
+    private long shakeTime = -1;
     private long lastUpdate = -1;
 
     private static final int SHAKE_THRESHOLD = 50;
@@ -145,7 +145,7 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        // detetar uma queda
+        /*// detetar uma queda
         if(sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             long curTime = System.currentTimeMillis();
             // only allow one update every 100ms.
@@ -170,7 +170,8 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
                 last_y = y;
                 last_z = z;
             }
-        }
+        }*/
+
     }
 
     @Override
