@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class ExerciseActivity extends Activity implements SensorEventListener {
 
@@ -19,32 +21,16 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
     private static final String TAG = "SensorService";
     SensorManager mSensorManager;
 
-    Chronometer chronometer;
-    String time;
-    /*private static Handler handler;
-    private static boolean isRunning;
-    private static long initialTime;
-    private static final int SECS_IN_MIN = 60;
-    private static final long MILLIS_IN_SEC = 1000L;
-
-    private final Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            if(isRunning) {
-                long seconds = (System.currentTimeMillis() - initialTime) / MILLIS_IN_SEC;
-                time = String.format("%02d:%02d", seconds / SECS_IN_MIN, seconds % SECS_IN_MIN);
-                Toast.makeText(getApplicationContext(), "Tempo: " + time, Toast.LENGTH_SHORT).show();
-                handler.postDelayed(runnable, MILLIS_IN_SEC);
-            }
-        }
-    };*/
+    private String time;
+    private long iTime;
+    private long fTime;
+    private long totalTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_exercise);
-        /*chronometer = new Chronometer();*/
 
         exButton = (Button) findViewById(R.id.startExercise);
         exButton.setOnClickListener(new View.OnClickListener() {
@@ -54,8 +40,7 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
                 switch (txt) {
                     case "Começar Exercício":
                         // iniciar timer
-                        /*startTimer();*/
-                        chronometer.start();
+                        startTimer();
 
                         // começar a recolher dados
                         iniciarSensoresEx();
@@ -63,9 +48,9 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
                         break;
                     case "Terminar Exercício":
                         // terminar timer
-                        /*stopTimer();*/
-                        chronometer.stop();
-                        time = chronometer.toString();
+                        stopTimer();
+                        time = getDurationBreakdown(totalTime);
+
                         Log.i(TAG, "-------------------" + time + "-------------------");
                         // parar de recolher dados
                         // guardar dados
@@ -79,16 +64,40 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
         });
     }
 
-    /*private void startTimer() {
-        isRunning = true;
-        initialTime = System.currentTimeMillis();
-        handler.postDelayed(runnable, MILLIS_IN_SEC);
+    private void startTimer() {
+        iTime = System.currentTimeMillis();
     }
 
     private void stopTimer() {
-        isRunning = false;
-        handler.removeCallbacks(runnable);
-    }*/
+        fTime = System.currentTimeMillis();
+        totalTime = fTime - iTime;
+    }
+
+    public static String getDurationBreakdown(long millis) {
+        if(millis < 0) {
+            throw new IllegalArgumentException("Duration must be greater than zero!");
+        }
+
+        long days = TimeUnit.MILLISECONDS.toDays(millis);
+        millis -= TimeUnit.DAYS.toMillis(days);
+        long hours = TimeUnit.MILLISECONDS.toHours(millis);
+        millis -= TimeUnit.HOURS.toMillis(hours);
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(millis);
+        millis -= TimeUnit.MINUTES.toMillis(minutes);
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(millis);
+
+        StringBuilder sb = new StringBuilder(64);
+        if(hours > 0) {
+            sb.append(hours);
+            sb.append(" Hours ");
+        }
+        sb.append(minutes);
+        sb.append(" Minutes ");
+        sb.append(seconds);
+        sb.append(" Seconds");
+
+        return(sb.toString());
+    }
 
     protected void iniciarSensoresEx() {
         // SENSORES
