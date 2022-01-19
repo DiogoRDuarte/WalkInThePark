@@ -78,6 +78,7 @@ public class ProfHomeFragment extends Fragment {
                         }
                     }
 
+                    setOnClickListener();
                     UsersAdapter usersAdapter = new UsersAdapter(listNomesPacs, listenerAdapter);
                     LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                     layoutManager.setOrientation(RecyclerView.VERTICAL);
