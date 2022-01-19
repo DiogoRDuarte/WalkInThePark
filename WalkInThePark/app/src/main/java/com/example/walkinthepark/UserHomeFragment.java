@@ -54,7 +54,7 @@ public class UserHomeFragment extends Fragment {
     private String passwordF;
     private boolean flag = true;
     private int nMoods;
-
+    ArrayList<HashMap<String, String>> lembsOrdenados;
     private NotesUserAdapter.RecyclerViewListener listenerAdapter;
     private RemindersUserAdapter.RecyclerViewListener listenerAdapter2;
 
@@ -114,7 +114,7 @@ public class UserHomeFragment extends Fragment {
                         }
 
                         // ordenar lembretes dos proximo a ocorrer ao ultimo
-                        ArrayList<HashMap<String, String>> lembsOrdenados = lembretesCurrent;
+                        lembsOrdenados = lembretesCurrent;
                         if(lembsOrdenados.size() > 1) {
                             Collections.sort(lembsOrdenados, new SortData());
                         }
@@ -285,9 +285,9 @@ public class UserHomeFragment extends Fragment {
 
                     Bundle bundle2 = new Bundle();
                     bundle2.putString("fragment", "frag2");
-                    bundle2.putString("data", listaLembretes.get(position + 1).get("data"));
-                    bundle2.putString("hora", listaLembretes.get(position + 1).get("hora"));
-                    bundle2.putString("mensagem", listaLembretes.get(position + 1).get("mensagem"));
+                    bundle2.putString("data", lembsOrdenados.get(position).get("data"));
+                    bundle2.putString("hora", lembsOrdenados.get(position).get("hora"));
+                    bundle2.putString("mensagem", lembsOrdenados.get(position).get("mensagem"));
                     Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_lembretesAc, bundle2);
                 }
 
