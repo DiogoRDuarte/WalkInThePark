@@ -27,7 +27,7 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.ViewHo
 
     private RecyclerViewListener listener;
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView pacNameTextView;
         public ImageButton editButton;
@@ -40,15 +40,6 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.ViewHo
             editButton = (ImageButton) itemView.findViewById(R.id.editButton);
             statisticButton = (ImageButton) itemView.findViewById(R.id.statisticButton);
 
-            itemView.setOnClickListener(this);
-
-        }
-
-        @Override
-        public void onClick(View v) {
-            if(listener != null && getAdapterPosition() != RecyclerView.NO_POSITION){
-                listener.onClick(v, getAdapterPosition());
-            }
         }
     }
 
@@ -63,7 +54,7 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.ViewHo
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View userView = inflater.inflate(R.layout.single_paciente,parent,false);
-        PatientsAdapter.ViewHolder viewHolder = new PatientsAdapter.ViewHolder(userView);
+        ViewHolder viewHolder = new ViewHolder(userView);
         return viewHolder;
     }
 
