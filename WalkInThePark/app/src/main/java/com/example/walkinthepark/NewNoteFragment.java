@@ -95,7 +95,7 @@ public class NewNoteFragment extends Fragment {
                                     result.put("listaNotas", a);
                                     result.put("listaLembretes", ds.child("listaLembretes").getValue());
                                     result.put("listaMoods", ds.child("listaMoods").getValue());
-
+                                    result.put("listaExercicios", ds.child("listaExercicios").getValue());
                                     mapUsers.put(user_email, result);
                                 }
                             }

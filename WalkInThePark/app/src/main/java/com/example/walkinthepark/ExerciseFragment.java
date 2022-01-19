@@ -168,7 +168,6 @@ public class ExerciseFragment extends Fragment {
                                     result.put("listaMoods", ds.child("listaMoods").getValue());
                                     //result.put("listaPacientes",ds.child("listaPacientes").getValue());
                                     result.put("listaExercicios",a);
-
                                     mapUsers.put(user_email, result);
                                 }
                             }
