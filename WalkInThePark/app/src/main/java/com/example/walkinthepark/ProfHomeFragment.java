@@ -100,7 +100,7 @@ public class ProfHomeFragment extends Fragment {
         verVideos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(profView).navigate(R.id.action_menuAc_to_videosAc);
+                Navigation.findNavController(profView).navigate(R.id.action_menuPAc_to_videosPAc);
             }
         });
 

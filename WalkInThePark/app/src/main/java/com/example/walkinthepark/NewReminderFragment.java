@@ -159,7 +159,7 @@ public class NewReminderFragment extends Fragment {
                                     result.put("listaNotas", ds.child("listaNotas").getValue());
                                     result.put("listaMoods", ds.child("listaMoods").getValue());
                                     result.put("listaLembretes", a);
-
+                                    result.put("listaExercicios", ds.child("listaExercicios").getValue());
                                     mapUsers.put(user_email, result);
                                 }
 

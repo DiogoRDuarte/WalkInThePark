@@ -128,7 +128,7 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
                                 result.put("listaNotas", ds.child("listaNotas").getValue());
                                 result.put("listaLembretes", ds.child("listaLembretes").getValue());
                                 result.put("listaMoods", a);
-
+                                result.put("listaExercicios", ds.child("listaExercicios").getValue());
                                 mapUsers.put(s, result);
                             }
                         }

@@ -171,7 +171,7 @@ public class UserHomeFragment extends Fragment {
                         result.put("listaMoods", a);
                         result.put("listaLembretes", ds.child("listaLembretes").getValue());
                         result.put("listaNotas", ds.child("listaNotas").getValue());
-
+                        result.put("listaExercicios", ds.child("listaExercicios").getValue());
                         mapUsers.put(user_email, result);
                         Toast.makeText(getContext(), "Moods adicionado!", Toast.LENGTH_SHORT).show();
                         myRef.updateChildren(mapUsers);
