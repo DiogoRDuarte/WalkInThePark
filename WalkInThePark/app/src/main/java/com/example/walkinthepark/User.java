@@ -29,7 +29,6 @@ public class User {
         this.listaMoods = new ArrayList<Mood>();
         this.listaExercicios = new ArrayList<Exercise>();
 
-
         this.listaNotas.add(new Note("",""));
         this.listaLembretes.add(new Reminder("", "", ""));
         this.listaMoods.add(new Mood("", -1));

@@ -20,20 +20,16 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        // Get id & message
         int notificationId = intent.getIntExtra("notificationId", 0);
         String message = intent.getStringExtra("message");
 
-        // Call MainActivity when notification is tapped.
         Intent mainIntent = new Intent(context, LoginActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0, mainIntent, 0);
 
-        // NotificationManager
         NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            // For API 26 and above
             CharSequence channelName = "My Notification";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
 
@@ -43,16 +39,10 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 
         NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle()
-                // Overrides ContentText in the big form of the template.
                 .bigText(message)
-                // Overrides ContentTitle in the big form of the template.
                 .setBigContentTitle("Tem um lembrete! Não se esqueça de..")
-                // Summary line after the detail section in the big form of the template.
-                // Note: To improve readability, don't overload the user with info. If Summary Text
-                // doesn't add critical information, you should skip it.
                 .setSummaryText("WalkInThePark");
 
-        // Prepare Notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setStyle(bigTextStyle)
                 .setSmallIcon(R.drawable.walk_in_the_park_final)
@@ -64,7 +54,6 @@ public class AlarmReceiver extends BroadcastReceiver {
                 .setDefaults(NotificationCompat.DEFAULT_SOUND|NotificationCompat.DEFAULT_LIGHTS|NotificationCompat.DEFAULT_VIBRATE)
                 .setAutoCancel(true);
 
-        // Notify
         notificationManager.notify(notificationId, builder.build());
     }
 }

@@ -52,7 +52,6 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
         //Uri uri = Uri.parse(video.get("recurso"));
         //videoView.setVideoURI(uri);
         //videoView.start();
-
     }
 
     @Override

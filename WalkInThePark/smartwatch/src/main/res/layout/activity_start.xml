@@ -11,8 +11,8 @@
         android:id="@+id/start"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/inner_frame_layout_padding"
         android:background="#FFFFFF"
+        android:padding="@dimen/inner_frame_layout_padding"
         app:layout_boxedEdges="all">
 
         <ImageView
@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:src="@drawable/walk_in_the_park_final"/>
+            android:src="@drawable/walk_in_the_park_final" />
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

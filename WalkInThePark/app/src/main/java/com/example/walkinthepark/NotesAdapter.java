@@ -98,7 +98,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
                                 passwordF = ds.child("password").getValue().toString();
 
                                 ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaNotas");
-                                //a.add(put("",""));
                                 try{
                                     a.remove(position+1);
                                     notifyItemRemoved(position);
@@ -106,7 +105,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
                                 }catch(IndexOutOfBoundsException e){
                                     System.out.println("a");
                                 }
-
 
                                 HashMap result = new HashMap<>();
                                 result.put("nome", nomeF);
@@ -122,15 +120,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
                             }
                         }
                         if(p) {
-                            //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
                             myRef.updateChildren(mapUsers);
                             p = false;
-
-                            /*goToMain(view);*/
-                            /*((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
-                            ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);*/
                         }
-
 
                     }
 
@@ -142,7 +134,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
                 mNotes.remove(position);
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, mNotes.size());
-                //holder.itemView.setVisibility(View.GONE);
 
             }
         });

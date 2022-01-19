@@ -77,67 +77,6 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.ViewHo
 
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
-        /*edButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //HashMap<String, String> rem = mNotes.get(holder.getAdapterPosition());
-                myRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot ds : snapshot.getChildren()){
-                            if(s.equals(ds.child("email").getValue().toString())){
-                                nomeF = ds.child("nome").getValue().toString();
-                                emailF = ds.child("email").getValue().toString();
-                                passwordF = ds.child("password").getValue().toString();
-
-                                ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaLembretes");
-                                //a.add(put("",""));
-                                try{
-                                    a.remove(position+1);
-                                    notifyItemRemoved(position);
-                                    notifyItemRangeChanged(position,getItemCount()+1);
-                                }catch(IndexOutOfBoundsException e){
-                                    System.out.println("a");
-                                }
-
-                                HashMap result = new HashMap<>();
-                                result.put("nome", nomeF);
-                                result.put("email", emailF);
-                                result.put("password", passwordF);
-                                result.put("paciente", true);
-                                result.put("fisioID", ds.child("fisioID").getValue());
-                                result.put("listaNotas", ds.child("listaNotas").getValue());
-                                result.put("listaLembretes", a);
-                                result.put("listaMoods", ds.child("listaMoods").getValue());
-
-                                mapUsers.put(s, result);
-                            }
-                        }
-                        if(p) {
-                            //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
-                            myRef.updateChildren(mapUsers);
-                            p = false;
-
-                            *//*goToMain(view);*//*
-                            *//*((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
-                            ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);*//*
-                        }
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-                mReminders.remove(position2);
-                notifyItemRemoved(position2);
-                notifyItemRangeChanged(position2, mReminders.size());
-                //holder.itemView.setVisibility(View.GONE);
-
-            }
-        });*/
     }
 
 

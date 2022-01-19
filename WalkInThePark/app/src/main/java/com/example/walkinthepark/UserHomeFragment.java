@@ -80,13 +80,11 @@ public class UserHomeFragment extends Fragment {
         IndicatorSeekBar barraMood = userView.findViewById(R.id.barraMood);
         RecyclerView rvNotesUser = (RecyclerView) userView.findViewById(R.id.rvNotesUser);
         RecyclerView rvRems = (RecyclerView) userView.findViewById(R.id.rvLembretes);
-        /*RecyclerView rvRem2 = (RecyclerView) userView.findViewById(R.id.lembrete2);*/
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         refNotas = db.getReference("Note");
         refReminders = db.getReference("Reminder");
         myRef = db.getReference("User");
         Map m = new HashMap<String, Map>();
-
 
         //Notas
         myRef.addValueEventListener(new ValueEventListener() {
@@ -94,13 +92,12 @@ public class UserHomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-
                 for (DataSnapshot ds : snapshot.getChildren()) {
 
-            if(user_email == null) {
-                user_email = ((UserHomeActivity) getActivity()).user_email;
-                user_name = ((UserHomeActivity) getActivity()).user_name;
-            }
+                    if (user_email == null) {
+                        user_email = ((UserHomeActivity) getActivity()).user_email;
+                        user_name = ((UserHomeActivity) getActivity()).user_name;
+                    }
                     if (ds.child("email").getValue().toString().equals(user_email)) {
                         listaNotas = (ArrayList<HashMap<String, String>>) ds.child("listaNotas").getValue();
                         listaLembretes = (ArrayList<HashMap<String, String>>) ds.child("listaLembretes").getValue();
@@ -115,7 +112,7 @@ public class UserHomeFragment extends Fragment {
 
                         // ordenar lembretes dos proximo a ocorrer ao ultimo
                         lembsOrdenados = lembretesCurrent;
-                        if(lembsOrdenados.size() > 1) {
+                        if (lembsOrdenados.size() > 1) {
                             Collections.sort(lembsOrdenados, new SortData());
                         }
 
@@ -200,9 +197,7 @@ public class UserHomeFragment extends Fragment {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("fragment", "frag1");
-                /*((UserHomeActivity) getActivity()).remindersFragment.setArguments(bundle);*/
                 Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_lembretesAc, bundle);
-                /*((UserHomeActivity) getActivity()).replaceFragment(((UserHomeActivity) getActivity()).remindersFragment);*/
             }
         });
 
@@ -261,8 +256,6 @@ public class UserHomeFragment extends Fragment {
             public void onClick(View v, int position) {
 
                 if (listenerAdapter != null) {
-                    //FAZER
-
                     Bundle bundle = new Bundle();
                     bundle.putString("fragment", "fragN");
                     bundle.putString("titulo", listaNotas.get(position + 1).get("titulo"));
@@ -281,8 +274,6 @@ public class UserHomeFragment extends Fragment {
             public void onClick(View v, int position) {
 
                 if (listenerAdapter2 != null) {
-                    //FAZER
-
                     Bundle bundle2 = new Bundle();
                     bundle2.putString("fragment", "frag2");
                     bundle2.putString("data", lembsOrdenados.get(position).get("data"));
@@ -295,8 +286,4 @@ public class UserHomeFragment extends Fragment {
         };
     }
 
-    private void adicionaMood(Mood newMood) {
-
-
-    }
 }

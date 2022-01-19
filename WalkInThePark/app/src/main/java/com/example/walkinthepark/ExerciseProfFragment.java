@@ -63,24 +63,21 @@ public class ExerciseProfFragment extends Fragment {
     private ArrayList<HashMap<String, String>> exercisesCurrent;
     private ExerciseAdapter.RecyclerViewListener listenerAdapter;
     private Context context = this.getContext();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         exerView = inflater.inflate(R.layout.fragment_exercise_prof, container, false);
 
-        // FAZER ADAPTER PARA MOSTRAR VIDEOS
-        // AARANJAR FORMA DE PODER ADICIONAR VIDEO A PACIENTES E APAGAR VIDEOS
-        //recyclerView = exerView.findViewById(R.id.rvExercisesProf);
-        //GridLayoutManager layoutManager = new GridLayoutManager(this.getContext(), 2);
         RecyclerView recyclerView = exerView.findViewById(R.id.rvExercisesProf);
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         ref = db.getReference("User");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds : snapshot.getChildren()){
+                for (DataSnapshot ds : snapshot.getChildren()) {
                     prof_email = ((ProfHomeActivity) getActivity()).prof_email;
-                    if(ds.child("email").getValue().equals(prof_email)){
+                    if (ds.child("email").getValue().equals(prof_email)) {
                         listaExercises = (ArrayList<HashMap<String, String>>) ds.child("listaExercicios").getValue();
                         exercisesCurrent = new ArrayList<>();
 
@@ -88,7 +85,7 @@ public class ExerciseProfFragment extends Fragment {
                             exercisesCurrent.add(listaExercises.get(i));
                         }
                         //setOnClickListener();
-                        ExerciseAdapter exerciseAdapter = new ExerciseAdapter(exercisesCurrent, listenerAdapter,prof_email);
+                        ExerciseAdapter exerciseAdapter = new ExerciseAdapter(exercisesCurrent, listenerAdapter, prof_email);
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                         layoutManager.setOrientation(RecyclerView.VERTICAL);
                         recyclerView.setLayoutManager(layoutManager);
@@ -103,10 +100,8 @@ public class ExerciseProfFragment extends Fragment {
 
             }
         });
-        //GridLayoutManager layoutManager = new GridLayoutManager(this.getContext(), 2);
 
         reference1 = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/").getReference("User");
-        /*recyclerView.setAdapter(exAdapter);*/
         this.prof_email = ((ProfHomeActivity) getActivity()).prof_email;
 
         MaterialButton upload = exerView.findViewById(R.id.button_upload_ex);
@@ -126,7 +121,7 @@ public class ExerciseProfFragment extends Fragment {
         i.setType("video/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
 
-        startActivityForResult(i,5);
+        startActivityForResult(i, 5);
     }
 
     @Override
@@ -140,13 +135,14 @@ public class ExerciseProfFragment extends Fragment {
         }
     }
 
-    private String getTipo(Uri video){
+    private String getTipo(Uri video) {
         ContentResolver c = getContext().getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(c.getType(video));
     }
-    private void mandarVideo(){
-        if(video != null){
+
+    private void mandarVideo() {
+        if (video != null) {
             /*db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
             ref = db.getReference("User");*/
             final StorageReference reference = FirebaseStorage.getInstance("gs://walk-in-the-park---cm.appspot.com").getReference("Files/" + System.currentTimeMillis() + "." + getTipo(video));
@@ -165,8 +161,8 @@ public class ExerciseProfFragment extends Fragment {
                     reference1.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for(DataSnapshot ds : snapshot.getChildren()){
-                                if(ds.child("email").getValue().equals(prof_email)){
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                if (ds.child("email").getValue().equals(prof_email)) {
                                     nomeF = ds.child("nome").getValue().toString();
                                     emailF = ds.child("email").getValue().toString();
                                     passwordF = ds.child("password").getValue().toString();
@@ -182,20 +178,16 @@ public class ExerciseProfFragment extends Fragment {
                                     result.put("listaNotas", ds.child("listaNotas").getValue());
                                     result.put("listaLembretes", ds.child("listaLembretes").getValue());
                                     result.put("listaMoods", ds.child("listaMoods").getValue());
-                                    result.put("listaPacientes",ds.child("listaPacientes").getValue());
-                                    result.put("listaExercicios",a);
+                                    result.put("listaPacientes", ds.child("listaPacientes").getValue());
+                                    result.put("listaExercicios", a);
 
                                     mapUsers.put(prof_email, result);
                                 }
                             }
-                            if(p) {
+                            if (p) {
                                 Toast.makeText(getContext(), "Video adicionada!", Toast.LENGTH_SHORT).show();
                                 reference1.updateChildren(mapUsers);
-                                p= false;
-
-                                /*goToMain(view);*/
-                                //((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
-                                //((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);
+                                p = false;
                             }
                         }
 
@@ -205,21 +197,16 @@ public class ExerciseProfFragment extends Fragment {
                         }
                     });
 
-                    // Video uploaded successfully
-                    // Dismiss dialog
                     progressDialog.dismiss();
                     Toast.makeText(getContext(), "Video Uploaded!!", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    // Error, Image not uploaded
                     progressDialog.dismiss();
                     Toast.makeText(getContext(), "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                // Progress Listener for loading
-                // percentage on the dialog box
                 @Override
                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                     // show the progress bar

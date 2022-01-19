@@ -11,17 +11,17 @@
         android:id="@+id/exercise"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/inner_frame_layout_padding"
         android:background="#FFFFFF"
+        android:padding="@dimen/inner_frame_layout_padding"
         app:layout_boxedEdges="all">
 
         <Button
             android:id="@+id/startExercise"
-            android:layout_margin="15dp"
-            android:background="@drawable/button_style"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:background="@drawable/button_style"
             android:text="@string/exercise_button"
             android:textSize="20dp" />
 

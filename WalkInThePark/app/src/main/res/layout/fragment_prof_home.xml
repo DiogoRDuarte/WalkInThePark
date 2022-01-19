@@ -29,13 +29,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Vídeos"
-                android:paddingTop="10dp"
                 android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="Vídeos"
                 android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="25dp">
-            </TextView>
+                android:textSize="25dp"
+                android:textStyle="bold"></TextView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvExerciciosProf"
@@ -62,13 +61,12 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
-                        android:textSize="15sp"
-                        app:backgroundTint="#E8E8E8"
                         android:text="Ver todos"
                         android:textColor="#2B2C2C"
+                        android:textSize="15sp"
+                        app:backgroundTint="#E8E8E8"
                         app:contentPadding="8dp"
                         app:cornerRadius="15dp" />
-
 
                 </RelativeLayout>
 
@@ -87,21 +85,18 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
-                        app:backgroundTint="#E8E8E8"
                         android:text="Novo Vídeo"
                         android:textColor="#2B2C2C"
                         android:textSize="15sp"
+                        app:backgroundTint="#E8E8E8"
                         app:contentPadding="8dp"
                         app:cornerRadius="15dp" />
-
 
                 </RelativeLayout>
 
             </LinearLayout>
 
         </LinearLayout>
-
-
     </com.google.android.material.card.MaterialCardView>
 
     <!-- Pacientes -->
@@ -126,13 +121,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Pacientes"
-                android:paddingTop="10dp"
                 android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="Pacientes"
                 android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="25dp">
-            </TextView>
+                android:textSize="25dp"
+                android:textStyle="bold"></TextView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPacientesProf"
@@ -159,13 +153,12 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
-                        app:backgroundTint="#E8E8E8"
                         android:text="Ver Todos"
-                        android:textSize="15sp"
                         android:textColor="#2B2C2C"
+                        android:textSize="15sp"
+                        app:backgroundTint="#E8E8E8"
                         app:contentPadding="8dp"
                         app:cornerRadius="15dp" />
-
 
                 </RelativeLayout>
 
@@ -173,8 +166,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
-
     </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

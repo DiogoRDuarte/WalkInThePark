@@ -93,7 +93,6 @@ public class NewMoodFragment extends Fragment {
                     }
                 }
 
-
                 if(mood < 1 || mood > 5) {
                     Toast toast = Toast.makeText(getContext(), "Erro a selecionar o Humor!", Toast.LENGTH_SHORT);
                     toast.show();
@@ -125,8 +124,6 @@ public class NewMoodFragment extends Fragment {
                                     result.put("listaNotas", ds.child("listaNotas").getValue());
                                     result.put("listaExercicios", ds.child("listaExercicios").getValue());
                                     mapUsers.put(user_email, result);
-                                    //Toast.makeText(getContext(), "Moods adicionado!", Toast.LENGTH_SHORT).show();
-                                    //myRef.updateChildren(mapUsers);
                                 }
                             }
 

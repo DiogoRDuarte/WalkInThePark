@@ -51,12 +51,11 @@ public class NewNoteFragment extends Fragment {
         newNoteView = inflater.inflate(R.layout.fragment_new_note, container, false);
         Button cancelButton = newNoteView.findViewById(R.id.buttonCancelar);
         Button addButton = newNoteView.findViewById(R.id.buttonAdicionar);
-        user_email =((UserHomeActivity)getActivity()).user_email;
+        user_email = ((UserHomeActivity) getActivity()).user_email;
         titulo = (EditText) newNoteView.findViewById(R.id.tituloNota);
         nota = (EditText) newNoteView.findViewById(R.id.descricaoNota);
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
-
 
         String a = titulo.getText().toString();
         String b = nota.getText().toString();
@@ -67,7 +66,7 @@ public class NewNoteFragment extends Fragment {
                 tituloS = titulo.getText().toString();
                 notaS = nota.getText().toString();
 
-                if(tituloS.equals("") || notaS.equals("")){
+                if (tituloS.equals("") || notaS.equals("")) {
                     Toast toast = Toast.makeText(getContext(), "Escolhe um Titulo e uma Nota!", Toast.LENGTH_SHORT);
                     toast.show();
                 } else {
@@ -78,8 +77,8 @@ public class NewNoteFragment extends Fragment {
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot ds: snapshot.getChildren()){
-                                if(ds.child("email").getValue().equals(user_email)){
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                if (ds.child("email").getValue().equals(user_email)) {
                                     nomeF = ds.child("nome").getValue().toString();
                                     emailF = ds.child("email").getValue().toString();
                                     passwordF = ds.child("password").getValue().toString();
@@ -100,28 +99,21 @@ public class NewNoteFragment extends Fragment {
                                 }
                             }
 
-                                if(p) {
-                                    Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
-                                    myRef.updateChildren(mapUsers);
-                                    p = false;
+                            if (p) {
+                                Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
+                                myRef.updateChildren(mapUsers);
+                                p = false;
 
-//                                    titulo.setText(null);
-//                                    nota.setText(null);
+                                ((NotesFragment) getParentFragment()).button.setText("Adicionar Nota");
+                                ((NotesFragment) getParentFragment()).replaceFragment(((NotesFragment) getParentFragment()).allNotesFragment);
 
-                                    /*goToMain(view);*/
-                                    ((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
-                                    ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);
-
-                                }
-
-
+                            }
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                         }
                     });
-
 
                 }
 
@@ -132,8 +124,8 @@ public class NewNoteFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getParentFragmentManager().beginTransaction().remove(NewNoteFragment.this).commit();
-                ((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
-                ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);
+                ((NotesFragment) getParentFragment()).button.setText("Adicionar Nota");
+                ((NotesFragment) getParentFragment()).replaceFragment(((NotesFragment) getParentFragment()).allNotesFragment);
             }
         });
 
@@ -147,7 +139,6 @@ public class NewNoteFragment extends Fragment {
 
     @Override
     public void onResume() {
-        // TODO Auto-generated method stub
         super.onResume();
         titulo.setText("");
         nota.setText("");
@@ -155,9 +146,8 @@ public class NewNoteFragment extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             titulo.setText(bundle.getString("titulo2"));
-            nota.setText( bundle.getString("mensagem2"));
+            nota.setText(bundle.getString("mensagem2"));
         }
     }
-
 
 }

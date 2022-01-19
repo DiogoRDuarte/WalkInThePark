@@ -28,5 +28,4 @@
         app:layout_constraintTop_toBottomOf="@+id/textView27"
         app:srcCompat="@drawable/calibration" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

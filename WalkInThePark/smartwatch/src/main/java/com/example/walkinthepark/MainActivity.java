@@ -34,14 +34,6 @@ public class MainActivity extends Activity implements SensorEventListener {
     private Sensor mGravitySensor;
     private int counterSteps;
 
-    // fall
-    private float x, y, z;
-    private float last_x, last_y, last_z;
-    private long shakeTime = -1;
-    private long lastUpdate = -1;
-
-    private static final int SHAKE_THRESHOLD = 50;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -147,6 +139,7 @@ public class MainActivity extends Activity implements SensorEventListener {
         }
     }
 
+    // saber o ritmo cardíaco ao longo do dia
     SensorEventListener heartListener1 = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent sensorEvent) {
@@ -159,6 +152,7 @@ public class MainActivity extends Activity implements SensorEventListener {
         }
     };
 
+    // saber o número de passos do dia
     SensorEventListener stepCounterListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent sensorEvent) {

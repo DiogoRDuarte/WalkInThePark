@@ -63,32 +63,32 @@ public class UserHomeActivity extends AppCompatActivity {
         refNotas = db.getReference("Note");
         refReminders = db.getReference("Reminder");
         myRef = db.getReference("User");
-        Map m = new HashMap<String,Map>();
+        Map m = new HashMap<String, Map>();
 
         // Inicializar fragmentos
 
-        if(notesFragment == null) {
+        if (notesFragment == null) {
             notesFragment = new NotesFragment();
         }
-        if(remindersFragment == null) {
+        if (remindersFragment == null) {
             remindersFragment = new RemindersFragment();
         }
-        if(exerciseFragment == null) {
+        if (exerciseFragment == null) {
             exerciseFragment = new ExerciseFragment();
         }
-        if(moodsFragment == null) {
+        if (moodsFragment == null) {
             moodsFragment = new MoodsFragment();
         }
-        if(calibrationFragment == null) {
+        if (calibrationFragment == null) {
             calibrationFragment = new CalibrationFragment();
         }
-        if(settingsFragment == null) {
+        if (settingsFragment == null) {
             settingsFragment = new SettingsFragment();
         }
-        if(aboutFragment == null) {
+        if (aboutFragment == null) {
             aboutFragment = new AboutFragment();
         }
-        if(userHomeFragment == null) {
+        if (userHomeFragment == null) {
             userHomeFragment = new UserHomeFragment();
         }
 
@@ -125,10 +125,8 @@ public class UserHomeActivity extends AppCompatActivity {
 
     }
 
-    public String getCurrentUserEmail(){
+    public String getCurrentUserEmail() {
         return this.user_email;
     }
-
-
 
 }

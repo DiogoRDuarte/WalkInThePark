@@ -51,6 +51,7 @@ public class PatientsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     if(prof_email== null) prof_email = ((ProfHomeActivity)getActivity()).prof_email;
+
                     if (ds.child("email").getValue().toString().equals(prof_email)) {
                         pacientes = (ArrayList<Map>) ds.child("listaPacientes").getValue();
                     }
@@ -59,7 +60,7 @@ public class PatientsFragment extends Fragment {
                 if (pacientes != null && pacientes.size() > 1) {
 
                     for (int i = 1; i < pacientes.size(); i++) {
-                        if(pacientes.get(i) != null) {
+                        if (pacientes.get(i) != null) {
                             String pn = pacientes.get(i).get("nome") + "";
                             listNomesPacs.add(pn);
                         }
@@ -71,10 +72,7 @@ public class PatientsFragment extends Fragment {
                     rvPacientes.setLayoutManager(layoutManager);
 
                     rvPacientes.setAdapter(patientsAdapter);
-
                 }
-
-
             }
 
             @Override

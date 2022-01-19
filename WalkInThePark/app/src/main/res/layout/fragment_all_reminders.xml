@@ -24,7 +24,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread" />
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvReminders"
         android:layout_width="384dp"

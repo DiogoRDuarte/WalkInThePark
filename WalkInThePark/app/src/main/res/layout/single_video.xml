@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -30,10 +29,10 @@
 
         <TextView
             android:id="@+id/titVideo"
-            android:padding="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/imgVideos"
+            android:padding="4dp"
             android:text="Ver Exercícios"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textSize="24sp" />

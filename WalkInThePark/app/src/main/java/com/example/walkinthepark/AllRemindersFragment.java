@@ -41,7 +41,6 @@ public class AllRemindersFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_all_reminders, container, false);
 
-
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
         myRef.addValueEventListener(new ValueEventListener() {
@@ -61,26 +60,20 @@ public class AllRemindersFragment extends Fragment {
 
                         setOnClickListener();
                         RemindersAdapter remindersAdapter = new RemindersAdapter(lembretesCurrent,listenerAdapter,user_email);
-
                         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                         layoutManager.setOrientation(RecyclerView.VERTICAL);
                         rvReminders.setLayoutManager(layoutManager);
 
                         rvReminders.setAdapter(remindersAdapter);
-
                     }
                 }
-
             }
-
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-
 
         return  view;
     }
@@ -91,7 +84,6 @@ public class AllRemindersFragment extends Fragment {
             public void onClick(View v, int position) {
 
                 if(listenerAdapter != null){
-                    //FAZER
 
                     Bundle bundle = new Bundle();
                     bundle.putString("data2", listaLembretes.get(position+1).get("data"));
@@ -102,9 +94,6 @@ public class AllRemindersFragment extends Fragment {
                     (((RemindersFragment)getParentFragment()).newReminderFragment).setArguments(bundle);
                     ((RemindersFragment)getParentFragment()).replaceFragment(((RemindersFragment)getParentFragment()).newReminderFragment);
 
-                    //mudar
-
-//                    Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
                 }
 
             }

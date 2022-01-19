@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.ViewHolder> {
-    //private final Context cont;
+
     private final RecyclerViewListener listener;
     private ArrayList<HashMap<String, String>> mReminders;
     private Map mapUsers = new HashMap<String, User>();
@@ -34,7 +34,7 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
     private FirebaseDatabase db;
     private DatabaseReference myRef;
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView dataTextView;
         public TextView horaTextView;
@@ -50,18 +50,17 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
             deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
 
             itemView.setOnClickListener(this);
-
         }
 
         @Override
         public void onClick(View v) {
-            if(listener != null && getAdapterPosition() != RecyclerView.NO_POSITION){
+            if (listener != null && getAdapterPosition() != RecyclerView.NO_POSITION) {
                 listener.onClick(v, getAdapterPosition());
             }
         }
     }
 
-    public RemindersAdapter(ArrayList<HashMap<String, String>> reminders, RecyclerViewListener listener, String mail){
+    public RemindersAdapter(ArrayList<HashMap<String, String>> reminders, RecyclerViewListener listener, String mail) {
         this.s = mail;
         this.listener = listener;
         mReminders = reminders;
@@ -72,7 +71,7 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
     public RemindersAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View reminderView = inflater.inflate(R.layout.single_reminder,parent,false);
+        View reminderView = inflater.inflate(R.layout.single_reminder, parent, false);
         RemindersAdapter.ViewHolder viewHolder = new RemindersAdapter.ViewHolder(reminderView);
         return viewHolder;
     }
@@ -93,23 +92,23 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
         delButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //HashMap<String, String> rem = mNotes.get(holder.getAdapterPosition());
+
                 myRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot ds : snapshot.getChildren()){
-                            if(s.equals(ds.child("email").getValue().toString())){
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            if (s.equals(ds.child("email").getValue().toString())) {
                                 nomeF = ds.child("nome").getValue().toString();
                                 emailF = ds.child("email").getValue().toString();
                                 passwordF = ds.child("password").getValue().toString();
 
                                 ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaLembretes");
                                 //a.add(put("",""));
-                                try{
-                                    a.remove(position+1);
+                                try {
+                                    a.remove(position + 1);
                                     notifyItemRemoved(position);
-                                    notifyItemRangeChanged(position,getItemCount()+1);
-                                }catch(IndexOutOfBoundsException e){
+                                    notifyItemRangeChanged(position, getItemCount() + 1);
+                                } catch (IndexOutOfBoundsException e) {
                                     System.out.println("a");
                                 }
 
@@ -126,17 +125,10 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
                                 mapUsers.put(s, result);
                             }
                         }
-                        if(p) {
-                            //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
+                        if (p) {
                             myRef.updateChildren(mapUsers);
                             p = false;
-
-                            /*goToMain(view);*/
-                            /*((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
-                            ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);*/
                         }
-
-
                     }
 
                     @Override
@@ -147,7 +139,6 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.View
                 mReminders.remove(position2);
                 notifyItemRemoved(position2);
                 notifyItemRangeChanged(position2, mReminders.size());
-                //holder.itemView.setVisibility(View.GONE);
 
             }
         });

@@ -37,8 +37,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".8"
-            android:padding="8dp"
             android:background="@drawable/buttons_prof"
+            android:padding="8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/edit" />
 
@@ -47,19 +47,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".8"
-            android:padding="8dp"
             android:background="@drawable/buttons_prof"
+            android:padding="8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/results" />
-
-        <!--<ImageButton
-            android:id="@+id/deleteButtono"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight=".8"
-            android:backgroundTint="#E8E8E8"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_delete" />-->
 
     </LinearLayout>
 

@@ -23,7 +23,6 @@ import java.util.Map;
 
 public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
 
-
     private final RecyclerViewListener listener;
     private String s;
     private ArrayList<HashMap<String, String>> mMoods;
@@ -133,12 +132,9 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.ViewHolder> {
                             }
                         }
                         if(p) {
-                            //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
                             myRef.updateChildren(mapUsers);
                             p = false;
 
-                            /*((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
-                            ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);*/
                         }
                     }
 

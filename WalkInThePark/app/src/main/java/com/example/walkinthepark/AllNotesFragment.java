@@ -27,7 +27,6 @@ public class AllNotesFragment extends Fragment {
 
     static View allNotesView;
 
-
     private DatabaseReference myRef;
     private FirebaseDatabase db;
     private Context context = this.getContext();
@@ -35,7 +34,6 @@ public class AllNotesFragment extends Fragment {
 
     private NotesAdapter.RecyclerViewListener listenerAdapter;
 
-    // Notas
     ArrayList<HashMap<String, String>> listaNotas;
     private ArrayList<HashMap<String, String>> notasCurrent;
 
@@ -81,7 +79,6 @@ public class AllNotesFragment extends Fragment {
             }
         });
 
-
         return allNotesView;
     }
 
@@ -91,7 +88,6 @@ public class AllNotesFragment extends Fragment {
             public void onClick(View v, int position) {
 
                 if(listenerAdapter != null){
-                    //FAZER
 
                     Bundle bundle = new Bundle();
                     bundle.putString("titulo2", listaNotas.get(position+1).get("titulo"));
@@ -101,9 +97,6 @@ public class AllNotesFragment extends Fragment {
                     (((NotesFragment)getParentFragment()).newNoteFragment).setArguments(bundle);
                     ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).newNoteFragment);
 
-                    //mudar
-
-//                    Navigation.findNavController(userView).navigate(R.id.action_menuAc_to_notasAc, bundle);
                 }
 
             }

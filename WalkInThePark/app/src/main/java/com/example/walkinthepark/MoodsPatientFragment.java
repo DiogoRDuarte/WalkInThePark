@@ -53,8 +53,6 @@ public class MoodsPatientFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 moodsCurrent = new ArrayList<>();
                 for(DataSnapshot ds : snapshot.getChildren()){
-//                    if(user_email == null)
-//                        user_email =((UserHomeActivity)getActivity()).user_email;
                     Bundle bundle = getArguments();
                     if (bundle != null) {
                         user_email = (bundle.getString("email"));
@@ -82,8 +80,6 @@ public class MoodsPatientFragment extends Fragment {
 
             }
         });
-
-
 
         return moodsPatientView;
     }

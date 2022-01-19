@@ -150,6 +150,7 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
         }
     }
 
+    // saber o ritmo cardíaco médio
     SensorEventListener heartListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent sensorEvent) {
@@ -165,6 +166,7 @@ public class ExerciseActivity extends Activity implements SensorEventListener {
         }
     };
 
+    // detetar se houve queda e tremores muito acentuados
     SensorEventListener accelerometerListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent sensorEvent) {

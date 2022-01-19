@@ -47,7 +47,6 @@ public class RemindersUserAdapter extends RecyclerView.Adapter<RemindersUserAdap
             dataTextView = (TextView) itemView.findViewById(R.id.dataLemb);
             horaTextView = (TextView) itemView.findViewById(R.id.horaLemb);
             mensagemTextView = (TextView) itemView.findViewById(R.id.msgLemb);
-            //editarButton = (MaterialButton) itemView.findViewById(R.id.editarLemb);
 
             itemView.setOnClickListener(this);
         }
@@ -85,70 +84,9 @@ public class RemindersUserAdapter extends RecyclerView.Adapter<RemindersUserAdap
         textViewHora.setText(reminder.get("hora"));
         TextView textViewMensagem = holder.mensagemTextView;
         textViewMensagem.setText(reminder.get("mensagem"));
-        //MaterialButton edButton = holder.editarButton;
 
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         myRef = db.getReference("User");
-
-        /*edButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                /HashMap<String, String> rem = mNotes.get(holder.getAdapterPosition());
-                myRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot ds : snapshot.getChildren()){
-                            if(s.equals(ds.child("email").getValue().toString())){
-                                nomeF = ds.child("nome").getValue().toString();
-                                emailF = ds.child("email").getValue().toString();
-                                passwordF = ds.child("password").getValue().toString();
-
-                                ArrayList a = (ArrayList) ((Map) ds.getValue()).get("listaLembretes");
-                                //a.add(put("",""));
-                                try{
-                                    a.remove(holder.getAdapterPosition());
-                                }catch(IndexOutOfBoundsException e){
-                                    System.out.println("a");
-                                }
-
-                                HashMap result = new HashMap<>();
-                                result.put("nome", nomeF);
-                                result.put("email", emailF);
-                                result.put("password", passwordF);
-                                result.put("paciente", true);
-                                result.put("fisioID", ds.child("fisioID").getValue());
-                                result.put("listaNotas", ds.child("listaNotas").getValue());
-                                result.put("listaLembretes", a);
-                                result.put("listaMoods", ds.child("listaMoods").getValue());
-
-                                mapUsers.put(s, result);
-                            }
-                        }
-                        if(a) {
-                            //Toast.makeText(getContext(), "Nota adicionada!", Toast.LENGTH_SHORT).show();
-                            myRef.updateChildren(mapUsers);
-                            a = false;
-
-                            /*goToMain(view);*//*
-                            /*((NotesFragment)getParentFragment()).button.setText("Adicionar Nota");
-                            ((NotesFragment)getParentFragment()).replaceFragment(((NotesFragment)getParentFragment()).allNotesFragment);*//*
-                        }
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-                mRemindersUser.remove(position2);
-                notifyItemRemoved(position2);
-                notifyItemRangeChanged(position2, mRemindersUser.size());
-                holder.itemView.setVisibility(View.GONE);
-
-            }
-        });*/
     }
 
 

@@ -22,7 +22,7 @@ public class StartActivity extends Activity {
 
         setContentView(R.layout.activity_start);
 
-        /** Setting timeout */
+        // Timeout para abrir aplicação
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

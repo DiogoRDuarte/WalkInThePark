@@ -119,7 +119,6 @@ public class NotesFragment extends Fragment {
     }
 
     public void replaceFragment(Fragment fragment) {
-        /*FragmentManager fragmentManager = getActivity().getSupportFragmentManager();*/
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container_notes, fragment);

@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:background="#DC6E58"
-    tools:context=".RegisterActivity"
-    android:layout_gravity="center">
+    tools:context=".RegisterActivity">
 
 
     <ScrollView
@@ -26,7 +26,6 @@
 
 
             <RelativeLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -38,8 +37,8 @@
                     android:layout_centerVertical="true"
                     android:gravity="center"
                     android:text="Tornamos a sua vida melhor!"
-                    android:textColor="@color/white"
                     android:textAlignment="textStart"
+                    android:textColor="@color/white"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="RtlCompat" />
 
@@ -55,7 +54,6 @@
                     app:srcCompat="@drawable/walk_in_the_park_final" />
 
             </RelativeLayout>
-
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -78,8 +76,8 @@
                         <EditText
                             android:id="@+id/editTextName"
                             style="@style/modifiedEditText"
-                            android:hint="Nome*"
                             android:backgroundTint="@color/white"
+                            android:hint="Nome*"
                             android:inputType="textPersonName"
                             android:maxLines="1"
                             app:boxBackgroundColor="@color/white" />
@@ -93,8 +91,8 @@
                         <EditText
                             android:id="@+id/editTextEmail"
                             style="@style/modifiedEditText"
-                            android:hint="Email:*"
                             android:backgroundTint="@color/white"
+                            android:hint="Email:*"
                             android:inputType="textEmailAddress"
                             android:maxLines="1" />
 
@@ -106,11 +104,12 @@
                             <EditText
                                 android:id="@+id/editTextPassword"
                                 style="@style/modifiedEditText"
-                                android:hint="Password:*"
                                 android:backgroundTint="@color/white"
+                                android:hint="Password:*"
                                 android:inputType="textPassword"
                                 android:maxLines="1" />
                         </com.google.android.material.textfield.TextInputLayout>
+
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -121,9 +120,9 @@
                         <EditText
                             android:id="@+id/editTextTokenFisio"
                             style="@style/modifiedEditText"
+                            android:backgroundTint="@color/white"
                             android:hint="Email do Fisioterapeuta:"
                             android:inputType="text"
-                            android:backgroundTint="@color/white"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -141,30 +140,29 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="5dp"
                             android:checked="true"
-                            app:buttonTint="#DC6E58"
-                            android:text="Sou Paciente" />
+                            android:text="Sou Paciente"
+                            app:buttonTint="#DC6E58" />
 
                         <RadioButton
                             android:id="@+id/radio_fisio"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            app:buttonTint="#DC6E58"
-                            android:text="Sou Profissional" />
+                            android:text="Sou Profissional"
+                            app:buttonTint="#DC6E58" />
                     </RadioGroup>
-
 
                     <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                         android:id="@+id/cirRegisterButton"
                         style="@style/registerButton"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/loginViewsMargin"
+                        android:backgroundTint="#DC6E58"
                         android:text="Registar"
                         app:initialCornerAngle="27dp"
                         app:spinning_bar_color="#FFF"
                         app:spinning_bar_padding="6dp"
-                        app:spinning_bar_width="4dp"
-                        android:backgroundTint="#DC6E58"/>
+                        app:spinning_bar_width="4dp" />
 
                     <TextView
                         style="@style/parent"
@@ -178,9 +176,6 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-
         </LinearLayout>
-
     </ScrollView>
 </RelativeLayout>

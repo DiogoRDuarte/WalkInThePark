@@ -72,8 +72,6 @@ public class AllMoodsFragment extends Fragment {
             }
         });
 
-
-
         return allMoodsView;
     }
 }

@@ -47,9 +47,9 @@ public class NewReminderFragment extends Fragment {
     Button bCancel;
     TextView teste;
     EditText te;
-    String time ="";
-    String message="";
-    String date ="";
+    String time = "";
+    String message = "";
+    String date = "";
 
     private int year;
     private int month;
@@ -84,7 +84,7 @@ public class NewReminderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        user_email =((UserHomeActivity)getActivity()).user_email;
+        user_email = ((UserHomeActivity) getActivity()).user_email;
 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_new_reminder, container, false);
@@ -114,14 +114,6 @@ public class NewReminderFragment extends Fragment {
 
         te = (EditText) view.findViewById(R.id.message);
 
-
-        /*Bundle bundle = getArguments();
-        if (bundle != null) {
-            data.setText(bundle.getString("data2"));
-            hora.setText( bundle.getString("hora2"));
-            te.setText( bundle.getString("mensagem2"));
-        }*/
-
         bAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,11 +121,11 @@ public class NewReminderFragment extends Fragment {
                 String horaS = hora.getText().toString();
                 String textS = te.getText().toString();
 
-                if(dataS.equals("Data") || horaS.equals("Hora") || textS.equals("")){
+                if (dataS.equals("Data") || horaS.equals("Hora") || textS.equals("")) {
                     Toast toast = Toast.makeText(getContext(), "Escolhe uma Data Hora e Lembrete!", Toast.LENGTH_SHORT);
                     toast.show();
 
-                }else {
+                } else {
                     rem = new Reminder(horaS, dataS, textS);
 
                     Map reminderValues = rem.toMap();
@@ -141,9 +133,9 @@ public class NewReminderFragment extends Fragment {
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot ds: snapshot.getChildren()){
+                            for (DataSnapshot ds : snapshot.getChildren()) {
 
-                                if(ds.child("email").getValue().toString().equals(user_email)){
+                                if (ds.child("email").getValue().toString().equals(user_email)) {
                                     nomeF = ds.child("nome").getValue().toString();
                                     emailF = ds.child("email").getValue().toString();
                                     passwordF = ds.child("password").getValue().toString();
@@ -163,21 +155,15 @@ public class NewReminderFragment extends Fragment {
                                     mapUsers.put(user_email, result);
                                 }
 
+                            }
+                            if (p) {
+                                Toast.makeText(getContext(), "Lembrete adicionado!", Toast.LENGTH_SHORT).show();
+                                myRef.updateChildren(mapUsers);
+                                p = false;
+
+                                ((RemindersFragment) getParentFragment()).replaceFragment(((RemindersFragment) getParentFragment()).allRemindersFragment);
 
                             }
-                                if(p) {
-                                    //myRef.child("User").child(email);
-                                    Toast.makeText(getContext(), "Lembrete adicionado!", Toast.LENGTH_SHORT).show();
-                                    myRef.updateChildren(mapUsers);
-                                    p = false;
-
-                                    /*//MUDAR ISTO
-                                    goToMain(view);*/
-                                    ((RemindersFragment)getParentFragment()).replaceFragment(((RemindersFragment)getParentFragment()).allRemindersFragment);
-
-                                }
-
-
                         }
 
                         @Override
@@ -185,34 +171,19 @@ public class NewReminderFragment extends Fragment {
 
                         }
                     });
-
-                    //Toast toast = Toast.makeText(getContext(), "Lembrete Adicionado!", Toast.LENGTH_SHORT);
-                    //toast.show();
                 }
 
-                // Intent
                 Intent intent = new Intent(NewReminderFragment.this.getContext(), AlarmReceiver.class);
                 intent.putExtra("notificationId", notificationId);
                 intent.putExtra("message", te.getText().toString());
 
-                // PendingIntent
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(
                         NewReminderFragment.this.getContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT
                 );
 
-                // AlarmManager
                 AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(ALARM_SERVICE);
 
-                // Create time.
-//                Calendar startTime = Calendar.getInstance();
-//                startTime.set(Calendar.YEAR, year);
-//                startTime.set(Calendar.MONTH, month);
-//                startTime.set(Calendar.DAY_OF_MONTH, day);
-//                startTime.set(Calendar.HOUR_OF_DAY, hour);
-//                startTime.set(Calendar.MINUTE, minute);
-//                startTime.set(Calendar.SECOND, 0);
-
-                SimpleDateFormat formatter =new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                 String timeSsp = dataS + " " + horaS;
                 timeSsp = timeSsp.substring(0, timeSsp.length() - 1);
                 Date dateAuxD = null;
@@ -223,10 +194,6 @@ public class NewReminderFragment extends Fragment {
                 }
                 long millis = dateAuxD.getTime();
 
-//                long alarmStartTime = startTime.getTimeInMillis();
-
-
-                // Set Alarm
                 alarmManager.set(AlarmManager.RTC_WAKEUP, millis, pendingIntent);
 
             }
@@ -236,8 +203,8 @@ public class NewReminderFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getParentFragmentManager().beginTransaction().remove(NewReminderFragment.this).commit();
-                ((RemindersFragment)getParentFragment()).bAdd.setText("Adicionar");
-                ((RemindersFragment)getParentFragment()).replaceFragment(((RemindersFragment)getParentFragment()).allRemindersFragment);
+                ((RemindersFragment) getParentFragment()).bAdd.setText("Adicionar");
+                ((RemindersFragment) getParentFragment()).replaceFragment(((RemindersFragment) getParentFragment()).allRemindersFragment);
             }
         });
 
@@ -246,7 +213,7 @@ public class NewReminderFragment extends Fragment {
 
     private void goToMain(View view) {
         Intent i = new Intent(getActivity(), UserHomeActivity.class);
-        i.putExtra("user_email", user_email+"");
+        i.putExtra("user_email", user_email + "");
         startActivity(i);
     }
 
@@ -259,9 +226,9 @@ public class NewReminderFragment extends Fragment {
             @Override
             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                 time = hour + ":" + minute + ":00";
-                hora.setText(time+"h");
+                hora.setText(time + "h");
             }
-        },hour,minute,true);
+        }, hour, minute, true);
         timePickerDialog.show();
     }
 
@@ -273,16 +240,15 @@ public class NewReminderFragment extends Fragment {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this.getContext(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                date = day+"-"+(month+1)+"-"+year;
+                date = day + "-" + (month + 1) + "-" + year;
                 data.setText(date);
             }
-        },year,month,day);
+        }, year, month, day);
         datePickerDialog.show();
     }
 
     @Override
     public void onResume() {
-        // TODO Auto-generated method stub
         super.onResume();
         data.setText("");
         hora.setText("");
@@ -291,7 +257,7 @@ public class NewReminderFragment extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             data.setText(bundle.getString("data2"));
-            hora.setText( bundle.getString("hora2"));
+            hora.setText(bundle.getString("hora2"));
             te.setText(bundle.getString("mensagem2"));
         }
     }

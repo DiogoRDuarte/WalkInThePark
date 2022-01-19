@@ -79,6 +79,7 @@ public class ProfHomeFragment extends Fragment {
                     }
 
                     setOnClickListener();
+
                     UsersAdapter usersAdapter = new UsersAdapter(listNomesPacs, listenerAdapter);
                     LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                     layoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -87,8 +88,6 @@ public class ProfHomeFragment extends Fragment {
                     rvPacientesProf.setAdapter(usersAdapter);
 
                 }
-
-
             }
 
             @Override
@@ -105,6 +104,7 @@ public class ProfHomeFragment extends Fragment {
             }
         });
 
+        // botão para criar video não está implementado no home, está nos videos
         /*criarVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,14 +125,12 @@ public class ProfHomeFragment extends Fragment {
         return profView;
     }
 
-    //5 pacientes Clicaveis
     private void setOnClickListener() {
         listenerAdapter = new UsersAdapter.RecyclerViewListener() {
             @Override
             public void onClick(View v, int position) {
 
                 if (listenerAdapter != null) {
-                    //FAZER
 
                     Bundle bundle = new Bundle();
                     bundle.putString("fragment", "fragT");
@@ -140,7 +138,6 @@ public class ProfHomeFragment extends Fragment {
                     bundle.putString("email", (String) pacientes.get(position+1).get("email"));
                     Navigation.findNavController(profView).navigate(R.id.action_menuPAc_to_moodsPatientFragment, bundle);
                 }
-
             }
         };
     }
