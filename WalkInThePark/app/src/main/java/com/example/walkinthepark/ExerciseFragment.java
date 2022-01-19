@@ -69,7 +69,7 @@ public class ExerciseFragment extends Fragment {
         record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDialog = new ProgressDialog(getActivity());
+                progressDialog = new ProgressDialog(getContext());
                 upVideo();
 
             }
