@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements SensorEventListener {
 
     private WearableRecyclerView wearableRecyclerView;
 
@@ -32,7 +32,6 @@ public class MainActivity extends Activity {
     private Sensor mStepCountSensor;
     private Sensor mStepDetectSensor;
     private Sensor mGravitySensor;
-
     private int counterSteps;
 
     // fall
@@ -210,4 +209,13 @@ public class MainActivity extends Activity {
         return df.format(c.getTime());
     }
 
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
 }

@@ -69,7 +69,7 @@ public class ProfHomeFragment extends Fragment {
                     }
                 }
 
-                if (pacientes != null && pacientes.size() > 1) {
+                if (pacientes != null && pacientes.size() >= 1) {
 
                     for (int i = 1; i < pacientes.size(); i++) {
                         if(pacientes.get(i) != null) {

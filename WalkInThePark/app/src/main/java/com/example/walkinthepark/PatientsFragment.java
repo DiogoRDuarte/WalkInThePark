@@ -50,7 +50,7 @@ public class PatientsFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    prof_email = ((ProfHomeActivity)getActivity()).prof_email;
+                    if(prof_email== null) prof_email = ((ProfHomeActivity)getActivity()).prof_email;
                     if (ds.child("email").getValue().toString().equals(prof_email)) {
                         pacientes = (ArrayList<Map>) ds.child("listaPacientes").getValue();
                     }

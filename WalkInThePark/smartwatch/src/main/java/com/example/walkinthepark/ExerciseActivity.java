@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.util.concurrent.TimeUnit;
 
 
-public class ExerciseActivity extends Activity {
+public class ExerciseActivity extends Activity implements SensorEventListener {
 
     private Button exButton;
 
@@ -213,4 +213,13 @@ public class ExerciseActivity extends Activity {
         }
     };
 
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
 }
