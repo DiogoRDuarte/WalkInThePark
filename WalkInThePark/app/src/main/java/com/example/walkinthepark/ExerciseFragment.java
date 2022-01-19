@@ -72,6 +72,40 @@ public class ExerciseFragment extends Fragment {
         db = FirebaseDatabase.getInstance("https://walk-in-the-park---cm-default-rtdb.firebaseio.com/");
         ref = db.getReference("User");
         this.user_email = ((UserHomeActivity) getActivity()).user_email;
+        /*ref.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    if (ds.child("email").getValue().toString().equals(user_email)) {
+                        emailF = ds.child("fisioID").getValue().toString();
+                    }
+                }
+
+                for (DataSnapshot ds2 : snapshot.getChildren()) {
+                    try {
+                        if (ds2.child("email").getValue().toString().equals(emailF)) {
+                            listaEx = (ArrayList) ((Map) ds2.getValue()).get("listaExercicios");
+                            if (listaEx.get(1) != null) {
+                                Uri video = Uri.parse(listaEx.get(1).get("recurso"));
+                                VideoView vV = exerciseView.findViewById(R.id.video);
+                                vV.setVideoURI(video);
+                                vV.start();
+                            }
+                        }
+
+                    }catch (Exception e){
+
+                    }
+                }
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
