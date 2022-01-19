@@ -135,7 +135,10 @@ public class RegisterActivity extends AppCompatActivity {
                                     if (!fisioID.equals("")) {
                                         for (DataSnapshot ds : snapshot.getChildren()) {
 
+                                            fisioID = decodeFromFirebaseKey(fisioID);
+
                                             if (ds.child("email").getValue().toString().equals(fisioID)) {
+                                                fisioID = encodeForFirebaseKey(fisioID);
                                                 nomeF = ds.child("nome").getValue().toString();
                                                 emailF = ds.child("email").getValue().toString();
                                                 passwordF = ds.child("password").getValue().toString();
@@ -226,4 +229,38 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
+    public static String decodeFromFirebaseKey(String s) {
+        int i = 0;
+        int ni;
+        String res = "";
+        while ((ni = s.indexOf("_", i)) != -1) {
+            res += s.substring(i, ni);
+            if (ni + 1 < s.length()) {
+                char nc = s.charAt(ni + 1);
+                if (nc == '_') {
+                    res += '_';
+                } else if (nc == 'P') {
+                    res += '.';
+                } else if (nc == 'D') {
+                    res += '$';
+                } else if (nc == 'H') {
+                    res += '#';
+                } else if (nc == 'O') {
+                    res += '[';
+                } else if (nc == 'C') {
+                    res += ']';
+                } else if (nc == 'S') {
+                    res += '/';
+                } else {
+                    // this case is due to bad encoding
+                }
+                i = ni + 2;
+            } else {
+                // this case is due to bad encoding
+                break;
+            }
+        }
+        res += s.substring(i);
+        return res;
+    }
 }
